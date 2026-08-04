@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Meridian Bank | In-App sticky bar (Dengage mobile content)</title>
+<!-- =====================================================================
+     MERIDIAN BANK ANDROID, In-App content for the panel
+
+     Trigger:  screen name  test_inapp_bar
+     Format:   In-App, Banner, position BOTTOM
+     Spec:     banking/panel-content/mobile/README.md
+
+     THE BRIDGE ON MOBILE IS NOT THE BRIDGE ON THE WEB. The SDK injects a
+     window.Dn object into the In-App WebView, and it is a different object
+     from the one the website's panel content uses. Navigation is
+     Dn.androidUrl('meridian://<screen>'), NOT an href with target="_top": the
+     Navigation goes through Dn.androidUrl, and capture is Dn.setTags. These
+     are the mobile bridge methods; the web contract's Dn.postQuestion and
+     Dn.postSubscription do not apply here. Keep exactly this shape.
+
+     STICKY BAR. The same mechanism as the top banner, positioned at the
+     bottom, which on a handset is where the thumb already is. Use it for a
+     nudge that must not interrupt what the customer is doing.
+
+     Draws its OWN close control, because Banner layout is not offered the
+     panel's "add close button to outside" setting. The close calls Dn.close()
+     and never sendClick, so a dismissal is not counted as a conversion.
+
+     Light on dark, unlike the top banner, so the two are distinguishable in
+     a screenshot when a prospect asks what the difference is.
+     ================================================================== -->
+<style>
+#mrd-ia-bar{font-family:Inter,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;
+  box-sizing:border-box;display:flex;align-items:center;gap:12px;width:100%;
+  padding:12px 14px;background:#f7f5f0;color:#12203a;
+  border-top:2px solid #c8a44d;}
+#mrd-ia-bar *{box-sizing:border-box;}
+#mrd-ia-bar .b-grow{flex:1;min-width:0;}
+#mrd-ia-bar .b-title{font-size:13.5px;font-weight:600;line-height:1.35;margin:0;color:#0a2540;}
+#mrd-ia-bar .b-sub{font-size:11.5px;line-height:1.4;margin:2px 0 0;color:#5a6b7f;}
+#mrd-ia-bar .b-cta{background:#0a2540;color:#fff;text-decoration:none;font-size:12.5px;
+  font-weight:700;padding:9px 14px;border-radius:6px;white-space:nowrap;}
+#mrd-ia-bar .b-close{background:none;border:0;color:#0a2540;opacity:.45;font-size:19px;
+  line-height:1;cursor:pointer;padding:0 2px;}
+</style>
+</head>
+<body>
+<div id="mrd-ia-bar">
+  <div class="b-grow">
+    <p class="b-title">Your direct debit leaves on Thursday</p>
+    <p class="b-sub">&pound;412.00 to Northern Energy. Balance looks tight.</p>
+  </div>
+  <a class="b-cta" href="#" role="button"
+     onclick="Dn.sendClick('test_inapp_bar__move_money');Dn.androidUrl('meridian://payments');return false">Move money</a>
+  <button class="b-close" type="button" aria-label="Close" onclick="Dn.close()">&times;</button>
+</div>
+</body>
+</html>

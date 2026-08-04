@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Meridian Bank | App Inbox message (Dengage mobile content)</title>
+<!-- =====================================================================
+     MERIDIAN BANK ANDROID, App Inbox content for the panel
+
+     Trigger:  an inbox message addressed to the CONTACT KEY
+     Format:   App Inbox
+     Spec:     banking/panel-content/mobile/README.md
+
+     SEND TO THE CONTACT KEY, NOT THE DEVICE ID. The app sets a contact key at
+     launch, so the SDK queries type=c, which is contact mail only. A message
+     addressed to a device id is stored as type=d and never comes back, and
+     the request still answers 200 with an empty list. See
+     android-app/MOBILE-SURFACES.md section 5.
+
+     If the inbox content is title/message/image fields rather than HTML, use
+     the copy from README.md section 4 instead of this file. It is provided
+     for the case where HTML is accepted, and to keep the wording in one
+     place either way.
+     ================================================================== -->
+<style>
+#mrd-inbox{font-family:Inter,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;
+  box-sizing:border-box;width:100%;background:#fff;color:#12203a;text-align:left;}
+#mrd-inbox *{box-sizing:border-box;}
+#mrd-inbox .m-hero{display:block;width:100%;height:auto;border-radius:10px;margin:0 0 14px;}
+#mrd-inbox .m-eyebrow{font-size:10px;letter-spacing:.14em;text-transform:uppercase;
+  color:#b8933c;font-weight:700;margin:0 0 8px;}
+#mrd-inbox .m-title{font-family:Georgia,"Times New Roman",serif;font-size:19px;
+  line-height:1.3;margin:0 0 10px;font-weight:400;color:#0a2540;}
+#mrd-inbox .m-text{font-size:13.5px;line-height:1.6;color:#5a6b7f;margin:0 0 12px;}
+#mrd-inbox .m-list{margin:0 0 16px;padding:0 0 0 18px;}
+#mrd-inbox .m-list li{font-size:13px;line-height:1.7;color:#5a6b7f;}
+#mrd-inbox .m-cta{display:inline-block;background:#0a2540;color:#fff;text-decoration:none;
+  font-size:13.5px;font-weight:700;padding:12px 22px;border-radius:7px;}
+#mrd-inbox .m-small{font-size:10.5px;line-height:1.5;color:#a3adb9;margin:16px 0 0;}
+</style>
+</head>
+<body>
+<div id="mrd-inbox">
+  <img class="m-hero" alt="Rate Week"
+       src="https://salil-dengage.github.io/dengage-demos/banking/images/push/rate-week.png">
+  <p class="m-eyebrow">Rate Week</p>
+  <h2 class="m-title">Fixed rates held until Friday</h2>
+  <p class="m-text">Here is what this week means for you as an existing
+    customer, kept in your inbox so you can come back to it.</p>
+  <ul class="m-list">
+    <li>Five year fixed rates held at this week's level</li>
+    <li>Arrangement fee waived on a remortgage</li>
+    <li>A decision in principle takes about ten minutes</li>
+  </ul>
+  <a class="m-cta" href="meridian://products" target="_top"
+     onclick="Dn.sendClick('test_inbox_message__open')">See the rates</a>
+  <p class="m-small">Meridian Bank is a fictional brand used for demonstration.
+    Rates shown are illustrative and are not a financial promotion.</p>
+</div>
+</body>
+</html>

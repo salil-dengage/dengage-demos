@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Overview | Meridian Online Banking</title>
+    <meta name="description" content="Meridian Bank online banking. Dengage platform demo site.">
+    <meta name="robots" content="noindex">
+
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-NL6J5Z53');</script>
+    <!-- End Google Tag Manager -->
+
+    <script src="js/identity.js" data-user-store="meridian_user"></script>
+    <!-- DENGAGE SDK START -->
+    <script>
+      !function (e, a, n, d, g) {
+        e.dengage = e.dengage || function () { (e.dengage.q = e.dengage.q || []).push(arguments) },
+        d = a.getElementsByTagName("head")[0],
+        (g = a.createElement("script")).async = 1,
+        g.src = "https://pcdn.dengage.com/p/push/28/c8d2da44-b982-1925-9ad8-e7caddf0894a/dengage_sdk_loader.js",
+        d.appendChild(g)
+      }(window, document);
+      window.__dnInit ? dengage('initialize', window.__dnInit) : dengage('initialize');
+    </script>
+    <!-- DENGAGE SDK END -->
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Inter:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="meridian-style.css">
+    <link rel="icon" href="images/meridian-mark.svg" type="image/svg+xml">
+</head>
+<body class="portal-body" data-page-type="portal_dashboard" data-portal-page="dashboard">
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NL6J5Z53"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+
+    <div class="portal-shell">
+      <aside class="portal-side">
+        <a href="index.html" class="portal-logo">
+          <span class="logo-mark" aria-hidden="true">
+            <svg viewBox="0 0 64 64" focusable="false"><path d="M32 12 L54 29 H46 V50 H18 V29 H10 Z" fill="currentColor"/></svg>
+          </span>
+          <span>Meridian</span>
+        </a>
+        <nav class="portal-nav">
+          <a href="dashboard.html" class="is-active" aria-current="page"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 13h6V4H4v9Zm0 7h6v-5H4v5Zm9 0h6v-9h-6v9Zm0-16v5h6V4h-6Z"/></svg><span>Overview</span></a>
+          <a href="account.html"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16v3H4V6Zm0 5h16v7a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1v-7Zm3 3v2h5v-2H7Z"/></svg><span>Accounts</span></a>
+          <a href="cards.html"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 6h18a1 1 0 0 1 1 1v3H2V7a1 1 0 0 1 1-1Zm-1 6h20v5a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1v-5Zm3 3v2h5v-2H5Z"/></svg><span>Cards</span></a>
+          <a href="payments.html"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 8h14V5l5 4-5 4v-3H3V8Zm18 8H7v3l-5-4 5-4v3h14v2Z"/></svg><span>Payments</span></a>
+          <a href="wealth.html"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 19h16v2H4v-2Zm2-9h3v8H6v-8Zm5-5h3v13h-3V5Zm5 8h3v5h-3v-5Z"/></svg><span>Wealth</span></a>
+          <a href="profile.html"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 12a5 5 0 1 0-5-5 5 5 0 0 0 5 5Zm0 2c-3.33 0-10 1.67-10 5v3h20v-3c0-3.33-6.67-5-10-5Z"/></svg><span>Profile</span></a>
+        </nav>
+        <div class="portal-side-foot">
+          <a href="index.html">Public site</a>
+        </div>
+      </aside>
+
+      <div class="portal-content">
+        <header class="portal-topbar">
+          <div class="portal-topbar-in">
+            <span class="portal-greeting">Signed in as <strong data-portal-user>Customer</strong></span>
+            <span class="portal-secure" title="Your session is encrypted">Secure session</span>
+          </div>
+        </header>
+
+        <!-- Dengage inline target slot. Empty and hidden until an inline
+             On-Site campaign fills it. Do not add content or styling here. -->
+        <div id="dn_inline_target_below_header" class="dn-inline-slot"></div>
+
+        <main class="portal-main" data-portal-main>
+          <p class="portal-loading">Loading your accounts&hellip;</p>
+        </main>
+
+        <!-- Dengage inline target slot. Empty and hidden until an inline
+             On-Site campaign fills it. Do not add content or styling here. -->
+        <div id="dn_inline_target_above_footer" class="dn-inline-slot"></div>
+
+        <footer class="portal-foot">
+          Dengage platform demo site. Meridian Bank is a fictional company. Balances,
+          transactions, rates and figures are illustrative and are not a financial promotion.
+        </footer>
+      </div>
+    </div>
+
+    <div class="portal-toast" id="portalToast" role="status" aria-live="polite"></div>
+
+    <script src="js/pageView.js"></script>
+    <script src="js/bannerOffset.js"></script>
+    <script src="js/inlineSlotOffset.js"></script>
+    <script src="js/bankingEvents.js"></script>
+    <script src="js/portalData.js"></script>
+    <script src="js/portal.js"></script>
+    <script src="js/eventModal.js"></script>
+    <script src="js/meridianCatalog.js"></script>
+</body>
+</html>

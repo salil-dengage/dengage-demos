@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Meridian Bank | Inline In-App (Dengage mobile content)</title>
+<!-- =====================================================================
+     MERIDIAN BANK ANDROID, inline In-App content for the panel
+
+     Trigger:  screen name  overview,  rendered by Dengage.showInlineInApp
+     Format:   In-App, INLINE
+     Property: DengageKeys.INAPP_INLINE_PROPERTY_ID   (blank draws nothing)
+     Spec:     banking/panel-content/mobile/README.md
+
+     THE BRIDGE ON MOBILE IS NOT THE BRIDGE ON THE WEB. The SDK injects a
+     window.Dn object into the In-App WebView, and it is a different object
+     from the one the website's panel content uses. Navigation is
+     Dn.androidUrl('meridian://<screen>'), NOT an href with target="_top": the
+     Navigation goes through Dn.androidUrl, and capture is Dn.setTags. These
+     are the mobile bridge methods; the web contract's Dn.postQuestion and
+     Dn.postSubscription do not apply here. Keep exactly this shape.
+
+     INLINE IS NOT SANDBOXED. It is injected into the host screen, so every
+     selector here is namespaced under #mrd-inline. An unscoped rule such as
+     "p { }" would leak into the account list it sits under.
+
+     No close control: an inline placement is part of the screen, not an
+     interruption, so there is nothing to dismiss.
+
+     Sits under the account list on the overview screen. Keep it visually
+     quieter than a modal: it competes with real balances, and a demo where
+     the injected content shouts is a demo about the content rather than
+     about the targeting.
+     ================================================================== -->
+<style>
+#mrd-inline{font-family:Inter,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;
+  box-sizing:border-box;display:block;width:100%;background:#fff;
+  border:1px solid #e4e0d6;border-left:3px solid #c8a44d;border-radius:10px;
+  padding:15px 16px;color:#12203a;text-align:left;}
+#mrd-inline *{box-sizing:border-box;}
+#mrd-inline .m-eyebrow{font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;
+  color:#b8933c;font-weight:700;margin:0 0 7px;}
+#mrd-inline .m-title{font-size:14.5px;font-weight:600;line-height:1.35;margin:0 0 6px;color:#0a2540;}
+#mrd-inline .m-text{font-size:12.5px;line-height:1.55;color:#5a6b7f;margin:0 0 12px;}
+#mrd-inline .m-cta{display:inline-block;background:#0a2540;color:#fff;text-decoration:none;
+  font-size:12.5px;font-weight:700;padding:9px 16px;border-radius:6px;}
+#mrd-inline .m-small{font-size:10px;line-height:1.45;color:#a3adb9;margin:11px 0 0;}
+</style>
+</head>
+<body>
+<div id="mrd-inline">
+  <p class="m-eyebrow">Because you hold a current account</p>
+  <p class="m-title">Your money could be earning 4.6%</p>
+  <p class="m-text">You are holding more than usual in your current account.
+    An easy access ISA pays 4.6% and you can still take it out any day.</p>
+  <a class="m-cta" href="#" role="button"
+     onclick="Dn.sendClick('banking_inline_offer__open');Dn.androidUrl('meridian://products');return false">Compare savings</a>
+  <p class="m-small">Meridian Bank is a fictional brand used for demonstration.
+    Rates are illustrative and are not a financial promotion.</p>
+</div>
+</body>
+</html>

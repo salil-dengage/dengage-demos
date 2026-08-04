@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meridian Bank | Banking that keeps its promises</title>
+    <meta name="description" content="Meridian Bank: current accounts, credit cards, savings and ISAs, loans, mortgages, wealth and insurance. Dengage platform demo site.">
+
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-NL6J5Z53');</script>
+    <!-- End Google Tag Manager -->
+
+    <!-- ===============================================================
+         TAGGING SETUP
+
+         1. GTM container GTM-NL6J5Z53 (above): analytics and future tags
+            only. It must stay EMPTY of Dengage tags, because the Dengage
+            SDK is loaded directly below and a second load would
+            double-initialise it.
+
+         2. Dengage Web SDK (below): the BFSI web application, account 28.
+
+         EVENT DESIGN
+           This site does NOT use the ecommerce tables. A mortgage is not a
+           basket item. pageView still fires, because it fills
+           page_view_events and is the trigger the On-Site scenarios listen
+           for. Everything else goes to purpose-built banking_* tables
+           through js/bankingEvents.js. See docs/TABLE-DESIGN.md.
+
+           The eight panel-built Default Scenarios currently keep their
+           original unprefixed slugs and therefore serve CantuPneus content.
+           Moving them to banking_ prefixed campaigns is agreed and pending
+           the campaigns existing in the panel; the prefix must not be
+           switched on before then, or all eight go silently dark.
+
+         Panel advanced settings this page assumes:
+           Trigger Initialize on Install   = OFF (snippet calls initialize())
+           Trigger Page View on Initialize = OFF (js/pageView.js sends it)
+    ================================================================ -->
+    <!-- identity first: it feeds the contact key into initialize below -->
+    <script src="js/identity.js" data-user-store="meridian_user"></script>
+    <!-- DENGAGE SDK START -->
+    <script>
+      !function (e, a, n, d, g) {
+        e.dengage = e.dengage || function () { (e.dengage.q = e.dengage.q || []).push(arguments) },
+        d = a.getElementsByTagName("head")[0],
+        (g = a.createElement("script")).async = 1,
+        g.src = "https://pcdn.dengage.com/p/push/28/c8d2da44-b982-1925-9ad8-e7caddf0894a/dengage_sdk_loader.js",
+        d.appendChild(g)
+      }(window, document);
+      /* js/identity.js resolved the contact key synchronously just above, so the
+         SDK is identified from the very first call. Anonymous visitors keep the
+         exact previous call. */
+      window.__dnInit ? dengage('initialize', window.__dnInit) : dengage('initialize');
+    </script>
+    <!-- DENGAGE SDK END -->
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Inter:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="meridian-style.css">
+    <link rel="icon" href="images/meridian-mark.svg" type="image/svg+xml">
+</head>
+<body data-page-type="home">
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NL6J5Z53"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+
+    <!-- Header -->
+    <header class="site-header" id="header">
+        <div class="container">
+            <div class="header-inner">
+                <a href="index.html" class="logo">
+                    <span class="logo-mark" aria-hidden="true">
+                        <svg viewBox="0 0 64 64" focusable="false"><path d="M32 12 L54 29 H46 V50 H18 V29 H10 Z" fill="currentColor"/></svg>
+                    </span>
+                    <span class="logo-word">Meridian<span> Bank</span></span>
+                </a>
+
+                <nav class="nav-main">
+                    <a href="index.html#products">Products</a>
+                    <a href="index.html#tools">Calculators</a>
+                    <a href="index.html#protection">Protection</a>
+                    <a href="index.html#appointments">Book an adviser</a>
+                    <button class="login-icon-btn" type="button" aria-label="Sign in to online banking" data-login-btn>
+                        <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                            <path d="M12 12c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5Zm0 2c-3.33 0-10 1.67-10 5v2h20v-2c0-3.33-6.67-5-10-5Z"></path>
+                        </svg>
+                    </button>
+                    <button class="nav-open-account" type="button" data-open-account data-open-account-context="header">Open an account</button>
+                </nav>
+
+                <button class="menu-toggle" id="menuToggle" aria-label="Open menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Dengage inline target slot, top of page. Sits below the fixed header
+         once filled (js/inlineSlotOffset.js measures the clearance). Empty and
+         hidden until an inline On-Site campaign fills it. Do not add content
+         or styling here. -->
+    <div id="dn_inline_target_below_header" class="dn-inline-slot"></div>
+
+    <!-- Mobile Navigation -->
+    <div class="mobile-overlay" id="mobileOverlay"></div>
+    <nav class="mobile-nav" id="mobileNav">
+        <button class="mobile-nav-close" id="mobileNavClose">×</button>
+        <ul class="mobile-nav-links">
+            <li><a href="index.html#products">Products</a></li>
+            <li><a href="index.html#tools">Calculators</a></li>
+            <li><a href="index.html#protection">Protection</a></li>
+            <li><a href="index.html#appointments">Book an adviser</a></li>
+        </ul>
+        <div class="mobile-nav-cta">
+            <button class="btn-primary mobile-login-btn" type="button" data-login-btn>Sign in</button>
+            <button class="btn-primary" type="button" data-open-account data-open-account-context="mobile_nav">Open an account</button>
+        </div>
+    </nav>
+
+    <!-- Register / sign in -->
+    <div class="login-modal" id="loginModal" aria-hidden="true">
+        <div class="login-modal-overlay" data-close-login></div>
+        <div class="login-modal-content" role="dialog" aria-modal="true" aria-labelledby="loginModalTitle">
+            <button class="login-modal-close" type="button" aria-label="Close registration" data-close-login>×</button>
+            <p class="text-label">Online Banking</p>
+            <h2 class="heading-display login-modal-title" id="loginModalTitle">Register for online banking</h2>
+            <p class="text-body login-modal-text">
+                Registration takes a few minutes. We confirm your identity before your first sign-in.
+            </p>
+            <form class="login-form" id="loginForm" novalidate>
+                <div class="login-form-row">
+                    <div class="login-form-group">
+                        <label for="loginFirstName">First name</label>
+                        <input type="text" id="loginFirstName" name="firstName" placeholder="Eleanor" autocomplete="given-name" required>
+                    </div>
+                    <div class="login-form-group">
+                        <label for="loginLastName">Last name</label>
+                        <input type="text" id="loginLastName" name="lastName" placeholder="Whitfield" autocomplete="family-name" required>
+                    </div>
+                </div>
+                <div class="login-form-group">
+                    <label for="loginEmail">E-mail</label>
+                    <input type="email" id="loginEmail" name="email" placeholder="eleanor@example.co.uk" autocomplete="email" required>
+                </div>
+                <div class="login-form-group">
+                    <label for="loginPassword">Password</label>
+                    <input type="password" id="loginPassword" name="password" placeholder="Create a password" autocomplete="new-password" required>
+                </div>
+                <p class="login-form-error" id="loginFormError" role="alert" hidden></p>
+                <button class="login-submit-btn" type="submit">Register</button>
+            </form>
+        </div>
+    </div>
+
+    <div class="login-success-toast" id="loginSuccessMessage" role="status" aria-live="polite">
+        Welcome to Meridian Bank.
+    </div>
+
+    <!-- Shortlist drawer. Not a basket: no quantities, no total. A customer
+         shortlists products to compare, then applies for one. -->
+    <div class="cart-drawer" id="shortlistDrawer" aria-hidden="true">
+        <div class="cart-drawer-overlay" data-shortlist-close></div>
+        <aside class="cart-drawer-panel" aria-labelledby="shortlistDrawerTitle">
+            <div class="cart-drawer-header">
+                <div>
+                    <p class="text-label">Comparing</p>
+                    <h2 class="heading-display cart-drawer-title" id="shortlistDrawerTitle">Your shortlist</h2>
+                </div>
+                <button class="cart-drawer-close" type="button" aria-label="Close your shortlist" data-shortlist-close>×</button>
+            </div>
+            <div class="cart-items" data-shortlist-items></div>
+            <p class="cart-empty" data-shortlist-empty>You have not shortlisted anything yet.</p>
+            <div class="cart-drawer-footer" data-shortlist-footer hidden>
+                <button class="cart-checkout-btn" type="button" data-shortlist-compare>Compare these products</button>
+                <button class="btn-text" type="button" data-shortlist-clear>Clear shortlist</button>
+            </div>
+        </aside>
+    </div>
+
+    <!-- Hero -->
+    <section class="hero">
+        <div class="hero-content">
+            <p class="text-label hero-tagline">Established 1874 &middot; FSCS protected</p>
+            <h1 class="heading-display hero-title">
+                Banking that<br>keeps its <em>promises</em>
+            </h1>
+            <p class="text-body hero-description">
+                Current accounts, savings, mortgages and wealth management, with 214 branches and an adviser you can actually sit down with. Eligible deposits protected up to £85,000.
+            </p>
+            <div class="hero-actions">
+                <a href="index.html#products" class="btn-primary">See our products</a>
+                <a href="index.html#tools" class="btn-text">What could I borrow?</a>
+            </div>
+        </div>
+        <div class="hero-image">
+            <div class="hero-slide active" data-title="Everyday banking" data-price="No monthly fee">
+                <img src="images/scenes/hero-branch.svg" alt="A Meridian Bank branch">
+            </div>
+            <div class="hero-slide" data-title="Credit cards" data-price="0% for 18 months">
+                <img src="images/scenes/hero-cards.svg" alt="The Meridian card range">
+            </div>
+            <div class="hero-slide" data-title="Wealth management" data-price="0.75% annual charge">
+                <img src="images/scenes/hero-wealth.svg" alt="A Meridian wealth portfolio review">
+            </div>
+            <div class="hero-image-overlay">
+                <p class="overlay-title" id="heroTitle">Everyday banking</p>
+                <p class="overlay-price" id="heroPrice">No monthly fee</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Dengage inline target slot. Empty and hidden until an inline On-Site
+         campaign fills it. Do not add content or styling here. -->
+    <div id="dn_inline_target_below_hero" class="dn-inline-slot"></div>
+
+    <!-- Rate board. A bank leads with rates, not with a featured item. -->
+    <section class="rate-board" id="rates">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-header-left">
+                    <p class="text-label">Today's rates</p>
+                    <h2 class="heading-display section-title">Where our rates stand</h2>
+                </div>
+                <p class="rate-board-note">Rates are illustrative and subject to status.</p>
+            </div>
+            <div class="rate-board-grid">
+                <a class="rate-tile" href="product.html?id=MRD-SAV-FIXED">
+                    <p class="rate-tile-label">One year fixed saver</p>
+                    <p class="rate-tile-value">4.55%</p>
+                    <p class="rate-tile-caption">AER fixed for 12 months</p>
+                </a>
+                <a class="rate-tile" href="product.html?id=MRD-SAV-ISA">
+                    <p class="rate-tile-label">Cash ISA</p>
+                    <p class="rate-tile-value">4.35%</p>
+                    <p class="rate-tile-caption">AER tax-free variable</p>
+                </a>
+                <a class="rate-tile" href="product.html?id=MRD-MTG-FIX5">
+                    <p class="rate-tile-label">Five year fixed mortgage</p>
+                    <p class="rate-tile-value">4.09%</p>
+                    <p class="rate-tile-caption">6.6% APRC, 75% LTV</p>
+                </a>
+                <a class="rate-tile" href="product.html?id=MRD-LON-PERSONAL">
+                    <p class="rate-tile-label">Personal loan</p>
+                    <p class="rate-tile-value">6.9%</p>
+                    <p class="rate-tile-caption">APR representative</p>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Product grid -->
+    <section class="products" id="products">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-header-left">
+                    <p class="text-label">Our range</p>
+                    <h2 class="heading-display section-title">Everything we offer</h2>
+                    <p class="text-body section-subtitle">
+                        Current accounts, savings and ISAs, mortgages, loans, cards, wealth and insurance. Shortlist anything you want to compare.
+                    </p>
+                    <!-- Filled by js/shortlistUi.js only once something is
+                         shortlisted. The header no longer carries a shortlist
+                         icon, so this is how the drawer and the comparison
+                         stay reachable without a permanent control for a
+                         feature most visitors never use. -->
+                    <p class="section-shortlist" data-shortlist-inline hidden></p>
+                </div>
+            </div>
+
+            <div class="product-grid" id="productGrid" data-product-grid data-limit="25">
+                <p class="product-grid-status" data-product-grid-status>Loading products…</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Calculators -->
+    <section class="tools" id="tools">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-header-left">
+                    <p class="text-label">Work it out first</p>
+                    <h2 class="heading-display section-title">Before you apply</h2>
+                    <p class="text-body section-subtitle">
+                        No credit check and no mark on your file. These are estimates, not offers.
+                    </p>
+                </div>
+            </div>
+            <div class="tools-grid">
+                <a class="tool-card" href="calculators.html#affordability">
+                    <h3 class="tool-card-name">What could I borrow?</h3>
+                    <p class="tool-card-text">Enter your income and outgoings to see the mortgage we would consider.</p>
+                    <span class="tool-card-cta">Open the calculator</span>
+                </a>
+                <a class="tool-card" href="calculators.html#repayment">
+                    <h3 class="tool-card-name">What would it cost a month?</h3>
+                    <p class="tool-card-text">Put in an amount, a term and a rate, and see the monthly payment and the total repayable.</p>
+                    <span class="tool-card-cta">Open the calculator</span>
+                </a>
+                <a class="tool-card" href="calculators.html#savings">
+                    <h3 class="tool-card-name">How long to save it?</h3>
+                    <p class="tool-card-text">Set a goal and a monthly amount, and see when you would get there.</p>
+                    <span class="tool-card-cta">Open the calculator</span>
+                </a>
+                <a class="tool-card" href="eligibility.html">
+                    <h3 class="tool-card-name">Would I be accepted?</h3>
+                    <p class="tool-card-text">A soft check that shows your likelihood and your rate, with no mark on your credit file.</p>
+                    <span class="tool-card-cta">Check eligibility</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Protection -->
+    <section class="craftsmanship" id="protection">
+        <div class="container">
+            <div class="craft-grid">
+                <div class="craft-content">
+                    <p class="text-label">Security and protection</p>
+                    <h2 class="heading-display craft-title">
+                        Your money is protected, and so are you
+                    </h2>
+                    <p class="text-body craft-text">
+                        Eligible deposits are protected up to £85,000 per person by the Financial Services Compensation Scheme, and up to £170,000 for a joint account. Beyond that statutory protection, we refund customers who lose money to authorised push payment fraud.</p>
+                    <ul class="craft-list text-body">
+                        <li>FSCS protection up to £85,000, or £170,000 jointly</li>
+                        <li>Card freezing, spending limits and trusted-payee lists in the app</li>
+                        <li>Every payment confirmed with biometrics or a card reader</li>
+                        <li>Reimbursement for authorised push payment fraud</li>
+                    </ul>
+                    <a href="index.html#products" class="btn-primary">See our products</a>
+                </div>
+                <div class="craft-image-wrapper">
+                    <div class="craft-image">
+                        <img src="images/scenes/scene-vault.svg"
+                             alt="Meridian deposit protection">
+                    </div>
+                    <div class="craft-stats">
+                        <div class="stat-item">
+                            <p class="stat-number">1874</p>
+                            <p class="stat-label">Established</p>
+                        </div>
+                        <div class="stat-item">
+                            <p class="stat-number">214</p>
+                            <p class="stat-label">Branches</p>
+                        </div>
+                        <div class="stat-item">
+                            <p class="stat-number">2.1M</p>
+                            <p class="stat-label">Customers</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About -->
+    <section class="story" id="story">
+        <div class="container">
+            <div class="story-grid">
+                <div class="story-content">
+                    <p class="text-label story-label">Our history</p>
+                    <h2 class="heading-display story-title">
+                        A hundred and fifty years of the same job
+                    </h2>
+                    <p class="text-body story-text">
+                        Meridian opened in 1874 as a savings bank for shipyard workers who had nowhere safe to keep their wages. The business has changed a great deal since; what we are actually for has not.</p>
+                    <p class="text-body story-text">
+                        We serve 2.1 million personal customers and 84,000 businesses from 214 branches. We are funded by customer deposits rather than wholesale markets, which is unfashionable and has served our customers well through three downturns.
+                    </p>
+                    <div class="story-signature">
+                        <p class="signature-name">The Board</p>
+                        <p class="signature-title">Meridian Bank</p>
+                    </div>
+                </div>
+                <div class="story-images">
+                    <div class="story-image">
+                        <img src="images/scenes/scene-advisor.svg"
+                             alt="Meridian advisers with a customer">
+                    </div>
+                    <div class="story-image">
+                        <img src="images/scenes/scene-app.svg"
+                             alt="The Meridian mobile banking app">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Appointments -->
+    <section class="contact" id="appointments">
+        <div class="container">
+            <div class="contact-grid">
+                <div class="contact-content">
+                    <p class="text-label">Speak to us</p>
+                    <h2 class="heading-display contact-title">
+                        Book half an hour with an adviser
+                    </h2>
+                    <p class="text-body contact-text">
+                        Mortgages, wealth and business banking all come with a named adviser. Appointments can be held in branch, by video or over the phone, usually within three working days.</p>
+
+                    <div class="contact-details">
+                        <div class="contact-item">
+                            <p class="contact-item-label">Branches</p>
+                            <p class="contact-item-value">
+                                214 across the UK, Saturday mornings included
+                            </p>
+                        </div>
+                        <div class="contact-item">
+                            <p class="contact-item-label">Telephone banking</p>
+                            <p class="contact-item-value">
+                                24 hours, with fraud specialists always on duty
+                            </p>
+                        </div>
+                        <div class="contact-item">
+                            <p class="contact-item-label">Next step</p>
+                            <p class="contact-item-value">
+                                <a href="appointments.html">Book an appointment</a>
+                            </p>
+                        </div>
+                    </div>
+                    <a href="appointments.html" class="btn-primary">Book an appointment</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Dengage inline target slot. Empty and hidden until an inline On-Site
+         campaign fills it. Do not add content or styling here. -->
+    <div id="dn_inline_target_above_footer" class="dn-inline-slot"></div>
+
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <p class="footer-logo">Meridian<span> Bank</span></p>
+                    <p class="footer-tagline">
+                        A UK retail and private bank established in 1874, serving 2.1 million personal customers and 84,000 businesses from 214 branches.
+                    </p>
+                </div>
+
+                <div class="footer-column">
+                    <h4 class="footer-column-title">Products</h4>
+                    <ul class="footer-links">
+                        <li><a href="index.html#products">All products</a></li>
+                        <li><a href="product.html?id=MRD-ACC-CURRENT">Current accounts</a></li>
+                        <li><a href="product.html?id=MRD-CRD-CLASSIC">Credit cards</a></li>
+                        <li><a href="product.html?id=MRD-SAV-ISA">Savings and ISAs</a></li>
+                        <li><a href="product.html?id=MRD-MTG-FIX5">Mortgages</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-column">
+                    <h4 class="footer-column-title">About</h4>
+                    <ul class="footer-links">
+                        <li><a href="index.html#story">Our history</a></li>
+                        <li><a href="index.html#protection">Security and protection</a></li>
+                        <li><a href="appointments.html">Branches and appointments</a></li>
+                        <li><a href="https://www.dengage.com">Careers</a></li>
+                        <li><a href="https://www.dengage.com">Complaints</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p class="footer-copyright">
+                    Dengage platform demo site. Meridian Bank is a fictional company. Products, rates and figures are illustrative and are not a financial promotion.
+                </p>
+                <div class="footer-social">
+                    <a href="https://www.dengage.com">Dengage</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <script src="js/pageView.js"></script>
+    <script src="js/bannerOffset.js"></script>
+    <script src="js/inlineSlotOffset.js"></script>
+    <script src="meridian-main.js"></script>
+    <!-- The event layer loads before anything that fires an event. -->
+    <script src="js/bankingEvents.js"></script>
+    <script src="js/openAccount.js"></script>
+    <script src="js/shortlist.js"></script>
+    <script src="js/shortlistUi.js"></script>
+    <script src="js/productCatalog.js"></script>
+    <!-- Search and saved items are deliberately NOT loaded on this site.
+         js/searchPanel.js and js/wishlist.js are byte-identical across all
+         five demos and hard-code ec:search into search_events and
+         wishlist_events. Those are ecommerce tables, which this site does not
+         use. They are read-only here, so rather than fork them the modules are
+         simply not loaded, and the shortlist covers the same ground against
+         banking_product_events instead. -->
+    <script src="js/productList.js"></script>
+    <script src="js/allReco.js"></script>
+    <script src="js/allGaming.js"></script>
+    <script src="js/asistant.js"></script>
+    <script src="js/carouselBanner.js"></script>
+    <script src="js/earing.js"></script>
+    <script src="js/eventModal.js"></script>
+    <script src="js/expandBanner.js"></script>
+    <script src="js/headbanner.js"></script>
+    <script src="js/notificationIcon.js"></script>
+    <script src="js/snow.js"></script>
+    <script src="js/sliderBanner.js"></script>
+    <script src="js/meridianCatalog.js"></script>
+</body>
+</html>

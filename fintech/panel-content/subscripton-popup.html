@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NovaPay | Subscription Popup (Dengage panel content)</title>
+<!-- =====================================================================
+     NOVAPAY SUBSCRIPTION, On-Site content for the panel
+
+     NOTE THE SLUG. The scenario is "subscripton-popup", missing the "i". That
+     spelling is part of the contract with the panel and must not be corrected:
+     every campaign is bound to it.
+
+     Paste this WHOLE file into the scenario editor. All CSS is scoped to
+     #npy-sub.
+
+     Input capture uses data-dn-form-id="subscription_form", the engine's own
+     mechanism, which posts postSubscription back to the host page. Auto-close
+     stays ON here at 6 seconds: the subscription handler honours it, unlike
+     the question form whose tag timer is 0 ms.
+
+     Rate alerts are the honest offer for a money app. A newsletter signup is
+     not, and inventing a discount code for a savings account would be a
+     financial promotion.
+
+     Panel settings:
+       - Scenario: triggerBy = DATA_LAYER_EVENT,
+                   eventName = fintech_subscripton-popup
+       - Popup design: width 460 to 520px, padding 0, transparent background
+       - Layout > Close Button > "Add close button to outside" ON
+====================================================================== -->
+</head>
+<body>
+
+<form class="form" data-dn-form-id="subscription_form" data-dn-validation-language="en"
+      id="npy-sub" onsubmit="return false">
+  <style>
+    #npy-sub *{margin:0;padding:0;box-sizing:border-box;}
+    #npy-sub{
+      --nv-blue:#125cfa; --nv-blue-dark:#0a3a9e; --nv-ink:#0f1c33;
+      --nv-muted:#64748b; --nv-line:#e3e8f0;
+      font-family:Inter,-apple-system,'Segoe UI',Roboto,sans-serif;width:100%;
+    }
+    body > #npy-sub{max-width:500px;margin:40px auto;}
+
+    #npy-sub .sb-card{
+      background:#fff;border-radius:18px;overflow:hidden;
+      box-shadow:0 10px 34px rgba(15,28,51,.16);
+      animation:sb-in .35s cubic-bezier(.21,.9,.35,1.1);
+    }
+    @keyframes sb-in{from{opacity:0;transform:translateY(14px) scale(.98);}to{opacity:1;transform:none;}}
+
+    #npy-sub .sb-head{
+      background:linear-gradient(135deg,var(--nv-blue) 0%,var(--nv-blue-dark) 100%);
+      color:#fff;padding:26px 28px 24px;
+    }
+    #npy-sub .sb-rate{
+      display:flex;align-items:baseline;gap:8px;margin-bottom:8px;
+    }
+    #npy-sub .sb-rate strong{font-size:34px;font-weight:700;letter-spacing:-1px;line-height:1;}
+    #npy-sub .sb-rate span{
+      font:700 10px Inter,sans-serif;letter-spacing:.12em;text-transform:uppercase;
+      background:rgba(255,255,255,.2);border-radius:6px;padding:4px 8px;
+    }
+    #npy-sub h2{font-size:19px;font-weight:700;line-height:1.3;letter-spacing:-.3px;}
+    #npy-sub .sb-sub{font-size:12.5px;opacity:.88;margin-top:7px;line-height:1.55;}
+
+    #npy-sub .sb-body{padding:22px 28px 26px;}
+    #npy-sub .sb-field{
+      width:100%;padding:13px 14px;border:1.5px solid var(--nv-line);border-radius:11px;
+      font:400 14px Inter,sans-serif;color:var(--nv-ink);background:#fff;
+    }
+    #npy-sub .sb-field::placeholder{color:#9aa5b5;}
+    #npy-sub .sb-field:focus{outline:2px solid var(--nv-blue);outline-offset:1px;border-color:var(--nv-blue);}
+
+    #npy-sub .sb-submit{
+      display:block;width:100%;margin-top:12px;border:0;cursor:pointer;
+      background:var(--nv-blue);color:#fff;border-radius:11px;
+      font:700 13px Inter,sans-serif;letter-spacing:.04em;padding:14px;
+      transition:background .2s ease,transform .15s ease;
+    }
+    #npy-sub .sb-submit:hover{background:var(--nv-blue-dark);transform:translateY(-1px);}
+
+    #npy-sub .sb-perks{
+      list-style:none;margin:18px 0 0;padding:16px 0 0;border-top:1px solid var(--nv-line);
+      display:flex;flex-direction:column;gap:9px;
+    }
+    #npy-sub .sb-perks li{
+      display:flex;gap:9px;align-items:flex-start;font-size:12.5px;color:var(--nv-muted);line-height:1.5;
+    }
+    #npy-sub .sb-perks li::before{
+      content:"";flex-shrink:0;width:16px;height:16px;margin-top:1px;border-radius:50%;
+      background:var(--nv-blue);opacity:.14;
+    }
+    #npy-sub .sb-note{
+      margin-top:14px;font-size:11px;line-height:1.6;color:var(--nv-muted);text-align:center;
+    }
+
+    @media (max-width:420px){
+      #npy-sub .sb-head{padding:22px 20px 20px;}
+      #npy-sub .sb-body{padding:18px 20px 20px;}
+      #npy-sub .sb-rate strong{font-size:29px;}
+    }
+
+    /* Validation text and the confirmation panel, both driven by the engine.
+       The handler writes into div.form-message and stamps data-dn-invalid on
+       the block; on a successful submit it stamps data-dn-is-submitted on
+       .container. Without these rules the visitor clicks and nothing at all
+       happens, which is exactly what was reported from a live demo. */
+    #npy-sub .form-message{display:none;font-size:11.5px;color:#b3261e;margin-top:9px;}
+    #npy-sub .form-block[data-dn-invalid="true"] .form-message{display:block;}
+    #npy-sub .submitted-content{display:none;padding:40px 28px 42px;text-align:center;}
+    #npy-sub .container[data-dn-is-submitted="true"] .sb-body{display:none;}
+    #npy-sub .container[data-dn-is-submitted="true"] .submitted-content{display:block;}
+    #npy-sub .dn-tick{
+      width:58px;height:58px;margin:0 auto 16px;border-radius:50%;
+      background:rgba(18,92,250,.12);position:relative;
+      animation:dn-pop .4s cubic-bezier(.2,1.6,.4,1);
+    }
+    @keyframes dn-pop{from{transform:scale(.4);opacity:0;}to{transform:none;opacity:1;}}
+    #npy-sub .dn-tick::after{
+      content:"";position:absolute;left:20px;top:22px;width:16px;height:8px;
+      border-left:3px solid #125cfa;border-bottom:3px solid #125cfa;transform:rotate(-45deg);
+    }
+    #npy-sub .submitted-content h3{font-size:20px;font-weight:700;color:#0f1c33;margin-bottom:8px;}
+    #npy-sub .submitted-content p{font-size:13px;color:#64748b;line-height:1.6;}
+
+    #npy-sub .sb-perm{display:flex;align-items:flex-start;gap:9px;margin-top:12px;}
+    #npy-sub .sb-perm input{margin-top:2px;width:16px;height:16px;accent-color:#125cfa;flex-shrink:0;}
+    #npy-sub .sb-perm span{font-size:11px;color:#64748b;line-height:1.5;}
+    #npy-sub [data-dn-invalid="true"]{border-color:#b3261e;}
+    #npy-sub [data-dn-invalid-message-type]{display:none;font-size:11px;color:#b3261e;margin-top:5px;}
+    #npy-sub [data-dn-invalid="true"] ~ [data-dn-invalid-message-type]{display:block;}
+  </style>
+
+  <div class="container sb-card">
+    <div class="sb-head">
+      <div class="sb-rate">
+        <strong>4.85%</strong>
+        <span>AER, paid daily</span>
+      </div>
+      <h2>Know the moment your rate moves</h2>
+      <p class="sb-sub">
+        We will email you when the savings rate changes, when a new product
+        opens, and nothing else.
+      </p>
+    </div>
+
+    <div class="sb-body">
+      <!-- data-dn-id is the payload key and data-dn-type selects the engine's
+           validator. Without them postSubscription() sends an empty form: the
+           field is captured by NAME only in a normal HTML form, and this one is
+           read by the engine's handler, not by the browser. -->
+      <input class="sb-field" type="email" required
+             data-dn-id="email" data-dn-type="EMAIL" data-dn-required="true"
+             placeholder="you@example.com" aria-label="Your email address">
+      <span data-dn-invalid-message-type="EMAIL"></span>
+
+      <label class="sb-perm">
+        <input type="checkbox" data-dn-id="mergedPermission"
+               data-dn-type="PERMISSION_CHECKBOX" data-dn-required="true">
+        <span>Email me rate alerts and product news. I can stop this at any time.</span>
+      </label>
+      <span data-dn-invalid-message-type="PERMISSION_CHECKBOX"></span>
+
+      <button type="submit" class="sb-submit"
+              onclick="Dn.sendClick('fintech_subscripton-popup__subscribe');Dn.postSubscription()">Send me rate alerts</button>
+
+      <ul class="sb-perks">
+        <li>Rate changes the day they happen, not in a monthly roundup</li>
+        <li>New products and early access, roughly once a month</li>
+        <li>One click to stop, and we do not sell your address</li>
+      </ul>
+
+      <p class="sb-note">
+        NovaPay is a demonstration brand. Rates shown are illustrative and are
+        not a financial promotion.
+      </p>
+    </div>
+
+    <div class="submitted-content" data-dn-is-enabled="true"
+         data-dn-is-modal-auto-close-enabled="true" data-dn-modal-close-seconds="6">
+      <div class="dn-tick" aria-hidden="true"></div>
+      <h3>You are on the list</h3>
+      <p>Rate alerts are on their way to your inbox.</p>
+    </div>
+  </div>
+</form>
+
+</body>
+</html>

@@ -1,0 +1,300 @@
+[
+  {
+    "id": "CNT-CRG-29580-KLD01",
+    "name": "Marshal KLD01 295/80 R22.5",
+    "desc": "Marshal KLD01 na medida 295/80 R22.5. Tração para eixo motriz em rodovia pesada, carcaça reforçada para múltiplas recapagens.",
+    "price": "1890.00",
+    "currency": "BRL",
+    "image": [
+      "images/products/CNT-CRG-29580-KLD01.svg"
+    ],
+    "category": "Pneus > Carga > Borrachudo",
+    "brand": "Marshal",
+    "availability": true,
+    "colors": [
+      "Borrachudo",
+      "295/80 R22.5"
+    ],
+    "oldPrice": "2090.00",
+    "stock": 34
+  },
+  {
+    "id": "CNT-CRG-29580-HN08",
+    "name": "Aeolus HN08 Neo 295/80 R22.5",
+    "desc": "Aeolus HN08 Neo na medida 295/80 R22.5. Direcional de baixa resistência ao rolamento, indicado para eixo dianteiro em longa distância.",
+    "price": "1740.00",
+    "currency": "BRL",
+    "image": [
+      "images/products/CNT-CRG-29580-HN08.svg"
+    ],
+    "category": "Pneus > Carga > Liso",
+    "brand": "Aeolus",
+    "availability": true,
+    "colors": [
+      "Liso direcional",
+      "295/80 R22.5"
+    ],
+    "stock": 61
+  },
+  {
+    "id": "CNT-CRG-27580-WIN",
+    "name": "CEAT WinMile X3 275/80 R22.5",
+    "desc": "CEAT WinMile X3 na medida 275/80 R22.5. Uso misto asfalto e terra, ombros reforçados contra corte lateral.",
+    "price": "1620.00",
+    "currency": "BRL",
+    "image": [
+      "images/products/CNT-CRG-27580-WIN.svg"
+    ],
+    "category": "Pneus > Carga > Misto",
+    "brand": "CEAT",
+    "availability": true,
+    "colors": [
+      "Misto",
+      "275/80 R22.5"
+    ],
+    "oldPrice": "1810.00",
+    "stock": 18
+  },
+  {
+    "id": "CNT-CRG-21575-URB",
+    "name": "Ranger RT500 215/75 R17.5",
+    "desc": "Ranger RT500 na medida 215/75 R17.5. Perfil urbano para distribuição leve, alta quilometragem em ciclo de paradas frequentes.",
+    "price": "1120.00",
+    "currency": "BRL",
+    "image": [
+      "images/products/CNT-CRG-21575-URB.svg"
+    ],
+    "category": "Pneus > Carga > Urbano",
+    "brand": "Ranger",
+    "availability": true,
+    "colors": [
+      "Misto",
+      "215/75 R17.5"
+    ],
+    "oldPrice": "1290.00",
+    "stock": 47
+  },
+  {
+    "id": "CNT-CRG-1200-R24",
+    "name": "DRC D900 1200 R24",
+    "desc": "DRC D900 na medida 1200 R24. Construção 20 lonas para carga pesada e piso irregular, tração em piso solto.",
+    "price": "2480.00",
+    "currency": "BRL",
+    "image": [
+      "images/products/CNT-CRG-1200-R24.svg"
+    ],
+    "category": "Pneus > Carga > Fora de estrada",
+    "brand": "DRC",
+    "availability": true,
+    "colors": [
+      "Borrachudo",
+      "1200 R24"
+    ],
+    "stock": 9
+  },
+  {
+    "id": "CNT-PAS-20555-ENE",
+    "name": "SpeedMax Energrip EV 205/55 R16",
+    "desc": "SpeedMax Energrip EV na medida 205/55 R16. Desenvolvido para veículos elétricos: suporta peso extra e torque instantâneo com baixo ruído.",
+    "price": "398.00",
+    "currency": "BRL",
+    "image": [
+      "images/products/CNT-PAS-20555-ENE.svg"
+    ],
+    "category": "Pneus > Passeio > Elétricos",
+    "brand": "SpeedMax",
+    "availability": true,
+    "colors": [
+      "Radial",
+      "205/55 R16"
+    ],
+    "oldPrice": "449.00",
+    "stock": 13
+  },
+  {
+    "id": "CNT-PAS-17570-SOL",
+    "name": "Kumho Solus TA31 175/70 R13",
+    "desc": "Kumho Solus TA31 na medida 175/70 R13. Composto silica para aderência em piso molhado, uso urbano diário.",
+    "price": "289.00",
+    "currency": "BRL",
+    "image": [
+      "images/products/CNT-PAS-17570-SOL.svg"
+    ],
+    "category": "Pneus > Passeio > Cidade",
+    "brand": "Kumho",
+    "availability": true,
+    "colors": [
+      "Radial",
+      "175/70 R13"
+    ],
+    "oldPrice": "339.00",
+    "stock": 88
+  },
+  {
+    "id": "CNT-PAS-19565-ECS",
+    "name": "Marshal Ecsta HS52 195/65 R15",
+    "desc": "Marshal Ecsta HS52 na medida 195/65 R15. Resposta de direção firme e frenagem curta, indicado para sedãs médios.",
+    "price": "352.00",
+    "currency": "BRL",
+    "image": [
+      "images/products/CNT-PAS-19565-ECS.svg"
+    ],
+    "category": "Pneus > Passeio > Performance",
+    "brand": "Marshal",
+    "availability": true,
+    "colors": [
+      "Radial",
+      "195/65 R15"
+    ],
+    "stock": 25
+  },
+  {
+    "id": "CNT-AGR-1224-D2000",
+    "name": "DRC D2000 Agro 12.4-24",
+    "desc": "DRC D2000 Agro na medida 12.4-24. Garras profundas para tração em solo úmido, uso em trator de médio porte.",
+    "price": "1650.00",
+    "currency": "BRL",
+    "image": [
+      "images/products/CNT-AGR-1224-D2000.svg"
+    ],
+    "category": "Pneus > Agrícola > Trator",
+    "brand": "DRC",
+    "availability": true,
+    "colors": [
+      "Garra R1",
+      "12.4-24"
+    ],
+    "oldPrice": "1790.00",
+    "stock": 11
+  },
+  {
+    "id": "CNT-AGR-1834-R1W",
+    "name": "CEAT Farmax R1W 18.4-34",
+    "desc": "CEAT Farmax R1W na medida 18.4-34. Alta capacidade de carga para trator de alta potência, menor compactação do solo.",
+    "price": "3980.00",
+    "currency": "BRL",
+    "image": [
+      "images/products/CNT-AGR-1834-R1W.svg"
+    ],
+    "category": "Pneus > Agrícola > Trator",
+    "brand": "CEAT",
+    "availability": true,
+    "colors": [
+      "Garra R1W",
+      "18.4-34"
+    ],
+    "stock": 7
+  },
+  {
+    "id": "CNT-IND-1725-AL37",
+    "name": "Aeolus AL37 OTR 17.5-25",
+    "desc": "Aeolus AL37 OTR na medida 17.5-25. Camada de borracha reforçada para pedreira e mineração, resistência a corte e calor.",
+    "price": "4290.00",
+    "currency": "BRL",
+    "image": [
+      "images/products/CNT-IND-1725-AL37.svg"
+    ],
+    "category": "Pneus > Industrial e OTR > Pá carregadeira",
+    "brand": "Aeolus",
+    "availability": true,
+    "colors": [
+      "L3",
+      "17.5-25"
+    ],
+    "oldPrice": "4690.00",
+    "stock": 4
+  },
+  {
+    "id": "CNT-IND-825-EMP",
+    "name": "Marshal Lift 825 8.25-15",
+    "desc": "Marshal Lift 825 na medida 8.25-15. Pneu maciço para empilhadeira em operação interna, sem risco de furo.",
+    "price": "1240.00",
+    "currency": "BRL",
+    "image": [
+      "images/products/CNT-IND-825-EMP.svg"
+    ],
+    "category": "Pneus > Industrial e OTR > Empilhadeira",
+    "brand": "Marshal",
+    "availability": true,
+    "colors": [
+      "Maciço",
+      "8.25-15"
+    ],
+    "stock": 42
+  },
+  {
+    "id": "CNT-ACS-RODA-2250",
+    "name": "Roda de Aço 22.5 x 8.25 22.5 x 8.25",
+    "desc": "Roda de Aço 22.5 x 8.25 na medida 22.5 x 8.25. Roda de aço para caminhão, acabamento pintado, compatível com aro 22.5.",
+    "price": "620.00",
+    "currency": "BRL",
+    "image": [
+      "images/products/CNT-ACS-RODA-2250.svg"
+    ],
+    "category": "Acessórios > Rodas",
+    "brand": "CantuPneus",
+    "availability": true,
+    "colors": [
+      "Aço",
+      "22.5 x 8.25"
+    ],
+    "oldPrice": "690.00",
+    "stock": 31
+  },
+  {
+    "id": "CNT-ACS-CAM-1100",
+    "name": "Câmara de Ar 1100-22 1100-22",
+    "desc": "Câmara de Ar 1100-22 na medida 1100-22. Câmara de ar em butil com válvula metálica, alta retenção de pressão.",
+    "price": "148.00",
+    "currency": "BRL",
+    "image": [
+      "images/products/CNT-ACS-CAM-1100.svg"
+    ],
+    "category": "Acessórios > Câmaras",
+    "brand": "CantuPneus",
+    "availability": true,
+    "colors": [
+      "Butil",
+      "1100-22"
+    ],
+    "stock": 240
+  },
+  {
+    "id": "CNT-ACS-PROT-1100",
+    "name": "Protetor de Câmara 1100-22 1100-22",
+    "desc": "Protetor de Câmara 1100-22 na medida 1100-22. Protetor que evita atrito entre câmara e aro, prolonga a vida do conjunto.",
+    "price": "96.00",
+    "currency": "BRL",
+    "image": [
+      "images/products/CNT-ACS-PROT-1100.svg"
+    ],
+    "category": "Acessórios > Protetores",
+    "brand": "CantuPneus",
+    "availability": true,
+    "colors": [
+      "Borracha",
+      "1100-22"
+    ],
+    "oldPrice": "118.00",
+    "stock": 156
+  },
+  {
+    "id": "CNT-CRG-29580-RCP",
+    "name": "Aeolus Neo Recap 295/80 R22.5",
+    "desc": "Aeolus Neo Recap na medida 295/80 R22.5. Carcaça selecionada e recapagem a frio, custo por quilômetro reduzido para frota.",
+    "price": "1180.00",
+    "currency": "BRL",
+    "image": [
+      "images/products/CNT-CRG-29580-RCP.svg"
+    ],
+    "category": "Pneus > Carga > Recapado",
+    "brand": "Aeolus",
+    "availability": true,
+    "colors": [
+      "Borrachudo",
+      "295/80 R22.5"
+    ],
+    "oldPrice": "1340.00",
+    "stock": 72
+  }
+]

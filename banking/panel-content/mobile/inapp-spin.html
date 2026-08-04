@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Meridian Bank | In-App spin to win (Dengage mobile content)</title>
+<!-- =====================================================================
+     MERIDIAN BANK ANDROID, In-App content for the panel
+
+     Trigger:  screen name  test_inapp_spin
+     Format:   In-App, Popup, position MIDDLE
+     Spec:     banking/panel-content/mobile/README.md
+
+     THE BRIDGE ON MOBILE IS NOT THE BRIDGE ON THE WEB. The SDK injects a
+     window.Dn object into the In-App WebView, and it is a different object
+     from the one the website's panel content uses. Navigation is
+     Dn.androidUrl('meridian://<screen>'), NOT an href with target="_top": the
+     Navigation goes through Dn.androidUrl, and capture is Dn.setTags. These
+     are the mobile bridge methods; the web contract's Dn.postQuestion and
+     Dn.postSubscription do not apply here. Keep exactly this shape.
+
+     SPIN TO WIN, IN A BANK'S REGISTER. The layout is a gameshow wheel and a
+     retail bank cannot ship one, so this is the same mechanism dressed as a
+     reveal: three benefits, one uncovered. Worth demoing precisely because a
+     prospect in financial services will assume the format is closed to them.
+
+     NO SCRIPT TAG. The panel strips <script> on save, so the animation is CSS
+     and the reveal is the :checked trick: the hidden radio flips which panel
+     is displayed. Everything here survives a panel round trip.
+
+     Dn.copyToClipboard puts the code on the clipboard, which is the bridge
+     method that makes a coupon usable rather than decorative.
+
+     Draws NO close control: the panel supplies it via Layout > Close Button.
+     ================================================================== -->
+<style>
+#mrd-ia-spin{font-family:Inter,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;
+  box-sizing:border-box;width:100%;background:#f7f5f0;border-radius:14px;
+  overflow:hidden;color:#12203a;text-align:center;}
+#mrd-ia-spin *{box-sizing:border-box;}
+#mrd-ia-spin .w-head{background:#0a2540;color:#f7f5f0;padding:22px 20px 18px;}
+#mrd-ia-spin .w-eyebrow{font-size:10px;letter-spacing:.15em;text-transform:uppercase;
+  color:#c8a44d;font-weight:700;margin:0 0 8px;}
+#mrd-ia-spin .w-title{font-family:Georgia,"Times New Roman",serif;font-size:20px;
+  line-height:1.3;margin:0;font-weight:400;}
+#mrd-ia-spin .w-body{padding:20px;}
+
+#mrd-ia-spin .w-wheel{width:170px;height:170px;margin:0 auto 18px;border-radius:50%;
+  border:6px solid #0a2540;position:relative;overflow:hidden;
+  background:conic-gradient(#0a2540 0 33.33%,#c8a44d 33.33% 66.66%,#12365c 66.66% 100%);}
+#mrd-ia-spin .w-hub{position:absolute;left:50%;top:50%;width:52px;height:52px;
+  margin:-26px 0 0 -26px;border-radius:50%;background:#f7f5f0;color:#0a2540;
+  font-family:Georgia,"Times New Roman",serif;font-size:19px;
+  display:flex;align-items:center;justify-content:center;}
+
+/* The reveal. #mrd-spin-go is a hidden checkbox: ticking it spins the wheel
+   once and swaps the button for the prize. CSS only, because a script tag
+   would not survive the panel. */
+#mrd-ia-spin .w-vh{position:absolute;width:1px;height:1px;padding:0;margin:-1px;
+  overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0;}
+#mrd-ia-spin .w-go{display:block;width:100%;background:#c8a44d;color:#0a2540;
+  font-size:14.5px;font-weight:700;padding:14px;border-radius:8px;cursor:pointer;}
+#mrd-ia-spin .w-prize{display:none;}
+#mrd-ia-spin .w-vh:checked ~ .w-body .w-go{display:none;}
+#mrd-ia-spin .w-vh:checked ~ .w-body .w-prize{display:block;}
+#mrd-ia-spin .w-vh:checked ~ .w-body .w-wheel{animation:mrd-spin 2.6s cubic-bezier(.16,.9,.2,1) forwards;}
+@keyframes mrd-spin{from{transform:rotate(0);}to{transform:rotate(1040deg);}}
+
+#mrd-ia-spin .w-won{font-family:Georgia,"Times New Roman",serif;font-size:20px;
+  color:#0a2540;margin:0 0 6px;}
+#mrd-ia-spin .w-wontext{font-size:13px;line-height:1.55;color:#5a6b7f;margin:0 0 14px;}
+#mrd-ia-spin .w-code{display:block;font:700 17px "SF Mono",Menlo,Consolas,monospace;
+  letter-spacing:.14em;color:#0a2540;background:#fff;border:1.5px dashed #c8a44d;
+  border-radius:9px;padding:13px;margin:0 0 12px;cursor:pointer;}
+#mrd-ia-spin .w-cta{display:block;background:#0a2540;color:#fff;text-decoration:none;
+  font-size:14.5px;font-weight:700;padding:14px;border-radius:8px;}
+#mrd-ia-spin .w-small{font-size:10.5px;line-height:1.5;color:#a3adb9;margin:12px 0 0;}
+</style>
+</head>
+<body>
+<div id="mrd-ia-spin">
+  <div class="w-head">
+    <p class="w-eyebrow">Meridian Rewards</p>
+    <h2 class="w-title">One of three is yours this month</h2>
+  </div>
+
+  <input class="w-vh" type="checkbox" id="mrd-spin-go">
+  <div class="w-body">
+    <div class="w-wheel"><span class="w-hub">M</span></div>
+
+    <label class="w-go" for="mrd-spin-go"
+           onclick="Dn.sendClick('test_inapp_spin__spin')">Reveal mine</label>
+
+    <div class="w-prize">
+      <p class="w-won">A year without card fees</p>
+      <p class="w-wontext">No foreign transaction charge on your Platinum card
+        until August next year.</p>
+      <span class="w-code" onclick="Dn.copyToClipboard('MERIDIAN-NOFEE')">MERIDIAN-NOFEE</span>
+      <a class="w-cta" href="#" role="button"
+         onclick="Dn.androidUrl('meridian://cards');return false">Apply it to my card</a>
+    </div>
+
+    <p class="w-small">Meridian Bank is a fictional brand used for demonstration.
+      No prize is real and no money moves.</p>
+  </div>
+</div>
+</body>
+</html>

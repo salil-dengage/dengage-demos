@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1080 1080" width="1080" height="1080" role="img" aria-label="NovaPay Travel plan, no markup on currency conversion">
+<!-- Artwork for the Image Modal In-App layout, where the message IS the
+     picture: the panel's Image Modal template carries no HTML copy, so
+     everything the customer reads has to be drawn here.
+
+     Committed rather than fetched. A demo must not depend on a third party
+     image host, and an In-App that 404s its only content shows an empty card.
+
+     Every gradient id is prefixed fx- because several of these can end up
+     inlined in one document, where unprefixed ids all resolve to the first
+     definition. -->
+<defs>
+ <linearGradient id="fx-bg" x1="0" y1="0" x2="1" y2="1">
+  <stop offset="0" stop-color="#0a3a9e"/><stop offset="0.55" stop-color="#125cfa"/><stop offset="1" stop-color="#3f7bff"/>
+ </linearGradient>
+ <linearGradient id="fx-card" x1="0" y1="0" x2="1" y2="1">
+  <stop offset="0" stop-color="#ffffff" stop-opacity="0.22"/><stop offset="1" stop-color="#ffffff" stop-opacity="0.06"/>
+ </linearGradient>
+ <linearGradient id="fx-sheen" x1="0" y1="0" x2="1" y2="1">
+  <stop offset="0" stop-color="#ffffff" stop-opacity="0.34"/><stop offset="0.6" stop-color="#ffffff" stop-opacity="0.04"/><stop offset="1" stop-color="#ffffff" stop-opacity="0.14"/>
+ </linearGradient>
+ <filter id="fx-sh" x="-30%" y="-30%" width="170%" height="170%">
+  <feDropShadow dx="0" dy="22" stdDeviation="26" flood-color="#04143f" flood-opacity="0.42"/>
+ </filter>
+</defs>
+
+<rect width="1080" height="1080" fill="url(#fx-bg)"/>
+
+<!-- Faint globe, so the subject reads before the words do. -->
+<g fill="none" stroke="#ffffff" stroke-opacity="0.13" stroke-width="3">
+ <circle cx="820" cy="250" r="196"/>
+ <ellipse cx="820" cy="250" rx="196" ry="78"/>
+ <ellipse cx="820" cy="250" rx="98" ry="196"/>
+ <path d="M624 250 H1016"/>
+</g>
+
+<!-- The card, angled, with the conversion line on it. -->
+<g transform="translate(140,392) rotate(-7)" filter="url(#fx-sh)">
+ <rect width="620" height="392" rx="34" fill="url(#fx-card)" stroke="#ffffff" stroke-opacity="0.34" stroke-width="2"/>
+ <rect width="620" height="392" rx="34" fill="url(#fx-sheen)"/>
+ <rect x="44" y="58" width="72" height="54" rx="10" fill="#f3dfa6"/>
+ <g stroke="#8a6a22" stroke-width="2.4" opacity="0.6">
+  <path d="M44 76 H116 M44 94 H116 M68 58 V112 M92 58 V112"/>
+ </g>
+ <text x="44" y="228" font-family="Inter, Helvetica, Arial, sans-serif" font-size="52" font-weight="700" fill="#ffffff">1,000.00 USD</text>
+ <text x="44" y="284" font-family="Inter, Helvetica, Arial, sans-serif" font-size="34" fill="#ffffff" fill-opacity="0.72">converts at the real rate</text>
+ <text x="44" y="344" font-family="Inter, Helvetica, Arial, sans-serif" font-size="30" font-weight="600" fill="#7ef0bd">Markup added: 0.00</text>
+ <text x="500" y="72" font-family="Inter, Helvetica, Arial, sans-serif" font-size="34" font-weight="700" fill="#ffffff" fill-opacity="0.85">NovaPay</text>
+</g>
+
+<text x="90" y="866" font-family="Inter, Helvetica, Arial, sans-serif" font-size="34" font-weight="700" letter-spacing="6" fill="#7ef0bd">TRAVEL PLAN</text>
+<text x="90" y="948" font-family="Inter, Helvetica, Arial, sans-serif" font-size="72" font-weight="700" fill="#ffffff">Spend abroad with no markup</text>
+<text x="90" y="1006" font-family="Inter, Helvetica, Arial, sans-serif" font-size="34" fill="#ffffff" fill-opacity="0.74">Tap to see what the plan includes</text>
+<text x="90" y="1052" font-family="Inter, Helvetica, Arial, sans-serif" font-size="24" fill="#ffffff" fill-opacity="0.5">NovaPay is a fictional brand used for demonstration.</text>
+</svg>

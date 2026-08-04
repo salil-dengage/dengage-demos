@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Meridian Bank | In-App Scratch to Win (Dengage mobile content)</title>
+<!-- =====================================================================
+     MERIDIAN BANK ANDROID, In-App content for the panel
+
+     Trigger:  screen name  test_inapp_scratch
+     Format:   In-App, Scratch to Win (the panel template)
+     Spec:     banking/panel-content/mobile/README.md
+
+     THE BRIDGE ON MOBILE IS NOT THE BRIDGE ON THE WEB. The SDK injects a
+     window.Dn object into the In-App WebView, and it is a different object
+     from the one the website's panel content uses. Navigation is
+     Dn.androidUrl('meridian://<screen>'), NOT an href with target="_top": the
+     Navigation goes through Dn.androidUrl, and capture is Dn.setTags. These
+     are the mobile bridge methods; the web contract's Dn.postQuestion and
+     Dn.postSubscription do not apply here. Keep exactly this shape.
+
+     THE SCRATCH PANEL IS THE TEMPLATE'S, NOT OURS. Scratch to Win is a panel
+     template with its own scratch surface and its own coupon pool; this file
+     is the card it sits in. The coupon comes through the same Mustache pass
+     the countdown uses:
+
+         {{#coupon}} ... {{/coupon}}   kept only when a coupon was won
+         {{couponCode}}                the code itself
+
+     Leave those tags alone. A hard-coded code shows the same one to every
+     customer and cannot be redeemed.
+
+     WHAT A BANK SHOULD SCRATCH FOR. Not a prize draw: a fee waiver it was
+     going to fund anyway. Same mechanic, and it survives a compliance
+     review, which is the question a prospect in this industry will ask
+     within about ten seconds of seeing this layout.
+
+     Draws NO close control: the panel supplies it via Layout > Close Button.
+     ================================================================== -->
+<style>
+#mrd-ia-scratch{font-family:Inter,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;
+  box-sizing:border-box;width:100%;background:#f7f5f0;border-radius:14px;
+  overflow:hidden;color:#12203a;text-align:center;}
+#mrd-ia-scratch *{box-sizing:border-box;}
+#mrd-ia-scratch .s-head{background:#0a2540;color:#f7f5f0;padding:22px 20px 18px;}
+#mrd-ia-scratch .s-eyebrow{font-size:10px;letter-spacing:.15em;text-transform:uppercase;
+  color:#c8a44d;font-weight:700;margin:0 0 8px;}
+#mrd-ia-scratch .s-title{font-family:Georgia,"Times New Roman",serif;font-size:20px;
+  line-height:1.3;margin:0;font-weight:400;}
+#mrd-ia-scratch .s-body{padding:20px;}
+#mrd-ia-scratch .s-text{font-size:13.5px;line-height:1.6;color:#5a6b7f;margin:0 0 16px;}
+#mrd-ia-scratch .s-panel{background:#fff;border:1.5px dashed #c8a44d;border-radius:10px;
+  padding:18px 14px;margin:0 0 16px;}
+#mrd-ia-scratch .s-panel p{font-size:12px;color:#8494a6;margin:0;}
+#mrd-ia-scratch .s-code{display:block;font:700 17px "SF Mono",Menlo,Consolas,monospace;
+  letter-spacing:.14em;color:#0a2540;margin:0 0 6px;cursor:pointer;}
+#mrd-ia-scratch .s-cta{display:block;background:#0a2540;color:#fff;text-decoration:none;
+  font-size:14.5px;font-weight:700;padding:14px;border-radius:8px;}
+#mrd-ia-scratch .s-small{font-size:10.5px;line-height:1.5;color:#a3adb9;margin:12px 0 0;}
+</style>
+</head>
+<body>
+<div id="mrd-ia-scratch">
+  <div class="s-head">
+    <p class="s-eyebrow">Meridian Rewards</p>
+    <h2 class="s-title">Scratch to see this month's waiver</h2>
+  </div>
+  <div class="s-body">
+    <p class="s-text">One fee waived, chosen for how you actually bank. Scratch
+      the panel to find out which.</p>
+
+    {{#coupon}}
+    <div class="s-panel">
+      <span class="s-code" onclick="Dn.copyToClipboard('{{couponCode}}')">{{couponCode}}</span>
+      <p>Tap the code to copy it</p>
+    </div>
+    {{/coupon}}
+
+    <a class="s-cta" href="#" role="button"
+       onclick="Dn.sendClick('test_inapp_scratch__claim');Dn.androidUrl('meridian://cards');return false">Claim it on my card</a>
+
+    <p class="s-small">Meridian Bank is a fictional brand used for demonstration.
+      No prize is real and no money moves.</p>
+  </div>
+</div>
+</body>
+</html>

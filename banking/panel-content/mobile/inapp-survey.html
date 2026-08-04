@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Meridian Bank | In-App survey (Dengage mobile content)</title>
+<!-- =====================================================================
+     MERIDIAN BANK ANDROID, In-App content for the panel
+
+     Trigger:  screen name  test_inapp_survey
+     Format:   In-App, Popup, position MIDDLE
+     Spec:     banking/panel-content/mobile/README.md
+
+     THE BRIDGE ON MOBILE IS NOT THE BRIDGE ON THE WEB. The SDK injects a
+     window.Dn object into the In-App WebView, and it is a different object
+     from the one the website's panel content uses. Navigation is
+     Dn.androidUrl('meridian://<screen>'), NOT an href with target="_top": the
+     Navigation goes through Dn.androidUrl, and capture is Dn.setTags. These
+     are the mobile bridge methods; the web contract's Dn.postQuestion and
+     Dn.postSubscription do not apply here. Keep exactly this shape.
+
+     ONE QUESTION, FOUR ANSWERS, AND NO FREE TEXT. A survey that asks three
+     things gets answered by nobody on a phone, and free text cannot be
+     segmented on afterwards. Each answer writes the tag goal_interest, so the
+     next campaign can target the people who picked "A first home".
+
+     Capture is Dn.setTags('tag:goal_interest,value:<answer>'), the native
+     interface's comma-separated key:value string. See inapp-nps.html for why
+     the shape matters.
+
+     Draws NO close control: the panel supplies it via Layout > Close Button.
+     ================================================================== -->
+<style>
+#mrd-ia-survey{font-family:Inter,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;
+  box-sizing:border-box;width:100%;background:#f7f5f0;border-radius:14px;
+  overflow:hidden;color:#12203a;}
+#mrd-ia-survey *{box-sizing:border-box;}
+#mrd-ia-survey .s-head{background:#0a2540;color:#f7f5f0;padding:20px 22px 18px;}
+#mrd-ia-survey .s-eyebrow{font-size:10px;letter-spacing:.15em;text-transform:uppercase;
+  color:#c8a44d;font-weight:700;margin:0 0 8px;}
+#mrd-ia-survey .s-title{font-family:Georgia,"Times New Roman",serif;font-size:20px;
+  line-height:1.3;margin:0;font-weight:400;}
+#mrd-ia-survey .s-body{padding:16px 20px 20px;}
+#mrd-ia-survey .s-vh{position:absolute;width:1px;height:1px;padding:0;margin:-1px;
+  overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0;}
+#mrd-ia-survey .s-opt{display:flex;align-items:center;gap:11px;padding:13px 14px;
+  background:#fff;border:1.5px solid #e4e0d6;border-radius:10px;margin:0 0 8px;
+  font-size:13.5px;color:#0a2540;cursor:pointer;transition:all .16s ease;}
+#mrd-ia-survey .s-dot{width:18px;height:18px;flex:0 0 18px;border-radius:50%;
+  border:1.5px solid #c3ccd6;}
+#mrd-ia-survey .s-vh:checked + .s-opt{border-color:#0a2540;background:#fff;}
+#mrd-ia-survey .s-vh:checked + .s-opt .s-dot{border-color:#0a2540;
+  background:#0a2540;box-shadow:inset 0 0 0 3.5px #fff;}
+#mrd-ia-survey .s-submit{display:block;width:100%;margin-top:12px;border:0;cursor:pointer;
+  background:#0a2540;color:#fff;border-radius:8px;
+  font:700 14px Inter,-apple-system,sans-serif;padding:14px;}
+#mrd-ia-survey .s-small{font-size:10.5px;line-height:1.5;color:#a3adb9;margin:12px 0 0;
+  text-align:center;}
+</style>
+</head>
+<body>
+<div id="mrd-ia-survey">
+  <div class="s-head">
+    <p class="s-eyebrow">One question</p>
+    <h2 class="s-title">What are you saving towards?</h2>
+  </div>
+  <div class="s-body">
+    <input class="s-vh" type="radio" id="mrd-sv-1" name="mrd-goal" value="first_home">
+    <label class="s-opt" for="mrd-sv-1"><span class="s-dot"></span>A first home</label>
+
+    <input class="s-vh" type="radio" id="mrd-sv-2" name="mrd-goal" value="rainy_day">
+    <label class="s-opt" for="mrd-sv-2"><span class="s-dot"></span>A rainy day</label>
+
+    <input class="s-vh" type="radio" id="mrd-sv-3" name="mrd-goal" value="retirement">
+    <label class="s-opt" for="mrd-sv-3"><span class="s-dot"></span>Retiring earlier</label>
+
+    <input class="s-vh" type="radio" id="mrd-sv-4" name="mrd-goal" value="nothing_yet">
+    <label class="s-opt" for="mrd-sv-4"><span class="s-dot"></span>Nothing in particular</label>
+
+    <button type="button" class="s-submit"
+      onclick="Dn.sendClick('test_inapp_survey__submit');Dn.setTags('tag:goal_interest,value:'+(document.querySelector('#mrd-ia-survey input:checked')||{value:''}).value);Dn.close()">Send</button>
+
+    <p class="s-small">Meridian Bank is a fictional brand used for demonstration.</p>
+  </div>
+</div>
+</body>
+</html>

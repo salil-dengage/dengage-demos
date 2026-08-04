@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Meridian Bank | Salary landed (Dengage portal content)</title>
+<!-- =====================================================================
+     MERIDIAN ONLINE BANKING, On-Site content for the panel
+
+     Trigger:  DATA_LAYER_EVENT, eventName = banking_portal_salary_credited
+     Format:   Inline
+     Spec:     banking/docs/PORTAL-SCENARIOS.md
+
+     INLINE CONTENT. The rules are the OPPOSITE of a popup in three places:
+
+       NOT SANDBOXED   there is no iframe. The SDK appends this <style> to
+                       document.head, so an unscoped selector restyles the
+                       customer's whole banking session. Every rule below is
+                       under #mrd-salary-landed.
+       NO sendClick    the SDK attaches its own listener to every a[href] it
+                       injects, so an anchor is already counted. Calling
+                       Dn.sendClick here would double-count it.
+       NO target=_top  there is no frame to break out of.
+
+     No <script>: the panel strips script blocks on save.
+     ================================================================== -->
+<style>
+#mrd-salary-landed{font-family:Inter,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;
+  box-sizing:border-box;color:#12203a;text-align:left;}
+#mrd-salary-landed *{box-sizing:border-box;}
+#mrd-salary-landed .m-eyebrow{font-size:10px;letter-spacing:.14em;text-transform:uppercase;
+  color:#b8933c;font-weight:700;margin:0 0 6px;}
+#mrd-salary-landed .m-title{font-weight:600;font-size:15px;line-height:1.35;margin:0 0 6px;color:#0a2540;}
+#mrd-salary-landed .m-body{font-size:13px;line-height:1.55;color:#5a6b7f;margin:0 0 10px;}
+#mrd-salary-landed .m-small{font-size:11px;line-height:1.5;color:#94a3b8;margin:10px 0 0;}
+#mrd-salary-landed{background:#fff;border:1px solid #dde3ea;border-left:3px solid #b8933c;
+  border-radius:10px;padding:1.1rem 1.2rem;}
+#mrd-salary-landed .m-cta{font-size:13px;font-weight:600;color:#0a2540;text-decoration:none;}
+#mrd-salary-landed .m-cta:hover{text-decoration:underline;}
+
+</style>
+</head>
+<body>
+<div id="mrd-salary-landed">
+  <p class="m-eyebrow">Payday</p>
+  <p class="m-title">Move some of it before it moves itself</p>
+  <p class="m-body">Your salary landed today. Money moved to savings in the first week tends to stay there; money moved in the last week tends not to exist. Our Easy Access Saver pays 4.10% AER and you can take it back whenever you like.</p>
+  <a class="m-cta" href="https://salil-dengage.github.io/dengage-demos/banking/payments.html">Set up a monthly transfer</a>
+  <p class="m-small">4.10% AER variable. Illustrative rate on a demo site.</p>
+</div>
+</body>
+</html>

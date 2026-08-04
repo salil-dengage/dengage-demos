@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- The Dengage mark's own blue, sampled from vendor/assets/dengage-icon.png,
+         so the launcher icon matches the platform it is demonstrating. -->
+    <color name="dengage_blue">#125CFA</color>
+    <!-- Meridian's palette, identical to the website's custom properties. -->
+    <color name="meridian_navy">#0A2540</color>
+    <color name="meridian_navy_light">#14406B</color>
+    <color name="meridian_gold">#C8A44D</color>
+    <color name="meridian_cream">#F7F5F0</color>
+</resources>

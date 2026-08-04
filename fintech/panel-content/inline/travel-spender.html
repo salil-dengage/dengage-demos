@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NovaPay | Travel spender (Dengage INLINE content)</title>
+<!-- =====================================================================
+     NOVAPAY, INLINE On-Site content for the account portal
+
+     Inline Target Selector:  #dn_inline_target_portal_money_top
+     Trigger:                 fintech_travel_spender
+                              (DATA_LAYER_EVENT, pushed when the transaction
+                              feed holds a travel-category payment)
+
+     Inline rules as salary-landed.html: scoped under #npy-inline-travel, no
+     Dn.sendClick, no target="_top", no script blocks.
+
+     WHY HERE. Directly above the transaction list, so the offer sits next to
+     the transactions that justify it. A prospect can point at the row and at
+     the message in the same glance, which is the whole argument for real-time
+     targeting over a monthly email.
+
+     ON THE FIGURE. The saving is stated as a rate, not a number, on purpose.
+     A specific "you would have saved $4.20" needs the actual FX markup on the
+     actual transaction, and this content cannot compute it without a script.
+     An invented figure on a financial promotion is not acceptable.
+     ================================================================== -->
+<style>
+#npy-inline-travel{
+  font-family:Inter,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;
+  background:#0f1c33;border-radius:14px;padding:1.15rem 1.25rem;
+  margin:0 0 1rem;color:#fff;text-align:left;}
+#npy-inline-travel *{box-sizing:border-box;margin:0;}
+#npy-inline-travel .npy-t-tag{
+  display:inline-block;background:#ffd25a;color:#0f1c33;border-radius:6px;
+  font-size:.62rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;
+  padding:.25rem .5rem;margin-bottom:.6rem;}
+#npy-inline-travel .npy-t-title{font-size:1rem;font-weight:700;letter-spacing:-.2px;}
+#npy-inline-travel .npy-t-title em{font-style:normal;color:#ffd25a;}
+#npy-inline-travel .npy-t-body{
+  font-size:.83rem;line-height:1.6;color:rgba(255,255,255,.75);margin-top:.35rem;}
+#npy-inline-travel .npy-t-facts{
+  display:flex;gap:1.4rem;margin-top:.9rem;padding-top:.85rem;
+  border-top:1px solid rgba(255,255,255,.12);flex-wrap:wrap;}
+#npy-inline-travel .npy-t-fact strong{display:block;font-size:.95rem;}
+#npy-inline-travel .npy-t-fact span{
+  display:block;font-size:.66rem;color:rgba(255,255,255,.6);margin-top:.15rem;}
+#npy-inline-travel .npy-t-cta{
+  display:inline-block;margin-top:.95rem;background:#125cfa;color:#fff;
+  text-decoration:none;border-radius:9px;font-size:.78rem;font-weight:600;
+  padding:.6rem 1rem;}
+#npy-inline-travel .npy-t-why{
+  font-size:.66rem;color:rgba(255,255,255,.45);margin-top:.75rem;}
+@media (max-width:480px){ #npy-inline-travel .npy-t-cta{width:100%;text-align:center;} }
+</style>
+</head>
+<body>
+
+<div id="npy-inline-travel">
+  <span class="npy-t-tag">Spotted in your spending</span>
+  <p class="npy-t-title">You have been spending <em>abroad</em></p>
+  <p class="npy-t-body">
+    Your current plan applies a foreign exchange markup on those payments.
+    The Travel plan does not, and it includes cover for delays and lost bags.
+  </p>
+  <div class="npy-t-facts">
+    <span class="npy-t-fact"><strong>0%</strong><span>FX markup</span></span>
+    <span class="npy-t-fact"><strong>30</strong><span>currencies</span></span>
+    <span class="npy-t-fact"><strong>$6.99</strong><span>a month</span></span>
+  </div>
+  <a class="npy-t-cta" href="app.html">Compare with my plan</a>
+  <p class="npy-t-why">
+    Shown because of a travel payment on your account. Illustrative, not a
+    financial promotion.
+  </p>
+</div>
+
+</body>
+</html>

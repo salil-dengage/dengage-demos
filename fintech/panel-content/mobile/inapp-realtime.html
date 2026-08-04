@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NovaPay | In-App real time (Dengage mobile content)</title>
+<!-- =====================================================================
+     NOVAPAY ANDROID, In-App content for the panel
+
+     Trigger:  screen name  test_inapp_realtime, requested by the app with
+               Dengage.showRealTimeInApp(activity, name, params) rather than
+               waiting for a fetch
+     Format:   In-App, Modal, campaign type REAL TIME
+     Spec:     fintech/panel-content/mobile/README.md
+
+     THE BRIDGE ON MOBILE IS NOT THE BRIDGE ON THE WEB. The SDK injects a
+     window.Dn object into the In-App WebView, and it is a different object
+     from the one the website's panel content uses. Navigation goes through
+     Dn.androidUrl('novapay://<screen>'), NOT an href with target="_top", and
+     capture is Dn.setTags. The web contract's Dn.postQuestion and
+     Dn.postSubscription do not exist here. Keep exactly this shape.
+
+     WHAT THIS ONE DEMONSTRATES, and why it is worth its own file: the two
+     tags below are filled from parameters the APP sends at the moment of
+     display, not from anything chosen when the campaign was built.
+
+         tier      the app sends "premier"
+         surface   the app sends "test_area"
+
+     See ui/TestArea.kt, the "Real time, with parameters" row. The tier
+     vocabulary is the one in fintech/EVENT-MODEL.md: prospect, classic,
+     premier, private. DemoState maps the signed-in plan onto it, so the value
+     that arrives is the same word a segment would be built on.
+
+     IF THE TAGS RENDER AS LITERAL TEXT instead of values, the campaign is not
+     a Real Time campaign: an ordinary In-App has no parameters to resolve.
+     That is the single most likely reason this one looks broken.
+
+     Draws NO close control: the panel supplies it via Layout > Close Button.
+     ================================================================== -->
+<style>
+#npy-ia-rt{font-family:Inter,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;
+  box-sizing:border-box;width:100%;background:#ffffff;border-radius:18px;
+  overflow:hidden;color:#0f1c33;}
+#npy-ia-rt *{box-sizing:border-box;}
+#npy-ia-rt .r-head{background:#0f1c33;padding:20px 22px 18px;color:#f5f7fb;}
+#npy-ia-rt .r-eyebrow{font-size:10px;letter-spacing:.16em;text-transform:uppercase;
+  color:#34d399;font-weight:700;margin:0 0 8px;}
+#npy-ia-rt .r-title{font-size:21px;line-height:1.28;margin:0;font-weight:700;
+  letter-spacing:-.3px;}
+#npy-ia-rt .r-body{padding:18px 22px 22px;}
+#npy-ia-rt .r-text{font-size:13.5px;line-height:1.6;color:#64748b;margin:0 0 16px;}
+#npy-ia-rt .r-live{background:#f5f7fb;border:1px solid #e3e8f0;border-radius:12px;
+  padding:14px 16px;margin:0 0 16px;}
+#npy-ia-rt .r-livecap{font-size:10px;letter-spacing:.12em;text-transform:uppercase;
+  color:#8b96a9;font-weight:700;margin:0 0 10px;}
+#npy-ia-rt .r-kv{display:flex;justify-content:space-between;align-items:baseline;
+  padding:6px 0;border-top:1px solid #e9edf4;}
+#npy-ia-rt .r-kv:first-of-type{border-top:0;}
+#npy-ia-rt .r-k{font-size:12px;color:#64748b;}
+#npy-ia-rt .r-v{font-size:13.5px;font-weight:700;color:#125cfa;}
+#npy-ia-rt .r-cta{display:block;background:#125cfa;color:#fff;text-decoration:none;
+  font-size:14.5px;font-weight:700;padding:14px;border-radius:10px;text-align:center;}
+#npy-ia-rt .r-small{font-size:10.5px;line-height:1.5;color:#a3adb9;margin:14px 0 0;
+  text-align:center;}
+</style>
+</head>
+<body>
+<div id="npy-ia-rt">
+  <div class="r-head">
+    <p class="r-eyebrow">Real time</p>
+    <h2 class="r-title">Built the moment you opened this</h2>
+  </div>
+  <div class="r-body">
+    <p class="r-text">Everything below arrived from the app as this message was
+      shown. Nothing here was decided when the campaign was built.</p>
+
+    <div class="r-live">
+      <p class="r-livecap">Sent by the app just now</p>
+      <div class="r-kv"><span class="r-k">tier</span><span class="r-v">{{tier}}</span></div>
+      <div class="r-kv"><span class="r-k">surface</span><span class="r-v">{{surface}}</span></div>
+    </div>
+
+    <a class="r-cta" href="#" role="button"
+       onclick="Dn.sendClick('test_inapp_realtime__open');Dn.androidUrl('novapay://grow');return false">See your goals</a>
+
+    <p class="r-small">NovaPay is a fictional brand used for demonstration.</p>
+  </div>
+</div>
+</body>
+</html>

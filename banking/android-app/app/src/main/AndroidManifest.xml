@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
+    <!-- Android 13+. Without this the SDK registers a token and the phone
+         silently drops every notification. Asked for at runtime as well, in
+         MainActivity. -->
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+
+    <!-- Geofence. FINE is the foreground grant; BACKGROUND is what lets a
+         geofence fire while the app is closed, which is the only interesting
+         case for a bank. Android asks for them in two separate prompts and
+         will not accept both at once. -->
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_BACKGROUND_LOCATION" />
+
+    <application
+        android:name=".MeridianApp"
+        android:allowBackup="true"
+        android:label="@string/app_name"
+        android:icon="@mipmap/ic_launcher"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.Meridian">
+
+        <activity
+            android:name=".MainActivity"
+            android:exported="true"
+            android:label="@string/app_name"
+            android:launchMode="singleTask"
+            android:theme="@style/Theme.Meridian">
+            <!-- singleTask so a notification tap reaches the running activity
+                 through onNewIntent. With the default mode Android builds a
+                 second MainActivity and destroys the first, so onNewIntent
+                 never fires and any callback in flight lands in a composition
+                 that is already being torn down. -->
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+
+            <!-- DEEP LINKS.
+
+                 A push or an In-App message carries a target URL. Put one of
+                 these in the campaign's "target url" and the SDK hands it to
+                 Android, which routes it here, and MainActivity opens the
+                 matching screen. Without a filter that matches, the SDK falls
+                 back to opening a browser, which is the usual cause of "the
+                 push opened Chrome instead of the app".
+
+                   meridian://overview      meridian://accounts
+                   meridian://cards         meridian://payments
+                   meridian://wealth        meridian://profile
+                   meridian://products      meridian://inbox
+                   meridian://events        meridian://identity
+
+                 A custom scheme rather than an https App Link on purpose: the
+                 https URLs belong to the demo website, and claiming them here
+                 would mean tapping a link to the site opened the app instead. -->
+            <intent-filter android:autoVerify="false">
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <data android:scheme="meridian" />
+            </intent-filter>
+        </activity>
+
+        <!-- Our subclass of Dengage's FCM receiver. Registering this is what
+             routes a push from Firebase into the SDK; without it the app
+             receives the message and does nothing with it.
+
+             It is MeridianFcmService rather than the SDK's own class so silent
+             pushes can be handled: a visible push goes straight to super and
+             draws exactly as before. Register both and the device has two
+             services competing for one intent filter. -->
+        <service
+            android:name=".push.MeridianFcmService"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+            </intent-filter>
+        </service>
+
+        <!-- Paging and taps for the carousel notifications this app renders
+             itself. See MeridianCarousel.
+
+             Declared here rather than registered at runtime so it still works
+             when the process was killed between the post and the tap.
+
+             Not exported: only this app's own PendingIntents reach it. -->
+        <receiver
+            android:name=".push.MeridianCarousel$Receiver"
+            android:exported="false" />
+
+    </application>
+</manifest>

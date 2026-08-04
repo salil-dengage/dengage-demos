@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Committed vector, no external image host: a demo must not depend on a CDN. -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="320dp" android:height="150dp"
+    android:viewportWidth="64" android:viewportHeight="64">
+    <path android:fillColor="#0F7A4D" android:pathData="M0,0 h64 v64 h-64 z" />
+    <path android:strokeColor="#FFFFFFFF" android:strokeWidth="2"
+        android:fillColor="#00000000" android:pathData="M32,12 L52,52 H12 Z" />
+</vector>

@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book an appointment | Meridian Bank</title>
+    <meta name="description" content="Book half an hour with a Meridian adviser, in branch, by video or over the phone.">
+
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-NL6J5Z53');</script>
+    <!-- End Google Tag Manager -->
+
+    <script src="js/identity.js" data-user-store="meridian_user"></script>
+    <!-- DENGAGE SDK START -->
+    <script>
+      !function (e, a, n, d, g) {
+        e.dengage = e.dengage || function () { (e.dengage.q = e.dengage.q || []).push(arguments) },
+        d = a.getElementsByTagName("head")[0],
+        (g = a.createElement("script")).async = 1,
+        g.src = "https://pcdn.dengage.com/p/push/28/c8d2da44-b982-1925-9ad8-e7caddf0894a/dengage_sdk_loader.js",
+        d.appendChild(g)
+      }(window, document);
+      window.__dnInit ? dengage('initialize', window.__dnInit) : dengage('initialize');
+    </script>
+    <!-- DENGAGE SDK END -->
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Inter:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="meridian-style.css">
+    <link rel="icon" href="images/meridian-mark.svg" type="image/svg+xml">
+</head>
+<body data-page-type="appointments">
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NL6J5Z53"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+
+    <header class="site-header" id="header">
+        <div class="container">
+            <div class="header-inner">
+                <a href="index.html" class="logo">
+                    <span class="logo-mark" aria-hidden="true">
+                        <svg viewBox="0 0 64 64" focusable="false"><path d="M32 12 L54 29 H46 V50 H18 V29 H10 Z" fill="currentColor"/></svg>
+                    </span>
+                    <span class="logo-word">Meridian<span> Bank</span></span>
+                </a>
+                <nav class="nav-main">
+                    <a href="index.html#products">Products</a>
+                    <a href="calculators.html">Calculators</a>
+                    <a href="index.html#protection">Protection</a>
+                    <a href="appointments.html">Book an adviser</a>
+                    <button class="login-icon-btn" type="button" aria-label="Sign in to online banking" data-login-btn>
+                        <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                            <path d="M12 12c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5Zm0 2c-3.33 0-10 1.67-10 5v2h20v-2c0-3.33-6.67-5-10-5Z"></path>
+                        </svg>
+                    </button>
+                    <button class="nav-open-account" type="button" data-open-account data-open-account-context="header">Open an account</button>
+                </nav>
+                <button class="menu-toggle" id="menuToggle" aria-label="Open menu">
+                    <span></span><span></span><span></span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Dengage inline target slot, top of page. Empty and hidden until an
+         inline On-Site campaign fills it. Do not add content or styling here. -->
+    <div id="dn_inline_target_below_header" class="dn-inline-slot"></div>
+
+    <div class="mobile-overlay" id="mobileOverlay"></div>
+    <nav class="mobile-nav" id="mobileNav">
+        <button class="mobile-nav-close" id="mobileNavClose">&times;</button>
+        <ul class="mobile-nav-links">
+            <li><a href="index.html#products">Products</a></li>
+            <li><a href="calculators.html">Calculators</a></li>
+            <li><a href="index.html#protection">Protection</a></li>
+            <li><a href="appointments.html">Book an adviser</a></li>
+        </ul>
+    </nav>
+
+    <div class="login-modal" id="loginModal" aria-hidden="true">
+        <div class="login-modal-overlay" data-close-login></div>
+        <div class="login-modal-content" role="dialog" aria-modal="true" aria-labelledby="loginModalTitle">
+            <button class="login-modal-close" type="button" aria-label="Close registration" data-close-login>&times;</button>
+            <p class="text-label">Online Banking</p>
+            <h2 class="heading-display login-modal-title" id="loginModalTitle">Register for online banking</h2>
+            <p class="text-body login-modal-text">Registration takes a few minutes. We confirm your identity before your first sign-in.</p>
+            <form class="login-form" id="loginForm" novalidate>
+                <div class="login-form-row">
+                    <div class="login-form-group">
+                        <label for="loginFirstName">First name</label>
+                        <input type="text" id="loginFirstName" name="firstName" placeholder="Eleanor" autocomplete="given-name" required>
+                    </div>
+                    <div class="login-form-group">
+                        <label for="loginLastName">Last name</label>
+                        <input type="text" id="loginLastName" name="lastName" placeholder="Whitfield" autocomplete="family-name" required>
+                    </div>
+                </div>
+                <div class="login-form-group">
+                    <label for="loginEmail">E-mail</label>
+                    <input type="email" id="loginEmail" name="email" placeholder="eleanor@example.co.uk" autocomplete="email" required>
+                </div>
+                <div class="login-form-group">
+                    <label for="loginPassword">Password</label>
+                    <input type="password" id="loginPassword" name="password" placeholder="Create a password" autocomplete="new-password" required>
+                </div>
+                <p class="login-form-error" id="loginFormError" role="alert" hidden></p>
+                <button class="login-submit-btn" type="submit">Register</button>
+            </form>
+        </div>
+    </div>
+    <div class="login-success-toast" id="loginSuccessMessage" role="status" aria-live="polite">Welcome to Meridian Bank.</div>
+
+    <div class="cart-drawer" id="shortlistDrawer" aria-hidden="true">
+        <div class="cart-drawer-overlay" data-shortlist-close></div>
+        <aside class="cart-drawer-panel" aria-labelledby="shortlistDrawerTitle">
+            <div class="cart-drawer-header">
+                <div>
+                    <p class="text-label">Comparing</p>
+                    <h2 class="heading-display cart-drawer-title" id="shortlistDrawerTitle">Your shortlist</h2>
+                </div>
+                <button class="cart-drawer-close" type="button" aria-label="Close your shortlist" data-shortlist-close>&times;</button>
+            </div>
+            <div class="cart-items" data-shortlist-items></div>
+            <p class="cart-empty" data-shortlist-empty>You have not shortlisted anything yet.</p>
+            <div class="cart-drawer-footer" data-shortlist-footer hidden>
+                <button class="cart-checkout-btn" type="button" data-shortlist-compare>Compare these products</button>
+                <button class="btn-text" type="button" data-shortlist-clear>Clear shortlist</button>
+            </div>
+        </aside>
+    </div>
+
+    <main class="page-main">
+        <div class="container">
+            <nav class="breadcrumb" aria-label="Breadcrumb">
+                <a href="index.html">Home</a> <span aria-hidden="true">/</span> <span>Appointments</span>
+            </nav>
+            <header class="page-head">
+                <p class="text-label">Speak to us</p>
+                <h1 class="heading-display page-title">Book an appointment</h1>
+                <p class="text-body page-intro">
+                    Half an hour with a named adviser. Mortgages and wealth reviews are usually available within three working days; account opening is often same week.
+                </p>
+            </header>
+
+            <section class="calc" id="appointment">
+                <form class="calc-form" id="appointmentForm" novalidate>
+                    <div class="calc-field">
+                        <label for="aptType">What would you like to discuss</label>
+                        <div class="calc-input">
+                            <select id="aptType" name="appointmentType">
+                                <option value="mortgage_advice">Mortgage advice</option>
+                                <option value="account_opening">Opening an account</option>
+                                <option value="wealth_review">Wealth or pension review</option>
+                                <option value="business_banking">Business banking</option>
+                                <option value="bereavement">Bereavement and probate</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="calc-field">
+                        <label for="aptChannel">How would you like to meet</label>
+                        <div class="calc-input">
+                            <select id="aptChannel" name="appointmentChannel">
+                                <option value="branch">In branch</option>
+                                <option value="video">By video</option>
+                                <option value="phone">Over the phone</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="calc-field">
+                        <label for="aptBranch">Nearest branch</label>
+                        <div class="calc-input">
+                            <select id="aptBranch" name="branch">
+                                <option value="Leeds City|Leeds">Leeds City</option>
+                                <option value="Manchester Deansgate|Manchester">Manchester Deansgate</option>
+                                <option value="Bristol Broadmead|Bristol">Bristol Broadmead</option>
+                                <option value="Edinburgh George Street|Edinburgh">Edinburgh George Street</option>
+                                <option value="London Moorgate|London">London Moorgate</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="calc-field">
+                        <label for="aptDate">Preferred date and time</label>
+                        <div class="calc-input">
+                            <input type="datetime-local" id="aptDate" name="scheduledAt">
+                        </div>
+                        <p class="calc-hint">Saturday mornings are available in branch.</p>
+                    </div>
+                </form>
+                <div class="calc-actions">
+                    <button class="btn-primary" type="button" id="appointmentSubmit">Book this appointment</button>
+                </div>
+                <div class="calc-result" id="appointmentResult" aria-live="polite"></div>
+            </section>
+
+            <p class="page-disclaimer">
+                Appointments are illustrative on this demo site and no booking is actually made. Meridian Bank is a fictional company.
+            </p>
+        </div>
+    </main>
+
+    <!-- Dengage inline target slot. Empty and hidden until an inline On-Site
+         campaign fills it. Do not add content or styling here. -->
+    <div id="dn_inline_target_above_footer" class="dn-inline-slot"></div>
+
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-bottom">
+                <p class="footer-copyright">
+                    Dengage platform demo site. Meridian Bank is a fictional company. Products, rates and figures are illustrative and are not a financial promotion.
+                </p>
+                <div class="footer-social"><a href="https://www.dengage.com">Dengage</a></div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/pageView.js"></script>
+    <script src="js/bannerOffset.js"></script>
+    <script src="js/inlineSlotOffset.js"></script>
+    <script src="meridian-main.js"></script>
+    <script src="js/bankingEvents.js"></script>
+    <script src="js/openAccount.js"></script>
+    <script src="js/shortlist.js"></script>
+    <script src="js/shortlistUi.js"></script>
+    <script src="js/productCatalog.js"></script>
+    <script src="js/appointments.js"></script>
+    <script src="js/eventModal.js"></script>
+    <script src="js/meridianCatalog.js"></script>
+</body>
+</html>

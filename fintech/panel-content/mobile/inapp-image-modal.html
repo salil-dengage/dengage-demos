@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NovaPay | In-App image modal (Dengage mobile content)</title>
+<!-- =====================================================================
+     NOVAPAY ANDROID, In-App content for the panel
+
+     Trigger:  screen name  test_inapp_image_modal   (Dengage.setNavigation)
+     Format:   In-App, Image Modal, image only
+     Spec:     fintech/panel-content/mobile/README.md
+
+     THE BRIDGE ON MOBILE IS NOT THE BRIDGE ON THE WEB. The SDK injects a
+     window.Dn object into the In-App WebView, and it is a different object
+     from the one the website's panel content uses. Navigation goes through
+     Dn.androidUrl('novapay://<screen>'), NOT an href with target="_top", and
+     capture is Dn.setTags. The web contract's Dn.postQuestion and
+     Dn.postSubscription do not exist here. Keep exactly this shape.
+
+     IMAGE ONLY, WHICH MOVES THE WHOLE MESSAGE INTO THE ARTWORK. Everything
+     the customer reads is drawn in fx-free.svg, so a copy change here is an
+     artwork change. That is the trade this layout makes: no text reflow to
+     worry about, and nothing a screen reader can read except the alt text,
+     which is why the alt below carries the actual offer.
+
+     THE ART IS COMMITTED, not fetched from an image host. A demo must never
+     depend on a third party CDN, and an image-only In-App whose image 404s
+     shows an empty card with no way to tell why.
+
+     Draws NO close control: the panel supplies it via Layout > Close Button.
+     ================================================================== -->
+<style>
+#npy-ia-imgmodal{font-family:Inter,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;
+  box-sizing:border-box;width:100%;background:#0f1c33;border-radius:18px;
+  overflow:hidden;}
+#npy-ia-imgmodal *{box-sizing:border-box;}
+#npy-ia-imgmodal .i-link{display:block;text-decoration:none;}
+#npy-ia-imgmodal .i-art{display:block;width:100%;height:auto;}
+#npy-ia-imgmodal .i-small{font-size:10px;line-height:1.5;color:#8b96a9;margin:0;
+  padding:10px 16px 14px;text-align:center;}
+</style>
+</head>
+<body>
+<div id="npy-ia-imgmodal">
+  <a class="i-link" href="#" role="button"
+     onclick="Dn.sendClick('test_inapp_image_modal__open');Dn.androidUrl('novapay://products');return false">
+    <img class="i-art" alt="NovaPay Travel plan: spend abroad with no markup on currency conversion"
+         src="https://salil-dengage.github.io/dengage-demos/fintech/images/inapp/fx-free.svg">
+  </a>
+  <p class="i-small">NovaPay is a fictional brand used for demonstration.
+    Figures are illustrative and are not a financial promotion.</p>
+</div>
+</body>
+</html>

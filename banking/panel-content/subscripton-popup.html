@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Meridian Bank | Rate alerts (Dengage panel content)</title>
+<!-- =====================================================================
+     MERIDIAN BANK, On-Site content for the panel
+
+     Paste this WHOLE file into the scenario editor.
+
+     Trigger name: banking_subscripton-popup
+
+     All CSS is scoped under #mrd-subscripton-popup. Inline content is NOT sandboxed: the
+     SDK appends the style to document.head, so an unscoped selector would
+     restyle the whole site.
+
+     No <script>. The panel strips script blocks on save, so interactivity is
+     pure CSS plus inline onclick, which does survive publishing.
+
+     Every anchor carries target="_top". This content renders in a
+     cross-origin iframe, so a normal link would load the site inside the
+     popup rather than navigating the page.
+
+     The engine counts a click only when the content calls Dn.sendClick(),
+     exactly once per file. A close control calls Dn.close() and never
+     sendClick, so a dismissal is not counted as a conversion.
+
+     SLUG SPELLING IS DELIBERATE. "subscripton-popup" is misspelled in the
+     panel contract and correcting it would break the campaign binding.
+
+     Native capture via data-dn-form-id="subscription_form". Auto-close stays
+     ON here at 6 seconds: a subscription confirmation is one line and does
+     not need reading twice.
+     ================================================================== -->
+<style>
+#mrd-subscripton-popup{font-family:Inter,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;
+  box-sizing:border-box;color:#12203a;text-align:left;}
+#mrd-subscripton-popup *{box-sizing:border-box;}
+#mrd-subscripton-popup .mrd-eyebrow{font-size:11px;letter-spacing:.14em;text-transform:uppercase;
+  color:#b8933c;font-weight:700;margin:0 0 8px;}
+#mrd-subscripton-popup .mrd-title{font-family:"Playfair Display",Georgia,serif;font-size:24px;
+  line-height:1.2;margin:0 0 10px;color:#0a2540;}
+#mrd-subscripton-popup .mrd-text{font-size:14px;line-height:1.55;color:#5a6b7f;margin:0 0 18px;}
+#mrd-subscripton-popup .mrd-cta{display:inline-block;background:#0a2540;color:#fff;text-decoration:none;
+  font-size:14px;font-weight:600;padding:12px 22px;border:0;border-radius:6px;cursor:pointer;}
+#mrd-subscripton-popup .mrd-cta:hover{background:#143a5e;}
+#mrd-subscripton-popup .mrd-small{font-size:11px;line-height:1.5;color:#8494a5;margin:14px 0 0;}
+#mrd-subscripton-popup{padding:28px 30px;background:#f7f5f0;width:100%;}
+#mrd-subscripton-popup .mrd-field{width:100%;padding:12px 14px;border:1px solid #d5cec0;border-radius:6px;
+  font-size:14px;font-family:inherit;background:#fff;margin:0 0 14px;}
+#mrd-subscripton-popup .mrd-field:focus{outline:none;border-color:#0a2540;}
+#mrd-subscripton-popup .mrd-cta{width:100%;text-align:center;}
+
+</style>
+</head>
+<body>
+<div id="mrd-subscripton-popup" class="sb-card" data-dn-form-id="subscription_form">
+  <p class="mrd-eyebrow">Rate alerts</p>
+  <h2 class="mrd-title">Tell me when the rate moves</h2>
+  <p class="mrd-text">We will e-mail you when a mortgage or savings rate you are watching changes. No newsletter, no offers, just the rate.</p>
+  <input class="mrd-field" type="email" name="email" placeholder="you@example.co.uk" autocomplete="email">
+  <button class="mrd-cta" type="submit" onclick="Dn.sendClick('banking_subscripton-popup__subscribe')">Alert me</button>
+  <p class="mrd-small">One e-mail per rate change. Unsubscribe in one click, and we will not pass your address to anyone.</p>
+</div>
+</body>
+</html>

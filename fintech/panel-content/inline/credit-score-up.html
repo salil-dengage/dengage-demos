@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NovaPay | Credit score up (Dengage INLINE content)</title>
+<!-- =====================================================================
+     NOVAPAY, INLINE On-Site content for the account portal
+
+     Inline Target Selector:  #dn_inline_target_above_footer
+     Trigger:                 fintech_credit_score_up
+                              (DATA_LAYER_EVENT, pushed when the score rose
+                              since last month)
+
+     Inline rules as salary-landed.html: scoped under its own root id, the SDK
+     counts injected anchors itself, there is no frame to break out of, and
+     script blocks are stripped on save.
+
+     WHY HERE, AND WHY LOW DOWN. This is good news with no urgency and nothing
+     to sell. Above the footer is deliberate: it rewards a customer who
+     scrolled without interrupting one who did not.
+
+     WORTH SAYING IN A DEMO. This is the scenario to show a prospect worried
+     that real-time messaging means pestering people. It is a message customers
+     are pleased to receive, it costs nothing, and it makes the next message
+     more welcome rather than less.
+     ================================================================== -->
+<style>
+#npy-inline-score{
+  font-family:Inter,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;
+  background:rgba(15,157,88,.07);border:1px solid rgba(15,157,88,.22);
+  border-radius:14px;padding:1.05rem 1.2rem;margin:1rem 0;
+  color:#0f1c33;display:flex;align-items:center;gap:1rem;flex-wrap:wrap;}
+#npy-inline-score *{box-sizing:border-box;margin:0;}
+#npy-inline-score .npy-c-mark{
+  width:44px;height:44px;flex:none;border-radius:50%;
+  background:rgba(15,157,88,.14);color:#0f9d58;
+  display:flex;align-items:center;justify-content:center;
+  font-size:1.15rem;font-weight:700;}
+#npy-inline-score .npy-c-main{flex:1;min-width:180px;}
+#npy-inline-score .npy-c-title{font-size:.95rem;font-weight:700;letter-spacing:-.2px;}
+#npy-inline-score .npy-c-body{font-size:.8rem;line-height:1.55;color:#64748b;margin-top:.25rem;}
+#npy-inline-score .npy-c-cta{
+  flex:none;color:#0f9d58;text-decoration:none;font-size:.78rem;font-weight:600;
+  border:1px solid rgba(15,157,88,.35);border-radius:9px;padding:.55rem .9rem;}
+#npy-inline-score .npy-c-why{
+  flex-basis:100%;font-size:.66rem;color:#9aa5b5;margin-top:.2rem;}
+@media (max-width:480px){ #npy-inline-score .npy-c-cta{width:100%;text-align:center;} }
+</style>
+</head>
+<body>
+
+<div id="npy-inline-score">
+  <span class="npy-c-mark" aria-hidden="true">&#8593;</span>
+  <div class="npy-c-main">
+    <p class="npy-c-title">Your credit score went up this month</p>
+    <p class="npy-c-body">
+      Paying on time and keeping your balance steady both counted. Nothing to
+      do, we thought you would want to know.
+    </p>
+  </div>
+  <a class="npy-c-cta" href="app.html">See what changed</a>
+  <p class="npy-c-why">
+    Shown when your score is higher than last month. Illustrative figures.
+  </p>
+</div>
+
+</body>
+</html>

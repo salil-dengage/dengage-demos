@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 560" width="520" height="560" role="img" aria-label="Travel Cover">
+ <defs>
+  <linearGradient id="bg-npy-pro-travel" x1="0" y1="0" x2="0" y2="1">
+   <stop offset="0" stop-color="#F5F6FF"/><stop offset="1" stop-color="#E4E6FA"/>
+  </linearGradient>
+  <linearGradient id="card-npy-pro-travel" x1="0" y1="0" x2="1" y2="1">
+   <stop offset="0" stop-color="#F43F5E"/><stop offset="0.55" stop-color="#E11D48"/><stop offset="1" stop-color="#9F1239"/>
+  </linearGradient>
+  <linearGradient id="sheen-npy-pro-travel" x1="0" y1="0" x2="1" y2="1">
+   <stop offset="0" stop-color="#ffffff" stop-opacity="0.30"/><stop offset="0.5" stop-color="#ffffff" stop-opacity="0.04"/><stop offset="1" stop-color="#ffffff" stop-opacity="0.16"/>
+  </linearGradient>
+  <linearGradient id="chip-npy-pro-travel" x1="0" y1="0" x2="1" y2="1">
+   <stop offset="0" stop-color="#F3DFA6"/><stop offset="0.5" stop-color="#D9B75F"/><stop offset="1" stop-color="#B48F38"/>
+  </linearGradient>
+  <linearGradient id="acc-npy-pro-travel" x1="0" y1="0" x2="1" y2="1">
+   <stop offset="0" stop-color="#FECDD3"/><stop offset="1" stop-color="#FDA4AF"/>
+  </linearGradient>
+  <filter id="sh-npy-pro-travel" x="-30%" y="-30%" width="170%" height="170%">
+   <feDropShadow dx="0" dy="16" stdDeviation="18" flood-color="#1E1B4B" flood-opacity="0.30"/>
+  </filter>
+  <filter id="sh2-npy-pro-travel" x="-30%" y="-30%" width="170%" height="170%">
+   <feDropShadow dx="0" dy="8" stdDeviation="9" flood-color="#1E1B4B" flood-opacity="0.22"/>
+  </filter>
+ </defs>
+ <rect width="520" height="560" fill="url(#bg-npy-pro-travel)"/>
+ <ellipse cx="260.0" cy="486" rx="150" ry="20" fill="#000" opacity="0.07"/>
+ <g transform="translate(260.0,258) translate(-135,-135)" filter="url(#sh-npy-pro-travel)">
+  <rect width="270" height="270" rx="34" fill="url(#card-npy-pro-travel)"/>
+  <g clip-path="inset(0 round 34px)">
+   <rect width="270" height="270" rx="34" fill="url(#sheen-npy-pro-travel)"/>
+   <circle cx="238" cy="34" r="72" fill="#fff" fill-opacity="0.07"/>
+  </g>
+  <rect x="0.8" y="0.8" width="268.4" height="268.4" rx="33.4" fill="none" stroke="#fff" stroke-opacity="0.22"/>
+  <g transform="translate(135,124)"><g fill="#fff" fill-opacity="0.94"><path d="M-58 8 L48 -30 L58 -18 L-6 26 L-10 52 L-22 44 L-24 22 L-52 22 Z"/></g></g>
+  <text x="135" y="232" text-anchor="middle" font-family="Inter,Arial,sans-serif" font-size="13"
+        font-weight="700" fill="#fff" fill-opacity="0.95" letter-spacing="1.6">TRAVEL COVER</text>
+ </g></svg>

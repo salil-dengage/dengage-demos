@@ -1,0 +1,71 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1080 1920" width="1080" height="1920" role="img" aria-label="NovaPay Plus, everything in one plan">
+<!-- Artwork for the Full Image In-App layout, which carries no HTML copy at
+     all: the whole message is this file. Portrait 1080x1920 so it covers a
+     handset without letterboxing.
+
+     THE LOWER FIFTH IS LEFT CLEAR ON PURPOSE. Full Image draws no close
+     control of its own, so the panel has to supply one under
+     Layout > Close Button, and it lands over the bottom of the frame.
+     Anything important down there is covered by it.
+
+     Every gradient id is prefixed pp- so that inlining several of these in
+     one document cannot make them all resolve to the first definition. -->
+<defs>
+ <linearGradient id="pp-bg" x1="0" y1="0" x2="0.4" y2="1">
+  <stop offset="0" stop-color="#050f2e"/><stop offset="0.5" stop-color="#0a3a9e"/><stop offset="1" stop-color="#125cfa"/>
+ </linearGradient>
+ <linearGradient id="pp-card" x1="0" y1="0" x2="1" y2="1">
+  <stop offset="0" stop-color="#ffffff" stop-opacity="0.24"/><stop offset="1" stop-color="#ffffff" stop-opacity="0.05"/>
+ </linearGradient>
+ <linearGradient id="pp-rule" x1="0" y1="0" x2="1" y2="0">
+  <stop offset="0" stop-color="#7ef0bd"/><stop offset="1" stop-color="#7ef0bd" stop-opacity="0"/>
+ </linearGradient>
+ <filter id="pp-sh" x="-30%" y="-30%" width="170%" height="170%">
+  <feDropShadow dx="0" dy="26" stdDeviation="30" flood-color="#02081f" flood-opacity="0.5"/>
+ </filter>
+</defs>
+
+<rect width="1080" height="1920" fill="url(#pp-bg)"/>
+
+<!-- Concentric arcs, low contrast, so the top of the frame is not empty. -->
+<g fill="none" stroke="#ffffff" stroke-opacity="0.09" stroke-width="3">
+ <circle cx="1010" cy="210" r="240"/>
+ <circle cx="1010" cy="210" r="360"/>
+ <circle cx="1010" cy="210" r="480"/>
+</g>
+
+<g transform="translate(88,150)">
+ <rect width="96" height="96" rx="26" fill="#ffffff" fill-opacity="0.14" stroke="#ffffff" stroke-opacity="0.3" stroke-width="2"/>
+ <text x="48" y="66" text-anchor="middle" font-family="Inter, Helvetica, Arial, sans-serif" font-size="52" font-weight="700" fill="#ffffff">N</text>
+ <text x="128" y="64" font-family="Inter, Helvetica, Arial, sans-serif" font-size="42" font-weight="700" fill="#ffffff">NovaPay</text>
+</g>
+
+<rect x="88" y="360" width="300" height="6" rx="3" fill="url(#pp-rule)"/>
+
+<text x="88" y="452" font-family="Inter, Helvetica, Arial, sans-serif" font-size="32" font-weight="700" letter-spacing="7" fill="#7ef0bd">NOVAPAY PLUS</text>
+<text x="88" y="580" font-family="Inter, Helvetica, Arial, sans-serif" font-size="104" font-weight="700" fill="#ffffff">Everything</text>
+<text x="88" y="700" font-family="Inter, Helvetica, Arial, sans-serif" font-size="104" font-weight="700" fill="#ffffff">in one plan</text>
+<text x="88" y="790" font-family="Inter, Helvetica, Arial, sans-serif" font-size="40" fill="#ffffff" fill-opacity="0.74">One monthly fee, and the extras stop</text>
+<text x="88" y="846" font-family="Inter, Helvetica, Arial, sans-serif" font-size="40" fill="#ffffff" fill-opacity="0.74">arriving one at a time.</text>
+
+<g transform="translate(88,936)" filter="url(#pp-sh)">
+ <rect width="904" height="440" rx="40" fill="url(#pp-card)" stroke="#ffffff" stroke-opacity="0.26" stroke-width="2"/>
+ <g font-family="Inter, Helvetica, Arial, sans-serif" fill="#ffffff">
+  <circle cx="70" cy="96" r="15" fill="#7ef0bd"/>
+  <text x="118" y="112" font-size="40">No markup on currency conversion</text>
+  <circle cx="70" cy="196" r="15" fill="#7ef0bd"/>
+  <text x="118" y="212" font-size="40">Travel and device cover included</text>
+  <circle cx="70" cy="296" r="15" fill="#7ef0bd"/>
+  <text x="118" y="312" font-size="40">Round ups into any savings goal</text>
+  <circle cx="70" cy="396" r="15" fill="#7ef0bd"/>
+  <text x="118" y="412" font-size="40">Priority support, any hour</text>
+ </g>
+</g>
+
+<text x="88" y="1490" font-family="Inter, Helvetica, Arial, sans-serif" font-size="46" font-weight="700" fill="#ffffff">Tap anywhere to see the plan</text>
+
+<!-- Below here belongs to the panel's close control. Nothing that has to be
+     read goes in this band. -->
+<text x="88" y="1592" font-family="Inter, Helvetica, Arial, sans-serif" font-size="26" fill="#ffffff" fill-opacity="0.46">NovaPay is a fictional brand used for demonstration. Figures are</text>
+<text x="88" y="1636" font-family="Inter, Helvetica, Arial, sans-serif" font-size="26" fill="#ffffff" fill-opacity="0.46">illustrative and are not a financial promotion.</text>
+</svg>

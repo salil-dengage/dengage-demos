@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NovaPay | In-App full image (Dengage mobile content)</title>
+<!-- =====================================================================
+     NOVAPAY ANDROID, In-App content for the panel
+
+     Trigger:  screen name  test_inapp_full_image   (Dengage.setNavigation)
+     Format:   In-App, Full Image, image only
+     Spec:     fintech/panel-content/mobile/README.md
+
+     THE BRIDGE ON MOBILE IS NOT THE BRIDGE ON THE WEB. The SDK injects a
+     window.Dn object into the In-App WebView, and it is a different object
+     from the one the website's panel content uses. Navigation goes through
+     Dn.androidUrl('novapay://<screen>'), NOT an href with target="_top", and
+     capture is Dn.setTags. The web contract's Dn.postQuestion and
+     Dn.postSubscription do not exist here. Keep exactly this shape.
+
+     Position is FULL and the panel sets it. The container fills the screen
+     and the image covers it, so height:100% here rather than auto: a
+     letterboxed image in a full-screen container reads as a broken asset.
+     plus-plan.svg is drawn 1080x1920 for exactly that reason, and leaves its
+     lower fifth clear for the close control.
+
+     Draws NO close control: the panel supplies it via Layout > Close Button.
+     Without that setting this layout has no way out, which is the one
+     configuration mistake worth checking before a demo.
+     ================================================================== -->
+<style>
+#npy-ia-fullimg{font-family:Inter,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;
+  box-sizing:border-box;width:100%;height:100%;min-height:100%;
+  background:#050f2e;display:flex;flex-direction:column;}
+#npy-ia-fullimg *{box-sizing:border-box;}
+#npy-ia-fullimg .f-link{display:block;flex:1;min-height:0;text-decoration:none;}
+#npy-ia-fullimg .f-art{display:block;width:100%;height:100%;object-fit:cover;}
+#npy-ia-fullimg .f-small{flex:0 0 auto;font-size:10px;line-height:1.5;color:#8496b5;
+  margin:0;padding:12px 18px 16px;text-align:center;}
+</style>
+</head>
+<body>
+<div id="npy-ia-fullimg">
+  <a class="f-link" href="#" role="button"
+     onclick="Dn.sendClick('test_inapp_full_image__open');Dn.androidUrl('novapay://products');return false">
+    <img class="f-art" alt="NovaPay Plus: everything in one plan, no markup on currency conversion, travel and device cover, round ups and priority support"
+         src="https://salil-dengage.github.io/dengage-demos/fintech/images/inapp/plus-plan.svg">
+  </a>
+  <p class="f-small">NovaPay is a fictional brand used for demonstration.
+    Figures are illustrative and are not a financial promotion.</p>
+</div>
+</body>
+</html>

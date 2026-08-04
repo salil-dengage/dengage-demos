@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Meridian Bank | In-App Full Image (Dengage mobile content)</title>
+<!-- =====================================================================
+     MERIDIAN BANK ANDROID, In-App content for the panel
+
+     Trigger:  screen name  test_inapp_full_image
+     Format:   In-App, Full Image (the panel template, image only)
+     Spec:     banking/panel-content/mobile/README.md
+
+     THE BRIDGE ON MOBILE IS NOT THE BRIDGE ON THE WEB. The SDK injects a
+     window.Dn object into the In-App WebView, and it is a different object
+     from the one the website's panel content uses. Navigation is
+     Dn.androidUrl('meridian://<screen>'), NOT an href with target="_top": the
+     Navigation goes through Dn.androidUrl, and capture is Dn.setTags. These
+     are the mobile bridge methods; the web contract's Dn.postQuestion and
+     Dn.postSubscription do not apply here. Keep exactly this shape.
+
+     FULL IMAGE. The whole screen, artwork only, the entire surface tappable.
+     The pair to Full Screen, and the comparison is the point in a demo: this
+     one carries no HTML copy at all, so everything it says has to be baked
+     into the image, which is a real constraint for a bank that has to print
+     small print.
+
+     Position is FULL and the panel sets it. The container fills the screen
+     and the image covers it, so height:100% here rather than auto: a
+     letterboxed image in a full-screen container reads as a broken asset.
+
+     Draws NO close control: the panel supplies it via Layout > Close Button.
+     Without that setting this layout has no way out, which is the one
+     configuration mistake worth checking before a demo.
+     ================================================================== -->
+<style>
+#mrd-ia-fullimg{font-family:Inter,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;
+  box-sizing:border-box;width:100%;height:100%;min-height:100%;
+  background:#0a2540;display:flex;flex-direction:column;}
+#mrd-ia-fullimg *{box-sizing:border-box;}
+#mrd-ia-fullimg .f-link{display:block;flex:1;min-height:0;text-decoration:none;}
+#mrd-ia-fullimg .f-art{display:block;width:100%;height:100%;object-fit:cover;}
+#mrd-ia-fullimg .f-small{flex:0 0 auto;font-size:10px;line-height:1.5;color:#7d8ea1;
+  margin:0;padding:12px 18px 16px;text-align:center;}
+</style>
+</head>
+<body>
+<div id="mrd-ia-fullimg">
+  <a class="f-link" href="#" role="button"
+     onclick="Dn.sendClick('test_inapp_full_image__open');Dn.androidUrl('meridian://products');return false">
+    <img class="f-art" alt="Rate Week at Meridian Bank, fixed rates held until Friday"
+         src="https://salil-dengage.github.io/dengage-demos/banking/images/push/rate-week.png">
+  </a>
+  <p class="f-small">Meridian Bank is a fictional brand used for demonstration.
+    Rates are illustrative and are not a financial promotion.</p>
+</div>
+</body>
+</html>

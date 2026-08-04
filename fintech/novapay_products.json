@@ -1,0 +1,274 @@
+[
+  {
+    "id": "NPY-CRD-METAL",
+    "name": "NovaPay Metal Card",
+    "desc": "Our top card tier. Brushed metal build, 2% cashback on every purchase, unlimited fee-free spending abroad and airport lounge access for two.",
+    "price": "16.99",
+    "currency": "USD",
+    "image": [
+      "images/products/NPY-CRD-METAL.svg"
+    ],
+    "category": "Products > Cards > Premium",
+    "brand": "NovaPay Cards",
+    "availability": true,
+    "colors": [
+      "2% cashback",
+      "Metal, contactless"
+    ]
+  },
+  {
+    "id": "NPY-CRD-PLUS",
+    "name": "NovaPay Plus Card",
+    "desc": "The everyday account card. Instant spend notifications, round-up saving, budget limits per category and free ATM withdrawals up to 1,000 a month.",
+    "price": "0.00",
+    "currency": "USD",
+    "image": [
+      "images/products/NPY-CRD-PLUS.svg"
+    ],
+    "category": "Products > Cards > Everyday",
+    "brand": "NovaPay Cards",
+    "availability": true,
+    "colors": [
+      "1% cashback",
+      "Recycled plastic"
+    ]
+  },
+  {
+    "id": "NPY-CRD-TRAVEL",
+    "name": "NovaPay Travel Card",
+    "desc": "Built for people who spend across borders. Interbank exchange rates in 30 currencies, no foreign transaction fee and travel disruption cover included.",
+    "price": "6.99",
+    "currency": "USD",
+    "image": [
+      "images/products/NPY-CRD-TRAVEL.svg"
+    ],
+    "category": "Products > Cards > Travel",
+    "brand": "NovaPay Cards",
+    "availability": true,
+    "colors": [
+      "0% FX markup",
+      "30 currencies"
+    ]
+  },
+  {
+    "id": "NPY-CRD-BIZ",
+    "name": "NovaPay Business Card",
+    "desc": "Company card with unlimited employee sub-cards, per-card spend rules, receipt capture and a direct feed into your accounting software.",
+    "price": "9.99",
+    "currency": "USD",
+    "image": [
+      "images/products/NPY-CRD-BIZ.svg"
+    ],
+    "category": "Products > Cards > Business",
+    "brand": "NovaPay Business",
+    "availability": true,
+    "colors": [
+      "Unlimited sub-cards",
+      "Accounting sync"
+    ]
+  },
+  {
+    "id": "NPY-INV-STOCKS",
+    "name": "Stocks Pro",
+    "desc": "Commission-free trading in over 4,000 US and European stocks, fractional shares from 1 dollar, plus limit orders and recurring buys.",
+    "price": "0.00",
+    "currency": "USD",
+    "image": [
+      "images/products/NPY-INV-STOCKS.svg"
+    ],
+    "category": "Products > Investing > Stocks",
+    "brand": "NovaPay Invest",
+    "availability": true,
+    "colors": [
+      "0 commission",
+      "Fractional shares"
+    ]
+  },
+  {
+    "id": "NPY-INV-CRYPTO",
+    "name": "Crypto Vault",
+    "desc": "Hold 40 digital assets with institutional custody, cold-storage backing and automatic monthly buys. Segregated wallets, insured up to 250,000.",
+    "price": "0.00",
+    "currency": "USD",
+    "image": [
+      "images/products/NPY-INV-CRYPTO.svg"
+    ],
+    "category": "Products > Investing > Crypto",
+    "brand": "NovaPay Invest",
+    "availability": true,
+    "colors": [
+      "40 assets",
+      "Insured custody"
+    ]
+  },
+  {
+    "id": "NPY-INV-ROBO",
+    "name": "Managed Portfolio",
+    "desc": "A diversified portfolio matched to your risk profile, rebalanced automatically every quarter. Choose from cautious, balanced or adventurous.",
+    "price": "0.45",
+    "currency": "USD",
+    "image": [
+      "images/products/NPY-INV-ROBO.svg"
+    ],
+    "category": "Products > Investing > Managed",
+    "brand": "NovaPay Invest",
+    "availability": true,
+    "colors": [
+      "Auto rebalanced",
+      "3 risk profiles"
+    ]
+  },
+  {
+    "id": "NPY-SAV-BOOST",
+    "name": "Savings Boost",
+    "desc": "Lifts the interest rate on your main balance to 4.85% AER, paid daily, with instant access and no withdrawal limits.",
+    "price": "0.00",
+    "currency": "USD",
+    "image": [
+      "images/products/NPY-SAV-BOOST.svg"
+    ],
+    "category": "Products > Savings > Boost",
+    "brand": "NovaPay Savings",
+    "availability": true,
+    "colors": [
+      "4.85% AER",
+      "Paid daily"
+    ]
+  },
+  {
+    "id": "NPY-SAV-POTS",
+    "name": "Goal Pots Pro",
+    "desc": "Unlimited saving pots with target dates, automatic round-ups, salary splitting on payday and shared pots for up to five people.",
+    "price": "1.99",
+    "currency": "USD",
+    "image": [
+      "images/products/NPY-SAV-POTS.svg"
+    ],
+    "category": "Products > Savings > Goals",
+    "brand": "NovaPay Savings",
+    "availability": true,
+    "colors": [
+      "Unlimited pots",
+      "Shared saving"
+    ]
+  },
+  {
+    "id": "NPY-CRE-BUILD",
+    "name": "Credit Builder",
+    "desc": "Build a credit history with a small secured limit reported monthly to the bureaus. Your deposit stays yours and is returned when you close.",
+    "price": "4.99",
+    "currency": "USD",
+    "image": [
+      "images/products/NPY-CRE-BUILD.svg"
+    ],
+    "category": "Products > Credit > Builder",
+    "brand": "NovaPay Credit",
+    "availability": true,
+    "colors": [
+      "Reports monthly",
+      "Refundable deposit"
+    ]
+  },
+  {
+    "id": "NPY-CRE-LOAN",
+    "name": "Personal Loan",
+    "desc": "Borrow 1,000 to 25,000 over 12 to 60 months with a rate quoted before you apply and no penalty for paying it off early.",
+    "price": "0.00",
+    "currency": "USD",
+    "image": [
+      "images/products/NPY-CRE-LOAN.svg"
+    ],
+    "category": "Products > Credit > Loans",
+    "brand": "NovaPay Credit",
+    "availability": true,
+    "colors": [
+      "From 6.9% APR",
+      "No early-repayment fee"
+    ]
+  },
+  {
+    "id": "NPY-GLB-ACCOUNT",
+    "name": "Multi-Currency Account",
+    "desc": "Hold and convert 30 currencies in one balance with local account details in the US, UK and eurozone, so you get paid like a local.",
+    "price": "0.00",
+    "currency": "USD",
+    "image": [
+      "images/products/NPY-GLB-ACCOUNT.svg"
+    ],
+    "category": "Products > Global > Accounts",
+    "brand": "NovaPay Global",
+    "availability": true,
+    "colors": [
+      "30 currencies",
+      "Local details"
+    ]
+  },
+  {
+    "id": "NPY-GLB-TRANSFER",
+    "name": "Global Transfers Pro",
+    "desc": "Send money to 90 countries with the mid-market rate, a flat low fee and same-day arrival on the most used corridors.",
+    "price": "0.00",
+    "currency": "USD",
+    "image": [
+      "images/products/NPY-GLB-TRANSFER.svg"
+    ],
+    "category": "Products > Global > Transfers",
+    "brand": "NovaPay Global",
+    "availability": true,
+    "colors": [
+      "90 countries",
+      "Same-day arrival"
+    ]
+  },
+  {
+    "id": "NPY-PRO-TRAVEL",
+    "name": "Travel Insurance",
+    "desc": "Worldwide medical cover to 10 million, trip cancellation, delayed baggage and winter sports, for you and the family on one policy.",
+    "price": "9.99",
+    "currency": "USD",
+    "image": [
+      "images/products/NPY-PRO-TRAVEL.svg"
+    ],
+    "category": "Products > Protection > Travel",
+    "brand": "NovaPay Protect",
+    "availability": true,
+    "colors": [
+      "Worldwide cover",
+      "Family included"
+    ]
+  },
+  {
+    "id": "NPY-PRO-DEVICE",
+    "name": "Device Insurance",
+    "desc": "Covers cracked screens, liquid damage, theft and loss on up to three devices, with repair or replacement inside 48 hours.",
+    "price": "6.99",
+    "currency": "USD",
+    "image": [
+      "images/products/NPY-PRO-DEVICE.svg"
+    ],
+    "category": "Products > Protection > Device",
+    "brand": "NovaPay Protect",
+    "availability": true,
+    "colors": [
+      "3 devices",
+      "48-hour replacement"
+    ]
+  },
+  {
+    "id": "NPY-PRO-PURCHASE",
+    "name": "Purchase Protection",
+    "desc": "Refunds card purchases that arrive broken, never arrive or are not as described, up to 5,000 a year, claimed in the app in minutes.",
+    "price": "4.99",
+    "currency": "USD",
+    "image": [
+      "images/products/NPY-PRO-PURCHASE.svg"
+    ],
+    "category": "Products > Protection > Purchase",
+    "brand": "NovaPay Protect",
+    "availability": true,
+    "colors": [
+      "5,000 a year",
+      "In-app claims"
+    ]
+  }
+]

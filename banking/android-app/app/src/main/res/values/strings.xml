@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">Demo - Meridian Bank</string>
+
+    <!-- Carousel notification. Content descriptions are read aloud by
+         TalkBack, so they are sentences rather than "prev" and "next". -->
+    <string name="meridian_carousel_image_description">Product picture</string>
+    <string name="meridian_carousel_previous">Previous card</string>
+    <string name="meridian_carousel_next">Next card</string>
+    <string name="meridian_carousel_channel">Offers</string>
+</resources>

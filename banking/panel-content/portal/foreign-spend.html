@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Meridian Bank | Foreign spend (Dengage portal content)</title>
+<!-- =====================================================================
+     MERIDIAN ONLINE BANKING, On-Site content for the panel
+
+     Trigger:  DATA_LAYER_EVENT, eventName = banking_portal_foreign_spend
+     Format:   Popup
+     Spec:     banking/docs/PORTAL-SCENARIOS.md
+
+     POPUP. Draws NO close control: the panel supplies one via Layout >
+     Close Button > "Add close button to outside", and a second inside the
+     card reads as a duplicate. Design settings need padding 0 and a
+     transparent background or the container's white shows as a frame.
+
+     Every anchor carries target="_top" because this renders in a
+     cross-origin iframe. Exactly one Dn.sendClick(), on the CTA.
+
+     No <script>: the panel strips script blocks on save.
+     ================================================================== -->
+<style>
+#mrd-foreign-spend{font-family:Inter,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;
+  box-sizing:border-box;color:#12203a;text-align:left;}
+#mrd-foreign-spend *{box-sizing:border-box;}
+#mrd-foreign-spend .m-eyebrow{font-size:10px;letter-spacing:.14em;text-transform:uppercase;
+  color:#b8933c;font-weight:700;margin:0 0 6px;}
+#mrd-foreign-spend .m-title{font-weight:600;font-size:15px;line-height:1.35;margin:0 0 6px;color:#0a2540;}
+#mrd-foreign-spend .m-body{font-size:13px;line-height:1.55;color:#5a6b7f;margin:0 0 10px;}
+#mrd-foreign-spend .m-small{font-size:11px;line-height:1.5;color:#94a3b8;margin:10px 0 0;}
+#mrd-foreign-spend{width:100%;background:#fff;padding:26px 28px;}
+#mrd-foreign-spend .m-title{font-family:"Playfair Display",Georgia,serif;font-size:22px;}
+#mrd-foreign-spend .m-cta{display:inline-block;background:#0a2540;color:#fff;text-decoration:none;
+  font-size:14px;font-weight:600;padding:11px 20px;border-radius:6px;}
+#mrd-foreign-spend .m-list{list-style:none;padding:0;margin:0 0 16px;font-size:13px;color:#5a6b7f;}
+#mrd-foreign-spend .m-list li{padding:5px 0;border-bottom:1px solid #eef1f5;}
+#mrd-foreign-spend .m-list li:last-child{border-bottom:0;}
+
+</style>
+</head>
+<body>
+<div id="mrd-foreign-spend">
+  <p class="m-eyebrow">We noticed a payment abroad</p>
+  <h2 class="m-title">Travelling? Two things worth knowing</h2>
+  <p class="m-body">A payment left your account in euros. Nothing is wrong, and there are two things that usually save people money on a trip.</p>
+  <ul class="m-list">
+    <li>Your Platinum card charges no foreign transaction fee. Your debit card does.</li>
+    <li>Annual travel cover from &pound;34 costs less than three single trips.</li>
+  </ul>
+  <a class="m-cta" href="https://salil-dengage.github.io/dengage-demos/banking/product.html?id=MRD-INS-TRAVEL" target="_top" onclick="Dn.sendClick('banking_portal_foreign_spend__travel-cover')">See travel cover</a>
+  <p class="m-small">Illustrative figures on a demo site. Meridian Bank is a fictional company.</p>
+</div>
+</body>
+</html>

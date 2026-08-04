@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Meridian Bank | In-App countdown to win (Dengage mobile content)</title>
+<!-- =====================================================================
+     MERIDIAN BANK ANDROID, In-App content for the panel
+
+     Trigger:  screen name  test_inapp_countdown
+     Format:   In-App, Countdown to win
+     Spec:     banking/panel-content/mobile/README.md
+
+     THE BRIDGE ON MOBILE IS NOT THE BRIDGE ON THE WEB. The SDK injects a
+     window.Dn object into the In-App WebView, and it is a different object
+     from the one the website's panel content uses. Navigation is
+     Dn.androidUrl('meridian://<screen>'), NOT an href with target="_top": the
+     Navigation goes through Dn.androidUrl, and capture is Dn.setTags. These
+     are the mobile bridge methods; the web contract's Dn.postQuestion and
+     Dn.postSubscription do not apply here. Keep exactly this shape.
+
+     THE ONE LAYOUT WITH ITS OWN CONTENT TYPE. ContentType has exactly two
+     members, HTML and COUNTDOWN_TO_WIN, so everything else in this folder is
+     HTML in an envelope and this one is not. Set the type in the panel, or
+     the clock and the coupon never arrive.
+
+     THE COUPON COMES FROM THE ENGINE, NOT FROM HERE. The SDK runs the content
+     through a Mustache pass first:
+
+         {{#coupon}} ... {{/coupon}}   kept only when a coupon was won
+         {{couponCode}}                the code itself
+
+     A hard-coded code would show the same one to every customer and would not
+     be redeemable. Leave the tags alone.
+
+     WHAT THE SDK ACTUALLY DOES WITH THE CLOCK, checked rather than assumed.
+     InAppMessageManager in 6.0.96 carries one countdown behaviour and it is
+     expiry: "COUNTDOWN_TO_WIN in-app message is expired, skipping display".
+     There is no element id it looks for and nothing it writes a running time
+     into. So the deadline below is copy, and a live ticking clock has to come
+     from the panel's own countdown widget. Do not add a timer here to fake
+     one: a script tag does not survive the panel, and a CSS animation cannot
+     count real seconds.
+
+     Dn.copyToClipboard is what makes the code usable on a phone, where nobody
+     is going to retype it.
+
+     Draws NO close control: the panel supplies it via Layout > Close Button.
+     ================================================================== -->
+<style>
+#mrd-ia-cd{font-family:Inter,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;
+  box-sizing:border-box;width:100%;background:#f7f5f0;border-radius:14px;
+  overflow:hidden;color:#12203a;text-align:center;}
+#mrd-ia-cd *{box-sizing:border-box;}
+#mrd-ia-cd .d-head{background:#0a2540;color:#f7f5f0;padding:24px 20px 20px;}
+#mrd-ia-cd .d-eyebrow{font-size:10px;letter-spacing:.15em;text-transform:uppercase;
+  color:#c8a44d;font-weight:700;margin:0 0 8px;}
+#mrd-ia-cd .d-title{font-family:Georgia,"Times New Roman",serif;font-size:21px;
+  line-height:1.3;margin:0 0 14px;font-weight:400;}
+#mrd-ia-cd .d-clock{display:inline-block;font:700 15px "SF Mono",Menlo,Consolas,monospace;
+  letter-spacing:.12em;color:#c8a44d;background:rgba(200,164,77,.14);
+  border-radius:8px;padding:10px 16px;}
+#mrd-ia-cd .d-body{padding:20px;}
+#mrd-ia-cd .d-text{font-size:13.5px;line-height:1.6;color:#5a6b7f;margin:0 0 16px;}
+#mrd-ia-cd .d-code{display:block;font:700 17px "SF Mono",Menlo,Consolas,monospace;
+  letter-spacing:.14em;color:#0a2540;background:#fff;border:1.5px dashed #c8a44d;
+  border-radius:9px;padding:13px;margin:0 0 14px;cursor:pointer;}
+#mrd-ia-cd .d-cta{display:block;background:#0a2540;color:#fff;text-decoration:none;
+  font-size:14.5px;font-weight:700;padding:14px;border-radius:8px;}
+#mrd-ia-cd .d-small{font-size:10.5px;line-height:1.5;color:#a3adb9;margin:12px 0 0;}
+</style>
+</head>
+<body>
+<div id="mrd-ia-cd">
+  <div class="d-head">
+    <p class="d-eyebrow">Rate Week</p>
+    <h2 class="d-title">This rate is held until Friday</h2>
+    <div class="d-clock">CLOSES 17:00 FRI</div>
+  </div>
+  <div class="d-body">
+    <p class="d-text">Fix now and keep this week's rate, whenever your current
+      term ends. When the clock runs out the rate moves with the market.</p>
+
+    {{#coupon}}
+    <span class="d-code" onclick="Dn.copyToClipboard('{{couponCode}}')">{{couponCode}}</span>
+    {{/coupon}}
+
+    <a class="d-cta" href="#" role="button"
+       onclick="Dn.sendClick('test_inapp_countdown__fix');Dn.androidUrl('meridian://products');return false">Fix my rate</a>
+
+    <p class="d-small">Meridian Bank is a fictional brand used for demonstration.
+      Rates are illustrative and are not a financial promotion.</p>
+  </div>
+</div>
+</body>
+</html>

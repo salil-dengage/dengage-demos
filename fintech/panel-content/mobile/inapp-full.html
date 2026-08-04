@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NovaPay | In-App full screen (Dengage mobile content)</title>
+<!-- =====================================================================
+     NOVAPAY ANDROID, In-App content for the panel
+
+     Trigger:  screen name  test_inapp_full   (Dengage.setNavigation)
+     Format:   In-App, Full Screen, image and text
+     Spec:     fintech/panel-content/mobile/README.md
+
+     THE BRIDGE ON MOBILE IS NOT THE BRIDGE ON THE WEB. The SDK injects a
+     window.Dn object into the In-App WebView, and it is a different object
+     from the one the website's panel content uses. Navigation goes through
+     Dn.androidUrl('novapay://<screen>'), NOT an href with target="_top", and
+     capture is Dn.setTags. The web contract's Dn.postQuestion and
+     Dn.postSubscription do not exist here. Keep exactly this shape.
+
+     FULL SCREEN IS FOR A DECISION, NOT A GLANCE. It takes the whole handset
+     and interrupts whatever the customer was doing, so it earns its place
+     only when there is something to weigh up. Position is FULL and the panel
+     sets it: height:100% here, and a flex column so the disclaimer stays at
+     the foot on a tall screen and does not float mid-card on a short one.
+
+     Draws NO close control: the panel supplies it via Layout > Close Button.
+     ================================================================== -->
+<style>
+#npy-ia-full{font-family:Inter,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;
+  box-sizing:border-box;width:100%;height:100%;min-height:100%;
+  background:linear-gradient(160deg,#050f2e 0%,#0a3a9e 62%,#125cfa 100%);
+  color:#f5f7fb;padding:34px 26px 26px;display:flex;flex-direction:column;gap:14px;}
+#npy-ia-full *{box-sizing:border-box;}
+#npy-ia-full .f-rule{width:64px;height:5px;border-radius:3px;background:#34d399;}
+#npy-ia-full .f-eyebrow{font-size:11px;letter-spacing:.18em;text-transform:uppercase;
+  color:#34d399;font-weight:700;margin:0;}
+#npy-ia-full .f-title{font-size:34px;line-height:1.15;letter-spacing:-.8px;
+  font-weight:700;margin:0;}
+#npy-ia-full .f-body{font-size:14.5px;line-height:1.65;color:#b9c6dd;margin:0;}
+#npy-ia-full .f-facts{display:flex;gap:10px;margin:4px 0 0;}
+#npy-ia-full .f-fact{flex:1;background:rgba(255,255,255,.09);border:1px solid rgba(255,255,255,.16);
+  border-radius:14px;padding:14px 10px;text-align:center;}
+#npy-ia-full .f-fig{display:block;font-size:19px;font-weight:700;color:#fff;}
+#npy-ia-full .f-cap{display:block;font-size:10.5px;color:#9fb0cd;margin-top:3px;}
+#npy-ia-full .f-spacer{flex:1;min-height:8px;}
+#npy-ia-full .f-cta{display:block;background:#34d399;color:#06301f;text-decoration:none;
+  font-size:15px;font-weight:700;padding:15px;border-radius:12px;text-align:center;}
+#npy-ia-full .f-small{font-size:10.5px;line-height:1.5;color:#8496b5;margin:0;text-align:center;}
+</style>
+</head>
+<body>
+<div id="npy-ia-full">
+  <div class="f-rule"></div>
+  <p class="f-eyebrow">NovaPay Plus</p>
+  <h1 class="f-title">Everything in one plan</h1>
+  <p class="f-body">You are paying for travel cover, no markup conversion and
+    device cover one at a time. Plus bundles them, and the fee is shown before
+    anything changes.</p>
+
+  <div class="f-facts">
+    <div class="f-fact"><span class="f-fig">0%</span><span class="f-cap">FX markup</span></div>
+    <div class="f-fact"><span class="f-fig">4</span><span class="f-cap">Extras included</span></div>
+    <div class="f-fact"><span class="f-fig">Any time</span><span class="f-cap">Cancel</span></div>
+  </div>
+
+  <div class="f-spacer"></div>
+
+  <a class="f-cta" href="#" role="button"
+     onclick="Dn.sendClick('test_inapp_full__view');Dn.androidUrl('novapay://products');return false">See what is included</a>
+
+  <p class="f-small">NovaPay is a fictional brand used for demonstration.
+    Figures are illustrative and are not a financial promotion.</p>
+</div>
+</body>
+</html>

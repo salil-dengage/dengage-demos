@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Meridian Bank | In-App NPS (Dengage mobile content)</title>
+<!-- =====================================================================
+     MERIDIAN BANK ANDROID, In-App content for the panel
+
+     Trigger:  screen name  test_inapp_nps
+     Format:   In-App, Popup, position MIDDLE
+     Spec:     banking/panel-content/mobile/README.md
+
+     THE BRIDGE ON MOBILE IS NOT THE BRIDGE ON THE WEB. The SDK injects a
+     window.Dn object into the In-App WebView, and it is a different object
+     from the one the website's panel content uses. Navigation is
+     Dn.androidUrl('meridian://<screen>'), NOT an href with target="_top": the
+     Navigation goes through Dn.androidUrl, and capture is Dn.setTags. These
+     are the mobile bridge methods; the web contract's Dn.postQuestion and
+     Dn.postSubscription do not apply here. Keep exactly this shape.
+
+     CAPTURE ON MOBILE IS Dn.setTags, AND THE FORMAT IS UNOBVIOUS. The native
+     interface takes ONE string of comma-separated key:value pairs, with the
+     literal keys "tag" and "value":
+
+         Dn.setTags('tag:nps_score,value:9')
+
+     which becomes TagItem("nps_score", "9") and reaches the same place the
+     website's Dn.postQuestion() writes to. Read out of
+     InAppMessageActivity$JavaScriptInterface.setTags in sdk-6.0.96, because
+     getting the shape wrong loses the answer in silence.
+
+     Tags attach to the DEVICE, not the contact: the request carries the
+     device id and no contact key. Segment on the tag; do not go looking for
+     it on the contact's Fields tab.
+
+     The -vh class hides the REAL radio inputs behind the styled score
+     buttons. It is NOT close-button plumbing: remove it and the whole 0 to 10
+     row unstyles.
+
+     Draws NO close control: the panel supplies it via Layout > Close Button.
+     ================================================================== -->
+<style>
+#mrd-ia-nps{font-family:Inter,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;
+  box-sizing:border-box;width:100%;background:#f7f5f0;border-radius:14px;
+  overflow:hidden;color:#12203a;}
+#mrd-ia-nps *{box-sizing:border-box;}
+#mrd-ia-nps .n-head{padding:24px 22px 14px;text-align:center;}
+#mrd-ia-nps .n-mark{width:44px;height:44px;margin:0 auto 12px;border-radius:13px;
+  background:#0a2540;color:#c8a44d;font-family:Georgia,"Times New Roman",serif;
+  font-size:19px;display:flex;align-items:center;justify-content:center;}
+#mrd-ia-nps .n-title{font-family:Georgia,"Times New Roman",serif;font-size:19px;
+  line-height:1.3;margin:0;font-weight:400;color:#0a2540;}
+#mrd-ia-nps .n-sub{font-size:12.5px;color:#5a6b7f;margin:7px 0 0;line-height:1.55;}
+#mrd-ia-nps .n-body{padding:4px 18px 22px;}
+#mrd-ia-nps .n-scale{display:flex;gap:3px;}
+
+/* Hides the real radios behind the styled score buttons. NOT close-button
+   plumbing: removing this unstyles the entire 0 to 10 row. */
+#mrd-ia-nps .n-vh{position:absolute;width:1px;height:1px;padding:0;margin:-1px;
+  overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0;}
+#mrd-ia-nps .n-score{flex:1;display:flex;align-items:center;justify-content:center;
+  height:36px;border:1.5px solid #e4e0d6;border-radius:8px;font-size:12px;
+  font-weight:600;color:#0a2540;cursor:pointer;background:#fff;
+  transition:all .16s ease;}
+#mrd-ia-nps .n-vh:checked + .n-score{border-color:#0a2540;background:#0a2540;
+  color:#c8a44d;transform:translateY(-2px);}
+#mrd-ia-nps .n-ends{display:flex;justify-content:space-between;margin-top:9px;
+  font-size:11px;color:#8494a6;}
+#mrd-ia-nps .n-submit{display:block;width:100%;margin-top:18px;border:0;cursor:pointer;
+  background:#0a2540;color:#fff;border-radius:8px;
+  font:700 14px Inter,-apple-system,sans-serif;padding:14px;}
+#mrd-ia-nps .n-small{font-size:10.5px;line-height:1.5;color:#a3adb9;margin:12px 0 0;
+  text-align:center;}
+</style>
+</head>
+<body>
+<div id="mrd-ia-nps">
+  <div class="n-head">
+    <div class="n-mark" aria-hidden="true">M</div>
+    <h2 class="n-title">How likely are you to recommend Meridian?</h2>
+    <p class="n-sub">One tap. It tells us more than a survey would.</p>
+  </div>
+  <div class="n-body">
+    <div class="n-scale">
+      <input class="n-vh" type="radio" id="mrd-np-0" name="mrd-nps" value="0"><label class="n-score" for="mrd-np-0">0</label>
+      <input class="n-vh" type="radio" id="mrd-np-1" name="mrd-nps" value="1"><label class="n-score" for="mrd-np-1">1</label>
+      <input class="n-vh" type="radio" id="mrd-np-2" name="mrd-nps" value="2"><label class="n-score" for="mrd-np-2">2</label>
+      <input class="n-vh" type="radio" id="mrd-np-3" name="mrd-nps" value="3"><label class="n-score" for="mrd-np-3">3</label>
+      <input class="n-vh" type="radio" id="mrd-np-4" name="mrd-nps" value="4"><label class="n-score" for="mrd-np-4">4</label>
+      <input class="n-vh" type="radio" id="mrd-np-5" name="mrd-nps" value="5"><label class="n-score" for="mrd-np-5">5</label>
+      <input class="n-vh" type="radio" id="mrd-np-6" name="mrd-nps" value="6"><label class="n-score" for="mrd-np-6">6</label>
+      <input class="n-vh" type="radio" id="mrd-np-7" name="mrd-nps" value="7"><label class="n-score" for="mrd-np-7">7</label>
+      <input class="n-vh" type="radio" id="mrd-np-8" name="mrd-nps" value="8"><label class="n-score" for="mrd-np-8">8</label>
+      <input class="n-vh" type="radio" id="mrd-np-9" name="mrd-nps" value="9"><label class="n-score" for="mrd-np-9">9</label>
+      <input class="n-vh" type="radio" id="mrd-np-10" name="mrd-nps" value="10"><label class="n-score" for="mrd-np-10">10</label>
+    </div>
+    <div class="n-ends"><span>Not likely</span><span>Very likely</span></div>
+
+    <button type="button" class="n-submit"
+      onclick="Dn.sendClick('test_inapp_nps__submit');Dn.setTags('tag:nps_score,value:'+(document.querySelector('#mrd-ia-nps input:checked')||{value:''}).value);Dn.close()">Send my score</button>
+
+    <p class="n-small">Meridian Bank is a fictional brand used for demonstration.</p>
+  </div>
+</div>
+</body>
+</html>

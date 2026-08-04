@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CantuPneus | Personalized sample 1, account panel</title>
+<!-- =====================================================================
+     CANTUPNEUS PERSONALIZED POPUP 1, "your account"
+
+     Paste this WHOLE file into the campaign's HTML editor. All CSS is scoped to
+     #cantu-p1, so nothing leaks onto the page.
+
+     Direct attribute output only. Every value is one token, no logic blocks and
+     no fallbacks, because both demo contacts already carry every attribute. The
+     panel does not evaluate tokens in Preview, so Preview shows them as text.
+     That is expected. They resolve when the campaign is live.
+
+     Attributes used, all on master_contact:
+       first_name, company_name, pricing_tier, discount_pct,
+       credit_terms_days, account_manager_name, account_manager_phone,
+       last_order_name, last_order_sku, last_order_date
+
+     Clicks: the CTA reports through Dn.sendClick(); the close control calls
+     Dn.close() and does not report, so a dismissal is not counted as a click.
+
+     Panel: Popup layout, width 560px, padding 0, transparent background.
+     Trigger: DATA_LAYER_EVENT, eventName = sign_up
+====================================================================== -->
+</head>
+<body>
+
+<div id="cantu-p1">
+  <style>
+    #cantu-p1 *{margin:0;padding:0;box-sizing:border-box;}
+    #cantu-p1{
+      --p1-purple:#4E018F; --p1-purple-dark:#35015F; --p1-yellow:#FFE958;
+      --p1-ink:#1A1030; --p1-ink-soft:#5C5573; --p1-line:#EDE9F5; --p1-cream:#FAF8FD;
+      font-family:Inter,-apple-system,'Segoe UI',Roboto,sans-serif;width:100%;
+      position:relative;
+    }
+    body > #cantu-p1{max-width:560px;margin:40px auto;}
+    #cantu-p1 .p1-vh{position:absolute;width:1px;height:1px;opacity:0;pointer-events:none;}
+    #cantu-p1 #p1-hide:checked ~ .p1-card{display:none;}
+
+    #cantu-p1 .p1-card{
+      width:100%;background:#fff;border-radius:18px;overflow:hidden;position:relative;
+      box-shadow:0 12px 34px rgba(26,16,48,.2);
+      animation:p1-in .38s cubic-bezier(.21,.9,.35,1.05);
+    }
+    @keyframes p1-in{from{opacity:0;transform:translateY(14px);}to{opacity:1;transform:none;}}
+
+    #cantu-p1 .p1-head{
+      background:linear-gradient(125deg,var(--p1-purple) 0%,var(--p1-purple-dark) 100%);
+      color:#fff;padding:26px 28px 22px;position:relative;
+    }
+    #cantu-p1 .p1-eyebrow{
+      font:700 10px Inter,sans-serif;letter-spacing:.16em;text-transform:uppercase;
+      color:var(--p1-yellow);margin-bottom:9px;
+    }
+    #cantu-p1 .p1-head h2{
+      font-family:'Barlow Condensed',Impact,sans-serif;font-weight:600;
+      font-size:32px;line-height:1.08;
+    }
+    #cantu-p1 .p1-firm{font-size:13px;opacity:.86;margin-top:5px;}
+    #cantu-p1 .p1-tier{
+      display:inline-block;margin-top:14px;background:var(--p1-yellow);
+      color:var(--p1-purple-dark);border-radius:999px;padding:6px 14px;
+      font:700 11px Inter,sans-serif;letter-spacing:.09em;text-transform:uppercase;
+    }
+    #cantu-p1 .p1-close{
+      position:absolute;top:14px;right:14px;width:30px;height:30px;border-radius:9px;
+      background:rgba(255,255,255,.16);color:#fff;font-size:15px;line-height:30px;
+      text-align:center;cursor:pointer;transition:background .2s;
+    }
+    #cantu-p1 .p1-close:hover{background:rgba(255,255,255,.32);}
+
+    #cantu-p1 .p1-body{padding:22px 28px 26px;}
+    #cantu-p1 .p1-rows{
+      border:1px solid var(--p1-line);border-radius:12px;overflow:hidden;margin-bottom:18px;
+    }
+    #cantu-p1 .p1-row{
+      display:flex;justify-content:space-between;align-items:baseline;gap:14px;
+      padding:12px 15px;background:var(--p1-cream);
+    }
+    #cantu-p1 .p1-row + .p1-row{border-top:1px solid var(--p1-line);}
+    #cantu-p1 .p1-k{font-size:11.5px;letter-spacing:.05em;text-transform:uppercase;color:var(--p1-ink-soft);}
+    #cantu-p1 .p1-v{font:600 14px Inter,sans-serif;color:var(--p1-ink);text-align:right;}
+    #cantu-p1 .p1-v b{color:var(--p1-purple);}
+
+    #cantu-p1 .p1-reorder{
+      border:1px solid var(--p1-line);border-left:3px solid var(--p1-purple);
+      border-radius:10px;padding:14px 15px;margin-bottom:18px;background:#fff;
+    }
+    #cantu-p1 .p1-rlabel{
+      font:700 10px Inter,sans-serif;letter-spacing:.14em;text-transform:uppercase;
+      color:var(--p1-purple);margin-bottom:6px;
+    }
+    #cantu-p1 .p1-rname{font:600 14.5px Inter,sans-serif;color:var(--p1-ink);}
+    #cantu-p1 .p1-rmeta{font-size:12px;color:var(--p1-ink-soft);margin-top:3px;}
+
+    #cantu-p1 .p1-am{
+      display:flex;align-items:center;gap:12px;padding:13px 15px;margin-bottom:18px;
+      background:var(--p1-cream);border-radius:12px;
+    }
+    #cantu-p1 .p1-amdot{
+      width:38px;height:38px;border-radius:50%;flex-shrink:0;
+      background:linear-gradient(140deg,var(--p1-purple),var(--p1-purple-dark));
+      color:#fff;font:700 15px Inter,sans-serif;
+      display:flex;align-items:center;justify-content:center;
+    }
+    #cantu-p1 .p1-amname{font:600 13.5px Inter,sans-serif;color:var(--p1-ink);display:block;}
+    #cantu-p1 .p1-amrole{font-size:11.5px;color:var(--p1-ink-soft);margin-top:2px;display:block;}
+
+    #cantu-p1 .p1-cta{
+      display:block;width:100%;background:var(--p1-purple);color:#fff;text-decoration:none;
+      font:700 13px Inter,sans-serif;letter-spacing:.09em;text-transform:uppercase;
+      padding:16px;border-radius:12px;text-align:center;transition:all .2s ease;
+    }
+    #cantu-p1 .p1-cta:hover{background:var(--p1-purple-dark);transform:translateY(-1px);
+      box-shadow:0 10px 22px rgba(78,1,143,.32);}
+    #cantu-p1 .p1-note{font-size:11px;color:var(--p1-ink-soft);text-align:center;margin-top:11px;}
+
+    @media (max-width:480px){
+      #cantu-p1 .p1-head{padding:22px 18px 18px;}
+      #cantu-p1 .p1-body{padding:18px 18px 22px;}
+      #cantu-p1 .p1-head h2{font-size:27px;}
+      #cantu-p1 .p1-v{font-size:13px;}
+    }
+  </style>
+
+  <input type="checkbox" id="p1-hide" class="p1-vh">
+  <div class="p1-card" role="dialog" aria-modal="true" aria-label="Your CantuPneus account">
+    <div class="p1-head">
+      <p class="p1-eyebrow">Your account</p>
+      <h2>Welcome back, {%=$Contact.first_name%}</h2>
+      <p class="p1-firm">{%=$Contact.company_name%}</p>
+      <span class="p1-tier">{%=$Contact.pricing_tier%} account &middot; {%=$Contact.discount_pct%}% off list</span>
+      <label class="p1-close" for="p1-hide" onclick="Dn.close()" role="button" aria-label="Close">&#10005;</label>
+    </div>
+
+    <div class="p1-body">
+      <div class="p1-rows">
+        <div class="p1-row">
+          <span class="p1-k">Your price</span>
+          <span class="p1-v"><b>{%=$Contact.discount_pct%}% off</b> every line</span>
+        </div>
+        <div class="p1-row">
+          <span class="p1-k">Payment terms</span>
+          <span class="p1-v">{%=$Contact.credit_terms_days%} days</span>
+        </div>
+        <div class="p1-row">
+          <span class="p1-k">Freight</span>
+          <span class="p1-v">Free above R$ 5,000</span>
+        </div>
+      </div>
+
+      <div class="p1-reorder">
+        <p class="p1-rlabel">Reorder in one click</p>
+        <p class="p1-rname">{%=$Contact.last_order_name%}</p>
+        <p class="p1-rmeta">{%=$Contact.last_order_sku%} &middot; last ordered {%=$Contact.last_order_date%}</p>
+      </div>
+
+      <div class="p1-am">
+        <span class="p1-amdot" aria-hidden="true">&#9679;</span>
+        <span>
+          <span class="p1-amname">{%=$Contact.account_manager_name%}</span>
+          <span class="p1-amrole">Your account manager &middot; {%=$Contact.account_manager_phone%}</span>
+        </span>
+      </div>
+
+      <a target="_top" class="p1-cta" onclick="Dn.sendClick('personalized-account__reorder')"
+         href="https://salil-dengage.github.io/dengage-demos/cantu-pneus/en/product.html?id={%=$Contact.last_order_sku%}">Reorder now</a>
+      <p class="p1-note">Prices and terms are the ones on your account.</p>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

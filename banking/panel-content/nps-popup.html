@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Meridian Bank | NPS (Dengage panel content)</title>
+<!-- =====================================================================
+     MERIDIAN BANK, On-Site content for the panel
+
+     Paste this WHOLE file into the scenario editor.
+
+     Trigger name: banking_nps-popup
+
+     All CSS is scoped under #mrd-nps-popup. Inline content is NOT sandboxed: the
+     SDK appends the style to document.head, so an unscoped selector would
+     restyle the whole site.
+
+     No <script>. The panel strips script blocks on save, so interactivity is
+     pure CSS plus inline onclick, which does survive publishing.
+
+     Every anchor carries target="_top". This content renders in a
+     cross-origin iframe, so a normal link would load the site inside the
+     popup rather than navigating the page.
+
+     The engine counts a click only when the content calls Dn.sendClick(),
+     exactly once per file. A close control calls Dn.close() and never
+     sendClick, so a dismissal is not counted as a conversion.
+
+     A 0 to 10 score row, which is what NPS actually measures. The real radio
+     inputs are hidden by the -vh class and the styled buttons are their
+     labels. That class is NOT close-button plumbing: removing it unstyles the
+     entire row.
+
+     Native capture via data-dn-form-id="question_form", auto-close OFF for the
+     same 0 ms timer reason as the survey.
+     ================================================================== -->
+<style>
+#mrd-nps-popup{font-family:Inter,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;
+  box-sizing:border-box;color:#12203a;text-align:left;}
+#mrd-nps-popup *{box-sizing:border-box;}
+#mrd-nps-popup .mrd-eyebrow{font-size:11px;letter-spacing:.14em;text-transform:uppercase;
+  color:#b8933c;font-weight:700;margin:0 0 8px;}
+#mrd-nps-popup .mrd-title{font-family:"Playfair Display",Georgia,serif;font-size:24px;
+  line-height:1.2;margin:0 0 10px;color:#0a2540;}
+#mrd-nps-popup .mrd-text{font-size:14px;line-height:1.55;color:#5a6b7f;margin:0 0 18px;}
+#mrd-nps-popup .mrd-cta{display:inline-block;background:#0a2540;color:#fff;text-decoration:none;
+  font-size:14px;font-weight:600;padding:12px 22px;border:0;border-radius:6px;cursor:pointer;}
+#mrd-nps-popup .mrd-cta:hover{background:#143a5e;}
+#mrd-nps-popup .mrd-small{font-size:11px;line-height:1.5;color:#8494a5;margin:14px 0 0;}
+#mrd-nps-popup{padding:28px 30px;background:#f7f5f0;width:100%;}
+#mrd-nps-popup .mrd-vh{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;}
+#mrd-nps-popup .mrd-scale{display:flex;gap:5px;margin:0 0 8px;flex-wrap:wrap;}
+#mrd-nps-popup .mrd-score{display:grid;place-items:center;width:38px;height:38px;border:1px solid #d5cec0;
+  border-radius:6px;font-size:13px;font-weight:600;cursor:pointer;background:#fff;transition:.15s;}
+#mrd-nps-popup .mrd-score:hover{border-color:#0a2540;}
+#mrd-nps-popup .mrd-vh:checked + .mrd-score{background:#0a2540;border-color:#0a2540;color:#fff;}
+#mrd-nps-popup .mrd-ends{display:flex;justify-content:space-between;font-size:11px;color:#8494a5;margin:0 0 20px;}
+#mrd-nps-popup .mrd-thanks{display:none;}
+#mrd-nps-popup .mrd-done:checked ~ .mrd-form{display:none;}
+#mrd-nps-popup .mrd-done:checked ~ .mrd-thanks{display:block;}
+
+</style>
+</head>
+<body>
+<div id="mrd-nps-popup" class="np-card" data-dn-form-id="question_form" data-dn-is-modal-auto-close-enabled="false">
+  <input class="mrd-vh mrd-done" type="checkbox" id="mrd-nps-done">
+  <div class="mrd-form form-block">
+    <p class="mrd-eyebrow">One question</p>
+    <h2 class="mrd-title">How likely are you to recommend Meridian?</h2>
+    <p class="mrd-text">Zero means not at all, ten means you already have.</p>
+    <div class="mrd-scale">
+      <input class="mrd-vh" type="radio" id="mrd-n0" name="nps" value="0"><label class="mrd-score" for="mrd-n0">0</label>
+      <input class="mrd-vh" type="radio" id="mrd-n1" name="nps" value="1"><label class="mrd-score" for="mrd-n1">1</label>
+      <input class="mrd-vh" type="radio" id="mrd-n2" name="nps" value="2"><label class="mrd-score" for="mrd-n2">2</label>
+      <input class="mrd-vh" type="radio" id="mrd-n3" name="nps" value="3"><label class="mrd-score" for="mrd-n3">3</label>
+      <input class="mrd-vh" type="radio" id="mrd-n4" name="nps" value="4"><label class="mrd-score" for="mrd-n4">4</label>
+      <input class="mrd-vh" type="radio" id="mrd-n5" name="nps" value="5"><label class="mrd-score" for="mrd-n5">5</label>
+      <input class="mrd-vh" type="radio" id="mrd-n6" name="nps" value="6"><label class="mrd-score" for="mrd-n6">6</label>
+      <input class="mrd-vh" type="radio" id="mrd-n7" name="nps" value="7"><label class="mrd-score" for="mrd-n7">7</label>
+      <input class="mrd-vh" type="radio" id="mrd-n8" name="nps" value="8"><label class="mrd-score" for="mrd-n8">8</label>
+      <input class="mrd-vh" type="radio" id="mrd-n9" name="nps" value="9"><label class="mrd-score" for="mrd-n9">9</label>
+      <input class="mrd-vh" type="radio" id="mrd-n10" name="nps" value="10"><label class="mrd-score" for="mrd-n10">10</label>
+    </div>
+    <div class="mrd-ends"><span>Not at all likely</span><span>Extremely likely</span></div>
+    <label class="mrd-cta" for="mrd-nps-done" onclick="Dn.sendClick('banking_nps-popup__submit')">Send my score</label>
+  </div>
+  <div class="mrd-thanks">
+    <p class="mrd-eyebrow">Thank you</p>
+    <h2 class="mrd-title">Noted, and read by a person</h2>
+    <p class="mrd-text">Scores below seven go to the service team with the page you were on, so the answer is a fix rather than a follow-up survey.</p>
+  </div>
+</div>
+</body>
+</html>

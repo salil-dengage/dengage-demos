@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NovaPay | Image Bar (Dengage panel content)</title>
+<!-- =====================================================================
+     NOVAPAY IMAGE BAR, On-Site content for the panel
+
+     THIS FILE KEEPS ITS OWN CLOSE BUTTON, like stickey-bar.html. Banner layout
+     is not offered the "Add close button to outside" setting, so without one
+     the bar cannot be dismissed. The two banners are the deliberate exception
+     to the no-close-button rule.
+
+     The close control calls Dn.close() and NEVER Dn.sendClick(), so a
+     dismissal is not counted as a conversion, with a pure-CSS :checked
+     fallback alongside it.
+
+     BANNER CSS: the engine's banner container is already position:fixed and
+     full width, so this is ordinary in-flow width:100%. Full-bleed CSS would
+     double-position and clip in the panel preview.
+
+     Panel settings:
+       - Scenario: triggerBy = DATA_LAYER_EVENT, eventName = fintech_image-bar
+       - Banner design: padding 0, transparent background
+====================================================================== -->
+</head>
+<body>
+
+<div id="npy-imgbar">
+  <style>
+    #npy-imgbar *{margin:0;padding:0;box-sizing:border-box;}
+    #npy-imgbar{
+      --nv-blue:#125cfa; --nv-blue-dark:#0a3a9e; --nv-ink:#0f1c33; --nv-yellow:#ffd25a;
+      font-family:Inter,-apple-system,'Segoe UI',Roboto,sans-serif;width:100%;
+    }
+
+    #npy-imgbar .ib-bar{
+      display:flex;align-items:center;gap:18px;width:100%;position:relative;
+      padding:0 54px 0 0;overflow:hidden;
+      background:linear-gradient(135deg,var(--nv-ink) 0%,#1b2a4a 100%);
+      color:#fff;animation:ib-in .3s ease-out;
+    }
+    @keyframes ib-in{from{opacity:0;transform:translateY(-100%);}to{opacity:1;transform:none;}}
+
+    #npy-imgbar .ib-photo{
+      display:block;width:150px;height:84px;object-fit:cover;flex-shrink:0;
+      background:#1b2a4a;
+    }
+    #npy-imgbar .ib-copy{flex:1;padding:12px 0;min-width:0;}
+    #npy-imgbar .ib-tag{
+      display:inline-block;background:var(--nv-yellow);color:var(--nv-ink);
+      border-radius:6px;font:700 9.5px Inter,sans-serif;letter-spacing:.11em;
+      text-transform:uppercase;padding:3px 8px;margin-bottom:6px;
+    }
+    #npy-imgbar h2{font-size:16px;font-weight:700;line-height:1.25;letter-spacing:-.3px;}
+    #npy-imgbar h2 em{font-style:normal;color:var(--nv-yellow);}
+    #npy-imgbar .ib-sub{font-size:12px;opacity:.82;margin-top:4px;line-height:1.45;}
+
+    #npy-imgbar .ib-cta{
+      flex-shrink:0;margin-right:8px;background:var(--nv-blue);color:#fff;text-decoration:none;
+      border-radius:9px;font:700 12px Inter,sans-serif;letter-spacing:.05em;
+      padding:11px 20px;transition:all .2s ease;white-space:nowrap;
+    }
+    #npy-imgbar .ib-cta:hover{background:#fff;color:var(--nv-blue);transform:translateY(-1px);}
+
+    /* Close control. Dn.close() only, never sendClick. */
+    #npy-imgbar .ib-x{
+      position:absolute;right:14px;top:50%;transform:translateY(-50%);
+      width:28px;height:28px;border:0;border-radius:8px;cursor:pointer;
+      background:rgba(255,255,255,.16);color:#fff;font-size:17px;line-height:1;
+      display:flex;align-items:center;justify-content:center;transition:background .2s ease;
+    }
+    #npy-imgbar .ib-x:hover{background:rgba(255,255,255,.3);}
+
+    /* Pure-CSS fallback, in case inline handlers are ever stripped on save. */
+    #npy-imgbar .ib-vh{
+      position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;
+      clip:rect(0 0 0 0);white-space:nowrap;border:0;
+    }
+    #npy-imgbar .ib-vh:checked ~ .ib-bar{display:none;}
+
+    @media (max-width:640px){
+      #npy-imgbar .ib-photo{display:none;}
+      #npy-imgbar .ib-bar{padding:12px 46px 12px 16px;flex-wrap:wrap;gap:10px;}
+      #npy-imgbar .ib-copy{padding:0;}
+      #npy-imgbar h2{font-size:14.5px;}
+      #npy-imgbar .ib-cta{padding:9px 15px;font-size:11.5px;margin-right:0;}
+    }
+  </style>
+
+  <input class="ib-vh" type="checkbox" id="npy-imgbar-dismiss">
+  <div class="ib-bar">
+    <img class="ib-photo" alt=""
+      src="https://salil-dengage.github.io/dengage-demos/fintech/images/scenes/scene-global.svg">
+    <div class="ib-copy">
+      <span class="ib-tag">Travel plan</span>
+      <h2>Spend abroad at the <em>real exchange rate</em></h2>
+      <p class="ib-sub">
+        30 currencies, no foreign transaction fee, travel disruption cover
+        included. $6.99 a month. Illustrative, not a financial promotion.
+      </p>
+    </div>
+    <a target="_top" class="ib-cta"
+       onclick="Dn.sendClick('fintech_image-bar__view-travel')"
+       href="https://salil-dengage.github.io/dengage-demos/fintech/app.html">See the Travel card</a>
+    <label class="ib-x" for="npy-imgbar-dismiss" role="button"
+           aria-label="Close this message" onclick="Dn.close()">&times;</label>
+  </div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NovaPay | In-App notification soft ask (Dengage mobile content)</title>
+<!-- =====================================================================
+     NOVAPAY ANDROID, In-App content for the panel
+
+     Trigger:  screen name  test_inapp_permission   (Dengage.setNavigation)
+     Format:   In-App, Modal
+     Spec:     fintech/panel-content/mobile/README.md
+
+     THE BRIDGE ON MOBILE IS NOT THE BRIDGE ON THE WEB. The SDK injects a
+     window.Dn object into the In-App WebView, and it is a different object
+     from the one the website's panel content uses. Navigation goes through
+     Dn.androidUrl('novapay://<screen>'), NOT an href with target="_top", and
+     capture is Dn.setTags. The web contract's Dn.postQuestion and
+     Dn.postSubscription do not exist here. Keep exactly this shape.
+
+     WHY A MODAL EARNS ITS KEEP HERE. Android 13 gives an app ONE attempt at
+     the notification permission, and a No is close to permanent: the second
+     ask never reaches a dialog. So the ask that matters is this one, which
+     costs nothing when it is declined, and Dn.promptPushPermission() raises
+     the real Android dialog only for the customers who already said yes here.
+
+     The "Not now" control calls Dn.close() and never sendClick, so a
+     dismissal is never counted as a conversion.
+
+     Draws no close control of its own beyond that: the panel supplies the
+     outside one via Layout > Close Button.
+     ================================================================== -->
+<style>
+#npy-ia-perm{font-family:Inter,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;
+  box-sizing:border-box;width:100%;background:#ffffff;border-radius:18px;
+  overflow:hidden;color:#0f1c33;}
+#npy-ia-perm *{box-sizing:border-box;}
+#npy-ia-perm .p-body{padding:26px 22px 22px;text-align:center;}
+#npy-ia-perm .p-mark{width:56px;height:56px;margin:0 auto 16px;border-radius:18px;
+  background:#e6edff;color:#125cfa;font-size:24px;font-weight:700;
+  display:flex;align-items:center;justify-content:center;}
+#npy-ia-perm .p-title{font-size:21px;line-height:1.3;font-weight:700;margin:0 0 10px;
+  letter-spacing:-.3px;}
+#npy-ia-perm .p-text{font-size:13.5px;line-height:1.6;color:#64748b;margin:0 0 16px;}
+#npy-ia-perm .p-list{list-style:none;margin:0 0 18px;padding:0;text-align:left;}
+#npy-ia-perm .p-list li{font-size:13px;line-height:1.5;color:#0f1c33;padding:10px 12px;
+  background:#f5f7fb;border:1px solid #e3e8f0;border-radius:10px;margin:0 0 7px;}
+#npy-ia-perm .p-cta{display:block;background:#125cfa;color:#fff;text-decoration:none;
+  font-size:14.5px;font-weight:700;padding:14px;border-radius:10px;}
+#npy-ia-perm .p-no{display:block;width:100%;margin-top:8px;border:0;background:none;
+  color:#64748b;font:600 13px Inter,-apple-system,sans-serif;padding:11px;cursor:pointer;}
+#npy-ia-perm .p-small{font-size:10.5px;line-height:1.5;color:#a3adb9;margin:8px 0 0;}
+</style>
+</head>
+<body>
+<div id="npy-ia-perm">
+  <div class="p-body">
+    <div class="p-mark">N</div>
+    <h2 class="p-title">Shall we tell you when money moves?</h2>
+    <p class="p-text">Three kinds of alert, and nothing else. You can change
+      this whenever you like.</p>
+    <ul class="p-list">
+      <li>A card payment you did not expect</li>
+      <li>A transfer that did not go through</li>
+      <li>Your pay arriving</li>
+    </ul>
+    <a class="p-cta" href="#" role="button"
+       onclick="Dn.sendClick('test_inapp_permission__allow');Dn.promptPushPermission();return false">Turn them on</a>
+    <button class="p-no" type="button" onclick="Dn.close()">Not now</button>
+    <p class="p-small">NovaPay is a fictional brand used for demonstration.</p>
+  </div>
+</div>
+</body>
+</html>

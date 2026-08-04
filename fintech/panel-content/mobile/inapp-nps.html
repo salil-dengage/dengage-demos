@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NovaPay | In-App NPS (Dengage mobile content)</title>
+<!-- =====================================================================
+     NOVAPAY ANDROID, In-App content for the panel
+
+     Trigger:  screen name  test_inapp_nps   (Dengage.setNavigation)
+     Format:   In-App, NPS (Net Promoter Score)
+     Spec:     fintech/panel-content/mobile/README.md
+
+     THE BRIDGE ON MOBILE IS NOT THE BRIDGE ON THE WEB. The SDK injects a
+     window.Dn object into the In-App WebView, and it is a different object
+     from the one the website's panel content uses. Navigation goes through
+     Dn.androidUrl('novapay://<screen>'), NOT an href with target="_top", and
+     capture is Dn.setTags. The web contract's Dn.postQuestion and
+     Dn.postSubscription do not exist here. Keep exactly this shape.
+
+     ELEVEN SCORES ON A HANDSET, so the row is flex with a 3px gap and each
+     score takes an equal share. Fixed widths overflow on a narrow phone and
+     the panel preview will not show you that.
+
+     THE -vh CLASS IS NOT CLOSE-BUTTON PLUMBING. It hides the real radios
+     behind the styled score buttons. Remove it and the entire 0 to 10 row
+     unstyles.
+
+     The score lands as a device tag, not a contact field. See
+     inapp-survey.html for the setTags argument shape, which is unforgiving.
+     ================================================================== -->
+<style>
+#npy-ia-nps{font-family:Inter,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;
+  box-sizing:border-box;width:100%;background:#ffffff;border-radius:18px;
+  overflow:hidden;color:#0f1c33;}
+#npy-ia-nps *{box-sizing:border-box;}
+#npy-ia-nps .n-head{padding:22px 18px 14px;text-align:center;}
+#npy-ia-nps .n-mark{width:46px;height:46px;margin:0 auto 12px;border-radius:14px;
+  background:#e6edff;color:#125cfa;font-size:20px;font-weight:700;
+  display:flex;align-items:center;justify-content:center;}
+#npy-ia-nps .n-title{font-size:19px;line-height:1.3;font-weight:700;margin:0;
+  letter-spacing:-.3px;}
+#npy-ia-nps .n-sub{font-size:12.5px;line-height:1.5;color:#64748b;margin:8px 0 0;}
+#npy-ia-nps .n-body{padding:4px 18px 22px;}
+#npy-ia-nps .n-scale{display:flex;gap:3px;}
+#npy-ia-nps .n-vh{position:absolute;width:1px;height:1px;padding:0;margin:-1px;
+  overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0;}
+#npy-ia-nps .n-score{flex:1;display:flex;align-items:center;justify-content:center;
+  height:36px;border:1.5px solid #e3e8f0;border-radius:8px;font-size:12px;
+  font-weight:600;color:#0f1c33;cursor:pointer;background:#fff;
+  transition:all .16s ease;}
+#npy-ia-nps .n-vh:checked + .n-score{border-color:#125cfa;background:#125cfa;
+  color:#fff;transform:translateY(-2px);}
+#npy-ia-nps .n-ends{display:flex;justify-content:space-between;margin-top:9px;
+  font-size:11px;color:#8b96a9;}
+#npy-ia-nps .n-submit{display:block;width:100%;margin-top:18px;border:0;cursor:pointer;
+  background:#125cfa;color:#fff;border-radius:10px;
+  font:700 14px Inter,-apple-system,sans-serif;padding:14px;}
+#npy-ia-nps .n-small{font-size:10.5px;line-height:1.5;color:#a3adb9;margin:12px 0 0;
+  text-align:center;}
+</style>
+</head>
+<body>
+<div id="npy-ia-nps">
+  <div class="n-head">
+    <div class="n-mark" aria-hidden="true">N</div>
+    <h2 class="n-title">How likely are you to recommend NovaPay?</h2>
+    <p class="n-sub">One tap. It tells us more than a survey would.</p>
+  </div>
+  <div class="n-body">
+    <div class="n-scale">
+      <input class="n-vh" type="radio" id="npy-np-0" name="npy-nps" value="0"><label class="n-score" for="npy-np-0">0</label>
+      <input class="n-vh" type="radio" id="npy-np-1" name="npy-nps" value="1"><label class="n-score" for="npy-np-1">1</label>
+      <input class="n-vh" type="radio" id="npy-np-2" name="npy-nps" value="2"><label class="n-score" for="npy-np-2">2</label>
+      <input class="n-vh" type="radio" id="npy-np-3" name="npy-nps" value="3"><label class="n-score" for="npy-np-3">3</label>
+      <input class="n-vh" type="radio" id="npy-np-4" name="npy-nps" value="4"><label class="n-score" for="npy-np-4">4</label>
+      <input class="n-vh" type="radio" id="npy-np-5" name="npy-nps" value="5"><label class="n-score" for="npy-np-5">5</label>
+      <input class="n-vh" type="radio" id="npy-np-6" name="npy-nps" value="6"><label class="n-score" for="npy-np-6">6</label>
+      <input class="n-vh" type="radio" id="npy-np-7" name="npy-nps" value="7"><label class="n-score" for="npy-np-7">7</label>
+      <input class="n-vh" type="radio" id="npy-np-8" name="npy-nps" value="8"><label class="n-score" for="npy-np-8">8</label>
+      <input class="n-vh" type="radio" id="npy-np-9" name="npy-nps" value="9"><label class="n-score" for="npy-np-9">9</label>
+      <input class="n-vh" type="radio" id="npy-np-10" name="npy-nps" value="10"><label class="n-score" for="npy-np-10">10</label>
+    </div>
+    <div class="n-ends"><span>Not likely</span><span>Very likely</span></div>
+
+    <button type="button" class="n-submit"
+      onclick="Dn.sendClick('test_inapp_nps__submit');Dn.setTags('tag:nps_score,value:'+(document.querySelector('#npy-ia-nps input:checked')||{value:''}).value);Dn.close()">Send my score</button>
+
+    <p class="n-small">NovaPay is a fictional brand used for demonstration.</p>
+  </div>
+</div>
+</body>
+</html>

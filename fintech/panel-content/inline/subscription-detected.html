@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NovaPay | Subscription detected (Dengage INLINE content)</title>
+<!-- =====================================================================
+     NOVAPAY, INLINE On-Site content for the account portal
+
+     Inline Target Selector:  #dn_inline_target_portal_subscriptions
+                              (moved off portal_money_top on 2 Aug 2026: it
+                              shared that target with travel-spender, and two
+                              campaigns aimed at one slot can only show one
+                              at a time, so each now has its own slot.)
+     Trigger:                 fintech_subscription_detected
+                              (DATA_LAYER_EVENT, pushed when the transaction
+                              feed holds a recurring payment)
+
+     Inline rules as salary-landed.html: scoped under #npy-inline-subs, no
+     Dn.sendClick, no target="_top", no script blocks.
+
+     THE TONE MATTERS HERE. A bank telling a customer about their own
+     subscriptions can read as either helpful or creepy. It stays on the right
+     side by offering control rather than judgement: no "you are wasting
+     money", just the facts and a way to act on them.
+     ================================================================== -->
+<style>
+#npy-inline-subs{
+  font-family:Inter,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;
+  background:#fff;border:1px solid #e3e8f0;border-left:3px solid #125cfa;
+  border-radius:12px;padding:1.05rem 1.2rem;margin:0 0 1rem;
+  color:#0f1c33;text-align:left;}
+#npy-inline-subs *{box-sizing:border-box;margin:0;}
+#npy-inline-subs .npy-b-title{font-size:.95rem;font-weight:700;letter-spacing:-.2px;}
+#npy-inline-subs .npy-b-body{font-size:.82rem;line-height:1.6;color:#64748b;margin-top:.3rem;}
+#npy-inline-subs .npy-b-list{list-style:none;margin:.85rem 0 0;padding:0;}
+#npy-inline-subs .npy-b-list li{
+  display:flex;justify-content:space-between;gap:1rem;
+  font-size:.8rem;padding:.5rem 0;border-bottom:1px solid #f1f4f9;}
+#npy-inline-subs .npy-b-list li:last-child{border-bottom:0;}
+#npy-inline-subs .npy-b-list span{color:#64748b;}
+#npy-inline-subs .npy-b-list strong{font-variant-numeric:tabular-nums;}
+#npy-inline-subs .npy-b-row{display:flex;gap:.5rem;flex-wrap:wrap;margin-top:.9rem;}
+#npy-inline-subs .npy-b-cta{
+  display:inline-block;background:#125cfa;color:#fff;text-decoration:none;
+  border-radius:9px;font-size:.78rem;font-weight:600;padding:.6rem 1rem;}
+#npy-inline-subs .npy-b-alt{
+  display:inline-block;color:#125cfa;text-decoration:none;
+  font-size:.78rem;font-weight:600;padding:.6rem .4rem;}
+#npy-inline-subs .npy-b-why{font-size:.66rem;color:#9aa5b5;margin-top:.7rem;}
+@media (max-width:480px){
+  #npy-inline-subs .npy-b-cta,#npy-inline-subs .npy-b-alt{width:100%;text-align:center;}
+}
+</style>
+</head>
+<body>
+
+<div id="npy-inline-subs">
+  <p class="npy-b-title">Recurring payments on this account</p>
+  <p class="npy-b-body">
+    We spotted payments that repeat every month. Freeze any of them from the
+    card they are billed to, without cancelling anything you still want.
+  </p>
+  <ul class="npy-b-list">
+    <li><span>Repeats monthly</span><strong>Same amount</strong></li>
+    <li><span>Billed to</span><strong>Your Plus card</strong></li>
+    <li><span>Next expected</span><strong>Same day next month</strong></li>
+  </ul>
+  <div class="npy-b-row">
+    <a class="npy-b-cta" href="app.html">Review recurring payments</a>
+    <a class="npy-b-alt" href="app.html">See all activity</a>
+  </div>
+  <p class="npy-b-why">
+    Shown because a repeating payment was detected in your activity. NovaPay is
+    a demonstration brand.
+  </p>
+</div>
+
+</body>
+</html>

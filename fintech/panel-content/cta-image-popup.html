@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NovaPay | CTA Image Popup (Dengage panel content)</title>
+<!-- =====================================================================
+     NOVAPAY CTA IMAGE POPUP, On-Site content for the panel
+
+     Paste this WHOLE file into the scenario editor. All CSS is scoped to
+     #npy-ctapop.
+
+     This is the acquisition scenario: the one aimed at a visitor who has read
+     the site and not opened an account. The CTA lands on the app, which is
+     where signup_started is recorded, so the campaign's click and the funnel's
+     first row line up.
+
+     Clicks: the CTA reports through Dn.sendClick(). The secondary link does
+     NOT, because it goes to the security page rather than converting, and
+     counting it would inflate CTR against the real goal.
+
+     Panel settings:
+       - Scenario: triggerBy = DATA_LAYER_EVENT,
+                   eventName = fintech_cta-image-popup
+       - Popup design: width 460 to 520px, padding 0, transparent background
+       - Layout > Close Button > "Add close button to outside" ON
+====================================================================== -->
+</head>
+<body>
+
+<div id="npy-ctapop">
+  <style>
+    #npy-ctapop *{margin:0;padding:0;box-sizing:border-box;}
+    #npy-ctapop{
+      --nv-blue:#125cfa; --nv-blue-dark:#0a3a9e; --nv-ink:#0f1c33;
+      --nv-muted:#64748b; --nv-line:#e3e8f0; --nv-yellow:#ffd25a;
+      font-family:Inter,-apple-system,'Segoe UI',Roboto,sans-serif;width:100%;
+    }
+    body > #npy-ctapop{max-width:500px;margin:40px auto;}
+
+    #npy-ctapop .cp-card{
+      background:#fff;border-radius:18px;overflow:hidden;
+      box-shadow:0 10px 34px rgba(15,28,51,.18);
+      animation:cp-in .35s cubic-bezier(.21,.9,.35,1.1);
+    }
+    @keyframes cp-in{from{opacity:0;transform:translateY(14px) scale(.98);}to{opacity:1;transform:none;}}
+
+    #npy-ctapop .cp-visual{
+      position:relative;height:190px;overflow:hidden;
+      background:linear-gradient(135deg,var(--nv-blue) 0%,var(--nv-blue-dark) 100%);
+    }
+    #npy-ctapop .cp-photo{
+      display:block;width:100%;height:100%;object-fit:cover;opacity:.9;
+    }
+    #npy-ctapop .cp-badge{
+      position:absolute;left:24px;top:20px;background:var(--nv-yellow);color:var(--nv-ink);
+      border-radius:7px;font:700 10px Inter,sans-serif;letter-spacing:.12em;
+      text-transform:uppercase;padding:6px 10px;
+    }
+
+    #npy-ctapop .cp-body{padding:24px 28px 26px;text-align:center;}
+    #npy-ctapop h2{
+      font-size:24px;font-weight:700;color:var(--nv-ink);line-height:1.2;
+      letter-spacing:-.5px;margin-bottom:9px;
+    }
+    #npy-ctapop h2 em{font-style:normal;color:var(--nv-blue);}
+    #npy-ctapop .cp-sub{font-size:13px;color:var(--nv-muted);line-height:1.6;margin-bottom:18px;}
+
+    #npy-ctapop .cp-stats{
+      display:flex;justify-content:center;gap:0;margin-bottom:20px;
+      border-top:1px solid var(--nv-line);border-bottom:1px solid var(--nv-line);
+    }
+    #npy-ctapop .cp-stat{flex:1;padding:14px 8px;}
+    #npy-ctapop .cp-stat + .cp-stat{border-left:1px solid var(--nv-line);}
+    #npy-ctapop .cp-stat strong{
+      display:block;font-size:17px;font-weight:700;color:var(--nv-ink);letter-spacing:-.3px;
+    }
+    #npy-ctapop .cp-stat span{
+      display:block;font-size:10.5px;color:var(--nv-muted);margin-top:3px;line-height:1.4;
+    }
+
+    #npy-ctapop .cp-cta{
+      display:block;width:100%;background:var(--nv-blue);color:#fff;text-decoration:none;
+      border-radius:11px;font:700 13px Inter,sans-serif;letter-spacing:.05em;
+      padding:15px;transition:all .2s ease;
+    }
+    #npy-ctapop .cp-cta:hover{background:var(--nv-blue-dark);transform:translateY(-1px);}
+    #npy-ctapop .cp-second{
+      display:inline-block;margin-top:14px;font-size:12px;font-weight:600;
+      color:var(--nv-muted);text-decoration:none;border-bottom:1px solid var(--nv-line);
+      padding-bottom:2px;transition:color .2s ease;
+    }
+    #npy-ctapop .cp-second:hover{color:var(--nv-blue);}
+    #npy-ctapop .cp-fine{margin-top:16px;font-size:10.5px;line-height:1.55;color:var(--nv-muted);}
+
+    @media (max-width:420px){
+      #npy-ctapop .cp-visual{height:160px;}
+      #npy-ctapop .cp-body{padding:20px 20px 22px;}
+      #npy-ctapop h2{font-size:21px;}
+      #npy-ctapop .cp-stat strong{font-size:15px;}
+    }
+  </style>
+
+  <div class="cp-card">
+    <div class="cp-visual">
+      <img class="cp-photo" alt="The NovaPay app showing a balance and spending breakdown"
+        src="https://salil-dengage.github.io/dengage-demos/fintech/images/scenes/hero-app.svg">
+      <span class="cp-badge">Three minutes</span>
+    </div>
+
+    <div class="cp-body">
+      <h2>Open an account <em>before your coffee goes cold</em></h2>
+      <p class="cp-sub">
+        No branch, no paperwork, no waiting for a card to arrive before you can
+        spend. Your virtual card works the moment you are verified.
+      </p>
+
+      <div class="cp-stats">
+        <div class="cp-stat">
+          <strong>3 min</strong>
+          <span>to open</span>
+        </div>
+        <div class="cp-stat">
+          <strong>4.85%</strong>
+          <span>AER on your balance</span>
+        </div>
+        <div class="cp-stat">
+          <strong>$0</strong>
+          <span>a month to start</span>
+        </div>
+      </div>
+
+      <a target="_top" class="cp-cta"
+         onclick="Dn.sendClick('fintech_cta-image-popup__open-account')"
+         href="https://salil-dengage.github.io/dengage-demos/fintech/app.html">Open my account</a>
+
+      <a target="_top" class="cp-second"
+         href="https://salil-dengage.github.io/dengage-demos/fintech/index.html#craftsmanship">How we keep money safe</a>
+
+      <p class="cp-fine">
+        NovaPay is a demonstration brand built to show the Dengage platform.
+        Every figure is illustrative and is not a financial promotion.
+      </p>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

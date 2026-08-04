@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Meridian Bank | Overdraft habit (Dengage portal content)</title>
+<!-- =====================================================================
+     MERIDIAN ONLINE BANKING, On-Site content for the panel
+
+     Trigger:  DATA_LAYER_EVENT, eventName = banking_portal_overdraft_habit
+     Format:   Inline
+     Spec:     banking/docs/PORTAL-SCENARIOS.md
+
+     INLINE CONTENT. The rules are the OPPOSITE of a popup in three places:
+
+       NOT SANDBOXED   there is no iframe. The SDK appends this <style> to
+                       document.head, so an unscoped selector restyles the
+                       customer's whole banking session. Every rule below is
+                       under #mrd-overdraft-habit.
+       NO sendClick    the SDK attaches its own listener to every a[href] it
+                       injects, so an anchor is already counted. Calling
+                       Dn.sendClick here would double-count it.
+       NO target=_top  there is no frame to break out of.
+
+     No <script>: the panel strips script blocks on save.
+     ================================================================== -->
+<style>
+#mrd-overdraft-habit{font-family:Inter,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;
+  box-sizing:border-box;color:#12203a;text-align:left;}
+#mrd-overdraft-habit *{box-sizing:border-box;}
+#mrd-overdraft-habit .m-eyebrow{font-size:10px;letter-spacing:.14em;text-transform:uppercase;
+  color:#b8933c;font-weight:700;margin:0 0 6px;}
+#mrd-overdraft-habit .m-title{font-weight:600;font-size:15px;line-height:1.35;margin:0 0 6px;color:#0a2540;}
+#mrd-overdraft-habit .m-body{font-size:13px;line-height:1.55;color:#5a6b7f;margin:0 0 10px;}
+#mrd-overdraft-habit .m-small{font-size:11px;line-height:1.5;color:#94a3b8;margin:10px 0 0;}
+#mrd-overdraft-habit{background:#fff;border:1px solid #dde3ea;border-left:3px solid #b8933c;
+  border-radius:10px;padding:1.1rem 1.2rem;}
+#mrd-overdraft-habit .m-cta{font-size:13px;font-weight:600;color:#0a2540;text-decoration:none;}
+#mrd-overdraft-habit .m-cta:hover{text-decoration:underline;}
+
+</style>
+</head>
+<body>
+<div id="mrd-overdraft-habit">
+  <p class="m-eyebrow">Worth a look</p>
+  <p class="m-title">You have used your overdraft three months running</p>
+  <p class="m-body">An arranged overdraft is 39.9% EAR. A personal loan is 6.9% APR representative. On the balance you have been carrying, moving it would cost roughly &pound;27 a month less.</p>
+  <a class="m-cta" href="https://salil-dengage.github.io/dengage-demos/banking/product.html?id=MRD-LON-PERSONAL">See your rate, no credit check</a>
+  <p class="m-small">6.9% APR representative on &pound;7,500 to &pound;25,000. The rate you are offered depends on your circumstances.</p>
+</div>
+</body>
+</html>

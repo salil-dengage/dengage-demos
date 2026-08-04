@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NovaPay | Finish opening your account (Dengage POPUP content)</title>
+<!-- =====================================================================
+     NOVAPAY, portal scenario 1: KYC incomplete
+
+     Trigger:  fintech_kyc_incomplete   (On-Site Targeting, DATA_LAYER_EVENT)
+     Fires on: app.html, when kyc_status is not approved
+     Backed by: fintech_onboarding_events
+
+     WHY THIS IS THE HIGHEST VALUE TRIGGER ON THE SITE. An account that was
+     opened but never verified earns nothing and costs the acquisition spend
+     anyway. It is also the one message a customer is not annoyed to receive,
+     because it unblocks them.
+
+     THE POPUP CONTRACT, all of which is the OPPOSITE of the inline path:
+       Rendered in a cross-origin iframe, so every anchor needs target="_top"
+       or the site loads inside the popup box.
+       Nothing is counted unless the content says so: exactly one
+       Dn.sendClick(), on the CTA.
+       No script blocks: the panel strips script blocks on save, so interactivity
+       is pure CSS.
+       NO close control here. The panel supplies one via
+       Layout > Close Button > "Add close button to outside". A second one
+       drawn inside the card reads as a duplicate.
+
+     Panel settings: Popup, width 560, padding 0, transparent background.
+     ================================================================== -->
+<style>
+#npy-kyc *{margin:0;padding:0;box-sizing:border-box;}
+#npy-kyc{
+  --k-blue:#125cfa; --k-dark:#0a3a9e; --k-ink:#0f1c33; --k-soft:#64748b;
+  --k-line:#e3e8f0; --k-warn:#b8801f; --k-warn-bg:#fdf6e7;
+  font-family:Inter,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;
+  width:100%;display:block;color:var(--k-ink);
+}
+body > #npy-kyc{max-width:560px;margin:40px auto;}
+
+#npy-kyc .ky-card{
+  width:100%;background:#fff;border-radius:18px;overflow:hidden;
+  box-shadow:0 10px 30px rgba(15,28,51,.18);
+}
+#npy-kyc .ky-head{
+  background:linear-gradient(125deg,var(--k-blue) 0%,var(--k-dark) 100%);
+  color:#fff;padding:26px 28px 22px;
+}
+#npy-kyc .ky-flag{
+  display:inline-block;font-size:10.5px;font-weight:700;letter-spacing:.12em;
+  text-transform:uppercase;background:rgba(255,255,255,.18);
+  padding:5px 10px;border-radius:20px;margin-bottom:12px;
+}
+#npy-kyc .ky-head h2{font-size:24px;font-weight:700;line-height:1.2;letter-spacing:-.4px;}
+#npy-kyc .ky-head p{font-size:13px;opacity:.9;margin-top:8px;line-height:1.55;}
+
+#npy-kyc .ky-body{padding:22px 28px 26px;}
+
+/* Progress: three steps, two done. Pure markup, no script. */
+#npy-kyc .ky-steps{list-style:none;margin-bottom:18px;}
+#npy-kyc .ky-steps li{
+  display:flex;align-items:center;gap:11px;font-size:13.5px;
+  padding:7px 0;color:var(--k-soft);
+}
+#npy-kyc .ky-dot{
+  width:20px;height:20px;flex:none;border-radius:50%;position:relative;
+  background:#e8f0ff;
+}
+#npy-kyc .ky-steps .done .ky-dot{background:var(--k-blue);}
+#npy-kyc .ky-steps .done .ky-dot::after{
+  content:"";position:absolute;left:6px;top:7px;width:6px;height:3px;
+  border-left:2px solid #fff;border-bottom:2px solid #fff;transform:rotate(-45deg);
+}
+#npy-kyc .ky-steps .todo .ky-dot{background:var(--k-warn-bg);border:1.5px solid #eccf90;}
+#npy-kyc .ky-steps .done{color:var(--k-ink);}
+#npy-kyc .ky-steps .todo{color:var(--k-ink);font-weight:600;}
+
+#npy-kyc .ky-note{
+  background:var(--k-warn-bg);border-radius:10px;padding:12px 14px;
+  font-size:12.5px;color:var(--k-warn);line-height:1.55;margin-bottom:18px;
+}
+#npy-kyc .ky-cta{
+  display:block;width:100%;text-align:center;text-decoration:none;
+  background:var(--k-blue);color:#fff;font-size:13.5px;font-weight:700;
+  padding:14px;border-radius:11px;letter-spacing:.03em;
+}
+#npy-kyc .ky-legal{
+  font-size:10.5px;color:#9aa5b5;margin-top:14px;line-height:1.5;text-align:center;
+}
+@media (max-width:480px){
+  #npy-kyc .ky-head h2{font-size:20px;}
+  #npy-kyc .ky-head,#npy-kyc .ky-body{padding-left:20px;padding-right:20px;}
+}
+</style>
+</head>
+<body>
+
+<div id="npy-kyc">
+  <div class="ky-card">
+
+    <div class="ky-head">
+      <span class="ky-flag">Almost there</span>
+      <h2>Two minutes to finish opening your account</h2>
+      <p>Your details are saved. We just need one document before you can move money.</p>
+    </div>
+
+    <div class="ky-body">
+      <ul class="ky-steps">
+        <li class="done"><span class="ky-dot" aria-hidden="true"></span>Your details</li>
+        <li class="done"><span class="ky-dot" aria-hidden="true"></span>Your address</li>
+        <li class="todo"><span class="ky-dot" aria-hidden="true"></span>Photo ID, the last step</li>
+      </ul>
+
+      <p class="ky-note">
+        Until this is done your account can receive money but cannot send it.
+        Verification is usually instant.
+      </p>
+
+      <a class="ky-cta" href="https://salil-dengage.github.io/dengage-demos/fintech/app.html" target="_top"
+         onclick="Dn.sendClick('fintech_kyc-incomplete__finish')">Finish verification</a>
+
+      <p class="ky-legal">
+        NovaPay is a fictional brand used for demonstration. No account is opened
+        and no document is collected.
+      </p>
+    </div>
+
+  </div>
+</div>
+
+</body>
+</html>

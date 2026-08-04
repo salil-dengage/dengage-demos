@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NovaPay | In-App modal (Dengage mobile content)</title>
+<!-- =====================================================================
+     NOVAPAY ANDROID, In-App content for the panel
+
+     Trigger:  screen name  test_inapp_modal   (Dengage.setNavigation)
+     Format:   In-App, Modal, image and text
+     Spec:     fintech/panel-content/mobile/README.md
+
+     THE BRIDGE ON MOBILE IS NOT THE BRIDGE ON THE WEB. The SDK injects a
+     window.Dn object into the In-App WebView, and it is a different object
+     from the one the website's panel content uses. Navigation goes through
+     Dn.androidUrl('novapay://<screen>'), NOT an href with target="_top", and
+     capture is Dn.setTags. The web contract's Dn.postQuestion and
+     Dn.postSubscription do not exist here. Keep exactly this shape.
+
+     MODAL. Draws NO close control: the panel supplies it via
+     Layout > Close Button > "Add close button to outside".
+
+     The card is width:100% and the modal container sizes it, so no fixed
+     width here. A fixed width renders clipped on a narrow handset and the
+     panel preview will not show you that.
+
+     THE FIGURES ARE THE ONES THE APP CAN SEE. Subscription totals come off
+     the transaction list the customer is already looking at, so they are
+     illustrative demo data rather than an invented projection. Nothing here
+     claims a saving that has not happened yet.
+     ================================================================== -->
+<style>
+#npy-ia-modal{font-family:Inter,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;
+  box-sizing:border-box;width:100%;background:#ffffff;border-radius:18px;
+  overflow:hidden;color:#0f1c33;text-align:left;}
+#npy-ia-modal *{box-sizing:border-box;}
+#npy-ia-modal .m-head{background:#0f1c33;padding:20px 22px 18px;color:#f5f7fb;}
+#npy-ia-modal .m-eyebrow{font-size:10px;letter-spacing:.15em;text-transform:uppercase;
+  color:#34d399;font-weight:700;margin:0 0 8px;}
+#npy-ia-modal .m-title{font-size:21px;line-height:1.28;margin:0;font-weight:700;
+  letter-spacing:-.3px;}
+#npy-ia-modal .m-body{padding:18px 22px 22px;}
+#npy-ia-modal .m-text{font-size:14px;line-height:1.6;color:#64748b;margin:0 0 16px;}
+#npy-ia-modal .m-row{display:flex;align-items:center;gap:12px;padding:12px 14px;
+  background:#f5f7fb;border:1px solid #e3e8f0;border-radius:12px;margin:0 0 8px;}
+#npy-ia-modal .m-dot{width:36px;height:36px;flex:0 0 36px;border-radius:10px;
+  background:#e6edff;color:#125cfa;font-size:13px;font-weight:700;
+  display:flex;align-items:center;justify-content:center;}
+#npy-ia-modal .m-rowtitle{font-size:13.5px;font-weight:600;color:#0f1c33;margin:0 0 2px;}
+#npy-ia-modal .m-rowsub{font-size:12px;color:#8b96a9;margin:0;}
+#npy-ia-modal .m-amount{margin-left:auto;font-size:13.5px;font-weight:700;color:#0f1c33;}
+#npy-ia-modal .m-cta{display:block;background:#125cfa;color:#fff;text-decoration:none;
+  font-size:14.5px;font-weight:700;padding:14px;border-radius:10px;text-align:center;
+  margin-top:16px;}
+#npy-ia-modal .m-small{font-size:10.5px;line-height:1.5;color:#a3adb9;margin:14px 0 0;text-align:center;}
+</style>
+</head>
+<body>
+<div id="npy-ia-modal">
+  <div class="m-head">
+    <p class="m-eyebrow">Subscriptions</p>
+    <h2 class="m-title">Three subscriptions renewed and none were opened</h2>
+  </div>
+  <div class="m-body">
+    <p class="m-text">They renewed again this month. Cancelling takes one tap
+      each, and nothing else changes.</p>
+
+    <div class="m-row">
+      <div class="m-dot">ST</div>
+      <div>
+        <p class="m-rowtitle">Streamline TV</p>
+        <p class="m-rowsub">Renewed on the 3rd</p>
+      </div>
+      <span class="m-amount">15.99</span>
+    </div>
+    <div class="m-row">
+      <div class="m-dot">FT</div>
+      <div>
+        <p class="m-rowtitle">FitTrack Pro</p>
+        <p class="m-rowsub">Renewed on the 7th</p>
+      </div>
+      <span class="m-amount">9.99</span>
+    </div>
+    <div class="m-row">
+      <div class="m-dot">CB</div>
+      <div>
+        <p class="m-rowtitle">Cloudbox 2TB</p>
+        <p class="m-rowsub">Renewed on the 12th</p>
+      </div>
+      <span class="m-amount">11.99</span>
+    </div>
+
+    <a class="m-cta" href="#" role="button"
+       onclick="Dn.sendClick('test_inapp_modal__review');Dn.androidUrl('novapay://money');return false">Review them</a>
+
+    <p class="m-small">NovaPay is a fictional brand used for demonstration.
+      Figures are illustrative and are not a financial promotion.</p>
+  </div>
+</div>
+</body>
+</html>

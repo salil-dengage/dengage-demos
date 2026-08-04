@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Meridian Bank | Dashboard offer (Dengage INLINE content)</title>
+<!-- =====================================================================
+     MERIDIAN, INLINE On-Site content for the online banking dashboard
+
+     Inline Target Selector:  #dn_inline_target_dashboard_offer
+     Suggested trigger:       banking_dashboard_offer
+
+     INLINE CONTENT PLAYS BY DIFFERENT RULES FROM A POPUP. Read this before
+     editing, because the two contracts are opposites in three places.
+
+     1. NOT SANDBOXED. There is no iframe. The SDK appends this <style> to
+        document.head and clones the markup into the target, so an unscoped
+        selector restyles the customer's whole banking session. Every rule
+        below is under #mrd-inline-consolidation. Nothing is bare.
+
+     2. NO Dn.sendClick(). On the inline path the SDK attaches its own
+        listener to every a[href] it injects, so an anchor is already counted.
+        Calling sendClick here would double-count the click. This is the exact
+        reverse of the popup files, which must call it exactly once.
+
+     3. NO target="_top" NEEDED, because there is no frame to break out of.
+        Harmless if present, but it is not the popup contract.
+
+     No <script>: the panel strips script blocks on save.
+
+     WHY THIS OFFER, HERE. It lands as a fourth card in the offer rail, beside
+     three cards driven by real behaviour. The customer is already looking
+     there. The trigger worth binding it to is a customer with repeated
+     overdraft use, which is banking_account_events event_type
+     overdraft_entered.
+     ================================================================== -->
+<style>
+#mrd-inline-consolidation{
+  font-family:Inter,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;
+  background:#fff;border:1px solid #dde3ea;border-left:3px solid #b8933c;
+  border-radius:10px;padding:1.2rem 1.3rem;color:#12203a;text-align:left;}
+#mrd-inline-consolidation *{box-sizing:border-box;}
+#mrd-inline-consolidation .mrd-i-title{font-weight:600;margin:0 0 .4rem;color:#0a2540;font-size:.95rem;}
+#mrd-inline-consolidation .mrd-i-body{font-size:.85rem;line-height:1.55;color:#5a6b7f;margin:0 0 .7rem;}
+#mrd-inline-consolidation .mrd-i-why{font-size:.7rem;color:#94a3b8;margin:0 0 .9rem;}
+#mrd-inline-consolidation .mrd-i-cta{font-size:.85rem;font-weight:600;color:#0a2540;text-decoration:none;}
+#mrd-inline-consolidation .mrd-i-cta:hover{text-decoration:underline;}
+#mrd-inline-consolidation .mrd-i-small{font-size:.7rem;line-height:1.5;color:#94a3b8;margin:.8rem 0 0;}
+</style>
+</head>
+<body>
+<div id="mrd-inline-consolidation">
+  <p class="mrd-i-title">You have used your overdraft three months running</p>
+  <p class="mrd-i-body">A personal loan at 6.9% APR representative costs a great deal less than 39.9% EAR on an arranged overdraft. Moving the balance would save you roughly £27 a month on this pattern.</p>
+  <p class="mrd-i-why">Delivered by Dengage to customers with repeated overdraft use</p>
+  <a class="mrd-i-cta" href="product.html?id=MRD-LON-PERSONAL">See your rate without a credit check</a>
+  <p class="mrd-i-small">6.9% APR representative on £7,500 to £25,000. The rate you are offered depends on your circumstances. Illustrative figures on a demo site.</p>
+</div>
+</body>
+</html>

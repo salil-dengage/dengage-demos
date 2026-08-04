@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Meridian Bank | Image bar (Dengage panel content)</title>
+<!-- =====================================================================
+     MERIDIAN BANK, On-Site content for the panel
+
+     Paste this WHOLE file into the scenario editor.
+
+     Trigger name: banking_image-bar
+
+     All CSS is scoped under #mrd-image-bar. Inline content is NOT sandboxed: the
+     SDK appends the style to document.head, so an unscoped selector would
+     restyle the whole site.
+
+     No <script>. The panel strips script blocks on save, so interactivity is
+     pure CSS plus inline onclick, which does survive publishing.
+
+     Every anchor carries target="_top". This content renders in a
+     cross-origin iframe, so a normal link would load the site inside the
+     popup rather than navigating the page.
+
+     The engine counts a click only when the content calls Dn.sendClick(),
+     exactly once per file. A close control calls Dn.close() and never
+     sendClick, so a dismissal is not counted as a conversion.
+
+     BANNER, so it draws its OWN close control, same reason as stickey-bar.
+
+     No external image host. The mark is inline SVG, so this cannot 404 in
+     front of a prospect and does not depend on a third-party CDN.
+     ================================================================== -->
+<style>
+#mrd-image-bar{font-family:Inter,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;
+  box-sizing:border-box;color:#12203a;text-align:left;}
+#mrd-image-bar *{box-sizing:border-box;}
+#mrd-image-bar .mrd-eyebrow{font-size:11px;letter-spacing:.14em;text-transform:uppercase;
+  color:#b8933c;font-weight:700;margin:0 0 8px;}
+#mrd-image-bar .mrd-title{font-family:"Playfair Display",Georgia,serif;font-size:24px;
+  line-height:1.2;margin:0 0 10px;color:#0a2540;}
+#mrd-image-bar .mrd-text{font-size:14px;line-height:1.55;color:#5a6b7f;margin:0 0 18px;}
+#mrd-image-bar .mrd-cta{display:inline-block;background:#0a2540;color:#fff;text-decoration:none;
+  font-size:14px;font-weight:600;padding:12px 22px;border:0;border-radius:6px;cursor:pointer;}
+#mrd-image-bar .mrd-cta:hover{background:#143a5e;}
+#mrd-image-bar .mrd-small{font-size:11px;line-height:1.5;color:#8494a5;margin:14px 0 0;}
+#mrd-image-bar{display:flex;align-items:center;gap:16px;width:100%;
+  padding:12px 18px;background:#f7f5f0;border-bottom:2px solid #b8933c;}
+#mrd-image-bar .mrd-mark{flex:none;width:38px;height:38px;display:grid;place-items:center;
+  background:#0a2540;border-radius:8px;}
+#mrd-image-bar .mrd-mark svg{width:22px;height:22px;fill:#b8933c;}
+#mrd-image-bar .mrd-grow{flex:1;min-width:0;}
+#mrd-image-bar .mrd-title{font-size:16px;margin:0;}
+#mrd-image-bar .mrd-text{font-size:13px;margin:2px 0 0;}
+#mrd-image-bar .mrd-cta{white-space:nowrap;padding:10px 18px;}
+#mrd-image-bar .mrd-close{background:none;border:0;color:#5a6b7f;opacity:.6;font-size:20px;
+  line-height:1;cursor:pointer;padding:0 4px;}
+#mrd-image-bar .mrd-close:hover{opacity:1;}
+
+</style>
+</head>
+<body>
+<div id="mrd-image-bar" class="ib-bar">
+  <span class="mrd-mark"><svg viewBox="0 0 64 64" aria-hidden="true"><path d="M32 12 L54 29 H46 V50 H18 V29 H10 Z"/></svg></span>
+  <div class="mrd-grow">
+    <p class="mrd-title">Find out what you could borrow</p>
+    <p class="mrd-text">Two minutes, no credit check, and no mark on your file.</p>
+  </div>
+  <a class="mrd-cta" href="https://salil-dengage.github.io/dengage-demos/banking/calculators.html#affordability" target="_top" onclick="Dn.sendClick('banking_image-bar__affordability')">Work it out</a>
+  <button class="mrd-close" type="button" aria-label="Close" onclick="Dn.close()">&times;</button>
+</div>
+</body>
+</html>

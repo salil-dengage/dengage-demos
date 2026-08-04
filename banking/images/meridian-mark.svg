@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64" role="img" aria-label="Meridian Bank">
+ <defs><linearGradient id="mrm" x1="0" y1="0" x2="1" y2="1">
+  <stop offset="0" stop-color="#14406B"/><stop offset="1" stop-color="#061726"/></linearGradient></defs>
+ <rect width="64" height="64" rx="16" fill="url(#mrm)"/>
+ <path d="M32 13 L52 28 H45 V49 H19 V28 H12 Z" fill="#fff"/>
+ <rect x="27" y="34" width="10" height="15" rx="2" fill="#C8A44D"/>
+</svg>

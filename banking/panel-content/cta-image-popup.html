@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Meridian Bank | CTA image popup (Dengage panel content)</title>
+<!-- =====================================================================
+     MERIDIAN BANK, On-Site content for the panel
+
+     Paste this WHOLE file into the scenario editor.
+
+     Trigger name: banking_cta-image-popup
+
+     All CSS is scoped under #mrd-cta-image-popup. Inline content is NOT sandboxed: the
+     SDK appends the style to document.head, so an unscoped selector would
+     restyle the whole site.
+
+     No <script>. The panel strips script blocks on save, so interactivity is
+     pure CSS plus inline onclick, which does survive publishing.
+
+     Every anchor carries target="_top". This content renders in a
+     cross-origin iframe, so a normal link would load the site inside the
+     popup rather than navigating the page.
+
+     The engine counts a click only when the content calls Dn.sendClick(),
+     exactly once per file. A close control calls Dn.close() and never
+     sendClick, so a dismissal is not counted as a conversion.
+
+     POPUP, so NO close control here. The panel supplies it.
+
+     The card art is inline SVG rather than a hosted image, so nothing here
+     can fail to load mid-demo.
+     ================================================================== -->
+<style>
+#mrd-cta-image-popup{font-family:Inter,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;
+  box-sizing:border-box;color:#12203a;text-align:left;}
+#mrd-cta-image-popup *{box-sizing:border-box;}
+#mrd-cta-image-popup .mrd-eyebrow{font-size:11px;letter-spacing:.14em;text-transform:uppercase;
+  color:#b8933c;font-weight:700;margin:0 0 8px;}
+#mrd-cta-image-popup .mrd-title{font-family:"Playfair Display",Georgia,serif;font-size:24px;
+  line-height:1.2;margin:0 0 10px;color:#0a2540;}
+#mrd-cta-image-popup .mrd-text{font-size:14px;line-height:1.55;color:#5a6b7f;margin:0 0 18px;}
+#mrd-cta-image-popup .mrd-cta{display:inline-block;background:#0a2540;color:#fff;text-decoration:none;
+  font-size:14px;font-weight:600;padding:12px 22px;border:0;border-radius:6px;cursor:pointer;}
+#mrd-cta-image-popup .mrd-cta:hover{background:#143a5e;}
+#mrd-cta-image-popup .mrd-small{font-size:11px;line-height:1.5;color:#8494a5;margin:14px 0 0;}
+#mrd-cta-image-popup{width:100%;background:#fff;padding:28px 30px;text-align:center;}
+#mrd-cta-image-popup .mrd-title,#mrd-cta-image-popup .mrd-text{text-align:center;}
+#mrd-cta-image-popup .mrd-art{width:190px;height:120px;margin:0 auto 18px;display:block;}
+#mrd-cta-image-popup .mrd-list{list-style:none;padding:0;margin:0 0 20px;font-size:13px;color:#5a6b7f;}
+#mrd-cta-image-popup .mrd-list li{padding:6px 0;border-bottom:1px solid #eee;}
+#mrd-cta-image-popup .mrd-list li:last-child{border-bottom:0;}
+
+</style>
+</head>
+<body>
+<div id="mrd-cta-image-popup" class="cp-card">
+  <svg class="mrd-art" viewBox="0 0 190 120" aria-hidden="true">
+    <rect x="8" y="14" width="150" height="94" rx="10" fill="#0a2540"/>
+    <rect x="26" y="4" width="150" height="94" rx="10" fill="#143a5e"/>
+    <rect x="40" y="26" width="30" height="22" rx="4" fill="#b8933c"/>
+    <rect x="40" y="60" width="104" height="7" rx="3.5" fill="#ffffff" opacity=".55"/>
+    <rect x="40" y="74" width="66" height="7" rx="3.5" fill="#ffffff" opacity=".3"/>
+  </svg>
+  <p class="mrd-eyebrow">0% for 18 months</p>
+  <h2 class="mrd-title">The Classic Card</h2>
+  <p class="mrd-text">For spreading the cost of one purchase, then clearing it. No annual fee.</p>
+  <ul class="mrd-list">
+    <li>0% on purchases for 18 months</li>
+    <li>No annual fee, ever</li>
+    <li>Section 75 protection over £100</li>
+  </ul>
+  <a class="mrd-cta" href="https://salil-dengage.github.io/dengage-demos/banking/product.html?id=MRD-CRD-CLASSIC" target="_top" onclick="Dn.sendClick('banking_cta-image-popup__view-card')">Check your eligibility</a>
+  <p class="mrd-small">19.9% APR representative variable after the 0% period. Illustrative rates on a demo site.</p>
+</div>
+</body>
+</html>

@@ -1,0 +1,602 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NovaPay | Money that moves as fast as you do</title>
+    <meta name="description" content="NovaPay is a digital money app: cards, savings, investing, credit and global transfers in one account. Dengage platform demo site.">
+
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-NL6J5Z53');</script>
+    <!-- End Google Tag Manager -->
+
+    <!-- ===============================================================
+         TAGGING SETUP (identical wiring to the other demo sites)
+
+         1. GTM container GTM-NL6J5Z53 (above): analytics and future tags
+            only. It must stay EMPTY of Dengage tags, because the Dengage
+            SDK is loaded directly below and a second load would
+            double-initialise it.
+
+         2. Dengage Web SDK (below): the BFSI web application, account 28.
+            The SDK watches window.dataLayer itself, so scenarios set to
+            triggerBy = DATA_LAYER_EVENT fire without any GTM involvement.
+
+         EVENT NAMING
+           Industry events on this site are prefixed  fintech_
+           (fintech_page_view context, fintech_card_applied, and so on).
+           The eight panel-built Default Scenarios keep their original
+           unprefixed slugs (survey, nps-popup, ...) so the campaigns that
+           already exist in the panel fire here with no extra setup.
+
+         Panel advanced settings this page assumes:
+           Trigger Initialize on Install   = OFF (snippet calls initialize())
+           Trigger Page View on Initialize = OFF (js/pageView.js sends the
+             page view itself, with real parameters)
+    ================================================================ -->
+    <!-- identity first: it feeds the contact key into initialize below -->
+    <script src="js/identity.js" data-user-store="novapay_user"></script>
+    <!-- DENGAGE SDK START -->
+    <script>
+      !function (e, a, n, d, g) {
+        e.dengage = e.dengage || function () { (e.dengage.q = e.dengage.q || []).push(arguments) },
+        d = a.getElementsByTagName("head")[0],
+        (g = a.createElement("script")).async = 1,
+        g.src = "https://pcdn.dengage.com/p/push/28/c8d2da44-b982-1925-9ad8-e7caddf0894a/dengage_sdk_loader.js",
+        d.appendChild(g)
+      }(window, document);
+      /* js/identity.js resolved the contact key synchronously just above, so the
+         SDK is identified from the very first call. Docs: "If you have these
+         identifiers before calling the initialize method we recommend using this
+         approach." Anonymous visitors keep the exact previous call. */
+      window.__dnInit ? dengage('initialize', window.__dnInit) : dengage('initialize');
+    </script>
+    <!-- DENGAGE SDK END -->
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Sora:wght@500;600;700&family=Inter:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="novapay-style.css">
+    <link rel="icon" href="images/novapay-mark.svg" type="image/svg+xml">
+</head>
+<body data-page-type="home">
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NL6J5Z53"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+
+    <!-- Header -->
+    <header class="site-header" id="header">
+        <div class="container">
+            <div class="header-inner">
+                <a href="index.html" class="logo">
+                    <span class="logo-mark" aria-hidden="true">
+                        <svg viewBox="0 0 64 64" focusable="false"><path d="M14 46 V18 h9 l18 22 V18 h9 v28 h-9 L23 24 v22 z" fill="currentColor"/></svg>
+                    </span>
+                    <span class="logo-word">Nova<span>Pay</span></span>
+                </a>
+
+                <!-- No cart button and no saved-items drawer. Both are
+                     ecommerce controls, and this site does not use the
+                     ecommerce API: a card has no quantity and an application
+                     is not an order. The equivalent here is the shortlist
+                     inside the app, which writes fintech_product_events. -->
+                <nav class="nav-main">
+                    <a href="index.html#products">What you get</a>
+                    <a href="index.html#collections">Products</a>
+                    <a href="index.html#craftsmanship">Security</a>
+                    <a href="index.html#story">Company</a>
+                    <a href="app.html" class="nav-cta" data-open-account data-cta-location="header">Open account</a>
+                    <button class="login-icon-btn" type="button" aria-label="Log in to your account" data-login-btn>
+                        <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                            <path d="M12 12c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5Zm0 2c-3.33 0-10 1.67-10 5v2h20v-2c0-3.33-6.67-5-10-5Z"></path>
+                        </svg>
+                    </button>
+                </nav>
+
+                <button class="menu-toggle" id="menuToggle" aria-label="Open menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Dengage inline target slot, top of page. Sits below the fixed header
+         once filled (js/inlineSlotOffset.js measures the clearance). This is
+         the one to target for a Story rail. Empty and hidden until an inline
+         On-Site campaign fills it. Do not add content or styling here. -->
+    <div id="dn_inline_target_below_header" class="dn-inline-slot"></div>
+
+    <!-- Mobile Navigation -->
+    <div class="mobile-overlay" id="mobileOverlay"></div>
+    <nav class="mobile-nav" id="mobileNav">
+        <button class="mobile-nav-close" id="mobileNavClose">×</button>
+        <ul class="mobile-nav-links">
+            <li><a href="index.html#products">What you get</a></li>
+            <li><a href="index.html#collections">Products</a></li>
+            <li><a href="index.html#craftsmanship">Security</a></li>
+            <li><a href="index.html#story">Company</a></li>
+        </ul>
+        <div class="mobile-nav-cta">
+            <a href="app.html" class="btn-primary" data-open-account data-cta-location="mobile_nav">Open account</a>
+            <button class="btn-primary mobile-login-btn" type="button" data-login-btn>Log in</button>
+        </div>
+    </nav>
+
+    <!-- Create account Modal -->
+    <div class="login-modal" id="loginModal" aria-hidden="true">
+        <div class="login-modal-overlay" data-close-login></div>
+        <div class="login-modal-content" role="dialog" aria-modal="true" aria-labelledby="loginModalTitle">
+            <button class="login-modal-close" type="button" aria-label="Close sign-up" data-close-login>×</button>
+            <p class="text-label">NovaPay Account</p>
+            <h2 class="heading-display login-modal-title" id="loginModalTitle">Open your account</h2>
+            <p class="text-body login-modal-text">
+                Opening an account takes about three minutes and runs a soft credit check only. Your e-mail becomes your contact key in Dengage.
+            </p>
+            <form class="login-form" id="loginForm" novalidate>
+                <div class="login-form-row">
+                    <div class="login-form-group">
+                        <label for="loginFirstName">First name</label>
+                        <input type="text" id="loginFirstName" name="firstName" placeholder="Alex" autocomplete="given-name" required>
+                    </div>
+                    <div class="login-form-group">
+                        <label for="loginLastName">Last name</label>
+                        <input type="text" id="loginLastName" name="lastName" placeholder="Morgan" autocomplete="family-name" required>
+                    </div>
+                </div>
+                <div class="login-form-group">
+                    <label for="loginEmail">E-mail</label>
+                    <input type="email" id="loginEmail" name="email" placeholder="alex@example.com" autocomplete="email" required>
+                </div>
+                <div class="login-form-group">
+                    <label for="loginPassword">Password</label>
+                    <input type="password" id="loginPassword" name="password" placeholder="Create a password" autocomplete="new-password" required>
+                </div>
+                <p class="login-form-error" id="loginFormError" role="alert" hidden></p>
+                <button class="login-submit-btn" type="submit">Create Account</button>
+            </form>
+        </div>
+    </div>
+
+    <div class="login-success-toast" id="loginSuccessMessage" role="status" aria-live="polite">
+        Welcome to NovaPay.
+    </div>
+
+    <!-- Hero -->
+    <section class="hero">
+        <div class="hero-content">
+            <p class="text-label hero-tagline">Licensed e-money institution</p>
+            <h1 class="heading-display hero-title">
+                Money that moves<br>as fast as <em>you do</em>
+            </h1>
+            <p class="text-body hero-description">
+                One account for spending, saving, investing and sending money abroad. Open in three minutes, with your balance safeguarded at a tier-one bank and every payment approved in-app.
+            </p>
+            <div class="hero-actions">
+                <a href="app.html" class="btn-primary" data-open-account data-cta-location="hero">Open your account</a>
+                <a href="index.html#craftsmanship" class="btn-text">How we keep money safe</a>
+            </div>
+        </div>
+        <div class="hero-image">
+            <div class="hero-slide active" data-title="Everyday spending" data-price="From $0 a month">
+                <img src="images/scenes/hero-app.svg" alt="NovaPay app showing balance and spending breakdown">
+            </div>
+            <div class="hero-slide" data-title="Card range" data-price="From $0 a month">
+                <img src="images/scenes/hero-cards.svg" alt="The NovaPay card range">
+            </div>
+            <div class="hero-slide" data-title="Investing" data-price="From $0.45 a month">
+                <img src="images/scenes/hero-invest.svg" alt="NovaPay investing performance view">
+            </div>
+            <div class="hero-image-overlay">
+                <p class="overlay-title" id="heroTitle">Everyday spending</p>
+                <p class="overlay-price" id="heroPrice">From $0 a month</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured product -->
+    <!-- Dengage inline target slot. Empty and hidden until an inline On-Site
+         campaign fills it (see docs/DENGAGE-INTEGRATION.md). The id contains
+         "dn_inline_target" so the panel's Inline Target Selector finds it on
+         its default search. Do not add content or styling here. -->
+    <div id="dn_inline_target_below_hero" class="dn-inline-slot"></div>
+
+    <section class="featured-piece" id="featured-piece">
+        <div class="container">
+            <div class="featured-grid">
+                <div class="featured-image-wrapper">
+                    <div class="featured-image">
+                        <img src="images/products/NPY-CRD-METAL.svg"
+                             alt="NovaPay Metal Card">
+                    </div>
+                    <div class="featured-badge">Most requested</div>
+                </div>
+                <div class="featured-content">
+                    <p class="text-label featured-label">Card of the month</p>
+                    <h2 class="heading-display featured-title">NovaPay Metal Card</h2>
+                    <p class="text-body featured-description">
+                        Our top tier, in brushed metal. Earn 2% back on everything you buy, spend abroad with no markup, and bring a guest into more than 1,300 airport lounges. Approval decision in under two minutes, with the virtual card ready to use immediately.
+                    </p>
+                    <div class="featured-details">
+                        <div class="detail-row">
+                            <span class="detail-label">Cashback</span>
+                            <span class="detail-value">2% on all spending</span>
+                        </div>
+                        <div class="detail-row">
+                            <span class="detail-label">Foreign exchange</span>
+                            <span class="detail-value">No markup, any currency</span>
+                        </div>
+                        <div class="detail-row">
+                            <span class="detail-label">Lounge access</span>
+                            <span class="detail-value">Unlimited, plus one guest</span>
+                        </div>
+                    </div>
+                    <!-- A monthly plan fee, not a one-off price with a
+                         discount. Money apps charge monthly, and this single
+                         figure is most of what makes the data model read as
+                         FinTech rather than retail. -->
+                    <p class="featured-price">$16.99 a month</p>
+                    <a class="btn-primary" href="app.html"
+                       data-apply-product="NPY-CRD-METAL"
+                       data-product-name="Metal Card"
+                       data-product-family="cards"
+                       data-plan-tier="metal"
+                       data-monthly-fee="16.99">Apply for this card</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- What the account does.
+
+         This replaced a shoppable product grid, which was the clearest
+         inheritance from the tyre storefront this site was forked from: cards
+         with a price, an old price and an Add to cart button. Nobody puts a
+         current account in a basket. The catalogue proper now lives inside the
+         app, where a product carries a monthly fee and a headline rate and is
+         applied for rather than bought. -->
+    <section class="products" id="products">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-header-left">
+                    <p class="text-label">One account</p>
+                    <h2 class="heading-display section-title">Everything your money does, in one app</h2>
+                    <p class="text-body section-subtitle">
+                        Spend, save, invest, borrow and send abroad, without opening five accounts to do it.
+                    </p>
+                </div>
+            </div>
+
+            <div class="npy-lead-grid" id="novapayLeadGrid">
+                <article class="npy-lead">
+                    <h3>Spend anywhere</h3>
+                    <p>Instant notifications, spending broken down by category, and budget limits you set yourself. No foreign transaction fee on the Travel and Metal plans.</p>
+                </article>
+                <article class="npy-lead">
+                    <h3>Save without thinking</h3>
+                    <p>Round up every purchase into a goal, split your salary on payday, and earn 4.85% AER on your main balance, paid daily.</p>
+                </article>
+                <article class="npy-lead">
+                    <h3>Invest from one dollar</h3>
+                    <p>Commission-free stocks, a managed portfolio matched to your risk profile, or 40 digital assets held in insured custody.</p>
+                </article>
+                <article class="npy-lead">
+                    <h3>Borrow at a rate you see first</h3>
+                    <p>Check your credit score monthly, run the numbers in the calculator, and get your real rate before you apply. No early repayment fee.</p>
+                </article>
+                <article class="npy-lead">
+                    <h3>Send money abroad</h3>
+                    <p>Hold and convert 30 currencies, with local account details in the US, UK and eurozone, and same-day arrival on the busiest corridors.</p>
+                </article>
+                <article class="npy-lead">
+                    <h3>Covered when it goes wrong</h3>
+                    <p>Freeze your card in a tap, dispute a payment from the transaction itself, and reach a person rather than a phone tree.</p>
+                </article>
+
+                <!-- Dengage inline target slot, a direct child of the grid.
+                     One of the five that must exist on every site at the same
+                     anchors, or slottest.js fails. It previously sat inside the
+                     shoppable product grid; that grid is gone, so it lives in
+                     the grid that replaced it. Do not add content here. -->
+                <div id="dn_inline_target_in_grid" class="dn-inline-slot"></div>
+            </div>
+
+            <div class="npy-lead-cta">
+                <a href="app.html" class="btn-primary" data-open-account data-cta-location="closing">Open your account</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Product lines -->
+    <section class="collections" id="collections">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-header-left">
+                    <h2 class="heading-display section-title">Our product lines</h2>
+                    <p class="text-body section-subtitle">
+                        Start with a card and add what you need, one application at a time
+                    </p>
+                </div>
+                <a href="index.html#products" class="btn-text">Compare all products</a>
+            </div>
+
+            <div class="collections-grid">
+                <div class="collection-item">
+                    <div class="collection-image">
+                        <img src="images/scenes/hero-cards.svg"
+                             alt="The NovaPay card range">
+                    </div>
+                    <div class="collection-overlay">
+                        <h3 class="collection-name">Cards</h3>
+                        <p class="collection-count">4 tiers</p>
+                        <p class="collection-price">From $0 a month</p>
+                        <a class="collection-cart-btn" href="app.html"
+                            data-apply-product="NPY-CRD-PLUS"
+                            data-product-name="NovaPay Plus Card"
+                            data-product-family="cards"> Cards > Everyday">Add to application</a>
+                    </div>
+                </div>
+
+                <div class="collection-item">
+                    <div class="collection-image">
+                        <img src="images/scenes/hero-invest.svg"
+                             alt="NovaPay investing performance view">
+                    </div>
+                    <div class="collection-overlay">
+                        <h3 class="collection-name">Investing</h3>
+                        <p class="collection-count">3 products</p>
+                        <p class="collection-price">From $0.45 a month</p>
+                        <a class="collection-cart-btn" href="app.html"
+                            data-apply-product="NPY-INV-ROBO"
+                            data-product-name="Managed Portfolio"
+                            data-product-family="investing"> Investing > Managed">Add to application</a>
+                    </div>
+                </div>
+
+                <div class="collection-item">
+                    <div class="collection-image">
+                        <img src="images/scenes/scene-savings.svg"
+                             alt="NovaPay saving pots in the app">
+                    </div>
+                    <div class="collection-overlay">
+                        <h3 class="collection-name">Savings</h3>
+                        <p class="collection-count">2 products</p>
+                        <p class="collection-price">From $0 a month</p>
+                        <a class="collection-cart-btn" href="app.html"
+                            data-apply-product="NPY-SAV-POTS"
+                            data-product-name="Goal Pots Pro"
+                            data-product-family="savings"> Savings > Goals">Add to application</a>
+                    </div>
+                </div>
+
+                <div class="collection-item">
+                    <div class="collection-image">
+                        <img src="images/scenes/scene-global.svg"
+                             alt="NovaPay multi-currency coverage">
+                    </div>
+                    <div class="collection-overlay">
+                        <h3 class="collection-name">Global</h3>
+                        <p class="collection-count">2 products</p>
+                        <p class="collection-price">From $0 a month</p>
+                        <a class="collection-cart-btn" href="app.html"
+                            data-apply-product="NPY-GLB-ACCOUNT"
+                            data-product-name="Multi-Currency Account"
+                            data-product-family="global"> Global > Accounts">Add to application</a>
+                    </div>
+                </div>
+
+                <div class="collection-item">
+                    <div class="collection-image">
+                        <img src="images/scenes/scene-vault.svg"
+                             alt="NovaPay protection products">
+                    </div>
+                    <div class="collection-overlay">
+                        <h3 class="collection-name">Protection</h3>
+                        <p class="collection-count">3 policies</p>
+                        <p class="collection-price">From $4.99 a month</p>
+                        <a class="collection-cart-btn" href="app.html"
+                            data-apply-product="NPY-PRO-PURCHASE"
+                            data-product-name="Purchase Protection"
+                            data-product-family="protection"> Protection > Purchase">Add to application</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Company -->
+    <section class="story" id="story">
+        <div class="container">
+            <div class="story-grid">
+                <div class="story-content">
+                    <p class="text-label story-label">Our story</p>
+                    <h2 class="heading-display story-title">
+                        Built for people who live across borders
+                    </h2>
+                    <p class="text-body story-text">
+                        NovaPay started in 2019 when our founders, between them holding four passports, got tired of paying to move their own money. We began with one product, a card that charged the real exchange rate, and grew it into a full account.</p>
+                    <p class="text-body story-text">
+                        Today 3.4 million people bank with us across 28 markets. We hold an e-money licence, safeguard customer balances at a tier-one partner bank and make our money from subscriptions rather than from hidden spreads.
+                    </p>
+                    <div class="story-signature">
+                        <p class="signature-name">Founding team</p>
+                        <p class="signature-title">NovaPay</p>
+                    </div>
+                </div>
+                <div class="story-images">
+                    <div class="story-image">
+                        <img src="images/scenes/scene-team.svg"
+                             alt="The NovaPay team">
+                    </div>
+                    <div class="story-image">
+                        <img src="images/scenes/scene-app.svg"
+                             alt="The NovaPay app">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Security -->
+    <section class="craftsmanship" id="craftsmanship">
+        <div class="container">
+            <div class="craft-grid">
+                <div class="craft-content">
+                    <p class="text-label">Security and licensing</p>
+                    <h2 class="heading-display craft-title">
+                        Regulated, safeguarded, and boring about it
+                    </h2>
+                    <p class="text-body craft-text">
+                        Your balance is not lent out. It sits in a safeguarded account at a partner bank, separate from company money, so it is still yours whatever happens to us. Everything else is the unglamorous work: independent audits, penetration tests and 24-hour fraud monitoring.</p>
+                    <ul class="craft-list text-body">
+                        <li>E-money licence, with customer funds safeguarded, not lent</li>
+                        <li>Card freezing, per-merchant limits and instant virtual cards</li>
+                        <li>Every payment approved with biometrics on your device</li>
+                        <li>Fraud monitored around the clock, with refunds inside five days</li>
+                    </ul>
+                    <a href="index.html#products" class="btn-primary">See recommended products</a>
+                </div>
+                <div class="craft-image-wrapper">
+                    <div class="craft-image">
+                        <img src="images/scenes/scene-vault.svg"
+                             alt="NovaPay security and custody">
+                    </div>
+                    <div class="craft-stats">
+                        <div class="stat-item">
+                            <p class="stat-number">2019</p>
+                            <p class="stat-label">Founded</p>
+                        </div>
+                        <div class="stat-item">
+                            <p class="stat-number">3.4M</p>
+                            <p class="stat-label">Customers</p>
+                        </div>
+                        <div class="stat-item">
+                            <p class="stat-number">28</p>
+                            <p class="stat-label">Markets served</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Talk to us -->
+    <section class="contact" id="contact">
+        <div class="container">
+            <div class="contact-grid">
+                <div class="contact-content">
+                    <p class="text-label">Talk to us</p>
+                    <h2 class="heading-display contact-title">
+                        A human answers, in about a minute
+                    </h2>
+                    <p class="text-body contact-text">
+                        In-app chat is staffed 24 hours a day in six languages. For anything involving a payment dispute or a suspected fraud, we pick up straight away rather than putting you in a queue.</p>
+
+                    <div class="contact-details">
+                        <div class="contact-item">
+                            <p class="contact-item-label">Support</p>
+                            <p class="contact-item-value">
+                                In-app chat, 24 hours, six languages
+                            </p>
+                        </div>
+                        <div class="contact-item">
+                            <p class="contact-item-label">Business</p>
+                            <p class="contact-item-value">
+                                Dedicated account manager over $2M turnover
+                            </p>
+                        </div>
+                        <div class="contact-item">
+                            <p class="contact-item-label">Next step</p>
+                            <p class="contact-item-value">
+                                <a href="index.html#products">Compare the product range</a>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <!-- Dengage inline target slot. Empty and hidden until an inline On-Site
+         campaign fills it (see docs/DENGAGE-INTEGRATION.md). The id contains
+         "dn_inline_target" so the panel's Inline Target Selector finds it on
+         its default search. Do not add content or styling here. -->
+    <div id="dn_inline_target_above_footer" class="dn-inline-slot"></div>
+
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <p class="footer-logo">Nova<span>Pay</span></p>
+                    <p class="footer-tagline">
+                        A digital money app for spending, saving, investing and sending money abroad, serving 3.4 million customers across 28 markets.
+                    </p>
+                </div>
+
+                <div class="footer-column">
+                    <h4 class="footer-column-title">Products</h4>
+                    <ul class="footer-links">
+                        <li><a href="index.html#products">All products</a></li>
+                        <li><a href="index.html#collections">Cards</a></li>
+                        <li><a href="index.html#collections">Investing</a></li>
+                        <li><a href="index.html#collections">Savings</a></li>
+                        <li><a href="index.html#collections">Protection</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-column">
+                    <h4 class="footer-column-title">Company</h4>
+                    <ul class="footer-links">
+                        <li><a href="index.html#story">About NovaPay</a></li>
+                        <li><a href="index.html#craftsmanship">Security and licensing</a></li>
+                        <li><a href="index.html#contact">Support</a></li>
+                        <li><a href="https://www.dengage.com">Careers</a></li>
+                        <li><a href="https://www.dengage.com">Developer API</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p class="footer-copyright">
+                    Dengage platform demo site. NovaPay is a fictional company. Products, rates and figures are illustrative and are not a financial promotion.
+                </p>
+                <div class="footer-social">
+                    <a href="https://www.dengage.com">Dengage</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <script src="js/pageView.js"></script>
+    <script src="js/bannerOffset.js"></script>
+    <script src="js/inlineSlotOffset.js"></script>
+    <script src="novapay-main.js"></script>
+    <script src="js/productCatalog.js"></script>
+    <!-- Wishlist and search. Both are byte-identical across the four
+         demo sites; everything per-site arrives on the tag. Loaded after
+         productCatalog.js because both read the catalogue, and wishlist
+         before search so a search result can carry a working heart. -->
+    <script src="js/allReco.js"></script>
+    <script src="js/allGaming.js"></script>
+    <script src="js/asistant.js"></script>
+    <script src="js/carouselBanner.js"></script>
+    <script src="js/earing.js"></script>
+    <script src="js/eventModal.js"></script>
+    <script src="js/expandBanner.js"></script>
+    <script src="js/headbanner.js"></script>
+    <script src="js/notificationIcon.js"></script>
+    <script src="js/snow.js"></script>
+    <script src="js/sliderBanner.js"></script>
+    <script src="js/novapayEvents.js"></script>
+    <script src="js/novapayState.js"></script>
+    <script src="js/novapayApply.js"></script>
+    <script src="js/novapayLanding.js"></script>
+    <script src="js/novapayCatalog.js"></script>
+</body>
+</html>

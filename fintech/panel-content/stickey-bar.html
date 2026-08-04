@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NovaPay | Sticky Bar (Dengage panel content)</title>
+<!-- =====================================================================
+     NOVAPAY STICKY BAR, On-Site content for the panel
+
+     NOTE THE SLUG. The scenario is "stickey-bar", with the extra "e". That
+     spelling is part of the panel contract and must not be corrected.
+
+     THIS FILE KEEPS ITS OWN CLOSE BUTTON. Banner layout is not offered the
+     "Add close button to outside" setting that Popup layout has, so without
+     one there is no way to dismiss it. The two banners are the deliberate
+     exception to the no-close-button rule.
+
+     The close control calls Dn.close() and NEVER Dn.sendClick(), so a
+     dismissal is never counted as a conversion. It also keeps the CSS
+     :checked fallback alongside the inline handler, so the bar still hides if
+     the panel's sanitizer ever strips inline handlers. Belt and braces on the
+     one control a visitor cannot be left without.
+
+     BANNER CSS IS DIFFERENT FROM POPUP CSS. The engine's banner container is
+     already position:fixed and full width. Full-bleed CSS here would
+     double-position and render clipped in the panel preview, which is a
+     simulated window rather than a real viewport. So this is ordinary in-flow
+     width:100%.
+
+     Panel settings:
+       - Scenario: triggerBy = DATA_LAYER_EVENT, eventName = fintech_stickey-bar
+       - Banner design: padding 0, transparent background
+====================================================================== -->
+</head>
+<body>
+
+<div id="npy-sticky">
+  <style>
+    #npy-sticky *{margin:0;padding:0;box-sizing:border-box;}
+    #npy-sticky{
+      --nv-blue:#125cfa; --nv-blue-dark:#0a3a9e; --nv-yellow:#ffd25a;
+      font-family:Inter,-apple-system,'Segoe UI',Roboto,sans-serif;width:100%;
+    }
+
+    #npy-sticky .sk-bar{
+      display:flex;align-items:center;justify-content:center;gap:18px;
+      width:100%;padding:13px 54px 13px 22px;position:relative;
+      background:linear-gradient(135deg,var(--nv-blue) 0%,var(--nv-blue-dark) 100%);
+      color:#fff;animation:sk-in .3s ease-out;
+    }
+    @keyframes sk-in{from{opacity:0;transform:translateY(-100%);}to{opacity:1;transform:none;}}
+
+    #npy-sticky .sk-rate{
+      display:inline-flex;align-items:baseline;gap:6px;flex-shrink:0;
+    }
+    #npy-sticky .sk-rate strong{font-size:20px;font-weight:700;letter-spacing:-.5px;}
+    #npy-sticky .sk-rate span{
+      font:700 9.5px Inter,sans-serif;letter-spacing:.1em;text-transform:uppercase;
+      background:rgba(255,255,255,.2);border-radius:5px;padding:3px 7px;
+    }
+    #npy-sticky .sk-text{font-size:13.5px;font-weight:500;line-height:1.4;}
+    #npy-sticky .sk-text b{font-weight:700;color:var(--nv-yellow);}
+
+    #npy-sticky .sk-cta{
+      flex-shrink:0;background:#fff;color:var(--nv-blue);text-decoration:none;
+      border-radius:9px;font:700 12px Inter,sans-serif;letter-spacing:.05em;
+      padding:10px 18px;transition:all .2s ease;white-space:nowrap;
+    }
+    #npy-sticky .sk-cta:hover{background:var(--nv-yellow);color:#0f1c33;transform:translateY(-1px);}
+
+    /* Close control. Dn.close() only, never sendClick. */
+    #npy-sticky .sk-x{
+      position:absolute;right:14px;top:50%;transform:translateY(-50%);
+      width:28px;height:28px;border:0;border-radius:8px;cursor:pointer;
+      background:rgba(255,255,255,.16);color:#fff;font-size:17px;line-height:1;
+      display:flex;align-items:center;justify-content:center;transition:background .2s ease;
+    }
+    #npy-sticky .sk-x:hover{background:rgba(255,255,255,.3);}
+
+    /* Pure-CSS fallback, in case inline handlers are ever stripped on save. */
+    #npy-sticky .sk-vh{
+      position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;
+      clip:rect(0 0 0 0);white-space:nowrap;border:0;
+    }
+    #npy-sticky .sk-vh:checked ~ .sk-bar{display:none;}
+
+    @media (max-width:640px){
+      #npy-sticky .sk-bar{flex-wrap:wrap;gap:10px;padding:12px 46px 12px 16px;justify-content:flex-start;}
+      #npy-sticky .sk-text{font-size:12.5px;width:100%;order:3;}
+      #npy-sticky .sk-cta{padding:9px 14px;font-size:11.5px;}
+    }
+  </style>
+
+  <input class="sk-vh" type="checkbox" id="npy-sticky-dismiss">
+  <div class="sk-bar">
+    <span class="sk-rate">
+      <strong>4.85%</strong>
+      <span>AER</span>
+    </span>
+    <span class="sk-text">
+      on your whole balance, <b>paid daily</b>, with instant access and no withdrawal limits.
+    </span>
+    <a target="_top" class="sk-cta"
+       onclick="Dn.sendClick('fintech_stickey-bar__open-savings')"
+       href="https://salil-dengage.github.io/dengage-demos/fintech/app.html">Open your account</a>
+    <label class="sk-x" for="npy-sticky-dismiss" role="button"
+           aria-label="Close this message" onclick="Dn.close()">&times;</label>
+  </div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,7 @@
+<resources>
+    <!-- An AppCompat parent is required: the In-App host must be an
+         AppCompatActivity or the SDK crashes inflating its message layout. -->
+    <style name="Theme.NovaPay" parent="Theme.AppCompat.DayNight.NoActionBar">
+        <item name="android:statusBarColor">#0A3A9E</item>
+    </style>
+</resources>

@@ -1,0 +1,5 @@
+<resources>
+    <!-- Must descend from an AppCompat theme: MainActivity is an
+         AppCompatActivity, which Dengage.setNavigation() requires. -->
+    <style name="Theme.Meridian" parent="Theme.Material3.DayNight.NoActionBar" />
+</resources>

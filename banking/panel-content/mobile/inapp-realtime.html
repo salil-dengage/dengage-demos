@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Meridian Bank | In-App real time (Dengage mobile content)</title>
+<!-- =====================================================================
+     MERIDIAN BANK ANDROID, In-App content for the panel
+
+     Trigger:  screen name  test_inapp_realtime, requested by the app with
+               Dengage.showRealTimeInApp(activity, name, params) rather than
+               waiting for a fetch
+     Format:   In-App, Modal, campaign type REAL TIME
+     Spec:     banking/panel-content/mobile/README.md
+
+     THE BRIDGE ON MOBILE IS NOT THE BRIDGE ON THE WEB. The SDK injects a
+     window.Dn object into the In-App WebView, and it is a different object
+     from the one the website's panel content uses. Navigation is
+     Dn.androidUrl('meridian://<screen>'), NOT an href with target="_top": the
+     Navigation goes through Dn.androidUrl, and capture is Dn.setTags. These
+     are the mobile bridge methods; the web contract's Dn.postQuestion and
+     Dn.postSubscription do not apply here. Keep exactly this shape.
+
+     WHAT THIS ONE DEMONSTRATES, and why it is worth its own file: the two
+     tags below are filled from parameters the APP sends at the moment of
+     display, not from anything chosen when the campaign was built.
+
+         tier      the app sends "premier"
+         surface   the app sends "test_area"
+
+     See ui/TestArea.kt, the "Real time, with params" row.
+
+     If the tags render as literal text instead of values, the campaign is not
+     a Real Time campaign: an ordinary In-App has no parameters to resolve.
+     That is the single most likely reason this one looks broken.
+
+     MODAL. Draws NO close control: the panel supplies it.
+     ================================================================== -->
+<style>
+#mrd-ia-rt{font-family:Inter,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;
+  box-sizing:border-box;width:100%;background:#f7f5f0;border-radius:14px;
+  overflow:hidden;color:#12203a;text-align:left;}
+#mrd-ia-rt *{box-sizing:border-box;}
+#mrd-ia-rt .m-head{background:linear-gradient(135deg,#0a2540,#123a5c);padding:22px;color:#f7f5f0;}
+#mrd-ia-rt .m-eyebrow{font-size:10px;letter-spacing:.15em;text-transform:uppercase;
+  color:#c8a44d;font-weight:700;margin:0 0 8px;}
+#mrd-ia-rt .m-title{font-family:Georgia,"Times New Roman",serif;font-size:22px;
+  line-height:1.28;margin:0;font-weight:400;}
+#mrd-ia-rt .m-body{padding:20px 22px 22px;}
+#mrd-ia-rt .m-text{font-size:14px;line-height:1.6;color:#5a6b7f;margin:0 0 16px;}
+#mrd-ia-rt .m-live{background:#fff;border:1px dashed #c8a44d;border-radius:10px;
+  padding:14px;margin:0 0 18px;}
+#mrd-ia-rt .m-livecap{font-size:10px;letter-spacing:.12em;text-transform:uppercase;
+  color:#b8933c;font-weight:700;margin:0 0 8px;}
+#mrd-ia-rt .m-kv{display:flex;justify-content:space-between;font-size:13px;padding:3px 0;}
+#mrd-ia-rt .m-k{color:#8494a6;}
+#mrd-ia-rt .m-v{color:#0a2540;font-weight:700;font-family:ui-monospace,Menlo,Consolas,monospace;}
+#mrd-ia-rt .m-cta{display:block;background:#0a2540;color:#fff;text-decoration:none;
+  font-size:14.5px;font-weight:700;padding:14px;border-radius:8px;text-align:center;}
+#mrd-ia-rt .m-small{font-size:10.5px;line-height:1.5;color:#a3adb9;margin:14px 0 0;text-align:center;}
+</style>
+</head>
+<body>
+<div id="mrd-ia-rt">
+  <div class="m-head">
+    <p class="m-eyebrow">Real time</p>
+    <h2 class="m-title">Built the moment you opened this</h2>
+  </div>
+  <div class="m-body">
+    <p class="m-text">Everything below arrived from the app as this message was
+      shown. Nothing here was decided when the campaign was built.</p>
+
+    <div class="m-live">
+      <p class="m-livecap">Sent by the app just now</p>
+      <div class="m-kv"><span class="m-k">tier</span><span class="m-v">{{tier}}</span></div>
+      <div class="m-kv"><span class="m-k">surface</span><span class="m-v">{{surface}}</span></div>
+    </div>
+
+    <a class="m-cta" href="#" role="button"
+       onclick="Dn.sendClick('test_inapp_realtime__open');Dn.androidUrl('meridian://wealth');return false">See your portfolio</a>
+
+    <p class="m-small">Meridian Bank is a fictional brand used for demonstration.</p>
+  </div>
+</div>
+</body>
+</html>

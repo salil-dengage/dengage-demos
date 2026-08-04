@@ -1,0 +1,951 @@
+[
+  {
+    "id": "MRD-ACC-CURRENT",
+    "name": "Everyday Current Account",
+    "category": "current_account",
+    "categoryLabel": "Current accounts",
+    "categoryPath": "Products > Current accounts > Everyday",
+    "subtype": "everyday",
+    "tier": "classic",
+    "image": "images/products/MRD-ACC-CURRENT.svg",
+    "summary": "A no-fee current account with a contactless debit card, instant spending notifications and an arranged overdraft you apply for separately.",
+    "detail": "The account most of our customers hold. There is no monthly fee and no minimum funding requirement. Spending is categorised automatically, and you can freeze the card, set limits or block gambling transactions from the app at any time.",
+    "headlineRate": 0,
+    "rateType": "none",
+    "rateDisplay": "No monthly fee",
+    "rateCaption": "Arranged overdraft 39.9% EAR variable, subject to status",
+    "termMonths": null,
+    "feeAmount": 0,
+    "feeFrequency": "monthly",
+    "feeDisplay": "£0 a month",
+    "highlights": [
+      "No monthly account fee",
+      "Freeze and unfreeze your card instantly",
+      "Switch in seven working days under the Current Account Switch Service"
+    ],
+    "keyFacts": [
+      { "label": "Monthly fee", "value": "£0" },
+      { "label": "Arranged overdraft", "value": "39.9% EAR variable" },
+      { "label": "Minimum age", "value": "18" },
+      { "label": "FSCS protected", "value": "Up to £85,000" }
+    ],
+    "eligibility": [
+      "You are 18 or over and a UK resident",
+      "You can provide proof of identity and address"
+    ],
+    "ctaLabel": "Apply for this account"
+  },
+  {
+    "id": "MRD-ACC-REWARD",
+    "name": "Reward Current Account",
+    "category": "current_account",
+    "categoryLabel": "Current accounts",
+    "categoryPath": "Products > Current accounts > Reward",
+    "subtype": "reward",
+    "tier": "classic",
+    "image": "images/products/MRD-ACC-REWARD.svg",
+    "summary": "Cashback on household direct debits for a fixed monthly fee. Worth having if your bills run through this account.",
+    "detail": "Pay a £5 monthly fee and earn cashback on eligible household direct debits including energy, water, council tax and broadband. The account is worth holding only if your bills clear it, and the comparison on this page shows the break-even point honestly.",
+    "headlineRate": 3.0,
+    "rateType": "cashback",
+    "rateDisplay": "3% cashback",
+    "rateCaption": "On eligible household direct debits, capped at £5 a month",
+    "termMonths": null,
+    "feeAmount": 5,
+    "feeFrequency": "monthly",
+    "feeDisplay": "£5 a month",
+    "badge": "Most switched to",
+    "highlights": [
+      "3% cashback on eligible household direct debits",
+      "Cashback capped at £5 a month, so the account breaks even at £167 of bills",
+      "Includes mobile phone and travel insurance for the account holder"
+    ],
+    "keyFacts": [
+      { "label": "Monthly fee", "value": "£5" },
+      { "label": "Cashback rate", "value": "3% on eligible direct debits" },
+      { "label": "Cashback cap", "value": "£5 a month" },
+      { "label": "Minimum funding", "value": "£1,000 a month" }
+    ],
+    "eligibility": [
+      "You are 18 or over and a UK resident",
+      "You pay at least £1,000 into the account each month",
+      "You hold at least two eligible direct debits"
+    ],
+    "ctaLabel": "Apply for this account"
+  },
+  {
+    "id": "MRD-ACC-PREMIER",
+    "name": "Premier Current Account",
+    "category": "current_account",
+    "categoryLabel": "Current accounts",
+    "categoryPath": "Products > Current accounts > Premier",
+    "subtype": "premier",
+    "tier": "premier",
+    "image": "images/products/MRD-ACC-PREMIER.svg",
+    "summary": "For customers with £75,000 in savings and investments with us, or a salary of £75,000 or more. Named relationship manager included.",
+    "detail": "Premier gives you a named relationship manager, preferential rates on savings and mortgages, and worldwide family travel cover. It is a relationship product rather than a transactional one, and it is only worth holding if you use the adviser.",
+    "headlineRate": 0,
+    "rateType": "none",
+    "rateDisplay": "£15 a month",
+    "rateCaption": "Fee waived while you hold £75,000 with us",
+    "termMonths": null,
+    "feeAmount": 15,
+    "feeFrequency": "monthly",
+    "feeDisplay": "£15 a month, waived at £75,000",
+    "highlights": [
+      "Named relationship manager you can call directly",
+      "Preferential rates on savings, mortgages and foreign exchange",
+      "Worldwide family travel insurance included"
+    ],
+    "keyFacts": [
+      { "label": "Monthly fee", "value": "£15, waived at £75,000 held" },
+      { "label": "Qualifying balance", "value": "£75,000 in savings and investments" },
+      { "label": "Qualifying income", "value": "£75,000 a year" },
+      { "label": "Relationship manager", "value": "Named, direct line" }
+    ],
+    "eligibility": [
+      "You hold £75,000 or more in savings and investments with Meridian",
+      "Or your annual income paid into the account is £75,000 or more"
+    ],
+    "ctaLabel": "Check if you qualify"
+  },
+  {
+    "id": "MRD-ACC-BUSINESS",
+    "name": "Business Current Account",
+    "category": "current_account",
+    "categoryLabel": "Current accounts",
+    "categoryPath": "Products > Current accounts > Business",
+    "subtype": "business",
+    "tier": "classic",
+    "image": "images/products/MRD-ACC-BUSINESS.svg",
+    "summary": "For sole traders and limited companies turning over up to £2 million, with 18 months of free day-to-day banking.",
+    "detail": "Free day-to-day business banking for the first 18 months, then an £8.50 monthly fee. Includes accounting software integration, multi-user access with per-user permissions, and a named business manager once turnover passes £250,000.",
+    "headlineRate": 0,
+    "rateType": "none",
+    "rateDisplay": "Free for 18 months",
+    "rateCaption": "Then £8.50 a month",
+    "termMonths": 18,
+    "feeAmount": 8.5,
+    "feeFrequency": "monthly",
+    "feeDisplay": "Free for 18 months, then £8.50 a month",
+    "highlights": [
+      "18 months of free day-to-day banking",
+      "Multi-user access with per-user payment permissions",
+      "Direct feeds into the main accounting packages"
+    ],
+    "keyFacts": [
+      { "label": "Introductory period", "value": "18 months free" },
+      { "label": "Monthly fee after", "value": "£8.50" },
+      { "label": "Maximum turnover", "value": "£2 million" },
+      { "label": "Named manager", "value": "Above £250,000 turnover" }
+    ],
+    "eligibility": [
+      "Your business is registered in the UK",
+      "Annual turnover is under £2 million",
+      "All directors and beneficial owners can be identity checked"
+    ],
+    "ctaLabel": "Apply for this account"
+  },
+  {
+    "id": "MRD-SAV-EASY",
+    "name": "Easy Access Saver",
+    "category": "savings",
+    "categoryLabel": "Savings",
+    "categoryPath": "Products > Savings > Easy access",
+    "subtype": "easy_access",
+    "tier": "classic",
+    "image": "images/products/MRD-SAV-EASY.svg",
+    "summary": "Withdraw whenever you like with no notice and no penalty. The rate is variable and we will tell you before it drops.",
+    "detail": "An instant access account for money you may need at short notice. The rate is variable, which means it can move at any time, and we give 14 days notice before any reduction. There is no bonus rate that quietly expires.",
+    "headlineRate": 4.1,
+    "rateType": "aer_variable",
+    "rateDisplay": "4.10% AER",
+    "rateCaption": "Variable, no introductory bonus",
+    "termMonths": null,
+    "feeAmount": 0,
+    "feeFrequency": "none",
+    "minAmount": 1,
+    "maxAmount": 500000,
+    "highlights": [
+      "Unlimited withdrawals with no notice period",
+      "No introductory bonus that expires after a year",
+      "14 days notice before any rate reduction"
+    ],
+    "keyFacts": [
+      { "label": "Rate", "value": "4.10% AER variable" },
+      { "label": "Minimum deposit", "value": "£1" },
+      { "label": "Maximum balance", "value": "£500,000" },
+      { "label": "Access", "value": "Instant, no penalty" }
+    ],
+    "eligibility": [
+      "You are 16 or over and a UK resident"
+    ],
+    "ctaLabel": "Open this account"
+  },
+  {
+    "id": "MRD-SAV-FIXED",
+    "name": "One Year Fixed Rate Saver",
+    "category": "savings",
+    "categoryLabel": "Savings",
+    "categoryPath": "Products > Savings > Fixed rate",
+    "subtype": "fixed_term",
+    "tier": "classic",
+    "image": "images/products/MRD-SAV-FIXED.svg",
+    "summary": "A higher rate in exchange for locking the money away for twelve months. No withdrawals during the term.",
+    "detail": "You fix the rate for twelve months and cannot withdraw before maturity. That is the trade: a better rate for giving up access. We write to you 30 days before maturity so the balance never rolls silently onto a worse rate.",
+    "headlineRate": 4.55,
+    "rateType": "aer_fixed",
+    "rateDisplay": "4.55% AER",
+    "rateCaption": "Fixed for 12 months",
+    "termMonths": 12,
+    "feeAmount": 0,
+    "feeFrequency": "none",
+    "minAmount": 1000,
+    "maxAmount": 1000000,
+    "badge": "Best fixed rate",
+    "highlights": [
+      "Rate fixed for the full twelve months",
+      "No withdrawals until maturity",
+      "We write to you 30 days before the term ends"
+    ],
+    "keyFacts": [
+      { "label": "Rate", "value": "4.55% AER fixed" },
+      { "label": "Term", "value": "12 months" },
+      { "label": "Minimum deposit", "value": "£1,000" },
+      { "label": "Withdrawals", "value": "Not permitted during the term" }
+    ],
+    "eligibility": [
+      "You are 18 or over and a UK resident",
+      "You can deposit at least £1,000 within 14 days of opening"
+    ],
+    "ctaLabel": "Open this account"
+  },
+  {
+    "id": "MRD-SAV-ISA",
+    "name": "Cash ISA",
+    "category": "isa",
+    "categoryLabel": "ISAs",
+    "categoryPath": "Products > ISAs > Cash",
+    "subtype": "cash_isa",
+    "tier": "classic",
+    "image": "images/products/MRD-SAV-ISA.svg",
+    "summary": "Tax-free interest up to the annual ISA allowance, with transfers in from other providers accepted.",
+    "detail": "Interest is paid free of UK income tax within your annual ISA allowance. You can transfer existing ISAs in without using this year's allowance, and we handle the transfer with your old provider rather than asking you to.",
+    "headlineRate": 4.35,
+    "rateType": "aer_variable",
+    "rateDisplay": "4.35% AER",
+    "rateCaption": "Tax-free, variable",
+    "termMonths": null,
+    "feeAmount": 0,
+    "feeFrequency": "none",
+    "minAmount": 1,
+    "maxAmount": 20000,
+    "highlights": [
+      "Interest paid free of UK income tax",
+      "Transfers in accepted without using this year's allowance",
+      "Withdraw and replace within the same tax year without losing the allowance"
+    ],
+    "keyFacts": [
+      { "label": "Rate", "value": "4.35% AER tax-free variable" },
+      { "label": "Annual allowance", "value": "£20,000 across all ISAs" },
+      { "label": "Transfers in", "value": "Accepted" },
+      { "label": "Flexible", "value": "Yes, replace withdrawals same tax year" }
+    ],
+    "eligibility": [
+      "You are 18 or over and a UK resident for tax purposes",
+      "You have not subscribed to another cash ISA this tax year"
+    ],
+    "ctaLabel": "Open this ISA"
+  },
+  {
+    "id": "MRD-ISA-STOCKS",
+    "name": "Stocks and Shares ISA",
+    "category": "isa",
+    "categoryLabel": "ISAs",
+    "categoryPath": "Products > ISAs > Stocks and shares",
+    "subtype": "investment_isa",
+    "tier": "classic",
+    "image": "images/products/MRD-ISA-STOCKS.svg",
+    "summary": "Invest your ISA allowance in one of five risk-rated portfolios. The value can fall as well as rise.",
+    "detail": "You choose a risk level from cautious to adventurous and we manage the portfolio. This is an investment, not a savings account: the value can fall as well as rise and you may get back less than you put in. There is no FSCS protection against investment losses.",
+    "headlineRate": 0.45,
+    "rateType": "annual_charge",
+    "rateDisplay": "0.45% a year",
+    "rateCaption": "Platform charge, plus fund costs",
+    "termMonths": null,
+    "feeAmount": 0.45,
+    "feeFrequency": "annual_percent",
+    "minAmount": 100,
+    "maxAmount": 20000,
+    "highlights": [
+      "Five risk-rated portfolios, from cautious to adventurous",
+      "Start from £100, or £25 a month",
+      "Capital at risk: the value can fall as well as rise"
+    ],
+    "keyFacts": [
+      { "label": "Platform charge", "value": "0.45% a year" },
+      { "label": "Minimum investment", "value": "£100 lump sum or £25 a month" },
+      { "label": "Annual allowance", "value": "£20,000 across all ISAs" },
+      { "label": "Capital at risk", "value": "Yes" }
+    ],
+    "eligibility": [
+      "You are 18 or over and a UK resident for tax purposes",
+      "You have not subscribed to another stocks and shares ISA this tax year"
+    ],
+    "riskWarning": "The value of investments can fall as well as rise and you may get back less than you invested. Past performance is not a guide to future performance.",
+    "ctaLabel": "Open this ISA"
+  },
+  {
+    "id": "MRD-MTG-FIRST",
+    "name": "First Home Mortgage",
+    "category": "mortgage",
+    "categoryLabel": "Mortgages",
+    "categoryPath": "Products > Mortgages > First home",
+    "subtype": "first_time_buyer",
+    "tier": "classic",
+    "image": "images/products/MRD-MTG-FIRST.svg",
+    "summary": "A five-year fixed rate for first-time buyers, with deposits accepted from 5% and the standard valuation paid by us.",
+    "detail": "Built for a first purchase. Deposits start at 5%, we pay the standard valuation, and one adviser stays with you from the first conversation through to completion. You can hold the rate for six months while you look, which matters in a moving market.",
+    "headlineRate": 4.39,
+    "rateType": "fixed",
+    "rateDisplay": "4.39%",
+    "rateCaption": "Fixed for five years, then 7.99% variable",
+    "termMonths": 60,
+    "feeAmount": 999,
+    "feeFrequency": "one_off",
+    "feeDisplay": "£999 product fee",
+    "minDepositPct": 5,
+    "maxLtv": 95,
+    "minAmount": 25000,
+    "maxAmount": 750000,
+    "badge": "Rate reduced",
+    "highlights": [
+      "Deposits accepted from 5% of the purchase price",
+      "Standard valuation paid by us",
+      "Rate held for six months while you look"
+    ],
+    "keyFacts": [
+      { "label": "Initial rate", "value": "4.39% fixed for five years" },
+      { "label": "Followed by", "value": "7.99% variable for the remaining term" },
+      { "label": "APRC", "value": "6.8%" },
+      { "label": "Product fee", "value": "£999" },
+      { "label": "Maximum loan to value", "value": "95%" }
+    ],
+    "eligibility": [
+      "Neither applicant has owned a property before",
+      "You are buying a home you will live in",
+      "You have a deposit of at least 5% of the purchase price"
+    ],
+    "representativeExample": "A mortgage of £180,000 payable over 25 years on our First Home rate of 4.39% fixed for five years and then 7.99% variable would require 60 monthly payments of £989.61 and 240 monthly payments of £1,320.44. The total amount payable would be £376,282, including a £999 product fee. The overall cost for comparison is 6.8% APRC representative.",
+    "ctaLabel": "Check what you could borrow"
+  },
+  {
+    "id": "MRD-MTG-FIX5",
+    "name": "Five Year Fixed Rate Mortgage",
+    "category": "mortgage",
+    "categoryLabel": "Mortgages",
+    "categoryPath": "Products > Mortgages > Fixed rate",
+    "subtype": "residential",
+    "tier": "classic",
+    "image": "images/products/MRD-MTG-FIX5.svg",
+    "summary": "Five years of certainty on the payment, for buyers and remortgagers with a 25% deposit or more.",
+    "detail": "The lowest rate in our residential range, available where you have at least 25% equity or deposit. Five years of fixed payments, with 10% annual overpayments allowed without charge.",
+    "headlineRate": 4.09,
+    "rateType": "fixed",
+    "rateDisplay": "4.09%",
+    "rateCaption": "Fixed for five years, then 7.99% variable",
+    "termMonths": 60,
+    "feeAmount": 1499,
+    "feeFrequency": "one_off",
+    "feeDisplay": "£1,499 product fee",
+    "minDepositPct": 25,
+    "maxLtv": 75,
+    "minAmount": 25000,
+    "maxAmount": 2000000,
+    "highlights": [
+      "Our lowest residential fixed rate",
+      "Overpay up to 10% a year with no early repayment charge",
+      "Requires 25% deposit or equity"
+    ],
+    "keyFacts": [
+      { "label": "Initial rate", "value": "4.09% fixed for five years" },
+      { "label": "Followed by", "value": "7.99% variable for the remaining term" },
+      { "label": "APRC", "value": "6.6%" },
+      { "label": "Product fee", "value": "£1,499" },
+      { "label": "Maximum loan to value", "value": "75%" }
+    ],
+    "eligibility": [
+      "You have a deposit or equity of at least 25%",
+      "The property is in the UK and you will live in it"
+    ],
+    "representativeExample": "A mortgage of £250,000 payable over 25 years on our Five Year Fixed rate of 4.09% fixed for five years and then 7.99% variable would require 60 monthly payments of £1,330.19 and 240 monthly payments of £1,806.29. The total amount payable would be £513,320, including a £1,499 product fee. The overall cost for comparison is 6.6% APRC representative.",
+    "ctaLabel": "Check what you could borrow"
+  },
+  {
+    "id": "MRD-MTG-REMORT",
+    "name": "Remortgage Two Year Fixed",
+    "category": "mortgage",
+    "categoryLabel": "Mortgages",
+    "categoryPath": "Products > Mortgages > Remortgage",
+    "subtype": "remortgage",
+    "tier": "classic",
+    "image": "images/products/MRD-MTG-REMORT.svg",
+    "summary": "Move your mortgage to us on a two-year fix, with legal work and valuation included.",
+    "detail": "For customers coming off a fixed rate elsewhere. We cover the standard legal work and the valuation, and there is no product fee. A shorter fix if you expect rates to fall and want to review sooner.",
+    "headlineRate": 4.64,
+    "rateType": "fixed",
+    "rateDisplay": "4.64%",
+    "rateCaption": "Fixed for two years, then 7.99% variable",
+    "termMonths": 24,
+    "feeAmount": 0,
+    "feeFrequency": "one_off",
+    "feeDisplay": "No product fee",
+    "minDepositPct": 15,
+    "maxLtv": 85,
+    "minAmount": 25000,
+    "maxAmount": 1000000,
+    "highlights": [
+      "No product fee",
+      "Standard legal work and valuation included",
+      "Two-year term if you want to review sooner"
+    ],
+    "keyFacts": [
+      { "label": "Initial rate", "value": "4.64% fixed for two years" },
+      { "label": "Followed by", "value": "7.99% variable for the remaining term" },
+      { "label": "APRC", "value": "7.4%" },
+      { "label": "Product fee", "value": "None" },
+      { "label": "Maximum loan to value", "value": "85%" }
+    ],
+    "eligibility": [
+      "You already own the property and have at least 15% equity",
+      "The mortgage being replaced is with another lender"
+    ],
+    "representativeExample": "A mortgage of £200,000 payable over 20 years on our Remortgage rate of 4.64% fixed for two years and then 7.99% variable would require 24 monthly payments of £1,281.36 and 216 monthly payments of £1,590.09. The total amount payable would be £374,213, with no product fee. The overall cost for comparison is 7.4% APRC representative.",
+    "ctaLabel": "See what you could save"
+  },
+  {
+    "id": "MRD-MTG-BTL",
+    "name": "Buy to Let Mortgage",
+    "category": "mortgage",
+    "categoryLabel": "Mortgages",
+    "categoryPath": "Products > Mortgages > Buy to let",
+    "subtype": "buy_to_let",
+    "tier": "classic",
+    "image": "images/products/MRD-MTG-BTL.svg",
+    "summary": "For landlords with up to four properties. Interest only available, assessed on rental cover.",
+    "detail": "Assessed on the rent the property will produce rather than your salary alone. We require rental cover of 145% of the monthly interest at a stressed rate. Buy to let mortgages are not regulated by the Financial Conduct Authority.",
+    "headlineRate": 5.19,
+    "rateType": "fixed",
+    "rateDisplay": "5.19%",
+    "rateCaption": "Fixed for five years, interest only available",
+    "termMonths": 60,
+    "feeAmount": 1999,
+    "feeFrequency": "one_off",
+    "feeDisplay": "£1,999 product fee",
+    "minDepositPct": 25,
+    "maxLtv": 75,
+    "minAmount": 50000,
+    "maxAmount": 1500000,
+    "highlights": [
+      "Interest only or capital repayment",
+      "Portfolios of up to four properties considered",
+      "Rental cover assessed at 145% of stressed interest"
+    ],
+    "keyFacts": [
+      { "label": "Initial rate", "value": "5.19% fixed for five years" },
+      { "label": "Product fee", "value": "£1,999" },
+      { "label": "Maximum loan to value", "value": "75%" },
+      { "label": "Rental cover required", "value": "145%" },
+      { "label": "Regulated", "value": "No, buy to let is generally unregulated" }
+    ],
+    "eligibility": [
+      "You own or are buying a property to let to tenants",
+      "You have a deposit of at least 25%",
+      "You hold no more than four mortgaged rental properties"
+    ],
+    "representativeExample": "Buy to let mortgages are not regulated by the Financial Conduct Authority. Your property may be repossessed if you do not keep up repayments on a mortgage secured against it.",
+    "ctaLabel": "Check rental cover"
+  },
+  {
+    "id": "MRD-LON-PERSONAL",
+    "name": "Personal Loan",
+    "category": "loan",
+    "categoryLabel": "Loans",
+    "categoryPath": "Products > Loans > Personal",
+    "subtype": "unsecured",
+    "tier": "classic",
+    "image": "images/products/MRD-LON-PERSONAL.svg",
+    "summary": "Borrow £1,000 to £35,000 over one to seven years, with the rate you are offered shown before you apply.",
+    "detail": "A soft eligibility check shows the rate you would actually get without leaving a mark on your credit file. Fixed monthly payments for the whole term, and you can settle early with no more than 58 days interest as a charge.",
+    "headlineRate": 6.9,
+    "rateType": "apr_representative",
+    "rateDisplay": "6.9% APR",
+    "rateCaption": "Representative, on £7,500 to £25,000",
+    "termMonths": 60,
+    "feeAmount": 0,
+    "feeFrequency": "none",
+    "minAmount": 1000,
+    "maxAmount": 35000,
+    "highlights": [
+      "See your rate without affecting your credit score",
+      "Fixed monthly payments for the whole term",
+      "Settle early for no more than 58 days interest"
+    ],
+    "keyFacts": [
+      { "label": "Representative APR", "value": "6.9% APR" },
+      { "label": "Amount", "value": "£1,000 to £35,000" },
+      { "label": "Term", "value": "12 to 84 months" },
+      { "label": "Arrangement fee", "value": "None" }
+    ],
+    "eligibility": [
+      "You are 18 or over and a UK resident",
+      "You have a regular income",
+      "You have no county court judgments in the last six years"
+    ],
+    "representativeExample": "Representative example: borrowing £10,000 over 60 months at a representative 6.9% APR, with monthly repayments of £196.87. Total amount payable £11,812.20. Total charge for credit £1,812.20. The rate you are offered depends on your circumstances.",
+    "ctaLabel": "See your rate"
+  },
+  {
+    "id": "MRD-LON-CAR",
+    "name": "Car Finance Loan",
+    "category": "loan",
+    "categoryLabel": "Loans",
+    "categoryPath": "Products > Loans > Car",
+    "subtype": "car",
+    "tier": "classic",
+    "image": "images/products/MRD-LON-CAR.svg",
+    "summary": "An unsecured loan for a vehicle, so you own the car outright from day one with no mileage limits.",
+    "detail": "Unlike a personal contract purchase, this is a straightforward loan. You own the car from the start, there are no mileage restrictions and no balloon payment at the end. That usually costs more per month and less overall.",
+    "headlineRate": 7.4,
+    "rateType": "apr_representative",
+    "rateDisplay": "7.4% APR",
+    "rateCaption": "Representative, on £7,500 to £25,000",
+    "termMonths": 60,
+    "feeAmount": 0,
+    "feeFrequency": "none",
+    "minAmount": 3000,
+    "maxAmount": 50000,
+    "highlights": [
+      "You own the vehicle from day one",
+      "No mileage limits and no balloon payment",
+      "Funds usually available the next working day"
+    ],
+    "keyFacts": [
+      { "label": "Representative APR", "value": "7.4% APR" },
+      { "label": "Amount", "value": "£3,000 to £50,000" },
+      { "label": "Term", "value": "12 to 84 months" },
+      { "label": "Security", "value": "Unsecured, you own the car" }
+    ],
+    "eligibility": [
+      "You are 18 or over and a UK resident",
+      "You have a regular income"
+    ],
+    "representativeExample": "Representative example: borrowing £15,000 over 60 months at a representative 7.4% APR, with monthly repayments of £298.24. Total amount payable £17,894.40. Total charge for credit £2,894.40.",
+    "ctaLabel": "See your rate"
+  },
+  {
+    "id": "MRD-LON-HOME",
+    "name": "Home Improvement Loan",
+    "category": "loan",
+    "categoryLabel": "Loans",
+    "categoryPath": "Products > Loans > Home improvement",
+    "subtype": "home_improvement",
+    "tier": "classic",
+    "image": "images/products/MRD-LON-HOME.svg",
+    "summary": "Borrow up to £50,000 for building work without adding it to your mortgage or extending the term.",
+    "detail": "For extensions, kitchens and energy efficiency work. Keeping the borrowing separate from your mortgage costs more in interest per year but avoids paying it back over 25 years. A lower rate applies to qualifying energy efficiency improvements.",
+    "headlineRate": 6.4,
+    "rateType": "apr_representative",
+    "rateDisplay": "6.4% APR",
+    "rateCaption": "Representative, 5.9% on energy efficiency work",
+    "termMonths": 84,
+    "feeAmount": 0,
+    "feeFrequency": "none",
+    "minAmount": 5000,
+    "maxAmount": 50000,
+    "highlights": [
+      "Keeps the borrowing off your mortgage term",
+      "5.9% APR on qualifying energy efficiency improvements",
+      "Terms up to ten years"
+    ],
+    "keyFacts": [
+      { "label": "Representative APR", "value": "6.4% APR" },
+      { "label": "Energy efficiency rate", "value": "5.9% APR" },
+      { "label": "Amount", "value": "£5,000 to £50,000" },
+      { "label": "Term", "value": "24 to 120 months" }
+    ],
+    "eligibility": [
+      "You own the property being improved",
+      "You are 18 or over and a UK resident"
+    ],
+    "representativeExample": "Representative example: borrowing £20,000 over 84 months at a representative 6.4% APR, with monthly repayments of £294.44. Total amount payable £24,732.96. Total charge for credit £4,732.96.",
+    "ctaLabel": "See your rate"
+  },
+  {
+    "id": "MRD-CRD-CLASSIC",
+    "name": "Meridian Classic Card",
+    "category": "credit_card",
+    "categoryLabel": "Credit cards",
+    "categoryPath": "Products > Credit cards > Everyday",
+    "subtype": "everyday",
+    "tier": "classic",
+    "image": "images/products/MRD-CRD-CLASSIC.svg",
+    "summary": "An everyday credit card with 0% on purchases for 18 months and no annual fee.",
+    "detail": "A simple card for spreading the cost of a purchase. There is no annual fee. The 0% period applies to purchases only, and the rate reverts to 19.9% variable afterwards, so clearing the balance before month 19 is the point of it.",
+    "headlineRate": 19.9,
+    "rateType": "apr_representative",
+    "rateDisplay": "19.9% APR",
+    "rateCaption": "Representative variable, after 18 months at 0%",
+    "termMonths": 18,
+    "feeAmount": 0,
+    "feeFrequency": "annual",
+    "feeDisplay": "No annual fee",
+    "highlights": [
+      "0% on purchases for 18 months",
+      "No annual fee",
+      "Section 75 protection on purchases over £100"
+    ],
+    "keyFacts": [
+      { "label": "Representative APR", "value": "19.9% APR variable" },
+      { "label": "Introductory offer", "value": "0% on purchases for 18 months" },
+      { "label": "Annual fee", "value": "£0" },
+      { "label": "Minimum credit limit", "value": "£500" }
+    ],
+    "eligibility": [
+      "You are 18 or over and a UK resident",
+      "You have a regular income of at least £10,000 a year"
+    ],
+    "representativeExample": "Representative example: 19.9% APR representative variable. Based on an assumed credit limit of £1,200 and a purchase rate of 19.9% p.a. variable.",
+    "ctaLabel": "Check eligibility"
+  },
+  {
+    "id": "MRD-CRD-BALANCE",
+    "name": "Meridian Balance Transfer Card",
+    "category": "credit_card",
+    "categoryLabel": "Credit cards",
+    "categoryPath": "Products > Credit cards > Balance transfer",
+    "subtype": "balance_transfer",
+    "tier": "classic",
+    "image": "images/products/MRD-CRD-BALANCE.svg",
+    "summary": "Move existing card debt and pay 0% interest on it for 28 months, for a 2.9% transfer fee.",
+    "detail": "For clearing expensive debt from elsewhere. The 2.9% transfer fee is charged up front, so moving £5,000 costs £145. That is almost always cheaper than paying 22% for two years, but the card only works if you stop spending on the old one.",
+    "headlineRate": 22.9,
+    "rateType": "apr_representative",
+    "rateDisplay": "22.9% APR",
+    "rateCaption": "Representative variable, after 28 months at 0% on transfers",
+    "termMonths": 28,
+    "feeAmount": 2.9,
+    "feeFrequency": "transfer_percent",
+    "feeDisplay": "2.9% transfer fee",
+    "badge": "Longest 0% period",
+    "highlights": [
+      "0% on balance transfers for 28 months",
+      "2.9% transfer fee, so £5,000 costs £145 to move",
+      "Transfers must be made within 60 days of opening"
+    ],
+    "keyFacts": [
+      { "label": "Representative APR", "value": "22.9% APR variable" },
+      { "label": "0% period", "value": "28 months on transfers" },
+      { "label": "Transfer fee", "value": "2.9%" },
+      { "label": "Purchases", "value": "22.9% variable from day one" }
+    ],
+    "eligibility": [
+      "You are 18 or over and a UK resident",
+      "The balance being transferred is not already with Meridian"
+    ],
+    "representativeExample": "Representative example: 22.9% APR representative variable. Based on an assumed credit limit of £1,200 and a purchase rate of 22.9% p.a. variable.",
+    "ctaLabel": "Check eligibility"
+  },
+  {
+    "id": "MRD-CRD-PLATINUM",
+    "name": "Meridian Platinum Card",
+    "category": "credit_card",
+    "categoryLabel": "Credit cards",
+    "categoryPath": "Products > Credit cards > Rewards",
+    "subtype": "rewards",
+    "tier": "classic",
+    "image": "images/products/MRD-CRD-PLATINUM.svg",
+    "summary": "One point for every pound spent, redeemable against flights or statement credit, with no fees abroad.",
+    "detail": "A rewards card for people who clear the balance every month. Carrying a balance at 21.9% wipes out the value of the points several times over, and we would rather say so than not. No foreign transaction fees on spending abroad.",
+    "headlineRate": 21.9,
+    "rateType": "apr_representative",
+    "rateDisplay": "21.9% APR",
+    "rateCaption": "Representative variable",
+    "termMonths": null,
+    "feeAmount": 120,
+    "feeFrequency": "annual",
+    "feeDisplay": "£120 a year",
+    "highlights": [
+      "One point per pound, redeemable against flights or statement credit",
+      "No foreign transaction fees",
+      "Worth holding only if you clear the balance monthly"
+    ],
+    "keyFacts": [
+      { "label": "Representative APR", "value": "21.9% APR variable" },
+      { "label": "Annual fee", "value": "£120" },
+      { "label": "Rewards", "value": "1 point per £1 spent" },
+      { "label": "Foreign transaction fee", "value": "None" }
+    ],
+    "eligibility": [
+      "You are 18 or over and a UK resident",
+      "You have an income of at least £25,000 a year"
+    ],
+    "representativeExample": "Representative example: 27.5% APR representative variable, based on an assumed credit limit of £1,200, a purchase rate of 21.9% p.a. variable and the £120 annual fee.",
+    "ctaLabel": "Check eligibility"
+  },
+  {
+    "id": "MRD-CRD-INFINITE",
+    "name": "Meridian Infinite Card",
+    "category": "credit_card",
+    "categoryLabel": "Credit cards",
+    "categoryPath": "Products > Credit cards > Premium",
+    "subtype": "premium",
+    "tier": "private",
+    "image": "images/products/MRD-CRD-INFINITE.svg",
+    "summary": "By invitation. A metal card with a dedicated relationship manager, worldwide family travel cover and lounge access for two guests.",
+    "detail": "Offered to Private and Premier customers by invitation. The annual fee is £295 and the benefits are worth more than that only if you travel several times a year. Your relationship manager will tell you plainly whether it is worth holding.",
+    "headlineRate": 22.9,
+    "rateType": "apr_representative",
+    "rateDisplay": "22.9% APR",
+    "rateCaption": "Representative variable",
+    "termMonths": null,
+    "feeAmount": 295,
+    "feeFrequency": "annual",
+    "feeDisplay": "£295 a year",
+    "highlights": [
+      "Dedicated relationship manager",
+      "Worldwide family travel insurance",
+      "Airport lounge access with two guests"
+    ],
+    "keyFacts": [
+      { "label": "Representative APR", "value": "22.9% APR variable" },
+      { "label": "Annual fee", "value": "£295" },
+      { "label": "Availability", "value": "By invitation" },
+      { "label": "Lounge access", "value": "Cardholder plus two guests" }
+    ],
+    "eligibility": [
+      "You hold a Premier or Private relationship with Meridian",
+      "You have been invited to apply"
+    ],
+    "representativeExample": "Representative example: 51.4% APR representative variable, based on an assumed credit limit of £1,200, a purchase rate of 22.9% p.a. variable and the £295 annual fee.",
+    "ctaLabel": "Request an invitation"
+  },
+  {
+    "id": "MRD-CRD-STUDENT",
+    "name": "Meridian Student Card",
+    "category": "credit_card",
+    "categoryLabel": "Credit cards",
+    "categoryPath": "Products > Credit cards > Student",
+    "subtype": "student",
+    "tier": "classic",
+    "image": "images/products/MRD-CRD-STUDENT.svg",
+    "summary": "A first credit card with a low limit, built to establish a credit history rather than to borrow on.",
+    "detail": "Limits start at £250 and rise only when you ask and we can see the account has been run well. The point of this card is a credit history, not credit. We will not raise the limit automatically.",
+    "headlineRate": 18.9,
+    "rateType": "apr_representative",
+    "rateDisplay": "18.9% APR",
+    "rateCaption": "Representative variable",
+    "termMonths": null,
+    "feeAmount": 0,
+    "feeFrequency": "annual",
+    "feeDisplay": "No annual fee",
+    "highlights": [
+      "Limits from £250, raised only on request",
+      "No annual fee",
+      "Builds a credit history for a first mortgage later"
+    ],
+    "keyFacts": [
+      { "label": "Representative APR", "value": "18.9% APR variable" },
+      { "label": "Starting limit", "value": "£250" },
+      { "label": "Annual fee", "value": "£0" },
+      { "label": "Limit increases", "value": "On request only" }
+    ],
+    "eligibility": [
+      "You are 18 or over and enrolled on a UK course of at least two years",
+      "You hold a Meridian student or everyday current account"
+    ],
+    "representativeExample": "Representative example: 18.9% APR representative variable. Based on an assumed credit limit of £250 and a purchase rate of 18.9% p.a. variable.",
+    "ctaLabel": "Check eligibility"
+  },
+  {
+    "id": "MRD-WLT-PORTFOLIO",
+    "name": "Managed Portfolio",
+    "category": "wealth",
+    "categoryLabel": "Wealth",
+    "categoryPath": "Products > Wealth > Managed portfolio",
+    "subtype": "discretionary",
+    "tier": "premier",
+    "image": "images/products/MRD-WLT-PORTFOLIO.svg",
+    "summary": "A discretionary portfolio managed to your risk profile, from £50,000. Capital at risk.",
+    "detail": "We build and rebalance the portfolio to the risk level agreed at your first review, and report quarterly. This is an investment service: the value can fall as well as rise and you may get back less than you invested.",
+    "headlineRate": 0.75,
+    "rateType": "annual_charge",
+    "rateDisplay": "0.75% a year",
+    "rateCaption": "Annual management charge, plus underlying fund costs",
+    "termMonths": null,
+    "feeAmount": 0.75,
+    "feeFrequency": "annual_percent",
+    "minAmount": 50000,
+    "highlights": [
+      "Discretionary management against an agreed risk profile",
+      "Quarterly reporting and an annual review with your adviser",
+      "Capital at risk: the value can fall as well as rise"
+    ],
+    "keyFacts": [
+      { "label": "Annual charge", "value": "0.75%" },
+      { "label": "Minimum investment", "value": "£50,000" },
+      { "label": "Risk profiles", "value": "Five, cautious to adventurous" },
+      { "label": "Reporting", "value": "Quarterly" }
+    ],
+    "eligibility": [
+      "You have at least £50,000 to invest",
+      "You have completed a risk profile assessment with an adviser"
+    ],
+    "riskWarning": "The value of investments can fall as well as rise and you may get back less than you invested. Past performance is not a guide to future performance.",
+    "ctaLabel": "Book a portfolio review"
+  },
+  {
+    "id": "MRD-WLT-PENSION",
+    "name": "Personal Pension",
+    "category": "wealth",
+    "categoryLabel": "Wealth",
+    "categoryPath": "Products > Wealth > Pension",
+    "subtype": "pension",
+    "tier": "classic",
+    "image": "images/products/MRD-WLT-PENSION.svg",
+    "summary": "A self-invested personal pension with tax relief on contributions and access from age 57.",
+    "detail": "Contributions receive tax relief at your marginal rate within the annual allowance. Money is locked until age 57 under current rules, which is the trade for the relief. Transfers in from other pensions are accepted after an advice check.",
+    "headlineRate": 0.35,
+    "rateType": "annual_charge",
+    "rateDisplay": "0.35% a year",
+    "rateCaption": "Platform charge, plus fund costs",
+    "termMonths": null,
+    "feeAmount": 0.35,
+    "feeFrequency": "annual_percent",
+    "minAmount": 100,
+    "highlights": [
+      "Tax relief on contributions within the annual allowance",
+      "Transfers in accepted after an advice check",
+      "Not accessible until age 57 under current rules"
+    ],
+    "keyFacts": [
+      { "label": "Platform charge", "value": "0.35% a year" },
+      { "label": "Minimum contribution", "value": "£100, or £25 a month" },
+      { "label": "Access age", "value": "57 under current rules" },
+      { "label": "Transfers in", "value": "Accepted, advice check applies" }
+    ],
+    "eligibility": [
+      "You are under 75 and a UK resident for tax purposes"
+    ],
+    "riskWarning": "The value of investments can fall as well as rise and you may get back less than you invested. Tax treatment depends on individual circumstances and may change.",
+    "ctaLabel": "Book a pension review"
+  },
+  {
+    "id": "MRD-INS-HOME",
+    "name": "Home Insurance",
+    "category": "insurance",
+    "categoryLabel": "Insurance",
+    "categoryPath": "Products > Insurance > Home",
+    "subtype": "home",
+    "tier": "classic",
+    "image": "images/products/MRD-INS-HOME.svg",
+    "summary": "Buildings and contents cover with an excess you choose, and claims handled by one named person.",
+    "detail": "Buildings, contents or both. You set the excess, which moves the premium. Every claim is handled by one named person from first call to settlement rather than passed between departments.",
+    "headlineRate": 0,
+    "rateType": "premium_from",
+    "rateDisplay": "From £186 a year",
+    "rateCaption": "Based on a typical three bedroom house",
+    "termMonths": 12,
+    "feeAmount": 186,
+    "feeFrequency": "annual",
+    "feeDisplay": "From £186 a year",
+    "highlights": [
+      "Buildings, contents or combined cover",
+      "Choose your excess and see the premium move",
+      "One named claims handler from first call to settlement"
+    ],
+    "keyFacts": [
+      { "label": "Premium from", "value": "£186 a year" },
+      { "label": "Buildings cover", "value": "Up to £750,000" },
+      { "label": "Contents cover", "value": "Up to £100,000" },
+      { "label": "Standard excess", "value": "£250, adjustable" }
+    ],
+    "eligibility": [
+      "The property is in the UK and is your main residence",
+      "The property has not flooded in the last five years"
+    ],
+    "ctaLabel": "Get a quote"
+  },
+  {
+    "id": "MRD-INS-LIFE",
+    "name": "Life Insurance",
+    "category": "insurance",
+    "categoryLabel": "Insurance",
+    "categoryPath": "Products > Insurance > Life",
+    "subtype": "life",
+    "tier": "classic",
+    "image": "images/products/MRD-INS-LIFE.svg",
+    "summary": "Level or decreasing term cover to pay off a mortgage or leave a lump sum, from £6 a month.",
+    "detail": "Decreasing cover tracks a repayment mortgage down and costs less. Level cover stays flat and leaves a lump sum. Writing the policy in trust usually keeps the payout outside the estate for inheritance tax, and costs nothing to arrange.",
+    "headlineRate": 0,
+    "rateType": "premium_from",
+    "rateDisplay": "From £6 a month",
+    "rateCaption": "Based on a 30 year old non-smoker, £150,000 over 25 years",
+    "termMonths": 300,
+    "feeAmount": 6,
+    "feeFrequency": "monthly",
+    "feeDisplay": "From £6 a month",
+    "highlights": [
+      "Level or decreasing term cover",
+      "Written in trust at no extra cost",
+      "Terminal illness cover included as standard"
+    ],
+    "keyFacts": [
+      { "label": "Premium from", "value": "£6 a month" },
+      { "label": "Cover", "value": "£20,000 to £1,000,000" },
+      { "label": "Term", "value": "5 to 40 years" },
+      { "label": "Trust", "value": "Available at no cost" }
+    ],
+    "eligibility": [
+      "You are between 18 and 65",
+      "You are a UK resident registered with a GP"
+    ],
+    "ctaLabel": "Get a quote"
+  },
+  {
+    "id": "MRD-INS-TRAVEL",
+    "name": "Travel Insurance",
+    "category": "insurance",
+    "categoryLabel": "Insurance",
+    "categoryPath": "Products > Insurance > Travel",
+    "subtype": "travel",
+    "tier": "classic",
+    "image": "images/products/MRD-INS-TRAVEL.svg",
+    "summary": "Single trip or annual multi-trip cover, with medical conditions assessed rather than automatically excluded.",
+    "detail": "Annual cover works out cheaper than three single trips for most people. Existing medical conditions are assessed individually rather than excluded by default, and the assessment is free whether or not you buy.",
+    "headlineRate": 0,
+    "rateType": "premium_from",
+    "rateDisplay": "From £34 a year",
+    "rateCaption": "Annual multi-trip, Europe, single traveller",
+    "termMonths": 12,
+    "feeAmount": 34,
+    "feeFrequency": "annual",
+    "feeDisplay": "From £34 a year",
+    "highlights": [
+      "Single trip or annual multi-trip",
+      "Medical conditions assessed individually, free of charge",
+      "Emergency medical cover up to £10 million"
+    ],
+    "keyFacts": [
+      { "label": "Premium from", "value": "£34 a year" },
+      { "label": "Emergency medical", "value": "Up to £10 million" },
+      { "label": "Cancellation", "value": "Up to £5,000" },
+      { "label": "Trip length", "value": "Up to 31 days per trip" }
+    ],
+    "eligibility": [
+      "You are a UK resident",
+      "Your trip starts and ends in the UK"
+    ],
+    "ctaLabel": "Get a quote"
+  }
+]

@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NovaPay | Survey (Dengage panel content)</title>
+<!-- =====================================================================
+     NOVAPAY SURVEY, On-Site content for the panel
+
+     Paste this WHOLE file into the scenario editor. All CSS is scoped to
+     #npy-survey, so nothing leaks onto the page.
+
+     ONE QUESTION ONLY. The engine submits the FIRST .form-block and ignores
+     the rest. There is no multi-question form, so a second block would render
+     and never submit.
+
+     Input capture uses the engine's native contract, data-dn-form-id
+     ="question_form". A host-page listener cannot work: this content renders
+     in a cross-origin iframe.
+
+     Auto-close is configured on the submitted-content panel below, 6 seconds,
+     so the thank-you message stays long enough to be read.
+
+     Clicks: the engine counts a click only when the content calls
+     Dn.sendClick(). The submit button reports. The close control calls
+     Dn.close() and never sendClick, so a dismissal is not counted as a
+     conversion.
+
+     The -vh class hides the REAL radio inputs behind the styled chips. It is
+     not close-button plumbing. Remove it and the whole row unstyles.
+
+     Panel settings:
+       - Scenario: triggerBy = DATA_LAYER_EVENT, eventName = fintech_survey
+       - Popup design: width 460 to 520px, padding 0, transparent background
+       - Layout > Close Button > "Add close button to outside" ON
+====================================================================== -->
+</head>
+<body>
+
+<form class="form" data-dn-form-id="question_form" data-dn-validation-language="en"
+      id="npy-survey" onsubmit="return false">
+  <style>
+    #npy-survey *{margin:0;padding:0;box-sizing:border-box;}
+    #npy-survey{
+      --nv-blue:#125cfa; --nv-blue-dark:#0a3a9e; --nv-ink:#0f1c33;
+      --nv-muted:#64748b; --nv-line:#e3e8f0;
+      font-family:Inter,-apple-system,'Segoe UI',Roboto,sans-serif;width:100%;
+    }
+    body > #npy-survey{max-width:500px;margin:40px auto;}
+
+    #npy-survey .sv-card{
+      background:#fff;border-radius:18px;overflow:hidden;
+      box-shadow:0 10px 34px rgba(15,28,51,.16);
+      animation:sv-in .35s cubic-bezier(.21,.9,.35,1.1);
+    }
+    @keyframes sv-in{from{opacity:0;transform:translateY(14px) scale(.98);}to{opacity:1;transform:none;}}
+
+    #npy-survey .sv-head{
+      background:linear-gradient(135deg,var(--nv-blue) 0%,var(--nv-blue-dark) 100%);
+      color:#fff;padding:24px 26px 22px;
+    }
+    #npy-survey .sv-tag{
+      display:inline-block;background:rgba(255,255,255,.18);border-radius:7px;
+      font:700 10px Inter,sans-serif;letter-spacing:.12em;text-transform:uppercase;
+      padding:5px 9px;margin-bottom:10px;
+    }
+    #npy-survey h2{font-size:21px;font-weight:700;line-height:1.25;letter-spacing:-.4px;}
+    #npy-survey .sv-sub{font-size:12.5px;opacity:.88;margin-top:6px;line-height:1.5;}
+
+    #npy-survey .sv-body{padding:22px 26px 24px;}
+    #npy-survey .sv-chips{display:flex;flex-wrap:wrap;gap:9px;}
+
+    /* Hides the real radios behind the styled chips. NOT close-button
+       plumbing: removing this unstyles the entire row. */
+    #npy-survey .sv-vh{
+      position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;
+      clip:rect(0 0 0 0);white-space:nowrap;border:0;
+    }
+    #npy-survey .sv-chip{
+      display:inline-flex;align-items:center;gap:7px;border:1.5px solid var(--nv-line);
+      border-radius:11px;padding:11px 14px;font-size:13px;font-weight:600;
+      color:var(--nv-ink);cursor:pointer;transition:all .18s ease;background:#fff;
+    }
+    #npy-survey .sv-chip:hover{border-color:var(--nv-blue);color:var(--nv-blue);}
+    #npy-survey .sv-vh:checked + .sv-chip{
+      border-color:var(--nv-blue);background:var(--nv-blue);color:#fff;
+      box-shadow:0 4px 14px rgba(18,92,250,.28);
+    }
+
+    #npy-survey .sv-submit{
+      display:block;width:100%;margin-top:20px;border:0;cursor:pointer;
+      background:var(--nv-blue);color:#fff;border-radius:11px;
+      font:700 13px Inter,sans-serif;letter-spacing:.04em;padding:14px;
+      transition:background .2s ease,transform .15s ease;
+    }
+    #npy-survey .sv-submit:hover{background:var(--nv-blue-dark);transform:translateY(-1px);}
+    #npy-survey .sv-note{
+      margin-top:12px;font-size:11px;line-height:1.6;color:var(--nv-muted);text-align:center;
+    }
+
+    @media (max-width:420px){
+      #npy-survey .sv-head{padding:20px 20px 18px;}
+      #npy-survey .sv-body{padding:18px 20px 20px;}
+      #npy-survey h2{font-size:19px;}
+    }
+
+    /* Validation text and the confirmation panel, both driven by the engine.
+       The handler writes into div.form-message and stamps data-dn-invalid on
+       the block; on a successful submit it stamps data-dn-is-submitted on
+       .container. Without these rules the visitor clicks and nothing at all
+       happens. */
+    #npy-survey .form-message{display:none;font-size:11.5px;color:#b3261e;margin-top:9px;}
+    #npy-survey .form-block[data-dn-invalid="true"] .form-message{display:block;}
+    #npy-survey .submitted-content{display:none;padding:40px 28px 42px;text-align:center;}
+    #npy-survey .container[data-dn-is-submitted="true"] .sv-body{display:none;}
+    #npy-survey .container[data-dn-is-submitted="true"] .submitted-content{display:block;}
+    #npy-survey .dn-tick{
+      width:58px;height:58px;margin:0 auto 16px;border-radius:50%;
+      background:rgba(18,92,250,.12);position:relative;
+      animation:dn-pop .4s cubic-bezier(.2,1.6,.4,1);
+    }
+    @keyframes dn-pop{from{transform:scale(.4);opacity:0;}to{transform:none;opacity:1;}}
+    #npy-survey .dn-tick::after{
+      content:"";position:absolute;left:20px;top:22px;width:16px;height:8px;
+      border-left:3px solid #125cfa;border-bottom:3px solid #125cfa;transform:rotate(-45deg);
+    }
+    #npy-survey .submitted-content h3{font-size:20px;font-weight:700;color:#0f1c33;margin-bottom:8px;}
+    #npy-survey .submitted-content p{font-size:13px;color:#64748b;line-height:1.6;}
+  </style>
+
+  <div class="container sv-card">
+    <div class="sv-head">
+      <span class="sv-tag">30 seconds</span>
+      <h2>What brought you to NovaPay today?</h2>
+      <p class="sv-sub">Your answer shapes what we build next. Pick the closest one.</p>
+    </div>
+
+    <div class="sv-body">
+      <div class="form-block" data-dn-name="fintech_signup_reason" data-dn-is-radio="true" data-dn-min-selection="1" data-dn-max-selection="1">
+        <div class="sv-chips">
+          <input class="sv-vh" type="radio" id="npy-sv-1" name="npy-survey-reason" value="spending">
+          <label class="sv-chip" for="npy-sv-1">Everyday spending</label>
+
+          <input class="sv-vh" type="radio" id="npy-sv-2" name="npy-survey-reason" value="saving">
+          <label class="sv-chip" for="npy-sv-2">Saving for a goal</label>
+
+          <input class="sv-vh" type="radio" id="npy-sv-3" name="npy-survey-reason" value="travel">
+          <label class="sv-chip" for="npy-sv-3">Spending abroad</label>
+
+          <input class="sv-vh" type="radio" id="npy-sv-4" name="npy-survey-reason" value="investing">
+          <label class="sv-chip" for="npy-sv-4">Starting to invest</label>
+
+          <input class="sv-vh" type="radio" id="npy-sv-5" name="npy-survey-reason" value="borrowing">
+          <label class="sv-chip" for="npy-sv-5">Borrowing money</label>
+
+          <input class="sv-vh" type="radio" id="npy-sv-6" name="npy-survey-reason" value="sending">
+          <label class="sv-chip" for="npy-sv-6">Sending money home</label>
+        </div>
+        <div class="form-message"></div>
+      </div>
+
+      <button type="submit" class="sv-submit"
+              onclick="Dn.sendClick('fintech_survey__submit');Dn.postQuestion()">Send my answer</button>
+
+      <p class="sv-note">
+        NovaPay is a demonstration brand. No account is opened and no money moves.
+      </p>
+    </div>
+
+    <div class="submitted-content" data-dn-is-enabled="true"
+         data-dn-is-modal-auto-close-enabled="true" data-dn-modal-close-seconds="6">
+      <div class="dn-tick" aria-hidden="true"></div>
+      <h3>Thank you</h3>
+      <p>That goes straight into what we build next.</p>
+    </div>
+  </div>
+</form>
+
+</body>
+</html>

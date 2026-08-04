@@ -1,0 +1,601 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CantuPneus | Надёжный партнёр, чтобы ваш бизнес не сбавлял ход</title>
+    <meta name="description" content="Дистрибьютор и импортёр грузовых, легковых, сельскохозяйственных и индустриальных шин, а также шин OTR. Демонстрационный сайт платформы Dengage.">
+
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-NL6J5Z53');</script>
+    <!-- End Google Tag Manager -->
+
+    <!-- ===============================================================
+         TAGGING SETUP
+
+         Two independent pieces:
+
+         1. GTM container GTM-NL6J5Z53 (above): the team's own container,
+            for analytics and any future tags. It is EMPTY of Dengage tags
+            and must stay that way: the Dengage SDK is loaded directly
+            below. Loading it a second time from a GTM tag would
+            double-initialise the SDK.
+
+         2. Dengage Web SDK (below): the BFSI web application, account 28,
+            verbatim as the panel issued it. The SDK watches
+            window.dataLayer itself, so on-site scenarios configured with
+            triggerBy = DATA_LAYER_EVENT fire without any GTM involvement.
+
+         Panel advanced settings that this page's code assumes:
+           Trigger Initialize on Install  = OFF (snippet calls initialize())
+           Trigger Page View on Initialize = OFF (js/pageView.js calls
+             pageView() with real parameters; ON would double-count)
+    ================================================================ -->
+    <!-- identity first: it feeds the contact key into initialize below -->
+    <script src="js/identity.js" data-user-store="cantupneus_user"></script>
+    <!-- DENGAGE SDK START -->
+    <script>
+      !function (e, a, n, d, g) {
+        e.dengage = e.dengage || function () { (e.dengage.q = e.dengage.q || []).push(arguments) },
+        d = a.getElementsByTagName("head")[0],
+        (g = a.createElement("script")).async = 1,
+        g.src = "https://pcdn.dengage.com/p/push/28/c8d2da44-b982-1925-9ad8-e7caddf0894a/dengage_sdk_loader.js",
+        d.appendChild(g)
+      }(window, document);
+      /* js/identity.js resolved the contact key synchronously just above, so the
+         SDK is identified from the very first call. Docs: "If you have these
+         identifiers before calling the initialize method we recommend using this
+         approach." Anonymous visitors keep the exact previous call. */
+      window.__dnInit ? dengage('initialize', window.__dnInit) : dengage('initialize');
+    </script>
+    <!-- DENGAGE SDK END -->
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=Inter:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="cantu-style.css">
+    <link rel="icon" href="images/cantu-mark.svg" type="image/svg+xml">
+</head>
+<body data-page-type="home">
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NL6J5Z53"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+
+    <!-- Header -->
+    <header class="site-header" id="header">
+        <div class="container">
+            <div class="header-inner">
+                <a href="index.html" class="logo">
+                    <span class="logo-mark" aria-hidden="true">
+                        <svg viewBox="0 0 120 64" focusable="false"><g fill="none" stroke="currentColor" stroke-width="13" stroke-linecap="round"><path d="M52 18 H32 a14 14 0 0 0 0 28 h20"/><path d="M68 46 H88 a14 14 0 0 0 0-28 H68"/></g><rect x="46" y="11.5" width="28" height="13" rx="6.5" fill="currentColor"/><rect x="46" y="39.5" width="28" height="13" rx="6.5" fill="currentColor"/></svg>
+                    </span>
+                    <span class="logo-word">Cantu<span>Pneus</span></span>
+                </a>
+
+                <nav class="nav-main">
+                    <a href="index.html#products">Товары</a>
+                    <a href="index.html#collections">Линейки</a>
+                    <a href="index.html#craftsmanship">Логистика</a>
+                    <a href="index.html#story">О нас</a>
+                    <a href="index.html#collections" class="nav-cta">Акции</a>
+                    <a href="../index.html" class="lang-switch" title="Версия на португальском">PT</a>
+                    <button class="login-icon-btn" type="button" aria-label="Создать аккаунт" data-login-btn>
+                        <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                            <path d="M12 12c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5Zm0 2c-3.33 0-10 1.67-10 5v2h20v-2c0-3.33-6.67-5-10-5Z"></path>
+                        </svg>
+                    </button>
+                    <button class="cart-icon-btn" type="button" aria-label="Открыть корзину" data-cart-open>
+                        <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                            <path d="M7 18c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2ZM1 2v2h2l3.6 7.59-1.35 2.44C4.52 15.37 5.48 17 7 17h12v-2H7l1.1-2h7.45c.75 0 1.41-.41 1.75-1.03L21 5H5.21l-.94-2H1Zm16 16c-1.1 0-1.99.9-1.99 2S15.9 22 17 22s2-.9 2-2-.9-2-2-2Z"></path>
+                        </svg>
+                        <span class="cart-count" data-cart-count>0</span>
+                    </button>
+                </nav>
+
+                <button class="menu-toggle" id="menuToggle" aria-label="Открыть меню">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Dengage inline target slot, top of page. Sits below the fixed header
+         once filled (js/inlineSlotOffset.js measures the clearance). This is
+         the one to target for a Story rail. Empty and hidden until an inline
+         On-Site campaign fills it. Do not add content or styling here. -->
+    <div id="dn_inline_target_below_header" class="dn-inline-slot"></div>
+
+    <!-- Mobile Navigation -->
+    <div class="mobile-overlay" id="mobileOverlay"></div>
+    <nav class="mobile-nav" id="mobileNav">
+        <button class="mobile-nav-close" id="mobileNavClose">×</button>
+        <ul class="mobile-nav-links">
+            <li><a href="index.html#products">Товары</a></li>
+            <li><a href="index.html#collections">Линейки</a></li>
+            <li><a href="index.html#craftsmanship">Логистика</a></li>
+            <li><a href="index.html#story">О нас</a></li>
+            <li><a href="../index.html">Португальский (PT)</a></li>
+        </ul>
+        <div class="mobile-nav-cta">
+            <a href="index.html#collections" class="btn-primary">Акции</a>
+            <button class="btn-primary mobile-login-btn" type="button" data-login-btn>Создать аккаунт</button>
+            <button class="btn-primary mobile-cart-btn" type="button" data-cart-open>Корзина (<span data-cart-count>0</span>)</button>
+        </div>
+    </nav>
+
+    <!-- Create account Modal -->
+    <div class="login-modal" id="loginModal" aria-hidden="true">
+        <div class="login-modal-overlay" data-close-login></div>
+        <div class="login-modal-content" role="dialog" aria-modal="true" aria-labelledby="loginModalTitle">
+            <button class="login-modal-close" type="button" aria-label="Закрыть регистрацию" data-close-login>×</button>
+            <p class="text-label">Аккаунт CantuPneus</p>
+            <h2 class="heading-display login-modal-title" id="loginModalTitle">Создайте аккаунт</h2>
+            <p class="text-body login-modal-text">
+                Зарегистрируйтесь для оптовых закупок. Все поля обязательны. Ваш e-mail используется как контактный ключ в Dengage.
+            </p>
+            <form class="login-form" id="loginForm" novalidate>
+                <div class="login-form-row">
+                    <div class="login-form-group">
+                        <label for="loginFirstName">Имя</label>
+                        <input type="text" id="loginFirstName" name="firstName" placeholder="Иван" autocomplete="given-name" required>
+                    </div>
+                    <div class="login-form-group">
+                        <label for="loginLastName">Фамилия</label>
+                        <input type="text" id="loginLastName" name="lastName" placeholder="Иванов" autocomplete="family-name" required>
+                    </div>
+                </div>
+                <div class="login-form-group">
+                    <label for="loginEmail">Рабочий e-mail</label>
+                    <input type="email" id="loginEmail" name="email" placeholder="name@company.com" autocomplete="email" required>
+                </div>
+                <div class="login-form-group">
+                    <label for="loginPassword">Пароль</label>
+                    <input type="password" id="loginPassword" name="password" placeholder="Придумайте пароль" autocomplete="new-password" required>
+                </div>
+                <p class="login-form-error" id="loginFormError" role="alert" hidden></p>
+                <button class="login-submit-btn" type="submit">Создать аккаунт</button>
+            </form>
+        </div>
+    </div>
+
+    <div class="login-success-toast" id="loginSuccessMessage" role="status" aria-live="polite">
+        Добро пожаловать в CantuPneus.
+    </div>
+
+    <!-- Cart Drawer -->
+    <div class="cart-drawer" id="cartDrawer" aria-hidden="true">
+        <div class="cart-drawer-overlay" data-cart-close></div>
+        <aside class="cart-drawer-panel" aria-labelledby="cartDrawerTitle">
+            <div class="cart-drawer-header">
+                <div>
+                    <p class="text-label">Корзина</p>
+                    <h2 class="heading-display cart-drawer-title" id="cartDrawerTitle">Ваши товары</h2>
+                </div>
+                <button class="cart-drawer-close" type="button" aria-label="Закрыть корзину" data-cart-close>×</button>
+            </div>
+            <div class="cart-items" data-cart-items></div>
+            <p class="cart-empty" data-cart-empty>Ваша корзина пуста.</p>
+            <div class="cart-drawer-footer">
+                <div class="cart-total-row">
+                    <span>Итого</span>
+                    <strong data-cart-total>R$ 0,00</strong>
+                </div>
+                <button class="cart-checkout-btn" type="button" data-cart-checkout>Оформить заказ</button>
+            </div>
+        </aside>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <p class="text-label hero-tagline">Прямой импортёр с 2006 года</p>
+            <h1 class="heading-display hero-title">
+                Надёжный партнёр,<br>чтобы ваш бизнес <em>не сбавлял ход</em>
+            </h1>
+            <p class="text-body hero-description">
+                Грузовые, легковые, сельскохозяйственные и индустриальные шины, а также шины OTR по ценам импортёра, реальные остатки на каждом складе и доставка от 24 часов.
+            </p>
+            <div class="hero-actions">
+                <a href="index.html#products" class="btn-primary">Открыть каталог</a>
+                <a href="index.html#story" class="btn-text">О компании CantuPneus</a>
+            </div>
+        </div>
+        <div class="hero-image">
+            <div class="hero-slide active" data-title="Линейка грузовых шин" data-price="от R$ 1 120">
+                <img src="images/scenes/hero-carga.jpg" alt="Седельный тягач на трассе на грузовых шинах CantuPneus">
+            </div>
+            <div class="hero-slide" data-title="Линейка легковых шин" data-price="от R$ 289">
+                <img src="images/scenes/hero-passeio.jpg" alt="Легковые шины на складе">
+            </div>
+            <div class="hero-slide" data-title="Линейка сельскохозяйственных шин" data-price="от R$ 1 650">
+                <img src="images/scenes/linha-agricola.jpg" alt="Сельскохозяйственные шины на складе">
+            </div>
+            <div class="hero-image-overlay">
+                <p class="overlay-title" id="heroTitle">Линейка грузовых шин</p>
+                <p class="overlay-price" id="heroPrice">от R$ 1 120</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Dengage inline target slot. Empty and hidden until an inline On-Site
+         campaign fills it (see docs/DENGAGE-INTEGRATION.md). The id contains
+         "dn_inline_target" so the panel's Inline Target Selector finds it on
+         its default search. Do not add content or styling here. -->
+    <div id="dn_inline_target_below_hero" class="dn-inline-slot"></div>
+
+    <!-- Featured Piece -->
+    <section class="featured-piece" id="featured-piece">
+        <div class="container">
+            <div class="featured-grid">
+                <div class="featured-image-wrapper">
+                    <div class="featured-image">
+                        <img src="images/products/CNT-CRG-29580-KLD01.svg"
+                             alt="Шина Marshal KLD01 295/80 R22.5">
+                    </div>
+                    <div class="featured-badge">Новинка</div>
+                </div>
+                <div class="featured-content">
+                    <p class="text-label featured-label">Выбор недели</p>
+                    <h2 class="heading-display featured-title">Marshal KLD01 295/80 R22.5</h2>
+                    <p class="text-body featured-description">
+                        Ведущая шина с рисунком протектора «ёлочка» для тяжёлой магистральной работы и разбитых покрытий. Порезостойкая резиновая смесь, усиленный каркас под многократное восстановление и рисунок, сохраняющий тягу даже на изношенном протекторе. Допущена к установке на ведущие оси.
+                    </p>
+                    <div class="featured-details">
+                        <div class="detail-row">
+                            <span class="detail-label">Конструкция</span>
+                            <span class="detail-value">Рисунок «ёлочка», 16 слоёв</span>
+                        </div>
+                        <div class="detail-row">
+                            <span class="detail-label">Индекс нагрузки</span>
+                            <span class="detail-value">152/148 M</span>
+                        </div>
+                        <div class="detail-row">
+                            <span class="detail-label">Посадочный диаметр</span>
+                            <span class="detail-value">22,5 дюйма</span>
+                        </div>
+                    </div>
+                    <p class="featured-price">R$ 1 890</p>
+                    <button class="btn-primary" type="button" data-cart-add
+                        data-product-id="CNT-CRG-29580-KLD01"
+                        data-product-name="Marshal KLD01 295/80 R22.5"
+                        data-product-price="1890"
+                        data-product-currency="BRL"
+                        data-product-image="images/products/CNT-CRG-29580-KLD01.svg"
+                        data-product-category="Шины > Грузовые > Ёлочка">В корзину</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Products -->
+    <section class="products" id="products">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-header-left">
+                    <p class="text-label">Смотреть всю линейку</p>
+                    <h2 class="heading-display section-title">Лидеры оптовых продаж</h2>
+                    <p class="text-body section-subtitle">
+                        Самые ходовые типоразмеры, готовые к немедленной отгрузке.
+                    </p>
+                </div>
+            </div>
+
+            <div class="product-grid" id="productGrid" data-product-grid>
+                <p class="product-grid-status" data-product-grid-status>Загрузка товаров…</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Collections -->
+    <section class="collections" id="collections">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-header-left">
+                    <h2 class="heading-display section-title">Наши линейки</h2>
+                    <p class="text-body section-subtitle">
+                        От тяжёлых грузовиков до легковых автомобилей, со складскими запасами уровня импортёра
+                    </p>
+                </div>
+                <a href="index.html#products" class="btn-text">Смотреть все линейки</a>
+            </div>
+
+            <div class="collections-grid">
+                <div class="collection-item">
+                    <div class="collection-image">
+                        <img src="images/scenes/hero-carga.jpg"
+                             alt="Седельный тягач на трассе на грузовых шинах">
+                    </div>
+                    <div class="collection-overlay">
+                        <h3 class="collection-name">Грузовые</h3>
+                        <p class="collection-count">48 типоразмеров</p>
+                        <p class="collection-price">от R$ 1 120</p>
+                        <button class="collection-cart-btn" type="button" data-cart-add
+                            data-product-id="CNT-CRG-21575-URB"
+                            data-product-name="Ranger RT500 215/75 R17.5"
+                            data-product-price="1120"
+                            data-product-currency="BRL"
+                            data-product-image="images/products/CNT-CRG-21575-URB.svg"
+                            data-product-category="Шины > Грузовые > Городские">В корзину</button>
+                    </div>
+                </div>
+
+                <div class="collection-item">
+                    <div class="collection-image">
+                        <img src="images/scenes/hero-passeio.jpg"
+                             alt="Линейка легковых шин">
+                    </div>
+                    <div class="collection-overlay">
+                        <h3 class="collection-name">Легковые</h3>
+                        <p class="collection-count">32 типоразмера</p>
+                        <p class="collection-price">от R$ 289</p>
+                        <button class="collection-cart-btn" type="button" data-cart-add
+                            data-product-id="CNT-PAS-17570-SOL"
+                            data-product-name="Kumho Solus TA31 175/70 R13"
+                            data-product-price="289"
+                            data-product-currency="BRL"
+                            data-product-image="images/products/CNT-PAS-17570-SOL.svg"
+                            data-product-category="Шины > Легковые > Городские">В корзину</button>
+                    </div>
+                </div>
+
+                <div class="collection-item">
+                    <div class="collection-image">
+                        <img src="images/scenes/linha-agricola.jpg"
+                             alt="Штабель сельскохозяйственных шин">
+                    </div>
+                    <div class="collection-overlay">
+                        <h3 class="collection-name">Сельскохозяйственные</h3>
+                        <p class="collection-count">26 типоразмеров</p>
+                        <p class="collection-price">от R$ 1 650</p>
+                        <button class="collection-cart-btn" type="button" data-cart-add
+                            data-product-id="CNT-AGR-1224-D2000"
+                            data-product-name="DRC D2000 Agro 12.4-24"
+                            data-product-price="1650"
+                            data-product-currency="BRL"
+                            data-product-image="images/products/CNT-AGR-1224-D2000.svg"
+                            data-product-category="Шины > Сельскохозяйственные > Тракторные">В корзину</button>
+                    </div>
+                </div>
+
+                <div class="collection-item">
+                    <div class="collection-image">
+                        <img src="images/scenes/linha-otr.jpg"
+                             alt="Индустриальные шины и шины OTR">
+                    </div>
+                    <div class="collection-overlay">
+                        <h3 class="collection-name">Индустриальные и OTR</h3>
+                        <p class="collection-count">19 типоразмеров</p>
+                        <p class="collection-price">от R$ 1 240</p>
+                        <button class="collection-cart-btn" type="button" data-cart-add
+                            data-product-id="CNT-IND-825-EMP"
+                            data-product-name="Marshal Lift 825 8.25-15"
+                            data-product-price="1240"
+                            data-product-currency="BRL"
+                            data-product-image="images/products/CNT-IND-825-EMP.svg"
+                            data-product-category="Шины > Индустриальные и OTR > Погрузчики">В корзину</button>
+                    </div>
+                </div>
+
+                <div class="collection-item">
+                    <div class="collection-image">
+                        <img src="images/scenes/linha-acessorios.svg"
+                             alt="Стальной диск и камера">
+                    </div>
+                    <div class="collection-overlay">
+                        <h3 class="collection-name">Диски и камеры</h3>
+                        <p class="collection-count">21 типоразмер</p>
+                        <p class="collection-price">от R$ 96</p>
+                        <button class="collection-cart-btn" type="button" data-cart-add
+                            data-product-id="CNT-ACS-RODA-2250"
+                            data-product-name="Steel Wheel 22.5 x 8.25"
+                            data-product-price="620"
+                            data-product-currency="BRL"
+                            data-product-image="images/products/CNT-ACS-RODA-2250.svg"
+                            data-product-category="Аксессуары > Диски">В корзину</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Our story -->
+    <section class="story" id="story">
+        <div class="container">
+            <div class="story-grid">
+                <div class="story-content">
+                    <p class="text-label story-label">Наша история</p>
+                    <h2 class="heading-display story-title">
+                        От прямого импортёра до вашей площадки
+                    </h2>
+                    <p class="text-body story-text">
+                        Компания CantuPneus основана в 2006 году, головной офис находится в Итажаи, штат Санта-Катарина. Это один из крупнейших импортёров шин в Бразилии. Модель работы прямая: мы закупаем продукцию на сертифицированных заводах, ввозим её крупными партиями и поставляем перевозчикам, дилерам и владельцам автопарков без посредников, удорожающих цепочку.</p>
+                    <p class="text-body story-text">
+                        Мы располагаем распределительными центрами и сетью филиалов во всех регионах Бразилии, что позволяет удерживать короткие сроки доставки и высокую доступность даже по самым ходовым типоразмерам.
+                    </p>
+                    <div class="story-signature">
+                        <p class="signature-name">Коммерческая дирекция</p>
+                        <p class="signature-title">CantuPneus</p>
+                    </div>
+                </div>
+                <div class="story-images">
+                    <div class="story-image">
+                        <img src="images/scenes/operacao-estoque.jpg"
+                             alt="Складской запас шин в распределительном центре">
+                    </div>
+                    <div class="story-image">
+                        <img src="images/scenes/story-frota.jpg"
+                             alt="Грузовик на шинах для тяжёлых условий">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Quality -->
+    <section class="craftsmanship" id="craftsmanship">
+        <div class="container">
+            <div class="craft-grid">
+                <div class="craft-content">
+                    <p class="text-label">Наши операции</p>
+                    <h2 class="heading-display craft-title">
+                        Склад, логистика и доставка под контролем
+                    </h2>
+                    <p class="text-body craft-text">
+                        Каждая партия проходит проверку происхождения, регистрацию DOT и распределение по складам, прежде чем попасть в доступный остаток. Именно это позволяет нам подтверждать наличие в момент заказа, а не называть дату и переносить её потом.</p>
+                    <ul class="craft-list text-body">
+                        <li>Собственные бренды SpeedMax и Itaro, а также CEAT, Marshal, Aeolus, DRC и Ranger</li>
+                        <li>Непрерывное пополнение распределительных центров</li>
+                        <li>Контроль партий и прослеживаемость по DOT</li>
+                        <li>Доставка от 24 часов в обслуживаемых столицах штатов</li>
+                    </ul>
+                    <a href="index.html#products" class="btn-primary">Смотреть рекомендованные линейки</a>
+                </div>
+                <div class="craft-image-wrapper">
+                    <div class="craft-image">
+                        <img src="images/scenes/linha-carga.jpg"
+                             alt="Шины на складе распределительного центра">
+                    </div>
+                    <div class="craft-stats">
+                        <div class="stat-item">
+                            <p class="stat-number">2006</p>
+                            <p class="stat-label">Год основания</p>
+                        </div>
+                        <div class="stat-item">
+                            <p class="stat-number">31</p>
+                            <p class="stat-label">Филиал в Бразилии</p>
+                        </div>
+                        <div class="stat-item">
+                            <p class="stat-number">4</p>
+                            <p class="stat-label">Распределительных центра</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Brand Experience -->
+    <section class="contact" id="contact">
+        <div class="container">
+            <div class="contact-grid">
+                <div class="contact-content">
+                    <p class="text-label">Знакомство с CantuPneus</p>
+                    <h2 class="heading-display contact-title">
+                        Полный ассортимент для любой задачи
+                    </h2>
+                    <p class="text-body contact-text">
+                        Формируйте заказ на портале, проверяйте наличие по филиалам и отслеживайте доставку, не поднимая телефонную трубку. Действующим компаниям после проверки открывается кредитный лимит и оплата по счёту.</p>
+
+                    <div class="contact-details">
+                        <div class="contact-item">
+                            <p class="contact-item-label">Ассортимент</p>
+                            <p class="contact-item-value">
+                                Грузовые, легковые, сельскохозяйственные, индустриальные и OTR
+                            </p>
+                        </div>
+                        <div class="contact-item">
+                            <p class="contact-item-label">Обслуживание</p>
+                            <p class="contact-item-value">
+                                Персональный менеджер и кредитный лимит для действующих компаний
+                            </p>
+                        </div>
+                        <div class="contact-item">
+                            <p class="contact-item-label">Следующий шаг</p>
+                            <p class="contact-item-value">
+                                <a href="index.html#products">Смотреть избранные линейки</a>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <!-- Dengage inline target slot. Empty and hidden until an inline On-Site
+         campaign fills it (see docs/DENGAGE-INTEGRATION.md). The id contains
+         "dn_inline_target" so the panel's Inline Target Selector finds it on
+         its default search. Do not add content or styling here. -->
+    <div id="dn_inline_target_above_footer" class="dn-inline-slot"></div>
+
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <p class="footer-logo">Cantu<span>Pneus</span></p>
+                    <p class="footer-tagline">
+                        Дистрибьютор и импортёр грузовых, легковых, сельскохозяйственных и индустриальных шин, а также шин OTR, с распределительными центрами по всей Бразилии.
+                    </p>
+                </div>
+
+                <div class="footer-column">
+                    <h4 class="footer-column-title">Линейки</h4>
+                    <ul class="footer-links">
+                        <li><a href="index.html#collections">Все линейки</a></li>
+                        <li><a href="index.html#collections">Грузовые</a></li>
+                        <li><a href="index.html#collections">Легковые</a></li>
+                        <li><a href="index.html#collections">Сельскохозяйственные</a></li>
+                        <li><a href="index.html#collections">Диски и камеры</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-column">
+                    <h4 class="footer-column-title">Компания</h4>
+                    <ul class="footer-links">
+                        <li><a href="index.html#story">О компании CantuPneus</a></li>
+                        <li><a href="index.html#craftsmanship">Наши операции</a></li>
+                        <li><a href="index.html#contact">Ассортимент</a></li>
+                        <li><a href="https://www.dengage.com">Стать дилером</a></li>
+                        <li><a href="https://www.dengage.com">Служба поддержки</a></li>
+                        <li><a href="../index.html">Португальский (PT)</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p class="footer-copyright">
+                    Демонстрационный сайт платформы Dengage. Не является официальным сайтом CantuPneus. Товары, цены и остатки вымышлены.
+                </p>
+                <div class="footer-social">
+                    <a href="https://www.dengage.com">Dengage</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <script src="js/pageView.js"></script>
+    <script src="js/bannerOffset.js"></script>
+    <script src="js/inlineSlotOffset.js"></script>
+    <script src="cantupneus-main.js"></script>
+    <script src="js/cartManager.js"></script>
+    <script src="js/cartUi.js"></script>
+    <script src="js/productCatalog.js"></script>
+    <!-- Wishlist and search. Both are byte-identical across the four
+         demo sites; everything per-site arrives on the tag. Loaded after
+         productCatalog.js because both read the catalogue, and wishlist
+         before search so a search result can carry a working heart. -->
+    <script src="js/wishlist.js" data-store="cantupneus_wishlist" data-ns="cantupneus" data-catalog="CantuCatalogData" data-global="CantuWishlist" data-list-name="favorites"></script>
+    <script src="js/wishlistUi.js" data-ns="cantupneus" data-global="CantuWishlist" data-catalog="CantuCatalogData"></script>
+    <script src="js/searchPanel.js" data-ns="cantupneus" data-catalog="CantuCatalogData"></script>
+    <script src="js/productList.js"></script>
+    <script src="js/allReco.js"></script>
+    <script src="js/allGaming.js"></script>
+    <script src="js/asistant.js"></script>
+    <script src="js/carouselBanner.js"></script>
+    <script src="js/earing.js"></script>
+    <script src="js/eventModal.js"></script>
+    <script src="js/expandBanner.js"></script>
+    <script src="js/headbanner.js"></script>
+    <script src="js/notificationIcon.js"></script>
+    <script src="js/snow.js"></script>
+    <script src="js/sliderBanner.js"></script>
+    <script src="js/cantuCatalog.js"></script>
+</body>
+</html>

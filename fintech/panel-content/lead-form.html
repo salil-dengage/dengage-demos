@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NovaPay | Open an account (Dengage POPUP content)</title>
+<!-- =====================================================================
+     NOVAPAY, the account-opening lead form
+
+     Trigger:  fintech_open_account_intent   (On-Site Targeting campaign,
+               triggerBy = DATA_LAYER_EVENT)
+     Pushed by: the four "Open account" CTAs, see js/novapayLanding.js
+
+     WHY THIS IS THE MOST IMPORTANT FILE ON THE SITE
+
+     The CTA used to be a link into the portal, so the demo walked straight
+     past the lead. Now the button opens THIS, which is panel content: a
+     marketer can rewrite the offer, the fields and the design without a
+     deploy. That is the argument, and it only lands because the form is
+     genuinely Dengage's rather than the site's.
+
+     WHAT IS CAPTURED, AND WHAT IS NOT
+
+     The engine injects its own handler when it sees
+     data-dn-form-id="subscription_form". On submit Dn.postSubscription()
+     CREATES OR UPDATES A REAL CONTACT. Each [data-dn-id] becomes a payload
+     key; data-dn-type selects the validator.
+
+     The full type vocabulary, read out of the live form-handler.js on
+     1 Aug 2026 rather than assumed (its own English validation messages name
+     every one):
+
+       TEXT                under 50 characters
+       EMAIL               a valid address
+       GSM                 7 to 15 characters, with a country-code selector
+       DATEPICKER          a date earlier than today, so: date of birth
+       OTHER_TEXT          free text under 120 characters
+       OTHER_INTEGER       a number between -10000 and 10000
+       OTHER_REQUIRED      must be filled
+       PERMISSION_CHECKBOX consent, required for the subscription
+       RADIO / CHECKBOX / TAGS   these belong to the question_form path
+                                 (Dn.postQuestion), NOT to this one
+
+     All six fields below are PROVEN end to end by tools/verify/formtest.js,
+     which drives the engine's own handler and asserts the payload. A valid
+     submit produces exactly this:
+
+       {"name":"Alex","surname":"Morgan","email":"alex.morgan@example.com",
+        "gsm":"7700900000","birthdate":"1990-04-12T00:00:00.000Z",
+        "emailPermission":true,"gsmPermission":true}
+
+     Note the engine converts DATEPICKER to an ISO timestamp itself, and
+     mergedPermission expands into the two permission flags. Before this, only
+     email and mergedPermission had ever been exercised in this repo.
+
+     NO PRODUCT-INTEREST QUESTION, deliberately. One piece of content gets
+     one form, and a radio group is collected by question_form, not by this
+     one, so asking here would capture nothing. It is also unnecessary: the
+     trigger event already carries product_intent and cta_location, so the
+     campaign knows which CTA was clicked and can personalise on it. Asking
+     the visitor for something the platform already knows is the opposite of
+     the point.
+
+     THE POPUP CONTRACT, all of it:
+       No script blocks: the panel strips script blocks on save.
+       Every anchor carries target="_top": this is a cross-origin iframe.
+       Exactly one Dn.sendClick(), on the submit control.
+       NO close control here. The panel supplies it via
+       Layout > Close Button > "Add close button to outside".
+       Design settings: padding 0, transparent background, width 520.
+
+     The thank-you panel is driven by the engine's own data-dn-is-submitted
+     stamp on .container, so it appears only after a real successful submit.
+     ================================================================== -->
+<style>
+#npy-lead *{margin:0;padding:0;box-sizing:border-box;}
+#npy-lead{
+  --ld-blue:#125cfa; --ld-blue-dark:#0a3a9e; --ld-ink:#0f1c33;
+  --ld-soft:#64748b; --ld-line:#e3e8f0; --ld-error:#b3261e;
+  font-family:Inter,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;
+  width:100%;display:block;color:var(--ld-ink);
+}
+body > #npy-lead{max-width:520px;margin:40px auto;}
+
+#npy-lead .ld-card{
+  width:100%;background:#fff;border-radius:18px;overflow:hidden;
+  box-shadow:0 10px 30px rgba(15,28,51,.18);
+}
+
+#npy-lead .ld-head{
+  background:linear-gradient(125deg,var(--ld-blue) 0%,var(--ld-blue-dark) 100%);
+  color:#fff;padding:24px 26px 20px;
+}
+#npy-lead .ld-brandrow{display:flex;align-items:center;gap:10px;margin-bottom:12px;}
+#npy-lead .ld-mark{
+  width:34px;height:34px;border-radius:9px;background:rgba(255,255,255,.16);
+  display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+#npy-lead .ld-mark svg{width:23px;height:23px;}
+#npy-lead .ld-brand{font-size:17px;font-weight:700;letter-spacing:-.2px;}
+#npy-lead .ld-head h2{font-size:23px;font-weight:700;line-height:1.2;letter-spacing:-.4px;}
+#npy-lead .ld-head p{font-size:12.5px;opacity:.88;margin-top:6px;line-height:1.5;}
+
+#npy-lead .ld-body{padding:20px 26px 24px;}
+#npy-lead .ld-perks{list-style:none;margin-bottom:16px;}
+#npy-lead .ld-perks li{
+  font-size:12.5px;color:var(--ld-soft);padding:4px 0 4px 24px;position:relative;}
+#npy-lead .ld-perks li::before{
+  content:"";position:absolute;left:0;top:7px;width:14px;height:14px;border-radius:50%;
+  background:rgba(18,92,250,.12);}
+#npy-lead .ld-perks li::after{
+  content:"";position:absolute;left:4px;top:11px;width:5px;height:2.5px;
+  border-left:2px solid var(--ld-blue);border-bottom:2px solid var(--ld-blue);
+  transform:rotate(-45deg);}
+
+#npy-lead .ld-row{display:flex;gap:10px;}
+#npy-lead .ld-row > *{flex:1;min-width:0;}
+#npy-lead .ld-field{margin-bottom:11px;}
+#npy-lead .ld-field label{
+  display:block;font-size:11px;font-weight:600;color:var(--ld-soft);
+  margin-bottom:5px;letter-spacing:.02em;}
+#npy-lead input[data-dn-id]{
+  width:100%;border:1.5px solid var(--ld-line);border-radius:11px;padding:12px 13px;
+  font:400 13.5px Inter,-apple-system,sans-serif;color:var(--ld-ink);background:#fff;
+  transition:border-color .15s;}
+#npy-lead input[data-dn-id]:focus{outline:none;border-color:var(--ld-blue);}
+#npy-lead input[data-dn-id]::placeholder{color:#a3aebc;}
+/* the engine's handler stamps data-dn-invalid="true" on the failing field */
+#npy-lead [data-dn-invalid="true"]{border-color:var(--ld-error);}
+#npy-lead [data-dn-invalid-message-type]{
+  display:none;font-size:11px;color:var(--ld-error);margin-top:5px;}
+#npy-lead [data-dn-invalid="true"] ~ [data-dn-invalid-message-type]{display:block;}
+
+#npy-lead .ld-perm{display:flex;align-items:flex-start;gap:9px;margin:14px 0 2px;}
+#npy-lead .ld-perm input{margin-top:2px;width:16px;height:16px;accent-color:var(--ld-blue);flex-shrink:0;}
+#npy-lead .ld-perm label{font-size:11px;color:var(--ld-soft);line-height:1.5;}
+
+#npy-lead .ld-submit{
+  display:block;width:100%;margin-top:16px;padding:14px;border-radius:11px;border:0;
+  background:var(--ld-blue);color:#fff;font:700 13px Inter,sans-serif;
+  letter-spacing:.04em;cursor:pointer;transition:background .2s;}
+#npy-lead .ld-submit:hover{background:var(--ld-blue-dark);}
+#npy-lead .ld-legal{
+  font-size:10.5px;color:#9aa5b5;margin-top:12px;line-height:1.5;text-align:center;}
+#npy-lead .ld-legal a{color:#9aa5b5;}
+
+/* thank-you: shown only once the engine stamps the container */
+#npy-lead .submitted-content{display:none;padding:34px 26px 36px;text-align:center;}
+#npy-lead .container[data-dn-is-submitted="true"] .ld-live{display:none;}
+#npy-lead .container[data-dn-is-submitted="true"] .submitted-content{display:block;}
+#npy-lead .ld-tick{
+  width:52px;height:52px;border-radius:50%;margin:0 auto 14px;
+  background:rgba(18,92,250,.12);position:relative;}
+#npy-lead .ld-tick::after{
+  content:"";position:absolute;left:18px;top:20px;width:14px;height:7px;
+  border-left:3px solid var(--ld-blue);border-bottom:3px solid var(--ld-blue);
+  transform:rotate(-45deg);}
+#npy-lead .submitted-content h3{font-size:18px;font-weight:700;margin-bottom:7px;}
+#npy-lead .submitted-content p{font-size:12.5px;color:var(--ld-soft);line-height:1.6;}
+
+@media (max-width:480px){
+  #npy-lead .ld-row{flex-direction:column;gap:0;}
+  #npy-lead .ld-head h2{font-size:20px;}
+}
+</style>
+</head>
+<body>
+
+<form class="form" data-dn-form-id="subscription_form" data-dn-validation-language="en"
+      id="npy-lead" onsubmit="return false">
+  <div class="container">
+    <div class="ld-card">
+
+      <div class="ld-live">
+        <div class="ld-head">
+          <div class="ld-brandrow">
+            <span class="ld-mark" aria-hidden="true">
+              <svg viewBox="0 0 64 64" focusable="false"><path d="M14 46 V18 h9 l18 22 V18 h9 v28 h-9 L23 24 v22 z" fill="currentColor"/></svg>
+            </span>
+            <span class="ld-brand">NovaPay</span>
+          </div>
+          <h2>Open your account in three minutes</h2>
+          <p>Tell us where to send your application link. A soft credit check only, so your score is not affected.</p>
+        </div>
+
+        <div class="ld-body">
+          <ul class="ld-perks">
+            <li>No monthly fee on the Standard account, ever</li>
+            <li>Spend in 40 currencies at the real exchange rate</li>
+            <li>Deposits protected up to 250,000 per depositor</li>
+          </ul>
+
+          <div class="ld-row">
+            <div class="ld-field">
+              <label for="npy-ld-name">First name</label>
+              <input type="text" id="npy-ld-name" placeholder="Alex"
+                     data-dn-id="name" data-dn-type="TEXT">
+              <span data-dn-invalid-message-type="TEXT"></span>
+            </div>
+            <div class="ld-field">
+              <label for="npy-ld-surname">Last name</label>
+              <input type="text" id="npy-ld-surname" placeholder="Morgan"
+                     data-dn-id="surname" data-dn-type="TEXT">
+              <span data-dn-invalid-message-type="TEXT"></span>
+            </div>
+          </div>
+
+          <div class="ld-field">
+            <label for="npy-ld-email">E-mail address</label>
+            <input type="email" id="npy-ld-email" placeholder="alex@example.com"
+                   data-dn-id="email" data-dn-type="EMAIL" data-dn-required="true">
+            <span data-dn-invalid-message-type="EMAIL"></span>
+          </div>
+
+          <div class="ld-row">
+            <div class="ld-field">
+              <label for="npy-ld-gsm">Mobile number</label>
+              <input type="tel" id="npy-ld-gsm" placeholder="7700 900000"
+                     data-dn-id="gsm" data-dn-type="GSM">
+              <span data-dn-invalid-message-type="GSM"></span>
+            </div>
+            <div class="ld-field">
+              <label for="npy-ld-dob">Date of birth</label>
+              <input type="date" id="npy-ld-dob"
+                     data-dn-id="birthdate" data-dn-type="DATEPICKER">
+              <span data-dn-invalid-message-type="DATEPICKER"></span>
+            </div>
+          </div>
+
+          <div class="ld-perm">
+            <input type="checkbox" id="npy-ld-perm"
+                   data-dn-id="mergedPermission" data-dn-type="PERMISSION_CHECKBOX"
+                   data-dn-required="true">
+            <label for="npy-ld-perm">
+              I agree to NovaPay contacting me by e-mail and SMS about my application
+              and about products that fit my profile. I can withdraw this at any time.
+            </label>
+          </div>
+
+          <!-- BOTH calls, in this order. sendClick alone reports the click and
+               submits nothing, so the campaign shows a healthy CTR while the
+               form quietly collects no leads at all. formtest.js caught exactly
+               that here on 1 Aug 2026. -->
+          <button class="ld-submit" type="submit"
+                  onclick="Dn.sendClick('fintech_open-account__submit');Dn.postSubscription()">Send me my application link</button>
+
+          <p class="ld-legal">
+            NovaPay is a fictional brand used for demonstration. No account is opened
+            and no credit check is run.
+          </p>
+        </div>
+      </div>
+
+      <!-- These three attribute names are the engine's, not ours, and it reads
+           them off .submitted-content to decide whether to stamp the container
+           at all. Guessing them (data-dn-close-form and friends) left the form
+           on screen after a successful submit. -->
+      <div class="submitted-content" data-dn-is-enabled="true"
+           data-dn-is-modal-auto-close-enabled="true" data-dn-modal-close-seconds="6">
+        <div class="ld-tick" aria-hidden="true"></div>
+        <h3>Check your inbox</h3>
+        <p>
+          Your application link is on its way. It stays valid for 48 hours, and you can
+          finish on your phone or your laptop.
+        </p>
+      </div>
+
+    </div>
+  </div>
+</form>
+
+</body>
+</html>

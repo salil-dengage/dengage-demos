@@ -1,0 +1,6 @@
+# The verification suites write screenshots into the working directory.
+# They are regenerated on every run and must never be committed: four of them
+# were, before this rule existed, and sat in the repo root referenced by nothing.
+/*.png
+*.png.tmp
+/tmp-verify/

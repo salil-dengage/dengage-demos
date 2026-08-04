@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NovaPay | Products</title>
+    <meta name="description" content="The NovaPay app: balance, transfers, cards, savings pots, investing and credit in one account. Dengage platform demo.">
+
+    <!-- The portal gate, deliberately the FIRST script on the page.
+         A visitor who is not signed in never reaches GTM, never opens an SDK
+         session and never writes a portal page view. See js/novapayGate.js
+         for why each of those three matters. -->
+    <script src="js/novapayGate.js"></script>
+
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-NL6J5Z53');</script>
+    <!-- End Google Tag Manager -->
+
+    <!-- ===============================================================
+         TAGGING SETUP, identical wiring to the other demo sites.
+
+         1. GTM container GTM-NL6J5Z53 above: analytics only. It must stay
+            EMPTY of Dengage tags, because the SDK is loaded directly below
+            and a second copy would double-initialise it.
+
+         2. Dengage Web SDK below: BFSI web application, account 28.
+            The SDK watches window.dataLayer itself, so scenarios set to
+            triggerBy = DATA_LAYER_EVENT fire with no GTM involvement.
+
+         DATA
+           This page sends NO ec:* calls. The money-app journey goes to the
+           custom tables specified in fintech/EVENT-MODEL.md, through
+           js/novapayEvents.js. page_view_events is the one standard table
+           kept, via js/pageView.js.
+
+         Panel advanced settings this page assumes:
+           Trigger Initialize on Install   = OFF (snippet calls initialize())
+           Trigger Page View on Initialize = OFF (js/pageView.js sends it)
+    ================================================================ -->
+    <!-- identity first: it feeds the contact key into initialize below -->
+    <script src="js/identity.js" data-user-store="novapay_user"></script>
+    <!-- DENGAGE SDK START -->
+    <script>
+      !function (e, a, n, d, g) {
+        e.dengage = e.dengage || function () { (e.dengage.q = e.dengage.q || []).push(arguments) },
+        d = a.getElementsByTagName("head")[0],
+        (g = a.createElement("script")).async = 1,
+        g.src = "https://pcdn.dengage.com/p/push/28/c8d2da44-b982-1925-9ad8-e7caddf0894a/dengage_sdk_loader.js",
+        d.appendChild(g)
+      }(window, document);
+      /* js/identity.js resolved the contact key synchronously just above, so the
+         SDK is identified from the very first call. Anonymous visitors keep the
+         exact previous call, and stay correctly anonymous. */
+      window.__dnInit ? dengage('initialize', window.__dnInit) : dengage('initialize');
+    </script>
+    <!-- DENGAGE SDK END -->
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Sora:wght@500;600;700&family=Inter:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="novapay-style.css">
+    <link rel="stylesheet" href="novapay-app.css">
+    <link rel="icon" href="images/novapay-mark.svg" type="image/svg+xml">
+</head>
+<body data-page-type="app" data-portal-view="products">
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NL6J5Z53"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+
+    <header class="site-header" id="header">
+        <div class="container">
+            <div class="header-inner">
+                <a href="index.html" class="logo">
+                    <span class="logo-mark" aria-hidden="true">
+                        <svg viewBox="0 0 64 64" focusable="false"><path d="M14 46 V18 h9 l18 22 V18 h9 v28 h-9 L23 24 v22 z" fill="currentColor"/></svg>
+                    </span>
+                    <span class="logo-word">Nova<span>Pay</span></span>
+                </a>
+
+                <nav class="nav-main" aria-label="App sections">
+                    <a href="app.html" class="npy-tab" data-view="home">Home</a>
+                    <a href="money.html" class="npy-tab" data-view="money">Money</a>
+                    <a href="cards.html" class="npy-tab" data-view="cards">Cards</a>
+                    <a href="grow.html" class="npy-tab" data-view="grow">Grow</a>
+                    <a href="products.html" class="npy-tab is-active" data-view="products">Products</a>
+                </nav>
+
+                <button class="menu-toggle" id="menuToggle" aria-label="Open menu">
+                    <span></span><span></span><span></span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Dengage inline target slot, top of page. Sits below the fixed header
+         once filled (js/inlineSlotOffset.js measures the clearance). Empty and
+         hidden until an inline On-Site campaign fills it. Do not add content
+         or styling here. -->
+    <div id="dn_inline_target_below_header" class="dn-inline-slot"></div>
+
+    <main class="npy-app" id="novapay-app">
+
+        <!-- Rendered by js/novapayApp.js from js/novapayState.js, so a
+             transfer made in the demo changes the balance the next screen
+             shows. Inline slots are named dn_inline_target_* so the panel's
+             Inline Target Selector finds them on its default search. They
+             are empty and inert until a campaign fills one: do not put
+             content or styling in them. -->
+        <div class="npy-view" id="novapay-view-products" data-view="products"></div>
+        <!-- Product-adjacent inline content. -->
+        <div id="dn_inline_target_in_grid" class="dn-inline-slot"></div>
+
+    </main>
+
+    <div id="dn_inline_target_above_footer" class="dn-inline-slot"></div>
+
+    <footer class="npy-app-footer">
+        <div class="container">
+            <p class="npy-disclaimer">
+                NovaPay is a fictional brand built to demonstrate the Dengage
+                platform. Every rate, balance and figure on this page is
+                illustrative and is not a financial promotion. No real money
+                moves and no real account exists.
+            </p>
+        </div>
+    </footer>
+
+    <!-- Modal host. One element, reused by every flow, so only one dialog can
+         ever be open and focus handling lives in a single place. -->
+    <div class="npy-modal-host" id="novapay-modal-host" hidden></div>
+
+    <script src="js/novapayEvents.js"></script>
+    <script src="js/novapayState.js"></script>
+    <script src="js/pageView.js"></script>
+    <script src="js/novapayApp.js"></script>
+    <script src="js/inlineSlotOffset.js"></script>
+    <script src="js/bannerOffset.js"></script>
+
+    <!-- The scenario launcher and the 17 local widgets, carried over from the
+         landing page so a presenter can fire any scenario from inside the app
+         rather than navigating back out mid-call. The account screen is where
+         a money-app demo actually spends its time, so this is where the
+         scenarios most need to be reachable.
+
+         Order matters: novapayEvents and novapayState are already loaded
+         above, and novapayApply must come before the recommendation widgets,
+         which call into window.NovaPayCart. -->
+    <script src="js/productCatalog.js"></script>
+    <script src="js/allReco.js"></script>
+    <script src="js/allGaming.js"></script>
+    <script src="js/asistant.js"></script>
+    <script src="js/carouselBanner.js"></script>
+    <script src="js/earing.js"></script>
+    <script src="js/eventModal.js"></script>
+    <script src="js/expandBanner.js"></script>
+    <script src="js/headbanner.js"></script>
+    <script src="js/notificationIcon.js"></script>
+    <script src="js/snow.js"></script>
+    <script src="js/sliderBanner.js"></script>
+    <script src="js/novapayApply.js"></script>
+    <script src="js/novapayCatalog.js"></script>
+
+</body>
+</html>

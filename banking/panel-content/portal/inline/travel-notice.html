@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Meridian Bank | Travel notice set (Dengage portal content)</title>
+<!-- =====================================================================
+     MERIDIAN ONLINE BANKING, On-Site content for the panel
+
+     Trigger:  DATA_LAYER_EVENT, eventName = banking_portal_travel_notice
+     Format:   Inline
+     Spec:     banking/docs/PORTAL-SCENARIOS.md
+
+     INLINE CONTENT. The rules are the OPPOSITE of a popup in three places:
+
+       NOT SANDBOXED   there is no iframe. The SDK appends this <style> to
+                       document.head, so an unscoped selector restyles the
+                       customer's whole banking session. Every rule below is
+                       under #mrd-travel-notice.
+       NO sendClick    the SDK attaches its own listener to every a[href] it
+                       injects, so an anchor is already counted. Calling
+                       Dn.sendClick here would double-count it.
+       NO target=_top  there is no frame to break out of.
+
+     No <script>: the panel strips script blocks on save.
+     ================================================================== -->
+<style>
+#mrd-travel-notice{font-family:Inter,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;
+  box-sizing:border-box;color:#12203a;text-align:left;}
+#mrd-travel-notice *{box-sizing:border-box;}
+#mrd-travel-notice .m-eyebrow{font-size:10px;letter-spacing:.14em;text-transform:uppercase;
+  color:#b8933c;font-weight:700;margin:0 0 6px;}
+#mrd-travel-notice .m-title{font-weight:600;font-size:15px;line-height:1.35;margin:0 0 6px;color:#0a2540;}
+#mrd-travel-notice .m-body{font-size:13px;line-height:1.55;color:#5a6b7f;margin:0 0 10px;}
+#mrd-travel-notice .m-small{font-size:11px;line-height:1.5;color:#94a3b8;margin:10px 0 0;}
+#mrd-travel-notice{background:#fff;border:1px solid #dde3ea;border-left:3px solid #b8933c;
+  border-radius:10px;padding:1.1rem 1.2rem;}
+#mrd-travel-notice .m-cta{font-size:13px;font-weight:600;color:#0a2540;text-decoration:none;}
+#mrd-travel-notice .m-cta:hover{text-decoration:underline;}
+
+</style>
+</head>
+<body>
+<div id="mrd-travel-notice">
+  <p class="m-eyebrow">Trip noted</p>
+  <p class="m-title">Three things before you fly</p>
+  <p class="m-body">Your card will work normally at your destination. Use the Platinum card rather than the debit card and you pay no foreign transaction fee, and if you are not already covered, annual travel insurance starts at &pound;34 and covers the whole trip.</p>
+  <a class="m-cta" href="https://salil-dengage.github.io/dengage-demos/banking/product.html?id=MRD-INS-TRAVEL">Add travel cover</a>
+  <p class="m-small">Illustrative figures on a demo site.</p>
+</div>
+</body>
+</html>

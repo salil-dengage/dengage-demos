@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NovaPay | Horizontal Popup (Dengage panel content)</title>
+<!-- =====================================================================
+     NOVAPAY HORIZONTAL POPUP, On-Site content for the panel
+
+     NOTE THE SLUG. The scenario is "horizonal-popup", missing the "t". That
+     spelling is part of the panel contract and must not be corrected.
+
+     Paste this WHOLE file into the scenario editor. All CSS is scoped to
+     #npy-horiz.
+
+     The offer is the loan calculator rather than the loan. Quoting a rate
+     before an eligibility check would be a financial promotion, and "see your
+     real rate first" is both the honest claim and the better campaign: the
+     calculator use with no quote request is the highest-intent abandonment on
+     the site.
+
+     Panel settings:
+       - Scenario: triggerBy = DATA_LAYER_EVENT,
+                   eventName = fintech_horizonal-popup
+       - Popup design: width 620 to 700px, padding 0, transparent background
+       - Layout > Close Button > "Add close button to outside" ON
+====================================================================== -->
+</head>
+<body>
+
+<div id="npy-horiz">
+  <style>
+    #npy-horiz *{margin:0;padding:0;box-sizing:border-box;}
+    #npy-horiz{
+      --nv-blue:#125cfa; --nv-blue-dark:#0a3a9e; --nv-ink:#0f1c33;
+      --nv-muted:#64748b; --nv-line:#e3e8f0;
+      font-family:Inter,-apple-system,'Segoe UI',Roboto,sans-serif;width:100%;
+    }
+    body > #npy-horiz{max-width:680px;margin:40px auto;}
+
+    #npy-horiz .hz-card{
+      display:flex;width:100%;background:#fff;border-radius:18px;overflow:hidden;
+      box-shadow:0 10px 34px rgba(15,28,51,.18);
+      animation:hz-in .35s cubic-bezier(.21,.9,.35,1.1);
+    }
+    @keyframes hz-in{from{opacity:0;transform:translateY(14px) scale(.98);}to{opacity:1;transform:none;}}
+
+    #npy-horiz .hz-visual{
+      flex:0 0 240px;position:relative;
+      background:linear-gradient(135deg,var(--nv-blue) 0%,var(--nv-blue-dark) 100%);
+      display:flex;flex-direction:column;align-items:center;justify-content:center;
+      color:#fff;padding:26px 20px;text-align:center;
+    }
+    #npy-horiz .hz-apr{font-size:40px;font-weight:700;letter-spacing:-1.5px;line-height:1;}
+    #npy-horiz .hz-apr small{font-size:17px;font-weight:600;}
+    #npy-horiz .hz-apr-label{
+      font:700 9.5px Inter,sans-serif;letter-spacing:.12em;text-transform:uppercase;
+      background:rgba(255,255,255,.2);border-radius:6px;padding:4px 9px;margin-top:10px;
+      display:inline-block;
+    }
+    #npy-horiz .hz-range{font-size:12px;opacity:.85;margin-top:14px;line-height:1.5;}
+
+    #npy-horiz .hz-body{flex:1;padding:26px 28px;display:flex;flex-direction:column;}
+    #npy-horiz .hz-tag{
+      display:inline-block;align-self:flex-start;background:rgba(18,92,250,.1);
+      color:var(--nv-blue);border-radius:7px;font:700 10px Inter,sans-serif;
+      letter-spacing:.11em;text-transform:uppercase;padding:5px 9px;margin-bottom:11px;
+    }
+    #npy-horiz h2{
+      font-size:22px;font-weight:700;color:var(--nv-ink);line-height:1.22;
+      letter-spacing:-.4px;margin-bottom:9px;
+    }
+    #npy-horiz .hz-sub{font-size:13px;color:var(--nv-muted);line-height:1.6;margin-bottom:16px;}
+    #npy-horiz .hz-points{list-style:none;margin-bottom:20px;display:flex;flex-direction:column;gap:8px;}
+    #npy-horiz .hz-points li{
+      display:flex;gap:9px;align-items:flex-start;font-size:12.5px;
+      color:var(--nv-ink);line-height:1.5;font-weight:500;
+    }
+    #npy-horiz .hz-points li::before{
+      content:"";flex-shrink:0;width:15px;height:15px;margin-top:2px;border-radius:50%;
+      background:var(--nv-blue);opacity:.16;
+    }
+    #npy-horiz .hz-cta{
+      display:inline-block;align-self:flex-start;margin-top:auto;
+      background:var(--nv-blue);color:#fff;text-decoration:none;border-radius:11px;
+      font:700 12.5px Inter,sans-serif;letter-spacing:.05em;padding:13px 24px;
+      transition:all .2s ease;
+    }
+    #npy-horiz .hz-cta:hover{background:var(--nv-blue-dark);transform:translateY(-1px);}
+    #npy-horiz .hz-fine{margin-top:12px;font-size:10.5px;line-height:1.5;color:var(--nv-muted);}
+
+    @media (max-width:600px){
+      #npy-horiz .hz-card{flex-direction:column;}
+      #npy-horiz .hz-visual{flex:none;padding:22px 20px;}
+      #npy-horiz .hz-apr{font-size:34px;}
+      #npy-horiz .hz-body{padding:22px 20px;}
+      #npy-horiz h2{font-size:19px;}
+    }
+  </style>
+
+  <div class="hz-card">
+    <div class="hz-visual">
+      <span class="hz-apr">6.9<small>%</small></span>
+      <span class="hz-apr-label">Representative APR</span>
+      <span class="hz-range">$1,000 to $25,000<br>over 12 to 60 months</span>
+    </div>
+
+    <div class="hz-body">
+      <span class="hz-tag">Personal loan</span>
+      <h2>See your real rate before you apply</h2>
+      <p class="hz-sub">
+        Run the numbers, get the rate you would actually be offered, and decide
+        after. Checking does not affect your credit score.
+      </p>
+      <ul class="hz-points">
+        <li>Your rate quoted up front, not after a hard search</li>
+        <li>No fee for repaying early, ever</li>
+        <li>Money in your account the same day on approval</li>
+      </ul>
+      <a target="_top" class="hz-cta"
+         onclick="Dn.sendClick('fintech_horizonal-popup__calculate')"
+         href="https://salil-dengage.github.io/dengage-demos/fintech/app.html">Calculate my repayments</a>
+      <p class="hz-fine">
+        NovaPay is a demonstration brand. The rate shown is illustrative, is not
+        a quote, and is not a financial promotion.
+      </p>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

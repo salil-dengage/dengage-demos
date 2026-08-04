@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NovaPay | Convert at the real rate (Dengage BANNER content)</title>
+<!-- =====================================================================
+     NOVAPAY, portal scenario 10: holds a second currency, never converted
+
+     Trigger:  fintech_fx_unused   (On-Site Targeting, DATA_LAYER_EVENT)
+     Fires on: money.html, when a second currency is held and no conversion
+               has ever been made
+     Backed by: fintech_transaction_events
+     Layout:   BANNER, bottom
+
+     WHY BOTTOM. It is a product nudge, not a problem. It has no urgency and
+     should not sit above the balance the way the low-balance banner does.
+     Two banners on one page is also why these two differ in position: they
+     can both be live on money.html without stacking.
+
+     RATE, NOT AMOUNT. "You would have saved 4.20" needs the markup on an
+     actual transaction, which banner content cannot compute: cross-origin
+     iframe, no script blocks. Stating the pricing is true for every customer;
+     stating a saving would be invented, and on a currency product that is a
+     financial promotion. Same reasoning as travel-spender.html.
+
+     BANNERS KEEP THEIR OWN CLOSE CONTROL, because Banner layout is not
+     offered the panel's "Add close button to outside" setting. It calls
+     Dn.close() and never Dn.sendClick().
+
+     Panel settings: Banner, width 830, padding 0, transparent background.
+     ================================================================== -->
+<style>
+#npy-fx *{margin:0;padding:0;box-sizing:border-box;}
+#npy-fx{
+  --f-ink:#0f1c33; --f-blue:#125cfa; --f-dark:#0a3a9e; --f-soft:#64748b;
+  font-family:Inter,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;
+  width:100%;display:block;
+}
+#npy-fx .fx-bar{
+  width:100%;background:linear-gradient(120deg,#0f1c33 0%,#0a3a9e 100%);
+  color:#fff;display:flex;align-items:center;gap:15px;padding:13px 18px;
+}
+
+/* Two currency chips with an arrow between. Pure CSS, no image request. */
+#npy-fx .fx-pair{flex:none;display:flex;align-items:center;gap:7px;}
+#npy-fx .fx-chip{
+  width:31px;height:31px;border-radius:50%;background:rgba(255,255,255,.14);
+  display:flex;align-items:center;justify-content:center;
+  font-size:13px;font-weight:700;color:#fff;
+}
+#npy-fx .fx-arrow{
+  width:14px;height:1.5px;background:rgba(255,255,255,.6);position:relative;
+}
+#npy-fx .fx-arrow::after{
+  content:"";position:absolute;right:0;top:-2.5px;width:6px;height:6px;
+  border-top:1.5px solid rgba(255,255,255,.6);border-right:1.5px solid rgba(255,255,255,.6);
+  transform:rotate(45deg);
+}
+
+#npy-fx .fx-text{flex:1 1 auto;min-width:0;}
+#npy-fx .fx-text b{display:block;font-size:13.5px;font-weight:700;letter-spacing:-.1px;}
+#npy-fx .fx-text span{
+  display:block;font-size:12px;color:rgba(255,255,255,.78);margin-top:2px;line-height:1.45;
+}
+#npy-fx .fx-cta{
+  flex:none;text-decoration:none;background:#fff;color:var(--f-dark);
+  font-size:12.5px;font-weight:700;padding:9px 16px;border-radius:9px;white-space:nowrap;
+}
+#npy-fx .fx-x{
+  flex:none;width:26px;height:26px;border:0;background:transparent;cursor:pointer;
+  color:rgba(255,255,255,.75);font-size:17px;line-height:1;border-radius:6px;
+}
+#npy-fx .fx-x:hover{background:rgba(255,255,255,.14);}
+@media (max-width:640px){
+  #npy-fx .fx-bar{flex-wrap:wrap;gap:10px;padding:13px 14px;}
+  #npy-fx .fx-text{flex:1 1 100%;order:2;}
+  #npy-fx .fx-cta{order:3;flex:1 1 auto;text-align:center;}
+  #npy-fx .fx-x{order:1;margin-left:auto;}
+  #npy-fx .fx-pair{order:0;}
+}
+</style>
+</head>
+<body>
+
+<div id="npy-fx">
+  <div class="fx-bar" role="region" aria-label="Currency exchange">
+    <span class="fx-pair" aria-hidden="true">
+      <span class="fx-chip">&euro;</span>
+      <span class="fx-arrow"></span>
+      <span class="fx-chip">$</span>
+    </span>
+
+    <div class="fx-text">
+      <b>You are holding a second currency</b>
+      <span>Convert at the real exchange rate, with no markup added and the fee shown before you confirm.</span>
+    </div>
+
+    <a class="fx-cta" href="https://salil-dengage.github.io/dengage-demos/fintech/money.html" target="_top"
+       onclick="Dn.sendClick('fintech_fx-unused__convert')">Convert now</a>
+
+    <button class="fx-x" type="button" aria-label="Dismiss"
+            onclick="Dn.close()">&times;</button>
+  </div>
+</div>
+
+</body>
+</html>

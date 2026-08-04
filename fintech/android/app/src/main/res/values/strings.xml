@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Demo - NovaPay</string>
+    <string name="carousel_prev">Back</string>
+    <string name="carousel_next">Next</string>
+</resources>

@@ -1,0 +1,26 @@
+product_id,product_name,product_category,product_subtype,category_path,headline_rate,rate_type,rate_display,term_months,fee_amount,fee_frequency,min_deposit_pct,max_ltv,min_amount,max_amount,tier
+MRD-ACC-CURRENT,Everyday Current Account,current_account,everyday,Products > Current accounts > Everyday,0,none,No monthly fee,,0,monthly,,,,,classic
+MRD-ACC-REWARD,Reward Current Account,current_account,reward,Products > Current accounts > Reward,3.0,cashback,3% cashback,,5,monthly,,,,,classic
+MRD-ACC-PREMIER,Premier Current Account,current_account,premier,Products > Current accounts > Premier,0,none,£15 a month,,15,monthly,,,,,premier
+MRD-ACC-BUSINESS,Business Current Account,current_account,business,Products > Current accounts > Business,0,none,Free for 18 months,18,8.5,monthly,,,,,classic
+MRD-SAV-EASY,Easy Access Saver,savings,easy_access,Products > Savings > Easy access,4.1,aer_variable,4.10% AER,,0,none,,,1,500000,classic
+MRD-SAV-FIXED,One Year Fixed Rate Saver,savings,fixed_term,Products > Savings > Fixed rate,4.55,aer_fixed,4.55% AER,12,0,none,,,1000,1000000,classic
+MRD-SAV-ISA,Cash ISA,isa,cash_isa,Products > ISAs > Cash,4.35,aer_variable,4.35% AER,,0,none,,,1,20000,classic
+MRD-ISA-STOCKS,Stocks and Shares ISA,isa,investment_isa,Products > ISAs > Stocks and shares,0.45,annual_charge,0.45% a year,,0.45,annual_percent,,,100,20000,classic
+MRD-MTG-FIRST,First Home Mortgage,mortgage,first_time_buyer,Products > Mortgages > First home,4.39,fixed,4.39%,60,999,one_off,5,95,25000,750000,classic
+MRD-MTG-FIX5,Five Year Fixed Rate Mortgage,mortgage,residential,Products > Mortgages > Fixed rate,4.09,fixed,4.09%,60,1499,one_off,25,75,25000,2000000,classic
+MRD-MTG-REMORT,Remortgage Two Year Fixed,mortgage,remortgage,Products > Mortgages > Remortgage,4.64,fixed,4.64%,24,0,one_off,15,85,25000,1000000,classic
+MRD-MTG-BTL,Buy to Let Mortgage,mortgage,buy_to_let,Products > Mortgages > Buy to let,5.19,fixed,5.19%,60,1999,one_off,25,75,50000,1500000,classic
+MRD-LON-PERSONAL,Personal Loan,loan,unsecured,Products > Loans > Personal,6.9,apr_representative,6.9% APR,60,0,none,,,1000,35000,classic
+MRD-LON-CAR,Car Finance Loan,loan,car,Products > Loans > Car,7.4,apr_representative,7.4% APR,60,0,none,,,3000,50000,classic
+MRD-LON-HOME,Home Improvement Loan,loan,home_improvement,Products > Loans > Home improvement,6.4,apr_representative,6.4% APR,84,0,none,,,5000,50000,classic
+MRD-CRD-CLASSIC,Meridian Classic Card,credit_card,everyday,Products > Credit cards > Everyday,19.9,apr_representative,19.9% APR,18,0,annual,,,,,classic
+MRD-CRD-BALANCE,Meridian Balance Transfer Card,credit_card,balance_transfer,Products > Credit cards > Balance transfer,22.9,apr_representative,22.9% APR,28,2.9,transfer_percent,,,,,classic
+MRD-CRD-PLATINUM,Meridian Platinum Card,credit_card,rewards,Products > Credit cards > Rewards,21.9,apr_representative,21.9% APR,,120,annual,,,,,classic
+MRD-CRD-INFINITE,Meridian Infinite Card,credit_card,premium,Products > Credit cards > Premium,22.9,apr_representative,22.9% APR,,295,annual,,,,,private
+MRD-CRD-STUDENT,Meridian Student Card,credit_card,student,Products > Credit cards > Student,18.9,apr_representative,18.9% APR,,0,annual,,,,,classic
+MRD-WLT-PORTFOLIO,Managed Portfolio,wealth,discretionary,Products > Wealth > Managed portfolio,0.75,annual_charge,0.75% a year,,0.75,annual_percent,,,50000,,premier
+MRD-WLT-PENSION,Personal Pension,wealth,pension,Products > Wealth > Pension,0.35,annual_charge,0.35% a year,,0.35,annual_percent,,,100,,classic
+MRD-INS-HOME,Home Insurance,insurance,home,Products > Insurance > Home,0,premium_from,From £186 a year,12,186,annual,,,,,classic
+MRD-INS-LIFE,Life Insurance,insurance,life,Products > Insurance > Life,0,premium_from,From £6 a month,300,6,monthly,,,,,classic
+MRD-INS-TRAVEL,Travel Insurance,insurance,travel,Products > Insurance > Travel,0,premium_from,From £34 a year,12,34,annual,,,,,classic

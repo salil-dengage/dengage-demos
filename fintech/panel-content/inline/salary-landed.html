@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NovaPay | Salary landed (Dengage INLINE content)</title>
+<!-- =====================================================================
+     NOVAPAY, INLINE On-Site content for the account portal
+
+     Inline Target Selector:  #dn_inline_target_portal_below_balance
+     Trigger:                 fintech_salary_landed
+                              (DATA_LAYER_EVENT, pushed by portalSignals()
+                              when a salary transaction landed in the last
+                              7 days. See fintech/PORTAL-SCENARIOS.md)
+
+     THE INLINE RULES ARE THE OPPOSITE OF THE POPUP CONTRACT, in four places:
+
+       not sandboxed     every selector sits under #npy-inline-salary, because
+                         the SDK appends this <style> to document.head and it
+                         would otherwise restyle the whole portal
+       no Dn.sendClick   the SDK attaches its own listener to every injected
+                         a[href], so a click here is already counted. Calling
+                         sendClick as well would double-count it
+       no target="_top"  there is no iframe to break out of on this path
+       no script blocks       the panel strips script blocks on save
+
+     WHY HERE. Directly under the balance card, so the suggestion sits next to
+     the number it is talking about. Payday is the one moment in the month the
+     customer has money to move, which is why this beats the same message sent
+     on a Tuesday.
+
+     NO CUSTOMIZATION TAGS. {%= ... %} is refused by the panel on real-time
+     On-Site Targeting campaigns. The copy is written to work without them: the
+     trigger has already segmented the audience, so it can speak plainly.
+     ================================================================== -->
+<style>
+#npy-inline-salary{
+  font-family:Inter,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;
+  background:linear-gradient(135deg,rgba(18,92,250,.06),rgba(10,58,158,.06));
+  border:1px solid rgba(18,92,250,.18);border-radius:14px;
+  padding:1.1rem 1.25rem;margin:0 0 1.25rem;color:#0f1c33;text-align:left;}
+#npy-inline-salary *{box-sizing:border-box;margin:0;}
+#npy-inline-salary .npy-sl-tag{
+  display:inline-block;background:#125cfa;color:#fff;border-radius:6px;
+  font-size:.62rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;
+  padding:.25rem .5rem;margin-bottom:.6rem;}
+#npy-inline-salary .npy-sl-title{font-size:1rem;font-weight:700;letter-spacing:-.2px;}
+#npy-inline-salary .npy-sl-body{
+  font-size:.83rem;line-height:1.6;color:#64748b;margin-top:.35rem;}
+#npy-inline-salary .npy-sl-row{
+  display:flex;gap:.5rem;flex-wrap:wrap;margin-top:.85rem;}
+#npy-inline-salary .npy-sl-cta{
+  display:inline-block;background:#125cfa;color:#fff;text-decoration:none;
+  border-radius:9px;font-size:.78rem;font-weight:600;padding:.6rem 1rem;}
+#npy-inline-salary .npy-sl-alt{
+  display:inline-block;color:#125cfa;text-decoration:none;
+  font-size:.78rem;font-weight:600;padding:.6rem .4rem;}
+#npy-inline-salary .npy-sl-why{
+  font-size:.66rem;color:#9aa5b5;margin-top:.7rem;}
+@media (max-width:480px){
+  #npy-inline-salary .npy-sl-cta,#npy-inline-salary .npy-sl-alt{width:100%;text-align:center;}
+}
+</style>
+</head>
+<body>
+
+<div id="npy-inline-salary">
+  <span class="npy-sl-tag">Payday</span>
+  <p class="npy-sl-title">Your salary just landed. Move some before it moves itself.</p>
+  <p class="npy-sl-body">
+    Splitting a fixed amount into a goal on the day you are paid is the single
+    habit that separates people who reach a target from people who do not.
+    Set it once and it happens every month.
+  </p>
+  <div class="npy-sl-row">
+    <a class="npy-sl-cta" href="app.html">Split my salary</a>
+    <a class="npy-sl-alt" href="app.html">See my goals</a>
+  </div>
+  <p class="npy-sl-why">
+    Shown because a salary payment arrived in the last 7 days. NovaPay is a
+    demonstration brand and no money moves.
+  </p>
+</div>
+
+</body>
+</html>

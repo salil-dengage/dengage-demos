@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Meridian Bank | Horizontal popup (Dengage panel content)</title>
+<!-- =====================================================================
+     MERIDIAN BANK, On-Site content for the panel
+
+     Paste this WHOLE file into the scenario editor.
+
+     Trigger name: banking_horizonal-popup
+
+     All CSS is scoped under #mrd-horizonal-popup. Inline content is NOT sandboxed: the
+     SDK appends the style to document.head, so an unscoped selector would
+     restyle the whole site.
+
+     No <script>. The panel strips script blocks on save, so interactivity is
+     pure CSS plus inline onclick, which does survive publishing.
+
+     Every anchor carries target="_top". This content renders in a
+     cross-origin iframe, so a normal link would load the site inside the
+     popup rather than navigating the page.
+
+     The engine counts a click only when the content calls Dn.sendClick(),
+     exactly once per file. A close control calls Dn.close() and never
+     sendClick, so a dismissal is not counted as a conversion.
+
+     SLUG SPELLING IS DELIBERATE: "horizonal-popup" is the panel contract.
+
+     POPUP, so NO close control here. The panel supplies it.
+     ================================================================== -->
+<style>
+#mrd-horizonal-popup{font-family:Inter,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;
+  box-sizing:border-box;color:#12203a;text-align:left;}
+#mrd-horizonal-popup *{box-sizing:border-box;}
+#mrd-horizonal-popup .mrd-eyebrow{font-size:11px;letter-spacing:.14em;text-transform:uppercase;
+  color:#b8933c;font-weight:700;margin:0 0 8px;}
+#mrd-horizonal-popup .mrd-title{font-family:"Playfair Display",Georgia,serif;font-size:24px;
+  line-height:1.2;margin:0 0 10px;color:#0a2540;}
+#mrd-horizonal-popup .mrd-text{font-size:14px;line-height:1.55;color:#5a6b7f;margin:0 0 18px;}
+#mrd-horizonal-popup .mrd-cta{display:inline-block;background:#0a2540;color:#fff;text-decoration:none;
+  font-size:14px;font-weight:600;padding:12px 22px;border:0;border-radius:6px;cursor:pointer;}
+#mrd-horizonal-popup .mrd-cta:hover{background:#143a5e;}
+#mrd-horizonal-popup .mrd-small{font-size:11px;line-height:1.5;color:#8494a5;margin:14px 0 0;}
+#mrd-horizonal-popup{display:flex;width:100%;background:#fff;overflow:hidden;}
+#mrd-horizonal-popup .mrd-side{flex:none;width:190px;background:#0a2540;color:#fff;padding:26px 22px;
+  display:flex;flex-direction:column;justify-content:center;}
+#mrd-horizonal-popup .mrd-side .mrd-eyebrow{color:#b8933c;}
+#mrd-horizonal-popup .mrd-big{font-family:"Playfair Display",Georgia,serif;font-size:34px;line-height:1.05;margin:0;}
+#mrd-horizonal-popup .mrd-side p.mrd-note{font-size:12px;opacity:.8;margin:8px 0 0;line-height:1.45;}
+#mrd-horizonal-popup .mrd-body{padding:26px 30px;}
+
+</style>
+</head>
+<body>
+<div id="mrd-horizonal-popup" class="hz-card">
+  <div class="mrd-side">
+    <p class="mrd-eyebrow">Adviser</p>
+    <p class="mrd-big">30 minutes</p>
+    <p class="mrd-note">In branch, by video or over the phone. Usually within three working days.</p>
+  </div>
+  <div class="mrd-body">
+    <h2 class="mrd-title">Talk it through with someone</h2>
+    <p class="mrd-text">A mortgage is the largest thing most people ever sign. One named adviser stays with you from the first conversation through to completion, and they will tell you plainly if the answer is no.</p>
+    <a class="mrd-cta" href="https://salil-dengage.github.io/dengage-demos/banking/appointments.html" target="_top" onclick="Dn.sendClick('banking_horizonal-popup__book-adviser')">Book an appointment</a>
+    <p class="mrd-small">Meridian Bank is a fictional company and this is a demo site. No appointment is actually made.</p>
+  </div>
+</div>
+</body>
+</html>

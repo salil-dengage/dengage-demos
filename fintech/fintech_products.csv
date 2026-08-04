@@ -1,0 +1,17 @@
+product_id,product_name,product_family,plan_tier,monthly_fee,headline_rate,rate_type,is_active
+NPY-CRD-METAL,NovaPay Metal Card,cards,metal,16.99,2.00,cashback,true
+NPY-CRD-PLUS,NovaPay Plus Card,cards,plus,0.00,1.00,cashback,true
+NPY-CRD-TRAVEL,NovaPay Travel Card,cards,premium,6.99,0.00,fx_markup,true
+NPY-CRD-BIZ,NovaPay Business Card,cards,business,9.99,,none,true
+NPY-INV-STOCKS,Stocks Pro,investing,plus,0.00,,none,true
+NPY-INV-CRYPTO,Crypto Vault,investing,plus,0.00,,none,true
+NPY-INV-ROBO,Managed Portfolio,investing,premium,0.45,,none,true
+NPY-SAV-BOOST,Savings Boost,savings,plus,0.00,4.85,aer,true
+NPY-SAV-POTS,Goal Pots Pro,savings,plus,1.99,4.85,aer,true
+NPY-CRE-BUILD,Credit Builder,credit,free,4.99,,none,true
+NPY-CRE-LOAN,Personal Loan,credit,free,0.00,6.90,apr,true
+NPY-GLB-ACCOUNT,Multi-Currency Account,global,plus,0.00,0.00,fx_markup,true
+NPY-GLB-TRANSFER,Global Transfers Pro,global,plus,0.00,0.00,fx_markup,true
+NPY-PRO-TRAVEL,Travel Insurance,protection,premium,9.99,,none,true
+NPY-PRO-DEVICE,Device Insurance,protection,plus,6.99,,none,true
+NPY-PRO-PURCHASE,Purchase Protection,protection,plus,4.99,,none,true

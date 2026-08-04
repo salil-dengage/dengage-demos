@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Meridian Bank | Survey (Dengage panel content)</title>
+<!-- =====================================================================
+     MERIDIAN BANK, On-Site content for the panel
+
+     Paste this WHOLE file into the scenario editor.
+
+     Trigger name: banking_survey
+
+     All CSS is scoped under #mrd-survey. Inline content is NOT sandboxed: the
+     SDK appends the style to document.head, so an unscoped selector would
+     restyle the whole site.
+
+     No <script>. The panel strips script blocks on save, so interactivity is
+     pure CSS plus inline onclick, which does survive publishing.
+
+     Every anchor carries target="_top". This content renders in a
+     cross-origin iframe, so a normal link would load the site inside the
+     popup rather than navigating the page.
+
+     The engine counts a click only when the content calls Dn.sendClick(),
+     exactly once per file. A close control calls Dn.close() and never
+     sendClick, so a dismissal is not counted as a conversion.
+
+     ONE QUESTION ONLY. form-handler.js reads e.querySelector('.form-block'),
+     the FIRST one, and ignores every other. There is no multi-question
+     question form, so a second block would render and never submit.
+
+     Capture uses the engine's native contract, data-dn-form-id="question_form".
+     A host-page listener cannot work across the iframe boundary.
+
+     Auto-close is OFF. For a TAG submission the handler's timer is 0 ms, so
+     the thank-you panel would vanish before it could be read.
+
+     The -vh class hides the REAL checkboxes behind the styled chips. It is not
+     close-button plumbing. Remove it and the whole row unstyles.
+     ================================================================== -->
+<style>
+#mrd-survey{font-family:Inter,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;
+  box-sizing:border-box;color:#12203a;text-align:left;}
+#mrd-survey *{box-sizing:border-box;}
+#mrd-survey .mrd-eyebrow{font-size:11px;letter-spacing:.14em;text-transform:uppercase;
+  color:#b8933c;font-weight:700;margin:0 0 8px;}
+#mrd-survey .mrd-title{font-family:"Playfair Display",Georgia,serif;font-size:24px;
+  line-height:1.2;margin:0 0 10px;color:#0a2540;}
+#mrd-survey .mrd-text{font-size:14px;line-height:1.55;color:#5a6b7f;margin:0 0 18px;}
+#mrd-survey .mrd-cta{display:inline-block;background:#0a2540;color:#fff;text-decoration:none;
+  font-size:14px;font-weight:600;padding:12px 22px;border:0;border-radius:6px;cursor:pointer;}
+#mrd-survey .mrd-cta:hover{background:#143a5e;}
+#mrd-survey .mrd-small{font-size:11px;line-height:1.5;color:#8494a5;margin:14px 0 0;}
+#mrd-survey{padding:28px 30px;background:#f7f5f0;width:100%;}
+#mrd-survey .mrd-vh{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;}
+#mrd-survey .mrd-chips{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 20px;}
+#mrd-survey .mrd-chip{display:inline-block;padding:9px 14px;border:1px solid #d5cec0;
+  border-radius:20px;font-size:13px;cursor:pointer;background:#fff;transition:.15s;}
+#mrd-survey .mrd-chip:hover{border-color:#0a2540;}
+#mrd-survey .mrd-vh:checked + .mrd-chip{background:#0a2540;border-color:#0a2540;color:#fff;}
+#mrd-survey .mrd-thanks{display:none;}
+#mrd-survey .mrd-done:checked ~ .mrd-form{display:none;}
+#mrd-survey .mrd-done:checked ~ .mrd-thanks{display:block;}
+
+</style>
+</head>
+<body>
+<div id="mrd-survey" class="sv-card" data-dn-form-id="question_form" data-dn-is-modal-auto-close-enabled="false">
+  <input class="mrd-vh mrd-done" type="checkbox" id="mrd-survey-done">
+  <div class="mrd-form form-block">
+    <p class="mrd-eyebrow">One question</p>
+    <h2 class="mrd-title">What brought you to Meridian today?</h2>
+    <p class="mrd-text">Pick as many as apply. It helps us put the right thing in front of you next time.</p>
+    <div class="mrd-chips">
+      <input class="mrd-vh" type="checkbox" id="mrd-s1" name="reason" value="mortgage"><label class="mrd-chip" for="mrd-s1">A mortgage</label>
+      <input class="mrd-vh" type="checkbox" id="mrd-s2" name="reason" value="savings"><label class="mrd-chip" for="mrd-s2">Savings or an ISA</label>
+      <input class="mrd-vh" type="checkbox" id="mrd-s3" name="reason" value="credit_card"><label class="mrd-chip" for="mrd-s3">A credit card</label>
+      <input class="mrd-vh" type="checkbox" id="mrd-s4" name="reason" value="current_account"><label class="mrd-chip" for="mrd-s4">Day to day banking</label>
+      <input class="mrd-vh" type="checkbox" id="mrd-s5" name="reason" value="wealth"><label class="mrd-chip" for="mrd-s5">Investments or a pension</label>
+      <input class="mrd-vh" type="checkbox" id="mrd-s6" name="reason" value="browsing"><label class="mrd-chip" for="mrd-s6">Just looking</label>
+    </div>
+    <label class="mrd-cta" for="mrd-survey-done" onclick="Dn.sendClick('banking_survey__submit')">Send</label>
+    <p class="mrd-small">We use this to improve the site. It is not linked to any application.</p>
+  </div>
+  <div class="mrd-thanks">
+    <p class="mrd-eyebrow">Thank you</p>
+    <h2 class="mrd-title">That is genuinely useful</h2>
+    <p class="mrd-text">Thanks for telling us. It takes one click from you and saves us guessing.</p>
+  </div>
+</div>
+</body>
+</html>

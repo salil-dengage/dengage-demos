@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NovaPay | Put your balance to work (Dengage POPUP content)</title>
+<!-- =====================================================================
+     NOVAPAY, portal scenario 7: idle cash
+
+     Trigger:  fintech_idle_cash   (On-Site Targeting, DATA_LAYER_EVENT)
+     Fires on: grow.html, when the customer holds no investments and the
+               balance is 500 or more
+     Backed by: fintech_investment_events
+
+     WHY NO FIGURES, NO RETURNS, NO PROJECTIONS. This is the one scenario on
+     the site where invented numbers would be a regulated financial promotion
+     rather than demo copy. The payload carries balance_band, but popup content
+     cannot read it (cross-origin iframe, no script blocks), so any amount here
+     would be fabricated. A projected return would be worse. The message
+     therefore states what the PRODUCT is, never what the customer would earn,
+     and carries a capital-at-risk warning, which is what a real one would.
+
+     Popup contract: an ABSOLUTE href and target="_top" on the anchor, exactly one Dn.sendClick(),
+     no script blocks, and NO close control (the panel adds one outside).
+     Panel settings: Popup, width 560, padding 0, transparent background.
+     ================================================================== -->
+<style>
+#npy-idle *{margin:0;padding:0;box-sizing:border-box;}
+#npy-idle{
+  --i-blue:#125cfa; --i-dark:#0a3a9e; --i-ink:#0f1c33; --i-soft:#64748b;
+  --i-line:#e3e8f0; --i-green:#0f7a4d;
+  font-family:Inter,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;
+  width:100%;display:block;color:var(--i-ink);
+}
+body > #npy-idle{max-width:560px;margin:40px auto;}
+
+#npy-idle .ic-card{
+  width:100%;background:#fff;border-radius:18px;overflow:hidden;
+  box-shadow:0 10px 30px rgba(15,28,51,.18);
+}
+#npy-idle .ic-head{padding:26px 28px 4px;}
+#npy-idle .ic-head h2{font-size:23px;font-weight:700;letter-spacing:-.4px;line-height:1.22;}
+#npy-idle .ic-head p{font-size:13.5px;color:var(--i-soft);line-height:1.6;margin-top:9px;}
+
+/* A rising line, drawn in CSS. Deliberately unlabelled: it says "growth is
+   the idea", not "you would have made X". No axis, no numbers, no claim. */
+#npy-idle .ic-chart{
+  margin:20px 28px 0;height:92px;border-radius:12px;position:relative;
+  background:linear-gradient(180deg,rgba(18,92,250,.10) 0%,rgba(18,92,250,0) 100%);
+  overflow:hidden;
+}
+#npy-idle .ic-chart::after{
+  content:"";position:absolute;left:0;right:0;bottom:26px;height:2px;
+  background:linear-gradient(90deg,rgba(18,92,250,0) 0%,var(--i-blue) 100%);
+  transform:rotate(-9deg);transform-origin:left bottom;
+}
+#npy-idle .ic-chart span{
+  position:absolute;right:16px;top:24px;width:9px;height:9px;border-radius:50%;
+  background:var(--i-blue);box-shadow:0 0 0 5px rgba(18,92,250,.16);
+}
+
+#npy-idle .ic-body{padding:20px 28px 26px;}
+#npy-idle .ic-points{list-style:none;margin-bottom:18px;}
+#npy-idle .ic-points li{
+  font-size:13px;color:var(--i-soft);padding:6px 0 6px 26px;position:relative;line-height:1.5;
+}
+#npy-idle .ic-points li::before{
+  content:"";position:absolute;left:0;top:11px;width:14px;height:14px;border-radius:50%;
+  background:rgba(18,92,250,.12);
+}
+#npy-idle .ic-points li::after{
+  content:"";position:absolute;left:4px;top:15px;width:5px;height:2.5px;
+  border-left:2px solid var(--i-blue);border-bottom:2px solid var(--i-blue);
+  transform:rotate(-45deg);
+}
+#npy-idle .ic-points b{color:var(--i-ink);font-weight:600;}
+
+#npy-idle .ic-cta{
+  display:block;width:100%;text-align:center;text-decoration:none;
+  background:var(--i-blue);color:#fff;font-size:13.5px;font-weight:700;
+  padding:14px;border-radius:11px;letter-spacing:.03em;
+}
+#npy-idle .ic-risk{
+  margin-top:14px;padding:11px 13px;border:1px solid var(--i-line);border-radius:10px;
+  font-size:11px;color:var(--i-soft);line-height:1.55;
+}
+#npy-idle .ic-legal{font-size:10.5px;color:#9aa5b5;margin-top:12px;line-height:1.5;text-align:center;}
+@media (max-width:480px){
+  #npy-idle .ic-head h2{font-size:20px;}
+  #npy-idle .ic-head,#npy-idle .ic-body{padding-left:20px;padding-right:20px;}
+  #npy-idle .ic-chart{margin-left:20px;margin-right:20px;}
+}
+</style>
+</head>
+<body>
+
+<div id="npy-idle">
+  <div class="ic-card">
+
+    <div class="ic-head">
+      <h2>Your balance is sitting still</h2>
+      <p>
+        Money left in a current account does nothing but wait. A managed
+        portfolio puts part of it to work while you keep the rest to hand.
+      </p>
+    </div>
+
+    <div class="ic-chart" role="img" aria-label="An upward trend, illustrative only">
+      <span></span>
+    </div>
+
+    <div class="ic-body">
+      <ul class="ic-points">
+        <li><b>Start with any amount.</b> There is no minimum and no lock-in.</li>
+        <li><b>Matched to your risk profile</b> after five questions, not a guess.</li>
+        <li><b>Withdraw whenever you like.</b> Typically back in your account in two days.</li>
+      </ul>
+
+      <a class="ic-cta" href="https://salil-dengage.github.io/dengage-demos/fintech/grow.html" target="_top"
+         onclick="Dn.sendClick('fintech_idle-cash__explore')">See the portfolios</a>
+
+      <p class="ic-risk">
+        Capital at risk. Investments can fall as well as rise and you may get
+        back less than you put in. Past performance does not predict future
+        returns.
+      </p>
+
+      <p class="ic-legal">
+        NovaPay is a fictional brand used for demonstration. No investment is
+        offered and no money moves.
+      </p>
+    </div>
+
+  </div>
+</div>
+
+</body>
+</html>

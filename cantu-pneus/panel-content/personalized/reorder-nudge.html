@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CantuPneus | Personalized sample 2, reorder nudge</title>
+<!-- =====================================================================
+     CANTUPNEUS PERSONALIZED POPUP 2, "time to reorder"
+
+     Paste this WHOLE file into the campaign's HTML editor. All CSS is scoped to
+     #cantu-p2, so nothing leaks onto the page.
+
+     Direct attribute output only. Every value is one token, no logic blocks and
+     no fallbacks, because both demo contacts already carry every attribute. The
+     panel does not evaluate tokens in Preview, so Preview shows them as text.
+     That is expected. They resolve when the campaign is live.
+
+     Attributes used, all on master_contact:
+       first_name, fleet_size, main_line, usual_size, reorder_due_days,
+       promo_code, promo_discount_pct, next_delivery_date, preferred_branch
+
+     Clicks: the CTA reports through Dn.sendClick(); the close control calls
+     Dn.close() and does not report, so a dismissal is not counted as a click.
+
+     Panel: Popup layout, width 520px, padding 0, transparent background.
+     Trigger: DATA_LAYER_EVENT, eventName = sign_up
+====================================================================== -->
+</head>
+<body>
+
+<div id="cantu-p2">
+  <style>
+    #cantu-p2 *{margin:0;padding:0;box-sizing:border-box;}
+    #cantu-p2{
+      --p2-purple:#4E018F; --p2-purple-dark:#35015F; --p2-yellow:#FFE958;
+      --p2-ink:#1A1030; --p2-ink-soft:#5C5573; --p2-line:#EDE9F5; --p2-cream:#FAF8FD;
+      font-family:Inter,-apple-system,'Segoe UI',Roboto,sans-serif;width:100%;
+      position:relative;
+    }
+    body > #cantu-p2{max-width:520px;margin:40px auto;}
+    #cantu-p2 .p2-vh{position:absolute;width:1px;height:1px;opacity:0;pointer-events:none;}
+    #cantu-p2 #p2-hide:checked ~ .p2-card{display:none;}
+
+    #cantu-p2 .p2-card{
+      width:100%;background:#fff;border-radius:18px;overflow:hidden;position:relative;
+      border-top:5px solid var(--p2-purple);
+      box-shadow:0 12px 34px rgba(26,16,48,.2);
+      animation:p2-in .38s cubic-bezier(.21,.9,.35,1.05);
+      padding:26px 28px;
+    }
+    @keyframes p2-in{from{opacity:0;transform:translateY(14px);}to{opacity:1;transform:none;}}
+
+    #cantu-p2 .p2-close{
+      position:absolute;top:14px;right:14px;width:30px;height:30px;border-radius:9px;
+      background:rgba(26,16,48,.07);color:var(--p2-ink);font-size:15px;line-height:30px;
+      text-align:center;cursor:pointer;transition:background .2s;
+    }
+    #cantu-p2 .p2-close:hover{background:rgba(26,16,48,.16);}
+
+    #cantu-p2 .p2-eyebrow{
+      font:700 10px Inter,sans-serif;letter-spacing:.16em;text-transform:uppercase;
+      color:var(--p2-purple);margin-bottom:10px;
+    }
+
+    #cantu-p2 .p2-numrow{display:flex;align-items:flex-start;gap:16px;margin-bottom:14px;}
+    #cantu-p2 .p2-num{
+      font-family:'Barlow Condensed',Impact,sans-serif;font-weight:600;
+      font-size:62px;line-height:.85;color:var(--p2-purple);flex-shrink:0;
+    }
+    #cantu-p2 .p2-numlbl{
+      font:600 11.5px Inter,sans-serif;letter-spacing:.1em;text-transform:uppercase;
+      color:var(--p2-ink-soft);padding-top:6px;
+    }
+    #cantu-p2 h2{
+      font-family:'Barlow Condensed',Impact,sans-serif;font-weight:600;
+      font-size:29px;line-height:1.1;color:var(--p2-ink);margin-bottom:8px;
+    }
+    #cantu-p2 .p2-lede{font-size:13.5px;line-height:1.6;color:var(--p2-ink-soft);margin-bottom:18px;}
+    #cantu-p2 .p2-lede b{color:var(--p2-ink);font-weight:600;}
+
+    #cantu-p2 .p2-facts{display:flex;flex-wrap:wrap;gap:7px;margin-bottom:18px;}
+    #cantu-p2 .p2-facts span{
+      background:var(--p2-cream);border:1px solid var(--p2-line);border-radius:999px;
+      padding:6px 13px;font:500 12px Inter,sans-serif;color:var(--p2-ink-soft);
+    }
+    #cantu-p2 .p2-facts b{color:var(--p2-ink);font-weight:600;}
+
+    #cantu-p2 .p2-code{
+      display:flex;align-items:center;justify-content:space-between;gap:14px;
+      border:1.5px dashed var(--p2-purple);border-radius:12px;
+      padding:13px 16px;margin-bottom:18px;background:var(--p2-cream);
+    }
+    #cantu-p2 .p2-codelbl{font:600 11px Inter,sans-serif;letter-spacing:.09em;
+      text-transform:uppercase;color:var(--p2-ink-soft);display:block;}
+    #cantu-p2 .p2-codeval{
+      font-family:'Barlow Condensed',Impact,sans-serif;font-weight:600;font-size:24px;
+      letter-spacing:.06em;color:var(--p2-purple);display:block;
+    }
+
+    #cantu-p2 .p2-cta{
+      display:block;width:100%;background:var(--p2-purple);color:#fff;text-decoration:none;
+      font:700 13px Inter,sans-serif;letter-spacing:.09em;text-transform:uppercase;
+      padding:16px;border-radius:12px;text-align:center;transition:all .2s ease;
+    }
+    #cantu-p2 .p2-cta:hover{background:var(--p2-purple-dark);transform:translateY(-1px);
+      box-shadow:0 10px 22px rgba(78,1,143,.32);}
+    #cantu-p2 .p2-note{font-size:11px;color:var(--p2-ink-soft);text-align:center;margin-top:11px;}
+
+    @media (max-width:480px){
+      #cantu-p2 .p2-card{padding:22px 18px;}
+      #cantu-p2 .p2-num{font-size:48px;}
+      #cantu-p2 h2{font-size:25px;}
+    }
+  </style>
+
+  <input type="checkbox" id="p2-hide" class="p2-vh">
+  <div class="p2-card" role="dialog" aria-modal="true" aria-label="Your reorder reminder">
+    <label class="p2-close" for="p2-hide" onclick="Dn.close()" role="button" aria-label="Close">&#10005;</label>
+
+    <p class="p2-eyebrow">Reorder window</p>
+
+    <div class="p2-numrow">
+      <span class="p2-num">{%=$Contact.reorder_due_days%}</span>
+      <span class="p2-numlbl">days<br>until your<br>usual reorder</span>
+    </div>
+
+    <h2>{%=$Contact.first_name%}, we have your sizes in stock</h2>
+
+    <p class="p2-lede">Based on the <b>{%=$Contact.fleet_size%} vehicles</b> on your account
+      and how often you buy <b>{%=$Contact.main_line%}</b>, this is roughly when you order again.</p>
+
+    <div class="p2-facts">
+      <span>Your size <b>{%=$Contact.usual_size%}</b></span>
+      <span>Ships from <b>{%=$Contact.preferred_branch%}</b></span>
+      <span>Next slot <b>{%=$Contact.next_delivery_date%}</b></span>
+    </div>
+
+    <div class="p2-code">
+      <span>
+        <span class="p2-codelbl">Your code, {%=$Contact.promo_discount_pct%}% off</span>
+        <span class="p2-codeval">{%=$Contact.promo_code%}</span>
+      </span>
+      <span class="p2-codelbl">Applied at checkout</span>
+    </div>
+
+    <a target="_top" class="p2-cta" onclick="Dn.sendClick('personalized-reorder__order')"
+       href="https://salil-dengage.github.io/dengage-demos/cantu-pneus/en/index.html#products">Build my reorder</a>
+    <p class="p2-note">Sent because of your own order pattern, not a broadcast.</p>
+  </div>
+</div>
+
+</body>
+</html>

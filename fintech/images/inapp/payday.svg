@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1080 540" width="1080" height="540" role="img" aria-label="NovaPay, your pay has landed">
+<!-- Hero for the App Inbox reference message. Landscape, because an inbox row
+     crops its media to a banner rather than a card.
+
+     Committed rather than fetched, like every other image in this repository:
+     a demo must not depend on a third party image host.
+
+     Ids are prefixed pd- so several of these can be inlined in one document
+     without every gradient resolving to the first definition. -->
+<defs>
+ <linearGradient id="pd-bg" x1="0" y1="0" x2="1" y2="1">
+  <stop offset="0" stop-color="#0a3a9e"/><stop offset="1" stop-color="#125cfa"/>
+ </linearGradient>
+ <linearGradient id="pd-bar" x1="0" y1="1" x2="0" y2="0">
+  <stop offset="0" stop-color="#7ef0bd" stop-opacity="0.35"/><stop offset="1" stop-color="#7ef0bd"/>
+ </linearGradient>
+</defs>
+
+<rect width="1080" height="540" fill="url(#pd-bg)"/>
+
+<g fill="none" stroke="#ffffff" stroke-opacity="0.1" stroke-width="3">
+ <circle cx="960" cy="90" r="180"/>
+ <circle cx="960" cy="90" r="280"/>
+</g>
+
+<!-- A month of balance, rising on the last column. No axis and no figures on
+     the columns: the shape is the point, and a labelled figure here would be
+     an invented one. -->
+<g transform="translate(640,150)">
+ <rect x="0"   y="150" width="46" height="90"  rx="10" fill="#ffffff" fill-opacity="0.22"/>
+ <rect x="66"  y="120" width="46" height="120" rx="10" fill="#ffffff" fill-opacity="0.22"/>
+ <rect x="132" y="168" width="46" height="72"  rx="10" fill="#ffffff" fill-opacity="0.22"/>
+ <rect x="198" y="96"  width="46" height="144" rx="10" fill="#ffffff" fill-opacity="0.22"/>
+ <rect x="264" y="0"   width="46" height="240" rx="10" fill="url(#pd-bar)"/>
+</g>
+
+<g transform="translate(72,86)">
+ <rect width="70" height="70" rx="19" fill="#ffffff" fill-opacity="0.14" stroke="#ffffff" stroke-opacity="0.3" stroke-width="2"/>
+ <text x="35" y="49" text-anchor="middle" font-family="Inter, Helvetica, Arial, sans-serif" font-size="38" font-weight="700" fill="#ffffff">N</text>
+</g>
+
+<text x="72" y="256" font-family="Inter, Helvetica, Arial, sans-serif" font-size="26" font-weight="700" letter-spacing="6" fill="#7ef0bd">PAY DAY</text>
+<text x="72" y="336" font-family="Inter, Helvetica, Arial, sans-serif" font-size="62" font-weight="700" fill="#ffffff">Your pay has landed</text>
+<text x="72" y="396" font-family="Inter, Helvetica, Arial, sans-serif" font-size="30" fill="#ffffff" fill-opacity="0.74">Move some of it before the month does it for you.</text>
+<text x="72" y="480" font-family="Inter, Helvetica, Arial, sans-serif" font-size="21" fill="#ffffff" fill-opacity="0.5">NovaPay is a fictional brand used for demonstration.</text>
+</svg>

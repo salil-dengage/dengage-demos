@@ -1,0 +1,598 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CantuPneus | O aliado certo para seu negócio rodar</title>
+    <meta name="description" content="Distribuidora e importadora de pneus de carga, passeio, agrícola, industrial e OTR. Site de demonstração da plataforma Dengage.">
+
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-NL6J5Z53');</script>
+    <!-- End Google Tag Manager -->
+
+    <!-- ===============================================================
+         TAGGING SETUP
+
+         Two independent pieces:
+
+         1. GTM container GTM-NL6J5Z53 (above): the team's own container,
+            for analytics and any future tags. It is EMPTY of Dengage tags
+            and must stay that way: the Dengage SDK is loaded directly
+            below. Loading it a second time from a GTM tag would
+            double-initialise the SDK.
+
+         2. Dengage Web SDK (below): the BFSI web application, account 28,
+            verbatim as the panel issued it. The SDK watches
+            window.dataLayer itself, so on-site scenarios configured with
+            triggerBy = DATA_LAYER_EVENT fire without any GTM involvement.
+
+         Panel advanced settings that this page's code assumes:
+           Trigger Initialize on Install  = OFF (snippet calls initialize())
+           Trigger Page View on Initialize = OFF (js/pageView.js calls
+             pageView() with real parameters; ON would double-count)
+    ================================================================ -->
+    <!-- identity first: it feeds the contact key into initialize below -->
+    <script src="js/identity.js" data-user-store="cantupneus_user"></script>
+    <!-- DENGAGE SDK START -->
+    <script>
+      !function (e, a, n, d, g) {
+        e.dengage = e.dengage || function () { (e.dengage.q = e.dengage.q || []).push(arguments) },
+        d = a.getElementsByTagName("head")[0],
+        (g = a.createElement("script")).async = 1,
+        g.src = "https://pcdn.dengage.com/p/push/28/c8d2da44-b982-1925-9ad8-e7caddf0894a/dengage_sdk_loader.js",
+        d.appendChild(g)
+      }(window, document);
+      /* js/identity.js resolved the contact key synchronously just above, so the
+         SDK is identified from the very first call. Docs: "If you have these
+         identifiers before calling the initialize method we recommend using this
+         approach." Anonymous visitors keep the exact previous call. */
+      window.__dnInit ? dengage('initialize', window.__dnInit) : dengage('initialize');
+    </script>
+    <!-- DENGAGE SDK END -->
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=Inter:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="cantu-style.css">
+    <link rel="icon" href="images/cantu-mark.svg" type="image/svg+xml">
+</head>
+<body data-page-type="home">
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NL6J5Z53"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+
+    <!-- Header -->
+    <header class="site-header" id="header">
+        <div class="container">
+            <div class="header-inner">
+                <a href="index.html" class="logo">
+                    <span class="logo-mark" aria-hidden="true">
+                        <svg viewBox="0 0 120 64" focusable="false"><g fill="none" stroke="currentColor" stroke-width="13" stroke-linecap="round"><path d="M52 18 H32 a14 14 0 0 0 0 28 h20"/><path d="M68 46 H88 a14 14 0 0 0 0-28 H68"/></g><rect x="46" y="11.5" width="28" height="13" rx="6.5" fill="currentColor"/><rect x="46" y="39.5" width="28" height="13" rx="6.5" fill="currentColor"/></svg>
+                    </span>
+                    <span class="logo-word">Cantu<span>Pneus</span></span>
+                </a>
+
+                <nav class="nav-main">
+                    <a href="index.html#products">Produtos</a>
+                    <a href="index.html#collections">Linhas</a>
+                    <a href="index.html#craftsmanship">Operação</a>
+                    <a href="index.html#story">A CantuPneus</a>
+                    <a href="index.html#collections" class="nav-cta">Ver Ofertas</a>
+                    <button class="login-icon-btn" type="button" aria-label="Criar conta" data-login-btn>
+                        <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                            <path d="M12 12c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5Zm0 2c-3.33 0-10 1.67-10 5v2h20v-2c0-3.33-6.67-5-10-5Z"></path>
+                        </svg>
+                    </button>
+                    <button class="cart-icon-btn" type="button" aria-label="Abrir carrinho" data-cart-open>
+                        <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                            <path d="M7 18c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2ZM1 2v2h2l3.6 7.59-1.35 2.44C4.52 15.37 5.48 17 7 17h12v-2H7l1.1-2h7.45c.75 0 1.41-.41 1.75-1.03L21 5H5.21l-.94-2H1Zm16 16c-1.1 0-1.99.9-1.99 2S15.9 22 17 22s2-.9 2-2-.9-2-2-2Z"></path>
+                        </svg>
+                        <span class="cart-count" data-cart-count>0</span>
+                    </button>
+                </nav>
+
+                <button class="menu-toggle" id="menuToggle" aria-label="Abrir menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Dengage inline target slot, top of page. Sits below the fixed header
+         once filled (js/inlineSlotOffset.js measures the clearance). This is
+         the one to target for a Story rail. Empty and hidden until an inline
+         On-Site campaign fills it. Do not add content or styling here. -->
+    <div id="dn_inline_target_below_header" class="dn-inline-slot"></div>
+
+    <!-- Mobile Navigation -->
+    <div class="mobile-overlay" id="mobileOverlay"></div>
+    <nav class="mobile-nav" id="mobileNav">
+        <button class="mobile-nav-close" id="mobileNavClose">×</button>
+        <ul class="mobile-nav-links">
+            <li><a href="index.html#products">Produtos</a></li>
+            <li><a href="index.html#collections">Linhas</a></li>
+            <li><a href="index.html#craftsmanship">Operação</a></li>
+            <li><a href="index.html#story">A CantuPneus</a></li>
+        </ul>
+        <div class="mobile-nav-cta">
+            <a href="index.html#collections" class="btn-primary">Ver Ofertas</a>
+            <button class="btn-primary mobile-login-btn" type="button" data-login-btn>Criar Conta</button>
+            <button class="btn-primary mobile-cart-btn" type="button" data-cart-open>Carrinho (<span data-cart-count>0</span>)</button>
+        </div>
+    </nav>
+
+    <!-- Criar conta Modal -->
+    <div class="login-modal" id="loginModal" aria-hidden="true">
+        <div class="login-modal-overlay" data-close-login></div>
+        <div class="login-modal-content" role="dialog" aria-modal="true" aria-labelledby="loginModalTitle">
+            <button class="login-modal-close" type="button" aria-label="Fechar cadastro" data-close-login>×</button>
+            <p class="text-label">Conta CantuPneus</p>
+            <h2 class="heading-display login-modal-title" id="loginModalTitle">Crie sua conta</h2>
+            <p class="text-body login-modal-text">
+                Cadastre-se para comprar no atacado. Todos os campos são obrigatórios. Seu e-mail é usado como chave de contato na Dengage.
+            </p>
+            <form class="login-form" id="loginForm" novalidate>
+                <div class="login-form-row">
+                    <div class="login-form-group">
+                        <label for="loginFirstName">Nome</label>
+                        <input type="text" id="loginFirstName" name="firstName" placeholder="João" autocomplete="given-name" required>
+                    </div>
+                    <div class="login-form-group">
+                        <label for="loginLastName">Sobrenome</label>
+                        <input type="text" id="loginLastName" name="lastName" placeholder="Silva" autocomplete="family-name" required>
+                    </div>
+                </div>
+                <div class="login-form-group">
+                    <label for="loginEmail">E-mail corporativo</label>
+                    <input type="email" id="loginEmail" name="email" placeholder="nome@empresa.com.br" autocomplete="email" required>
+                </div>
+                <div class="login-form-group">
+                    <label for="loginPassword">Senha</label>
+                    <input type="password" id="loginPassword" name="password" placeholder="Crie uma senha" autocomplete="new-password" required>
+                </div>
+                <p class="login-form-error" id="loginFormError" role="alert" hidden></p>
+                <button class="login-submit-btn" type="submit">Criar Conta</button>
+            </form>
+        </div>
+    </div>
+
+    <div class="login-success-toast" id="loginSuccessMessage" role="status" aria-live="polite">
+        Bem-vindo à CantuPneus.
+    </div>
+
+    <!-- Cart Drawer -->
+    <div class="cart-drawer" id="cartDrawer" aria-hidden="true">
+        <div class="cart-drawer-overlay" data-cart-close></div>
+        <aside class="cart-drawer-panel" aria-labelledby="cartDrawerTitle">
+            <div class="cart-drawer-header">
+                <div>
+                    <p class="text-label">Carrinho</p>
+                    <h2 class="heading-display cart-drawer-title" id="cartDrawerTitle">Seus itens</h2>
+                </div>
+                <button class="cart-drawer-close" type="button" aria-label="Fechar carrinho" data-cart-close>×</button>
+            </div>
+            <div class="cart-items" data-cart-items></div>
+            <p class="cart-empty" data-cart-empty>Seu carrinho está vazio.</p>
+            <div class="cart-drawer-footer">
+                <div class="cart-total-row">
+                    <span>Total</span>
+                    <strong data-cart-total>R$ 0,00</strong>
+                </div>
+                <button class="cart-checkout-btn" type="button" data-cart-checkout>Finalizar pedido</button>
+            </div>
+        </aside>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <p class="text-label hero-tagline">Importador direto desde 2006</p>
+            <h1 class="heading-display hero-title">
+                O aliado certo<br>para seu negócio <em>rodar</em>
+            </h1>
+            <p class="text-body hero-description">
+                Pneus de carga, passeio, agrícola, industrial e OTR com preço de importador, estoque real por centro de distribuição e entrega a partir de 24 horas.
+            </p>
+            <div class="hero-actions">
+                <a href="index.html#products" class="btn-primary">Ver catálogo</a>
+                <a href="index.html#story" class="btn-text">A CantuPneus</a>
+            </div>
+        </div>
+        <div class="hero-image">
+            <div class="hero-slide active" data-title="Linha Carga Pesada" data-price="A partir de R$ 1.120">
+                <img src="images/scenes/hero-carga.jpg" alt="Carreta em rodovia equipada com pneus de carga">
+            </div>
+            <div class="hero-slide" data-title="Linha Passeio" data-price="A partir de R$ 289">
+                <img src="images/scenes/hero-passeio.jpg" alt="Pneus de passeio em estoque">
+            </div>
+            <div class="hero-slide" data-title="Linha Agrícola" data-price="A partir de R$ 1.650">
+                <img src="images/scenes/linha-agricola.jpg" alt="Pneus agrícolas empilhados no centro de distribuição">
+            </div>
+            <div class="hero-image-overlay">
+                <p class="overlay-title" id="heroTitle">Linha Carga Pesada</p>
+                <p class="overlay-price" id="heroPrice">A partir de R$ 1.120</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Piece -->
+    <!-- Dengage inline target slot. Empty and hidden until an inline On-Site
+         campaign fills it (see docs/DENGAGE-INTEGRATION.md). The id contains
+         "dn_inline_target" so the panel's Inline Target Selector finds it on
+         its default search. Do not add content or styling here. -->
+    <div id="dn_inline_target_below_hero" class="dn-inline-slot"></div>
+
+    <section class="featured-piece" id="featured-piece">
+        <div class="container">
+            <div class="featured-grid">
+                <div class="featured-image-wrapper">
+                    <div class="featured-image">
+                        <img src="images/products/CNT-CRG-29580-KLD01.svg"
+                             alt="Pneu Marshal KLD01 295/80 R22.5">
+                    </div>
+                    <div class="featured-badge">Lançamento</div>
+                </div>
+                <div class="featured-content">
+                    <p class="text-label featured-label">Destaque da semana</p>
+                    <h2 class="heading-display featured-title">Marshal KLD01 295/80 R22.5</h2>
+                    <p class="text-body featured-description">
+                        Borrachudo de tração projetado para rodovia pesada e piso irregular. Composto de banda resistente a cortes, carcaça reforçada para múltiplas recapagens e desenho que preserva a tração com a banda já desgastada. Homologado para eixo motriz.
+                    </p>
+                    <div class="featured-details">
+                        <div class="detail-row">
+                            <span class="detail-label">Construção</span>
+                            <span class="detail-value">Borrachudo, 16 lonas</span>
+                        </div>
+                        <div class="detail-row">
+                            <span class="detail-label">Índice de carga</span>
+                            <span class="detail-value">152/148 M</span>
+                        </div>
+                        <div class="detail-row">
+                            <span class="detail-label">Aro</span>
+                            <span class="detail-value">22.5 polegadas</span>
+                        </div>
+                    </div>
+                    <p class="featured-price">R$ 1.890</p>
+                    <button class="btn-primary" type="button" data-cart-add
+                        data-product-id="CNT-CRG-29580-KLD01"
+                        data-product-name="Marshal KLD01 295/80 R22.5"
+                        data-product-price="1890"
+                        data-product-currency="BRL"
+                        data-product-image="images/products/CNT-CRG-29580-KLD01.svg"
+                        data-product-category="Pneus > Carga > Borrachudo">Adicionar ao carrinho</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Products -->
+    <section class="products" id="products">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-header-left">
+                    <p class="text-label">Ver linha completa</p>
+                    <h2 class="heading-display section-title">Mais vendidos no atacado</h2>
+                    <p class="text-body section-subtitle">
+                        Medidas com maior giro, disponíveis para pronta entrega.
+                    </p>
+                </div>
+            </div>
+
+            <div class="product-grid" id="productGrid" data-product-grid>
+                <p class="product-grid-status" data-product-grid-status>Carregando produtos…</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Collections -->
+    <section class="collections" id="collections">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-header-left">
+                    <h2 class="heading-display section-title">Nossas linhas</h2>
+                    <p class="text-body section-subtitle">
+                        Do caminhão pesado ao veículo de passeio, com estoque de importador
+                    </p>
+                </div>
+                <a href="index.html#products" class="btn-text">Ver todas as linhas</a>
+            </div>
+
+            <div class="collections-grid">
+                <div class="collection-item">
+                    <div class="collection-image">
+                        <img src="images/scenes/hero-carga.jpg"
+                             alt="Carreta em rodovia equipada com pneus de carga">
+                    </div>
+                    <div class="collection-overlay">
+                        <h3 class="collection-name">Carga</h3>
+                        <p class="collection-count">48 medidas</p>
+                        <p class="collection-price">A partir de R$ 1.120</p>
+                        <button class="collection-cart-btn" type="button" data-cart-add
+                            data-product-id="CNT-CRG-21575-URB"
+                            data-product-name="Ranger RT500 215/75 R17.5"
+                            data-product-price="1120"
+                            data-product-currency="BRL"
+                            data-product-image="images/products/CNT-CRG-21575-URB.svg"
+                            data-product-category="Pneus > Carga > Urbano">Adicionar ao carrinho</button>
+                    </div>
+                </div>
+
+                <div class="collection-item">
+                    <div class="collection-image">
+                        <img src="images/scenes/hero-passeio.jpg"
+                             alt="Linha de pneus de passeio">
+                    </div>
+                    <div class="collection-overlay">
+                        <h3 class="collection-name">Passeio</h3>
+                        <p class="collection-count">32 medidas</p>
+                        <p class="collection-price">A partir de R$ 289</p>
+                        <button class="collection-cart-btn" type="button" data-cart-add
+                            data-product-id="CNT-PAS-17570-SOL"
+                            data-product-name="Kumho Solus TA31 175/70 R13"
+                            data-product-price="289"
+                            data-product-currency="BRL"
+                            data-product-image="images/products/CNT-PAS-17570-SOL.svg"
+                            data-product-category="Pneus > Passeio > Cidade">Adicionar ao carrinho</button>
+                    </div>
+                </div>
+
+                <div class="collection-item">
+                    <div class="collection-image">
+                        <img src="images/scenes/linha-agricola.jpg"
+                             alt="Pneus agrícolas empilhados">
+                    </div>
+                    <div class="collection-overlay">
+                        <h3 class="collection-name">Agrícola</h3>
+                        <p class="collection-count">26 medidas</p>
+                        <p class="collection-price">A partir de R$ 1.650</p>
+                        <button class="collection-cart-btn" type="button" data-cart-add
+                            data-product-id="CNT-AGR-1224-D2000"
+                            data-product-name="DRC D2000 Agro 12.4-24"
+                            data-product-price="1650"
+                            data-product-currency="BRL"
+                            data-product-image="images/products/CNT-AGR-1224-D2000.svg"
+                            data-product-category="Pneus > Agrícola > Trator">Adicionar ao carrinho</button>
+                    </div>
+                </div>
+
+                <div class="collection-item">
+                    <div class="collection-image">
+                        <img src="images/scenes/linha-otr.jpg"
+                             alt="Pneus industriais e OTR">
+                    </div>
+                    <div class="collection-overlay">
+                        <h3 class="collection-name">Industrial e OTR</h3>
+                        <p class="collection-count">19 medidas</p>
+                        <p class="collection-price">A partir de R$ 1.240</p>
+                        <button class="collection-cart-btn" type="button" data-cart-add
+                            data-product-id="CNT-IND-825-EMP"
+                            data-product-name="Marshal Lift 825 8.25-15"
+                            data-product-price="1240"
+                            data-product-currency="BRL"
+                            data-product-image="images/products/CNT-IND-825-EMP.svg"
+                            data-product-category="Pneus > Industrial e OTR > Empilhadeira">Adicionar ao carrinho</button>
+                    </div>
+                </div>
+
+                <div class="collection-item">
+                    <div class="collection-image">
+                        <img src="images/scenes/linha-acessorios.svg"
+                             alt="Roda de aço e câmara de ar">
+                    </div>
+                    <div class="collection-overlay">
+                        <h3 class="collection-name">Rodas e Câmaras</h3>
+                        <p class="collection-count">21 medidas</p>
+                        <p class="collection-price">A partir de R$ 96</p>
+                        <button class="collection-cart-btn" type="button" data-cart-add
+                            data-product-id="CNT-ACS-RODA-2250"
+                            data-product-name="Roda de Aço 22.5 x 8.25"
+                            data-product-price="620"
+                            data-product-currency="BRL"
+                            data-product-image="images/products/CNT-ACS-RODA-2250.svg"
+                            data-product-category="Acessórios > Rodas">Adicionar ao carrinho</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Nossa história -->
+    <section class="story" id="story">
+        <div class="container">
+            <div class="story-grid">
+                <div class="story-content">
+                    <p class="text-label story-label">Nossa história</p>
+                    <h2 class="heading-display story-title">
+                        Do importador direto ao seu pátio
+                    </h2>
+                    <p class="text-body story-text">
+                        Fundada em 2006 e sediada em Itajaí, Santa Catarina, a CantuPneus é uma das maiores importadoras de pneus do país. O modelo é direto: compramos de fábricas homologadas, trazemos em volume e entregamos ao transportador, à revenda e ao frotista sem intermediários encarecendo o caminho.</p>
+                    <p class="text-body story-text">
+                        Operamos centros de distribuição e uma rede de filiais que cobre todas as regiões do Brasil, o que sustenta prazo curto de entrega e disponibilidade alta mesmo nas medidas de maior giro.
+                    </p>
+                    <div class="story-signature">
+                        <p class="signature-name">Diretoria Comercial</p>
+                        <p class="signature-title">CantuPneus</p>
+                    </div>
+                </div>
+                <div class="story-images">
+                    <div class="story-image">
+                        <img src="images/scenes/operacao-estoque.jpg"
+                             alt="Estoque de pneus em centro de distribuição">
+                    </div>
+                    <div class="story-image">
+                        <img src="images/scenes/story-frota.jpg"
+                             alt="Caminhão equipado com pneus de carga">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Qualidade -->
+    <section class="craftsmanship" id="craftsmanship">
+        <div class="container">
+            <div class="craft-grid">
+                <div class="craft-content">
+                    <p class="text-label">Nossa operação</p>
+                    <h2 class="heading-display craft-title">
+                        Estoque, logística e entrega sob controle
+                    </h2>
+                    <p class="text-body craft-text">
+                        Cada lote passa por conferência de origem, registro de DOT e alocação por centro de distribuição antes de entrar em estoque disponível. É isso que permite confirmar disponibilidade no momento do pedido em vez de prometer prazo e ajustar depois.</p>
+                    <ul class="craft-list text-body">
+                        <li>Marcas próprias SpeedMax e Itaro, mais CEAT, Marshal, Aeolus, DRC e Ranger</li>
+                        <li>Centros de distribuição abastecidos continuamente</li>
+                        <li>Conferência de lote e rastreabilidade por DOT</li>
+                        <li>Entrega a partir de 24 horas nas capitais atendidas</li>
+                    </ul>
+                    <a href="index.html#products" class="btn-primary">Ver linhas recomendadas</a>
+                </div>
+                <div class="craft-image-wrapper">
+                    <div class="craft-image">
+                        <img src="images/scenes/linha-carga.jpg"
+                             alt="Pneus em estoque no centro de distribuição">
+                    </div>
+                    <div class="craft-stats">
+                        <div class="stat-item">
+                            <p class="stat-number">2006</p>
+                            <p class="stat-label">Desde a fundação</p>
+                        </div>
+                        <div class="stat-item">
+                            <p class="stat-number">31</p>
+                            <p class="stat-label">Filiais no Brasil</p>
+                        </div>
+                        <div class="stat-item">
+                            <p class="stat-number">4</p>
+                            <p class="stat-label">Centros de distribuição</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Brand Experience -->
+    <section class="contact" id="contact">
+        <div class="container">
+            <div class="contact-grid">
+                <div class="contact-content">
+                    <p class="text-label">Conheça a CantuPneus</p>
+                    <h2 class="heading-display contact-title">
+                        O portfólio completo para cada operação
+                    </h2>
+                    <p class="text-body contact-text">
+                        Monte o pedido pelo portal, consulte disponibilidade por filial e acompanhe a entrega sem depender do telefone. Para CNPJ ativo, crédito e boleto faturado liberados após análise.</p>
+
+                    <div class="contact-details">
+                        <div class="contact-item">
+                            <p class="contact-item-label">Portfólio</p>
+                            <p class="contact-item-value">
+                                Carga, passeio, agrícola, industrial e OTR
+                            </p>
+                        </div>
+                        <div class="contact-item">
+                            <p class="contact-item-label">Atendimento</p>
+                            <p class="contact-item-value">
+                                Consultor dedicado e crédito para CNPJ ativo
+                            </p>
+                        </div>
+                        <div class="contact-item">
+                            <p class="contact-item-label">Próximo passo</p>
+                            <p class="contact-item-value">
+                                <a href="index.html#products">Navegue pelas linhas em destaque</a>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <!-- Dengage inline target slot. Empty and hidden until an inline On-Site
+         campaign fills it (see docs/DENGAGE-INTEGRATION.md). The id contains
+         "dn_inline_target" so the panel's Inline Target Selector finds it on
+         its default search. Do not add content or styling here. -->
+    <div id="dn_inline_target_above_footer" class="dn-inline-slot"></div>
+
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <p class="footer-logo">Cantu<span>Pneus</span></p>
+                    <p class="footer-tagline">
+                        Distribuidora e importadora de pneus para carga, passeio, agrícola, industrial e OTR, com centros de distribuição em todo o Brasil.
+                    </p>
+                </div>
+
+                <div class="footer-column">
+                    <h4 class="footer-column-title">Linhas</h4>
+                    <ul class="footer-links">
+                        <li><a href="index.html#collections">Todas as linhas</a></li>
+                        <li><a href="index.html#collections">Carga</a></li>
+                        <li><a href="index.html#collections">Passeio</a></li>
+                        <li><a href="index.html#collections">Agrícola</a></li>
+                        <li><a href="index.html#collections">Rodas e Câmaras</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-column">
+                    <h4 class="footer-column-title">Institucional</h4>
+                    <ul class="footer-links">
+                        <li><a href="index.html#story">A CantuPneus</a></li>
+                        <li><a href="index.html#craftsmanship">Nossa operação</a></li>
+                        <li><a href="index.html#contact">Portfólio</a></li>
+                        <li><a href="https://www.dengage.com">Seja um revendedor</a></li>
+                        <li><a href="https://www.dengage.com">Central de atendimento</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p class="footer-copyright">
+                    Site de demonstração da plataforma Dengage. Não é o site oficial da CantuPneus. Produtos, preços e estoques são fictícios.
+                </p>
+                <div class="footer-social">
+                    <a href="https://www.dengage.com">Dengage</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <script src="js/pageView.js"></script>
+    <script src="js/bannerOffset.js"></script>
+    <script src="js/inlineSlotOffset.js"></script>
+    <script src="cantupneus-main.js"></script>
+    <script src="js/cartManager.js"></script>
+    <script src="js/cartUi.js"></script>
+    <script src="js/productCatalog.js"></script>
+    <!-- Wishlist and search. Both are byte-identical across the four
+         demo sites; everything per-site arrives on the tag. Loaded after
+         productCatalog.js because both read the catalogue, and wishlist
+         before search so a search result can carry a working heart. -->
+    <script src="js/wishlist.js" data-store="cantupneus_wishlist" data-ns="cantupneus" data-catalog="CantuCatalogData" data-global="CantuWishlist" data-list-name="favorites"></script>
+    <script src="js/wishlistUi.js" data-ns="cantupneus" data-global="CantuWishlist" data-catalog="CantuCatalogData"></script>
+    <script src="js/searchPanel.js" data-ns="cantupneus" data-catalog="CantuCatalogData"></script>
+    <script src="js/productList.js"></script>
+    <script src="js/allReco.js"></script>
+    <script src="js/allGaming.js"></script>
+    <script src="js/asistant.js"></script>
+    <script src="js/carouselBanner.js"></script>
+    <script src="js/earing.js"></script>
+    <script src="js/eventModal.js"></script>
+    <script src="js/expandBanner.js"></script>
+    <script src="js/headbanner.js"></script>
+    <script src="js/notificationIcon.js"></script>
+    <script src="js/snow.js"></script>
+    <script src="js/sliderBanner.js"></script>
+    <script src="js/cantuCatalog.js"></script>
+</body>
+</html>

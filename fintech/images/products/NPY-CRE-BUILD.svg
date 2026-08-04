@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 560" width="520" height="560" role="img" aria-label="Credit Builder">
+ <defs>
+  <linearGradient id="bg-npy-cre-build" x1="0" y1="0" x2="0" y2="1">
+   <stop offset="0" stop-color="#F5F6FF"/><stop offset="1" stop-color="#E4E6FA"/>
+  </linearGradient>
+  <linearGradient id="card-npy-cre-build" x1="0" y1="0" x2="1" y2="1">
+   <stop offset="0" stop-color="#F59E0B"/><stop offset="0.55" stop-color="#D97706"/><stop offset="1" stop-color="#92400E"/>
+  </linearGradient>
+  <linearGradient id="sheen-npy-cre-build" x1="0" y1="0" x2="1" y2="1">
+   <stop offset="0" stop-color="#ffffff" stop-opacity="0.30"/><stop offset="0.5" stop-color="#ffffff" stop-opacity="0.04"/><stop offset="1" stop-color="#ffffff" stop-opacity="0.16"/>
+  </linearGradient>
+  <linearGradient id="chip-npy-cre-build" x1="0" y1="0" x2="1" y2="1">
+   <stop offset="0" stop-color="#F3DFA6"/><stop offset="0.5" stop-color="#D9B75F"/><stop offset="1" stop-color="#B48F38"/>
+  </linearGradient>
+  <linearGradient id="acc-npy-cre-build" x1="0" y1="0" x2="1" y2="1">
+   <stop offset="0" stop-color="#FDE68A"/><stop offset="1" stop-color="#FBBF24"/>
+  </linearGradient>
+  <filter id="sh-npy-cre-build" x="-30%" y="-30%" width="170%" height="170%">
+   <feDropShadow dx="0" dy="16" stdDeviation="18" flood-color="#1E1B4B" flood-opacity="0.30"/>
+  </filter>
+  <filter id="sh2-npy-cre-build" x="-30%" y="-30%" width="170%" height="170%">
+   <feDropShadow dx="0" dy="8" stdDeviation="9" flood-color="#1E1B4B" flood-opacity="0.22"/>
+  </filter>
+ </defs>
+ <rect width="520" height="560" fill="url(#bg-npy-cre-build)"/>
+ <ellipse cx="260.0" cy="486" rx="150" ry="20" fill="#000" opacity="0.07"/>
+ <g transform="translate(260.0,258) translate(-135,-135)" filter="url(#sh-npy-cre-build)">
+  <rect width="270" height="270" rx="34" fill="url(#card-npy-cre-build)"/>
+  <g clip-path="inset(0 round 34px)">
+   <rect width="270" height="270" rx="34" fill="url(#sheen-npy-cre-build)"/>
+   <circle cx="238" cy="34" r="72" fill="#fff" fill-opacity="0.07"/>
+  </g>
+  <rect x="0.8" y="0.8" width="268.4" height="268.4" rx="33.4" fill="none" stroke="#fff" stroke-opacity="0.22"/>
+  <g transform="translate(135,124)"><g fill="#fff" fill-opacity="0.94"><path d="M0 -56 L16 -18 L58 -14 L26 12 L36 54 L0 32 L-36 54 L-26 12 L-58 -14 L-16 -18 Z"/></g></g>
+  <text x="135" y="232" text-anchor="middle" font-family="Inter,Arial,sans-serif" font-size="13"
+        font-weight="700" fill="#fff" fill-opacity="0.95" letter-spacing="1.6">CREDIT BUILDER</text>
+ </g></svg>

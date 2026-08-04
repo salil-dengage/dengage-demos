@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Meridian Bank | Sticky bar (Dengage panel content)</title>
+<!-- =====================================================================
+     MERIDIAN BANK, On-Site content for the panel
+
+     Paste this WHOLE file into the scenario editor.
+
+     Trigger name: banking_stickey-bar
+
+     All CSS is scoped under #mrd-stickey-bar. Inline content is NOT sandboxed: the
+     SDK appends the style to document.head, so an unscoped selector would
+     restyle the whole site.
+
+     No <script>. The panel strips script blocks on save, so interactivity is
+     pure CSS plus inline onclick, which does survive publishing.
+
+     Every anchor carries target="_top". This content renders in a
+     cross-origin iframe, so a normal link would load the site inside the
+     popup rather than navigating the page.
+
+     The engine counts a click only when the content calls Dn.sendClick(),
+     exactly once per file. A close control calls Dn.close() and never
+     sendClick, so a dismissal is not counted as a conversion.
+
+     SLUG SPELLING IS DELIBERATE: "stickey-bar" is the panel contract.
+
+     BANNER, so it draws its OWN close control. Banner layout is not offered
+     the panel's "Add close button to outside" setting, which is why the two
+     banners differ from the six popups here.
+
+     Banner content must be ordinary in-flow width:100%. The banner container
+     is already position:fixed and full width, so full-bleed CSS here would
+     double-position and render clipped in the panel preview.
+     ================================================================== -->
+<style>
+#mrd-stickey-bar{font-family:Inter,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;
+  box-sizing:border-box;color:#12203a;text-align:left;}
+#mrd-stickey-bar *{box-sizing:border-box;}
+#mrd-stickey-bar .mrd-eyebrow{font-size:11px;letter-spacing:.14em;text-transform:uppercase;
+  color:#b8933c;font-weight:700;margin:0 0 8px;}
+#mrd-stickey-bar .mrd-title{font-family:"Playfair Display",Georgia,serif;font-size:24px;
+  line-height:1.2;margin:0 0 10px;color:#0a2540;}
+#mrd-stickey-bar .mrd-text{font-size:14px;line-height:1.55;color:#5a6b7f;margin:0 0 18px;}
+#mrd-stickey-bar .mrd-cta{display:inline-block;background:#0a2540;color:#fff;text-decoration:none;
+  font-size:14px;font-weight:600;padding:12px 22px;border:0;border-radius:6px;cursor:pointer;}
+#mrd-stickey-bar .mrd-cta:hover{background:#143a5e;}
+#mrd-stickey-bar .mrd-small{font-size:11px;line-height:1.5;color:#8494a5;margin:14px 0 0;}
+#mrd-stickey-bar{display:flex;align-items:center;gap:18px;width:100%;
+  padding:12px 18px;background:#0a2540;color:#fff;}
+#mrd-stickey-bar .mrd-title,#mrd-stickey-bar .mrd-text{color:#fff;margin:0;}
+#mrd-stickey-bar .mrd-title{font-size:16px;}
+#mrd-stickey-bar .mrd-text{font-size:13px;opacity:.85;}
+#mrd-stickey-bar .mrd-grow{flex:1;min-width:0;}
+#mrd-stickey-bar .mrd-cta{background:#b8933c;color:#0a2540;white-space:nowrap;padding:10px 18px;}
+#mrd-stickey-bar .mrd-cta:hover{background:#cfa951;}
+#mrd-stickey-bar .mrd-close{background:none;border:0;color:#fff;opacity:.7;font-size:20px;
+  line-height:1;cursor:pointer;padding:0 4px;}
+#mrd-stickey-bar .mrd-close:hover{opacity:1;}
+
+</style>
+</head>
+<body>
+<div id="mrd-stickey-bar" class="sk-bar">
+  <div class="mrd-grow">
+    <p class="mrd-title">4.55% AER fixed for twelve months</p>
+    <p class="mrd-text">Our One Year Fixed Rate Saver. No withdrawals during the term, and we write to you 30 days before it matures.</p>
+  </div>
+  <a class="mrd-cta" href="https://salil-dengage.github.io/dengage-demos/banking/product.html?id=MRD-SAV-FIXED" target="_top" onclick="Dn.sendClick('banking_stickey-bar__view-saver')">See the rate</a>
+  <button class="mrd-close" type="button" aria-label="Close" onclick="Dn.close()">&times;</button>
+</div>
+</body>
+</html>

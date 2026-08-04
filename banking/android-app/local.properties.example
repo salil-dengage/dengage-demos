@@ -1,0 +1,17 @@
+# Android Studio writes local.properties itself on first open. It points at
+# your own SDK install and is machine-specific, so it is not committed.
+sdk.dir=/Users/<you>/Library/Android/sdk
+
+# Dengage REST API user, from Settings > API User in the panel. These let the
+# Test Area send this device a real push through the transactional API.
+#
+# They are read here rather than committed because THIS REPOSITORY IS PUBLIC.
+# The credentials are account-wide across account 28, contact data included, so
+# publishing them is not the same risk as shipping them inside an internal APK.
+# Fill these in and every APK you build is demo-ready; leave them out and the
+# Test Area falls back to firing its event and says so on screen.
+#
+# Use a DEDICATED API user with the narrowest role that can send a
+# transactional push, never an administrator, so a leak costs one rotation.
+dengage.api.userkey=<your API user>
+dengage.api.password=<its password>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Meridian Bank | Mortgage mandate cancelled (Dengage portal content)</title>
+<!-- =====================================================================
+     MERIDIAN ONLINE BANKING, On-Site content for the panel
+
+     Trigger:  DATA_LAYER_EVENT, eventName = banking_portal_mortgage_dd_cancelled
+     Format:   Popup
+     Spec:     banking/docs/PORTAL-SCENARIOS.md
+
+     POPUP. Draws NO close control: the panel supplies one via Layout >
+     Close Button > "Add close button to outside", and a second inside the
+     card reads as a duplicate. Design settings need padding 0 and a
+     transparent background or the container's white shows as a frame.
+
+     Every anchor carries target="_top" because this renders in a
+     cross-origin iframe. Exactly one Dn.sendClick(), on the CTA.
+
+     No <script>: the panel strips script blocks on save.
+     ================================================================== -->
+<style>
+#mrd-mortgage-dd{font-family:Inter,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;
+  box-sizing:border-box;color:#12203a;text-align:left;}
+#mrd-mortgage-dd *{box-sizing:border-box;}
+#mrd-mortgage-dd .m-eyebrow{font-size:10px;letter-spacing:.14em;text-transform:uppercase;
+  color:#b8933c;font-weight:700;margin:0 0 6px;}
+#mrd-mortgage-dd .m-title{font-weight:600;font-size:15px;line-height:1.35;margin:0 0 6px;color:#0a2540;}
+#mrd-mortgage-dd .m-body{font-size:13px;line-height:1.55;color:#5a6b7f;margin:0 0 10px;}
+#mrd-mortgage-dd .m-small{font-size:11px;line-height:1.5;color:#94a3b8;margin:10px 0 0;}
+#mrd-mortgage-dd{width:100%;background:#fff;padding:26px 28px;}
+#mrd-mortgage-dd .m-title{font-family:"Playfair Display",Georgia,serif;font-size:22px;}
+#mrd-mortgage-dd .m-cta{display:inline-block;background:#0a2540;color:#fff;text-decoration:none;
+  font-size:14px;font-weight:600;padding:11px 20px;border-radius:6px;}
+#mrd-mortgage-dd .m-warn{background:#fff8e6;border-left:3px solid #b8933c;padding:12px 14px;
+  border-radius:0 8px 8px 0;font-size:13px;line-height:1.55;color:#5c4708;margin:0 0 16px;}
+
+</style>
+</head>
+<body>
+<div id="mrd-mortgage-dd">
+  <p class="m-eyebrow">Before you go</p>
+  <h2 class="m-title">That was your mortgage payment</h2>
+  <p class="m-warn">A missed mortgage payment is reported to credit reference agencies and can affect your ability to borrow for six years. If cancelling was deliberate, ignore this.</p>
+  <p class="m-body">If money is tight this month, a payment holiday or a change of payment date is usually arranged in one phone call, and neither is recorded as a missed payment.</p>
+  <a class="m-cta" href="https://salil-dengage.github.io/dengage-demos/banking/appointments.html" target="_top" onclick="Dn.sendClick('banking_portal_mortgage_dd_cancelled__talk')">Talk to someone today</a>
+  <p class="m-small">Demo site. No mandate is actually cancelled and Meridian Bank is a fictional company.</p>
+</div>
+</body>
+</html>

@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Meridian Bank | Open an account lead form (Dengage panel content)</title>
+<!-- =====================================================================
+     MERIDIAN BANK, LEAD FORM, On-Site content for the panel
+
+     Trigger:  DATA_LAYER_EVENT, eventName = banking_open_account
+     Format:   Popup
+     Pushed by: banking/js/openAccount.js, from the header CTA
+
+     WHAT ACTUALLY GETS CAPTURED, AND WHAT DOES NOT
+
+     This uses the engine's native subscription form, which is the only
+     supported way to collect input from On-Site content: the message renders
+     in a cross-origin iframe, so host-page JavaScript cannot see anything
+     typed in here. The engine injects its own handler when it sees
+     data-dn-form-id="subscription_form", and on submit calls
+     Dn.postSubscription(), which CREATES OR UPDATES A REAL CONTACT.
+
+     Proven in this repo by tools/verify/formtest.js, which drives the
+     engine's own form-handler.js:
+
+       data-dn-id="email"             -> contact email
+       data-dn-id="mergedPermission"  -> emailPermission AND gsmPermission
+
+     The name, surname and phone fields below use the platform's documented
+     lead-collection field names (see "Collect Leads with NPS" in the Dengage
+     docs, which lists Email, GSM, Name and Surname). They are NOT proven by
+     formtest here, because the three existing form files only exercise email
+     and the permission checkbox. Submit one and check the contact card before
+     relying on them in front of a prospect.
+
+     The product-interest choice is a plain radio group and is NOT captured by
+     the subscription form: one piece of content gets one form, and tags come
+     from question_form. If capturing it matters, the options are a second
+     campaign using question_form, or a Collect Leads widget built in the
+     panel instead of this HTML.
+
+     THE POPUP CONTRACT, all of which applies here:
+       No <script>. The panel strips script blocks on save.
+       Every anchor carries target="_top": this is a cross-origin iframe.
+       Exactly one Dn.sendClick(), on the submit button.
+       NO close control: the panel supplies one via Layout > Close Button >
+       "Add close button to outside". A second inside the card reads as a
+       duplicate.
+       Design settings need padding 0 and a transparent background, or the
+       container's own white shows as a frame around this card.
+
+     The thank-you panel is driven by the engine's own data-dn-is-submitted
+     stamp on .container, not by CSS trickery, so it appears only on a real
+     successful submit.
+     ================================================================== -->
+<style>
+#mrd-lead *{margin:0;padding:0;box-sizing:border-box;}
+#mrd-lead{
+  --ld-navy:#0a2540; --ld-navy-dark:#061726; --ld-gold:#b8933c;
+  --ld-ink:#12203a; --ld-soft:#5a6b7f; --ld-line:#dde3ea; --ld-error:#b3261e;
+  font-family:Inter,-apple-system,'Segoe UI',Roboto,Arial,sans-serif;
+  width:100%;display:block;color:var(--ld-ink);text-align:left;
+}
+#mrd-lead .ld-card{width:100%;background:#fff;border-radius:14px;overflow:hidden;}
+#mrd-lead .ld-head{
+  background:linear-gradient(125deg,#164574 0%,var(--ld-navy) 55%,var(--ld-navy-dark) 100%);
+  color:#fff;padding:24px 26px 20px;
+}
+#mrd-lead .ld-brandrow{display:flex;align-items:center;gap:10px;margin-bottom:12px;}
+#mrd-lead .ld-mark{width:34px;height:34px;border-radius:9px;background:rgba(255,255,255,.14);
+  display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+#mrd-lead .ld-mark svg{width:20px;height:20px;fill:var(--ld-gold);}
+#mrd-lead .ld-brand{font-family:'Playfair Display',Georgia,serif;font-size:17px;letter-spacing:.01em;}
+#mrd-lead .ld-head h2{font-family:'Playfair Display',Georgia,serif;font-weight:600;
+  font-size:25px;line-height:1.18;margin-bottom:6px;}
+#mrd-lead .ld-head p{font-size:13px;line-height:1.5;opacity:.85;}
+#mrd-lead .ld-body{padding:22px 26px 24px;}
+#mrd-lead .ld-row{display:flex;gap:10px;}
+#mrd-lead .ld-field{margin-bottom:12px;flex:1;min-width:0;}
+#mrd-lead .ld-field label{display:block;font-size:12px;font-weight:600;margin-bottom:5px;}
+#mrd-lead input[data-dn-id]{
+  width:100%;padding:11px 13px;border:1px solid var(--ld-line);border-radius:8px;
+  font-size:14px;font-family:inherit;background:#fff;color:var(--ld-ink);
+}
+#mrd-lead input[data-dn-id]:focus{outline:none;border-color:var(--ld-navy);}
+#mrd-lead input[data-dn-id]::placeholder{color:#a3aebc;}
+#mrd-lead [data-dn-invalid="true"]{border-color:var(--ld-error);}
+#mrd-lead [data-dn-invalid-message-type]{
+  display:none;font-size:11.5px;color:var(--ld-error);margin-top:4px;
+}
+#mrd-lead [data-dn-invalid="true"] ~ [data-dn-invalid-message-type]{display:block;}
+#mrd-lead .ld-choice{display:flex;flex-wrap:wrap;gap:7px;margin:2px 0 14px;}
+#mrd-lead .ld-choice input{position:absolute;width:1px;height:1px;overflow:hidden;
+  clip:rect(0 0 0 0);white-space:nowrap;}
+#mrd-lead .ld-choice label{
+  display:inline-block;padding:8px 13px;border:1px solid var(--ld-line);border-radius:20px;
+  font-size:12.5px;cursor:pointer;background:#fff;transition:.15s;
+}
+#mrd-lead .ld-choice label:hover{border-color:var(--ld-navy);}
+#mrd-lead .ld-choice input:checked + label{background:var(--ld-navy);border-color:var(--ld-navy);color:#fff;}
+#mrd-lead .ld-perm{display:flex;align-items:flex-start;gap:9px;margin:2px 0 14px;}
+#mrd-lead .ld-perm input{margin-top:2px;width:16px;height:16px;accent-color:var(--ld-navy);flex-shrink:0;}
+#mrd-lead .ld-perm label{font-size:11.5px;color:var(--ld-soft);line-height:1.45;}
+#mrd-lead .ld-submit{
+  width:100%;background:var(--ld-navy);color:#fff;border:0;border-radius:8px;
+  padding:13px 18px;font-family:inherit;font-size:14.5px;font-weight:600;cursor:pointer;
+}
+#mrd-lead .ld-submit:hover{background:#143a5e;}
+#mrd-lead .ld-small{font-size:11px;line-height:1.5;color:#8f9bab;margin-top:12px;}
+#mrd-lead .ld-small a{color:inherit;}
+#mrd-lead .submitted-content{display:none;padding:30px 26px;text-align:center;}
+#mrd-lead .submitted-content h3{font-family:'Playfair Display',Georgia,serif;
+  font-size:22px;color:var(--ld-navy);margin-bottom:8px;}
+#mrd-lead .submitted-content p{font-size:13.5px;line-height:1.6;color:var(--ld-soft);}
+#mrd-lead .ld-tick{width:46px;height:46px;border-radius:50%;background:#eaf6ee;
+  display:flex;align-items:center;justify-content:center;margin:0 auto 14px;}
+#mrd-lead .ld-tick svg{width:24px;height:24px;fill:#15803d;}
+#mrd-lead .container[data-dn-is-submitted="true"] .ld-body{display:none;}
+#mrd-lead .container[data-dn-is-submitted="true"] .ld-head{display:none;}
+#mrd-lead .container[data-dn-is-submitted="true"] .submitted-content{display:block;}
+
+/* CSS-only acknowledgement.
+
+   The panel's own thank-you switch is data-dn-is-submitted, set by the
+   engine's form handler on a successful post. This card does not rely on
+   that route; the checkbox gives it its own acknowledgement so the demo
+   always completes on stage. The reasoning is in the internal ops notes.
+
+   If the engine route is adopted later, delete the checkbox, the label and
+   these three rules, and the data-dn-is-submitted rules above take over
+   unchanged. */
+#mrd-lead .ld-sent{position:absolute;width:1px;height:1px;opacity:0;pointer-events:none;}
+#mrd-lead .ld-sent:checked ~ .ld-card .ld-body,
+#mrd-lead .ld-sent:checked ~ .ld-card .ld-head{display:none;}
+#mrd-lead .ld-sent:checked ~ .ld-card .submitted-content{display:block;}
+</style>
+</head>
+<body>
+<form class="form" data-dn-form-id="subscription_form" data-dn-validation-language="en"
+      id="mrd-lead" onsubmit="return false">
+  <div class="container">
+    <input class="ld-sent" id="ld-sent" type="checkbox" tabindex="-1" aria-hidden="true">
+    <div class="ld-card">
+
+      <div class="ld-head">
+        <div class="ld-brandrow">
+          <span class="ld-mark">
+            <svg viewBox="0 0 64 64" aria-hidden="true"><path d="M32 12 L54 29 H46 V50 H18 V29 H10 Z"/></svg>
+          </span>
+          <span class="ld-brand">Meridian Bank</span>
+        </div>
+        <h2>Open an account with us</h2>
+        <p>Tell us where to reach you and an adviser will call within one working day. No credit check, and no obligation to go ahead.</p>
+      </div>
+
+      <div class="ld-body">
+        <div class="ld-row">
+          <div class="ld-field">
+            <label for="ld-name">First name</label>
+            <input type="text" id="ld-name" placeholder="Eleanor" aria-label="First name"
+                   data-dn-id="name" data-dn-type="TEXT">
+          </div>
+          <div class="ld-field">
+            <label for="ld-surname">Last name</label>
+            <input type="text" id="ld-surname" placeholder="Whitfield" aria-label="Last name"
+                   data-dn-id="surname" data-dn-type="TEXT">
+          </div>
+        </div>
+
+        <div class="ld-field">
+          <label for="ld-email">E-mail</label>
+          <input type="email" id="ld-email" placeholder="eleanor@example.co.uk" aria-label="E-mail"
+                 data-dn-id="email" data-dn-type="EMAIL" data-dn-required="true">
+          <span data-dn-invalid-message-type="EMAIL"></span>
+        </div>
+
+        <div class="ld-field">
+          <label for="ld-gsm">Mobile number</label>
+          <input type="tel" id="ld-gsm" placeholder="447700900000" aria-label="Mobile number"
+                 data-dn-id="gsm" data-dn-type="GSM">
+          <span data-dn-invalid-message-type="GSM"></span>
+        </div>
+
+        <div class="ld-field">
+          <label>What are you looking to open?</label>
+          <div class="ld-choice">
+            <input type="radio" name="interest" id="ld-i1" value="current_account" checked>
+            <label for="ld-i1">Current account</label>
+            <input type="radio" name="interest" id="ld-i2" value="savings">
+            <label for="ld-i2">Savings or ISA</label>
+            <input type="radio" name="interest" id="ld-i3" value="mortgage">
+            <label for="ld-i3">Mortgage</label>
+            <input type="radio" name="interest" id="ld-i4" value="credit_card">
+            <label for="ld-i4">Credit card</label>
+          </div>
+        </div>
+
+        <div class="ld-perm">
+          <input type="checkbox" id="ld-perm" checked
+                 data-dn-id="mergedPermission" data-dn-type="PERMISSION_CHECKBOX" data-dn-required="true">
+          <label for="ld-perm">Meridian may contact me by e-mail and SMS about this enquiry and about products that fit it. I can stop this at any time.</label>
+        </div>
+
+        <button class="ld-submit" type="submit" onclick="document.getElementById('ld-sent').checked=true;Dn.sendClick('banking_open_account__submit');if(window.Dn&&Dn.postSubscription){Dn.postSubscription();}if(window.Dn&&Dn.updateHeight){Dn.updateHeight();}">Request a call back</button>
+
+        <p class="ld-small">We will not run a credit check to answer this, and nothing here affects your credit file. Meridian Bank is a fictional company and this is a Dengage demo site, so no account is actually opened. <a href="https://salil-dengage.github.io/dengage-demos/banking/" target="_top">Back to the site</a></p>
+      </div>
+
+      <div class="submitted-content" data-dn-is-enabled="true"
+           data-dn-is-modal-auto-close-enabled="false" data-dn-modal-close-seconds="8">
+        <div class="ld-tick">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 16.2 4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4z"/></svg>
+        </div>
+        <h3>Thank you, that is with us</h3>
+        <p>An adviser will call within one working day. If you would rather pick a time, you can book a half hour slot yourself from the appointments page.</p>
+      </div>
+
+    </div>
+  </div>
+</form>
+</body>
+</html>

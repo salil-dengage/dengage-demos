@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Meridian Bank | In-App notification soft ask (Dengage mobile content)</title>
+<!-- =====================================================================
+     MERIDIAN BANK ANDROID, In-App content for the panel
+
+     Trigger:  screen name  test_inapp_permission
+     Format:   In-App, Popup, position MIDDLE
+     Spec:     banking/panel-content/mobile/README.md
+
+     THE BRIDGE ON MOBILE IS NOT THE BRIDGE ON THE WEB. The SDK injects a
+     window.Dn object into the In-App WebView, and it is a different object
+     from the one the website's panel content uses. Navigation is
+     Dn.androidUrl('meridian://<screen>'), NOT an href with target="_top": the
+     Navigation goes through Dn.androidUrl, and capture is Dn.setTags. These
+     are the mobile bridge methods; the web contract's Dn.postQuestion and
+     Dn.postSubscription do not apply here. Keep exactly this shape.
+
+     THE SOFT ASK. Android 13 gives an app one shot at POST_NOTIFICATIONS: a
+     No is close to permanent, and the customer has to find Settings to undo
+     it. So ask here first, where a No costs nothing and can be asked again
+     next month.
+
+     Both controls are real. "Not now" calls Dn.close() and never sendClick,
+     because declining is not a conversion, and the campaign's own frequency
+     cap decides when it may reappear. "Turn them on" carries the click and
+     then calls Dn.promptPushPermission(), which is the bridge method that
+     raises Android's own dialog. That method is the whole reason this layout
+     is worth building rather than calling requestPermission on launch.
+
+     Draws NO close control of its own: the panel supplies it via
+     Layout > Close Button, and "Not now" is the meaningful decline.
+     ================================================================== -->
+<style>
+#mrd-ia-perm{font-family:Inter,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;
+  box-sizing:border-box;width:100%;background:#f7f5f0;border-radius:14px;
+  overflow:hidden;color:#12203a;text-align:center;}
+#mrd-ia-perm *{box-sizing:border-box;}
+#mrd-ia-perm .p-body{padding:26px 22px 22px;}
+#mrd-ia-perm .p-mark{width:56px;height:56px;margin:0 auto 16px;border-radius:16px;
+  background:#0a2540;color:#c8a44d;font-family:Georgia,"Times New Roman",serif;
+  font-size:24px;display:flex;align-items:center;justify-content:center;}
+#mrd-ia-perm .p-title{font-family:Georgia,"Times New Roman",serif;font-size:20px;
+  line-height:1.3;margin:0 0 10px;font-weight:400;color:#0a2540;}
+#mrd-ia-perm .p-text{font-size:13.5px;line-height:1.6;color:#5a6b7f;margin:0 0 18px;}
+#mrd-ia-perm .p-list{list-style:none;margin:0 0 20px;padding:0;text-align:left;}
+#mrd-ia-perm .p-list li{font-size:13px;line-height:1.5;color:#0a2540;padding:9px 12px;
+  background:#fff;border:1px solid #e4e0d6;border-radius:8px;margin:0 0 8px;}
+#mrd-ia-perm .p-cta{display:block;background:#0a2540;color:#fff;text-decoration:none;
+  font-size:14.5px;font-weight:700;padding:14px;border-radius:8px;margin:0 0 10px;}
+#mrd-ia-perm .p-no{display:block;width:100%;background:none;border:0;color:#8494a6;
+  font-size:13px;font-family:inherit;padding:8px;cursor:pointer;}
+#mrd-ia-perm .p-small{font-size:10.5px;line-height:1.5;color:#a3adb9;margin:12px 0 0;}
+</style>
+</head>
+<body>
+<div id="mrd-ia-perm">
+  <div class="p-body">
+    <div class="p-mark">&#9679;</div>
+    <h2 class="p-title">Shall we tell you when something moves?</h2>
+    <p class="p-text">Three kinds of alert, and nothing else. You can change
+      this whenever you like.</p>
+    <ul class="p-list">
+      <li>A card payment you did not expect</li>
+      <li>A direct debit that will not clear</li>
+      <li>Your salary arriving</li>
+    </ul>
+    <a class="p-cta" href="#" role="button"
+       onclick="Dn.sendClick('test_inapp_permission__allow');Dn.promptPushPermission();return false">Turn them on</a>
+    <button class="p-no" type="button" onclick="Dn.close()">Not now</button>
+    <p class="p-small">Meridian Bank is a fictional brand used for demonstration.</p>
+  </div>
+</div>
+</body>
+</html>

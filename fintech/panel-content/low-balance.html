@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NovaPay | Balance running low (Dengage BANNER content)</title>
+<!-- =====================================================================
+     NOVAPAY, portal scenario 2: balance running low
+
+     Trigger:  fintech_low_balance   (On-Site Targeting, DATA_LAYER_EVENT)
+     Fires on: money.html, when the balance is under 100
+     Backed by: fintech_account_events
+     Layout:   BANNER, top
+
+     WHY A BANNER AND NOT A POPUP. It fires BEFORE the problem, which is the
+     entire argument for doing this in real time, so it must not block the
+     screen the customer came to look at. A popup between a worried customer
+     and their balance is the wrong instinct, and it would also burn the SDK's
+     five-minute popup cooldown that scenarios 1, 4 and 7 need.
+
+     BANNERS KEEP THEIR OWN CLOSE CONTROL. Banner layout is not offered the
+     panel's "Add close button to outside" setting, so the X below is correct
+     here and would be a duplicate in a popup. It calls Dn.close() and NEVER
+     Dn.sendClick(), so dismissing is not counted as a conversion and the CTR
+     stays honest.
+
+     NO FIGURES. The payload carries balance_band, but banner content cannot
+     read it: cross-origin iframe, no script blocks. A number here would be
+     invented, and on a low-balance message that is worse than vague.
+
+     Panel settings: Banner, width 830, padding 0, transparent background.
+     ================================================================== -->
+<style>
+#npy-lowbal *{margin:0;padding:0;box-sizing:border-box;}
+#npy-lowbal{
+  --l-amber:#8a5a05; --l-bg:#fdf6e7; --l-line:#f0dfb6;
+  --l-blue:#125cfa; --l-ink:#0f1c33;
+  font-family:Inter,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;
+  width:100%;display:block;
+}
+#npy-lowbal .lb-bar{
+  width:100%;background:var(--l-bg);border-bottom:1px solid var(--l-line);
+  display:flex;align-items:center;gap:14px;padding:12px 18px;position:relative;
+}
+#npy-lowbal .lb-icon{
+  width:30px;height:30px;flex:none;border-radius:50%;background:rgba(138,90,5,.12);
+  position:relative;
+}
+#npy-lowbal .lb-icon::before{
+  content:"";position:absolute;left:14px;top:8px;width:2px;height:8px;
+  border-radius:1px;background:var(--l-amber);
+}
+#npy-lowbal .lb-icon::after{
+  content:"";position:absolute;left:14px;top:19px;width:2px;height:2px;
+  border-radius:1px;background:var(--l-amber);
+}
+#npy-lowbal .lb-text{flex:1 1 auto;min-width:0;}
+#npy-lowbal .lb-text b{
+  display:block;font-size:13.5px;font-weight:700;color:var(--l-ink);letter-spacing:-.1px;
+}
+#npy-lowbal .lb-text span{
+  display:block;font-size:12px;color:var(--l-amber);margin-top:2px;line-height:1.45;
+}
+#npy-lowbal .lb-cta{
+  flex:none;text-decoration:none;background:var(--l-blue);color:#fff;
+  font-size:12.5px;font-weight:600;padding:9px 16px;border-radius:9px;white-space:nowrap;
+}
+#npy-lowbal .lb-x{
+  flex:none;width:26px;height:26px;border:0;background:transparent;cursor:pointer;
+  color:var(--l-amber);font-size:17px;line-height:1;border-radius:6px;
+}
+#npy-lowbal .lb-x:hover{background:rgba(138,90,5,.10);}
+@media (max-width:640px){
+  #npy-lowbal .lb-bar{flex-wrap:wrap;gap:10px;padding:12px 14px;}
+  #npy-lowbal .lb-text{flex:1 1 100%;order:2;}
+  #npy-lowbal .lb-cta{order:3;flex:1 1 auto;text-align:center;}
+  #npy-lowbal .lb-x{order:1;margin-left:auto;}
+  #npy-lowbal .lb-icon{order:0;}
+}
+</style>
+</head>
+<body>
+
+<div id="npy-lowbal">
+  <div class="lb-bar" role="region" aria-label="Balance notice">
+    <span class="lb-icon" aria-hidden="true"></span>
+
+    <div class="lb-text">
+      <b>Your balance is running low</b>
+      <span>An arranged overdraft costs nothing to set up, and you only pay for what you use.</span>
+    </div>
+
+    <a class="lb-cta" href="https://salil-dengage.github.io/dengage-demos/fintech/money.html" target="_top"
+       onclick="Dn.sendClick('fintech_low-balance__arrange')">Arrange an overdraft</a>
+
+    <!-- Banner layout gets no close button from the panel, so this one is
+         ours. Dn.close() only: a dismissal is not a conversion. -->
+    <button class="lb-x" type="button" aria-label="Dismiss"
+            onclick="Dn.close()">&times;</button>
+  </div>
+</div>
+
+</body>
+</html>

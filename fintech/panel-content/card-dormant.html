@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NovaPay | Activate your card (Dengage POPUP content)</title>
+<!-- =====================================================================
+     NOVAPAY, portal scenario 4: card delivered and never activated
+
+     Trigger:  fintech_card_dormant   (On-Site Targeting, DATA_LAYER_EVENT)
+     Fires on: cards.html, when a card was delivered and never activated
+     Backed by: fintech_card_events
+
+     WHY. Plastic that has been manufactured, posted and paid for and is
+     earning nothing. The cost is already sunk, so activation is pure margin,
+     which is why this is one of the first campaigns a card issuer builds.
+
+     NO SPECIFIC DATE IN THE COPY. The payload carries days_since_order, but
+     popup content cannot read it: the panel strips script blocks and the iframe is
+     cross-origin, so there is nothing to interpolate with. "Your card arrived
+     on Tuesday" would be an invented fact. Use the panel's own customization
+     tags if a date is genuinely wanted, and note they are refused on real-time
+     On-Site Targeting campaigns (CLAUDE.md 3.15).
+
+     Popup contract: an ABSOLUTE href and target="_top" on the anchor, exactly one Dn.sendClick(),
+     no script blocks, and NO close control (the panel adds one outside).
+     Panel settings: Popup, width 560, padding 0, transparent background.
+     ================================================================== -->
+<style>
+#npy-cdm *{margin:0;padding:0;box-sizing:border-box;}
+#npy-cdm{
+  --c-blue:#125cfa; --c-dark:#0a3a9e; --c-ink:#0f1c33; --c-soft:#64748b;
+  font-family:Inter,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;
+  width:100%;display:block;color:var(--c-ink);
+}
+body > #npy-cdm{max-width:560px;margin:40px auto;}
+
+#npy-cdm .cd-card{
+  width:100%;background:#fff;border-radius:18px;overflow:hidden;
+  box-shadow:0 10px 30px rgba(15,28,51,.18);text-align:center;
+}
+#npy-cdm .cd-stage{
+  background:linear-gradient(160deg,#0f1c33 0%,#0a3a9e 100%);
+  padding:30px 28px 26px;
+}
+
+/* The card itself, drawn in CSS. No image request, so nothing can fail to
+   load mid-demo (CLAUDE.md 3.13 forbids external image hosts). */
+#npy-cdm .cd-plastic{
+  width:186px;height:117px;margin:0 auto;border-radius:12px;position:relative;
+  background:linear-gradient(135deg,#1e6bff 0%,#0a3a9e 60%,#062a73 100%);
+  box-shadow:0 12px 26px rgba(0,0,0,.34);
+  transform:rotate(-6deg);
+}
+#npy-cdm .cd-chip{
+  position:absolute;left:18px;top:42px;width:26px;height:19px;border-radius:4px;
+  background:linear-gradient(150deg,#f4d37a,#c9a24b);
+}
+#npy-cdm .cd-brand{
+  position:absolute;right:16px;top:14px;color:#fff;font-size:12px;
+  font-weight:700;letter-spacing:-.2px;opacity:.95;
+}
+#npy-cdm .cd-num{
+  position:absolute;left:18px;bottom:16px;color:rgba(255,255,255,.72);
+  font-size:10.5px;letter-spacing:.16em;
+}
+#npy-cdm .cd-seal{
+  display:inline-block;margin-top:20px;font-size:10.5px;font-weight:700;
+  letter-spacing:.12em;text-transform:uppercase;color:#fff;
+  background:rgba(255,255,255,.16);padding:5px 11px;border-radius:20px;
+}
+
+#npy-cdm .cd-body{padding:24px 28px 26px;}
+#npy-cdm .cd-body h2{font-size:22px;font-weight:700;letter-spacing:-.4px;line-height:1.22;}
+#npy-cdm .cd-body p{font-size:13.5px;color:var(--c-soft);line-height:1.6;margin-top:9px;}
+#npy-cdm .cd-cta{
+  display:block;width:100%;margin-top:18px;text-align:center;text-decoration:none;
+  background:var(--c-blue);color:#fff;font-size:13.5px;font-weight:700;
+  padding:14px;border-radius:11px;letter-spacing:.03em;
+}
+#npy-cdm .cd-legal{font-size:10.5px;color:#9aa5b5;margin-top:14px;line-height:1.5;}
+@media (max-width:480px){
+  #npy-cdm .cd-body h2{font-size:19px;}
+  #npy-cdm .cd-stage,#npy-cdm .cd-body{padding-left:20px;padding-right:20px;}
+}
+</style>
+</head>
+<body>
+
+<div id="npy-cdm">
+  <div class="cd-card">
+
+    <div class="cd-stage">
+      <div class="cd-plastic" aria-hidden="true">
+        <span class="cd-brand">NovaPay</span>
+        <span class="cd-chip"></span>
+        <span class="cd-num">5412 &bull;&bull;&bull;&bull; &bull;&bull;&bull;&bull; 8890</span>
+      </div>
+      <span class="cd-seal">Delivered, not yet active</span>
+    </div>
+
+    <div class="cd-body">
+      <h2>Your card is waiting to be switched on</h2>
+      <p>
+        It takes one tap. Activate now and it works everywhere straight away,
+        contactless and online, with spending limits you control.
+      </p>
+
+      <a class="cd-cta" href="https://salil-dengage.github.io/dengage-demos/fintech/cards.html" target="_top"
+         onclick="Dn.sendClick('fintech_card-dormant__activate')">Activate my card</a>
+
+      <p class="cd-legal">
+        NovaPay is a fictional brand used for demonstration. No card exists and
+        nothing is activated.
+      </p>
+    </div>
+
+  </div>
+</div>
+
+</body>
+</html>

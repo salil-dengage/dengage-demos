@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- RemoteViews for a host-drawn carousel. Kept deliberately simple: RemoteViews
+     supports a small subset of layouts and silently fails to inflate anything
+     it does not recognise, which reads as "the push did not arrive". -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="wrap_content"
+    android:orientation="vertical" android:padding="12dp">
+
+    <TextView android:id="@+id/npy_title"
+        android:layout_width="match_parent" android:layout_height="wrap_content"
+        android:textStyle="bold" android:textSize="15sp" android:maxLines="1" />
+
+    <TextView android:id="@+id/npy_body"
+        android:layout_width="match_parent" android:layout_height="wrap_content"
+        android:textSize="13sp" android:maxLines="2" android:paddingTop="2dp" />
+
+    <ImageView android:id="@+id/npy_image"
+        android:layout_width="match_parent" android:layout_height="150dp"
+        android:scaleType="centerCrop" android:paddingTop="8dp"
+        android:contentDescription="@string/app_name" />
+
+    <LinearLayout
+        android:layout_width="match_parent" android:layout_height="wrap_content"
+        android:orientation="horizontal" android:paddingTop="8dp">
+
+        <Button android:id="@+id/npy_prev"
+            android:layout_width="0dp" android:layout_weight="1"
+            android:layout_height="wrap_content" android:text="@string/carousel_prev" />
+
+        <TextView android:id="@+id/npy_position"
+            android:layout_width="0dp" android:layout_weight="1"
+            android:layout_height="wrap_content" android:gravity="center"
+            android:textSize="12sp" />
+
+        <Button android:id="@+id/npy_next"
+            android:layout_width="0dp" android:layout_weight="1"
+            android:layout_height="wrap_content" android:text="@string/carousel_next" />
+    </LinearLayout>
+</LinearLayout>

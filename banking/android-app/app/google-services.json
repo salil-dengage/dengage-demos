@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "711946548202",
+    "project_id": "dengagebanking",
+    "storage_bucket": "dengagebanking.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:711946548202:android:fd1acfb5b8c80688447893",
+        "android_client_info": {
+          "package_name": "com.dengagebanking.demo"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCWC9QOF96RYkh8SQGsMLx8ek5DA9xLU9k"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

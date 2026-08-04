@@ -1,0 +1,9 @@
+# Machine-specific: every developer's SDK lives somewhere different.
+local.properties
+.gradle/
+build/
+app/build/
+.idea/
+*.iml
+# Kotlin compiler scratch, regenerated on every build
+.kotlin/

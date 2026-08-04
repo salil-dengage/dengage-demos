@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Meridian Bank | Account spend insight (Dengage INLINE content)</title>
+<!-- =====================================================================
+     MERIDIAN, INLINE On-Site content for the account page
+
+     Inline Target Selector:  #dn_inline_target_account_activity
+     Suggested trigger:       banking_account_insight
+
+     Same inline rules as dashboard-consolidation.html, and they are the
+     OPPOSITE of the popup contract in three places:
+
+       not sandboxed      every selector sits under #mrd-inline-subs
+       no Dn.sendClick    the SDK counts injected anchors itself
+       no target="_top"   there is no frame to break out of
+
+     No <script>: the panel strips script blocks on save.
+
+     WHY HERE. It sits directly above the transaction list, so the insight is
+     next to the spending it describes rather than in a banner. The trigger
+     worth binding it to is recurring merchant_category "subscriptions" in
+     banking_transaction_events.
+     ================================================================== -->
+<style>
+#mrd-inline-subs{
+  font-family:Inter,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;
+  background:#f7f5f0;border:1px solid #e7e2d6;border-radius:10px;
+  padding:1.1rem 1.2rem;margin-bottom:1rem;color:#12203a;text-align:left;}
+#mrd-inline-subs *{box-sizing:border-box;}
+#mrd-inline-subs .mrd-s-row{display:flex;align-items:baseline;gap:.6rem;flex-wrap:wrap;}
+#mrd-inline-subs .mrd-s-figure{font-family:"Playfair Display",Georgia,serif;font-size:1.6rem;color:#0a2540;line-height:1;}
+#mrd-inline-subs .mrd-s-title{font-weight:600;font-size:.92rem;color:#0a2540;margin:0;}
+#mrd-inline-subs .mrd-s-body{font-size:.82rem;line-height:1.5;color:#5a6b7f;margin:.5rem 0 0;}
+#mrd-inline-subs .mrd-s-cta{display:inline-block;margin-top:.7rem;font-size:.82rem;font-weight:600;color:#0a2540;}
+#mrd-inline-subs .mrd-s-why{font-size:.68rem;color:#a3a3a3;margin:.7rem 0 0;}
+</style>
+</head>
+<body>
+<div id="mrd-inline-subs">
+  <div class="mrd-s-row">
+    <span class="mrd-s-figure">&pound;49.97</span>
+    <p class="mrd-s-title">a month on subscriptions</p>
+  </div>
+  <p class="mrd-s-body">Across four recurring payments: Netflix, Spotify, the Gym Group and one more. That is &pound;599 a year. We are not telling you to cancel anything, only that you might not have added it up.</p>
+  <a class="mrd-s-cta" href="payments.html">Review your recurring payments</a>
+  <p class="mrd-s-why">Delivered by Dengage from recurring spend in banking_transaction_events</p>
+</div>
+</body>
+</html>

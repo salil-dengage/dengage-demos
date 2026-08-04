@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Meridian Bank | Card frozen (Dengage portal content)</title>
+<!-- =====================================================================
+     MERIDIAN ONLINE BANKING, On-Site content for the panel
+
+     Trigger:  DATA_LAYER_EVENT, eventName = banking_portal_card_frozen
+     Format:   Popup
+     Spec:     banking/docs/PORTAL-SCENARIOS.md
+
+     POPUP. Draws NO close control: the panel supplies one via Layout >
+     Close Button > "Add close button to outside", and a second inside the
+     card reads as a duplicate. Design settings need padding 0 and a
+     transparent background or the container's white shows as a frame.
+
+     Every anchor carries target="_top" because this renders in a
+     cross-origin iframe. Exactly one Dn.sendClick(), on the CTA.
+
+     No <script>: the panel strips script blocks on save.
+     ================================================================== -->
+<style>
+#mrd-card-frozen{font-family:Inter,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;
+  box-sizing:border-box;color:#12203a;text-align:left;}
+#mrd-card-frozen *{box-sizing:border-box;}
+#mrd-card-frozen .m-eyebrow{font-size:10px;letter-spacing:.14em;text-transform:uppercase;
+  color:#b8933c;font-weight:700;margin:0 0 6px;}
+#mrd-card-frozen .m-title{font-weight:600;font-size:15px;line-height:1.35;margin:0 0 6px;color:#0a2540;}
+#mrd-card-frozen .m-body{font-size:13px;line-height:1.55;color:#5a6b7f;margin:0 0 10px;}
+#mrd-card-frozen .m-small{font-size:11px;line-height:1.5;color:#94a3b8;margin:10px 0 0;}
+#mrd-card-frozen{width:100%;background:#fff;padding:26px 28px;}
+#mrd-card-frozen .m-title{font-family:"Playfair Display",Georgia,serif;font-size:22px;}
+#mrd-card-frozen .m-cta{display:inline-block;background:#0a2540;color:#fff;text-decoration:none;
+  font-size:14px;font-weight:600;padding:11px 20px;border-radius:6px;}
+#mrd-card-frozen .m-note{background:#f0fdf4;border-left:3px solid #16a34a;padding:12px 14px;
+  border-radius:0 8px 8px 0;font-size:13px;line-height:1.55;color:#14532d;margin:0 0 16px;}
+
+</style>
+</head>
+<body>
+<div id="mrd-card-frozen">
+  <p class="m-eyebrow">Card frozen</p>
+  <h2 class="m-title">Nothing can be taken from that card</h2>
+  <p class="m-note">Existing direct debits and standing orders are unaffected. Unfreezing is instant and you can do it yourself, as many times as you like.</p>
+  <p class="m-body">If you think the card is gone for good rather than down the back of the sofa, report it and we will cancel it and post a replacement within three working days.</p>
+  <a class="m-cta" href="https://salil-dengage.github.io/dengage-demos/banking/cards.html" target="_top" onclick="Dn.sendClick('banking_portal_card_frozen__report-lost')">Report it lost or stolen</a>
+</div>
+</body>
+</html>

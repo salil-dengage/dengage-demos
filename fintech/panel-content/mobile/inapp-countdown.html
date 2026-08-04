@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NovaPay | In-App countdown to win (Dengage mobile content)</title>
+<!-- =====================================================================
+     NOVAPAY ANDROID, In-App content for the panel
+
+     Trigger:  screen name  test_inapp_countdown   (Dengage.setNavigation)
+     Format:   In-App, Countdown to Win
+     Spec:     fintech/panel-content/mobile/README.md
+
+     THE BRIDGE ON MOBILE IS NOT THE BRIDGE ON THE WEB. The SDK injects a
+     window.Dn object into the In-App WebView, and it is a different object
+     from the one the website's panel content uses. Navigation goes through
+     Dn.androidUrl('novapay://<screen>'), NOT an href with target="_top", and
+     capture is Dn.setTags. The web contract's Dn.postQuestion and
+     Dn.postSubscription do not exist here. Keep exactly this shape.
+
+     THE ONE LAYOUT WITH ITS OWN CONTENT TYPE. ContentType has exactly two
+     members, HTML and COUNTDOWN_TO_WIN, so everything else in this folder is
+     HTML in an envelope and this one is not. Set the type in the panel, or
+     the clock and the coupon never arrive.
+
+     THE COUPON COMES FROM THE ENGINE, NOT FROM HERE. The SDK runs the content
+     through a Mustache pass first:
+
+         {{#coupon}} ... {{/coupon}}   kept only when a coupon was won
+         {{couponCode}}                the code itself
+
+     A hard-coded code would show the same one to every customer and would not
+     be redeemable. Leave the tags alone.
+
+     WHAT THE SDK ACTUALLY DOES WITH THE CLOCK. Its countdown behaviour is
+     expiry and nothing else: an expired message is skipped rather than shown
+     with a spent clock. There is no element id it writes a running time into,
+     so the deadline below is copy, and a live ticking clock has to come from
+     the panel's own countdown widget.
+
+     Draws NO close control: the panel supplies it via Layout > Close Button.
+     ================================================================== -->
+<style>
+#npy-ia-cd{font-family:Inter,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;
+  box-sizing:border-box;width:100%;background:#ffffff;border-radius:18px;
+  overflow:hidden;color:#0f1c33;}
+#npy-ia-cd *{box-sizing:border-box;}
+#npy-ia-cd .d-head{background:linear-gradient(140deg,#0a3a9e 0%,#125cfa 100%);
+  padding:22px 22px 20px;color:#f5f7fb;text-align:center;}
+#npy-ia-cd .d-eyebrow{font-size:10px;letter-spacing:.16em;text-transform:uppercase;
+  color:#34d399;font-weight:700;margin:0 0 8px;}
+#npy-ia-cd .d-title{font-size:22px;line-height:1.25;margin:0;font-weight:700;
+  letter-spacing:-.4px;}
+#npy-ia-cd .d-clock{display:inline-block;margin-top:14px;padding:8px 16px;
+  border-radius:999px;background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.26);
+  font-size:12px;font-weight:700;letter-spacing:.1em;}
+#npy-ia-cd .d-body{padding:18px 22px 22px;}
+#npy-ia-cd .d-text{font-size:13.5px;line-height:1.6;color:#64748b;margin:0 0 16px;}
+#npy-ia-cd .d-code{display:block;width:100%;text-align:center;padding:13px;
+  border:1.5px dashed #125cfa;border-radius:10px;background:#f5f8ff;color:#0a3a9e;
+  font-size:16px;font-weight:700;letter-spacing:.12em;cursor:pointer;margin:0 0 14px;}
+#npy-ia-cd .d-cta{display:block;background:#125cfa;color:#fff;text-decoration:none;
+  font-size:14.5px;font-weight:700;padding:14px;border-radius:10px;text-align:center;}
+#npy-ia-cd .d-small{font-size:10.5px;line-height:1.5;color:#a3adb9;margin:14px 0 0;
+  text-align:center;}
+</style>
+</head>
+<body>
+<div id="npy-ia-cd">
+  <div class="d-head">
+    <p class="d-eyebrow">Fee free week</p>
+    <h2 class="d-title">No transfer fee until Friday</h2>
+    <div class="d-clock">CLOSES 17:00 FRI</div>
+  </div>
+  <div class="d-body">
+    <p class="d-text">Send money in any currency this week and the transfer fee
+      is waived. After Friday the standard fee is shown before you confirm, as
+      it always is.</p>
+
+    {{#coupon}}
+    <span class="d-code" onclick="Dn.copyToClipboard('{{couponCode}}')">{{couponCode}}</span>
+    {{/coupon}}
+
+    <a class="d-cta" href="#" role="button"
+       onclick="Dn.sendClick('test_inapp_countdown__send');Dn.androidUrl('novapay://money');return false">Send money now</a>
+
+    <p class="d-small">NovaPay is a fictional brand used for demonstration.
+      No money moves and no fee is charged.</p>
+  </div>
+</div>
+</body>
+</html>

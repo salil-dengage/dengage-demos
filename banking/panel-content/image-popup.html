@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Meridian Bank | Image popup (Dengage panel content)</title>
+<!-- =====================================================================
+     MERIDIAN BANK, On-Site content for the panel
+
+     Paste this WHOLE file into the scenario editor.
+
+     Trigger name: banking_image-popup
+
+     All CSS is scoped under #mrd-image-popup. Inline content is NOT sandboxed: the
+     SDK appends the style to document.head, so an unscoped selector would
+     restyle the whole site.
+
+     No <script>. The panel strips script blocks on save, so interactivity is
+     pure CSS plus inline onclick, which does survive publishing.
+
+     Every anchor carries target="_top". This content renders in a
+     cross-origin iframe, so a normal link would load the site inside the
+     popup rather than navigating the page.
+
+     The engine counts a click only when the content calls Dn.sendClick(),
+     exactly once per file. A close control calls Dn.close() and never
+     sendClick, so a dismissal is not counted as a conversion.
+
+     POPUP, so it draws NO close control. The panel supplies one via
+     Layout > Close Button > "Add close button to outside". A second one inside
+     the card reads as a duplicate.
+
+     Design settings need padding 0 and a transparent background, or the
+     container's own white shows as a frame around this card.
+     ================================================================== -->
+<style>
+#mrd-image-popup{font-family:Inter,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;
+  box-sizing:border-box;color:#12203a;text-align:left;}
+#mrd-image-popup *{box-sizing:border-box;}
+#mrd-image-popup .mrd-eyebrow{font-size:11px;letter-spacing:.14em;text-transform:uppercase;
+  color:#b8933c;font-weight:700;margin:0 0 8px;}
+#mrd-image-popup .mrd-title{font-family:"Playfair Display",Georgia,serif;font-size:24px;
+  line-height:1.2;margin:0 0 10px;color:#0a2540;}
+#mrd-image-popup .mrd-text{font-size:14px;line-height:1.55;color:#5a6b7f;margin:0 0 18px;}
+#mrd-image-popup .mrd-cta{display:inline-block;background:#0a2540;color:#fff;text-decoration:none;
+  font-size:14px;font-weight:600;padding:12px 22px;border:0;border-radius:6px;cursor:pointer;}
+#mrd-image-popup .mrd-cta:hover{background:#143a5e;}
+#mrd-image-popup .mrd-small{font-size:11px;line-height:1.5;color:#8494a5;margin:14px 0 0;}
+#mrd-image-popup{width:100%;background:#fff;overflow:hidden;}
+#mrd-image-popup .mrd-hero{background:#0a2540;padding:26px 30px;color:#fff;}
+#mrd-image-popup .mrd-hero .mrd-eyebrow{color:#b8933c;}
+#mrd-image-popup .mrd-rate{font-family:"Playfair Display",Georgia,serif;font-size:42px;line-height:1;margin:0;}
+#mrd-image-popup .mrd-rate span{font-size:15px;opacity:.8;margin-left:6px;}
+#mrd-image-popup .mrd-body{padding:24px 30px 28px;}
+
+</style>
+</head>
+<body>
+<div id="mrd-image-popup" class="ip-card">
+  <div class="mrd-hero">
+    <p class="mrd-eyebrow">Five year fixed</p>
+    <p class="mrd-rate">4.09%<span>fixed until 2031</span></p>
+  </div>
+  <div class="mrd-body">
+    <h2 class="mrd-title">Our lowest residential rate</h2>
+    <p class="mrd-text">Available with a deposit or equity of 25% or more. Overpay up to 10% a year with no early repayment charge.</p>
+    <a class="mrd-cta" href="https://salil-dengage.github.io/dengage-demos/banking/product.html?id=MRD-MTG-FIX5" target="_top" onclick="Dn.sendClick('banking_image-popup__view-mortgage')">See the full terms</a>
+    <p class="mrd-small">6.6% APRC representative. Your home may be repossessed if you do not keep up repayments on a mortgage secured against it. Illustrative rates on a demo site.</p>
+  </div>
+</div>
+</body>
+</html>

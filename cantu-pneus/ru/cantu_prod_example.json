@@ -1,0 +1,300 @@
+[
+  {
+    "id": "CNT-CRG-29580-KLD01",
+    "name": "Marshal KLD01 295/80 R22.5",
+    "desc": "Marshal KLD01 в типоразмере 295/80 R22.5. Тяга на ведущей оси для тяжёлой магистральной работы, усиленный каркас под многократное восстановление.",
+    "price": "1890.00",
+    "currency": "BRL",
+    "image": [
+      "images/products/CNT-CRG-29580-KLD01.svg"
+    ],
+    "category": "Шины > Грузовые > Ёлочка",
+    "brand": "Marshal",
+    "availability": true,
+    "colors": [
+      "Рисунок «ёлочка»",
+      "295/80 R22.5"
+    ],
+    "oldPrice": "2090.00",
+    "stock": 34
+  },
+  {
+    "id": "CNT-CRG-29580-HN08",
+    "name": "Aeolus HN08 Neo 295/80 R22.5",
+    "desc": "Aeolus HN08 Neo в типоразмере 295/80 R22.5. Рисунок «рёбра» с низким сопротивлением качению, рекомендован для рулевых осей на дальних маршрутах.",
+    "price": "1740.00",
+    "currency": "BRL",
+    "image": [
+      "images/products/CNT-CRG-29580-HN08.svg"
+    ],
+    "category": "Шины > Грузовые > Рёбра",
+    "brand": "Aeolus",
+    "availability": true,
+    "colors": [
+      "Рисунок «рёбра»",
+      "295/80 R22.5"
+    ],
+    "stock": 61
+  },
+  {
+    "id": "CNT-CRG-27580-WIN",
+    "name": "CEAT WinMile X3 275/80 R22.5",
+    "desc": "CEAT WinMile X3 в типоразмере 275/80 R22.5. Универсальное применение по асфальту и грунту, усиленные плечевые зоны против порезов боковины.",
+    "price": "1620.00",
+    "currency": "BRL",
+    "image": [
+      "images/products/CNT-CRG-27580-WIN.svg"
+    ],
+    "category": "Шины > Грузовые > Универсальные",
+    "brand": "CEAT",
+    "availability": true,
+    "colors": [
+      "Универсальное применение",
+      "275/80 R22.5"
+    ],
+    "oldPrice": "1810.00",
+    "stock": 18
+  },
+  {
+    "id": "CNT-CRG-21575-URB",
+    "name": "Ranger RT500 215/75 R17.5",
+    "desc": "Ranger RT500 в типоразмере 215/75 R17.5. Городской профиль для лёгкой развозки, большой пробег в режиме частых остановок.",
+    "price": "1120.00",
+    "currency": "BRL",
+    "image": [
+      "images/products/CNT-CRG-21575-URB.svg"
+    ],
+    "category": "Шины > Грузовые > Городские",
+    "brand": "Ranger",
+    "availability": true,
+    "colors": [
+      "Универсальное применение",
+      "215/75 R17.5"
+    ],
+    "oldPrice": "1290.00",
+    "stock": 47
+  },
+  {
+    "id": "CNT-CRG-1200-R24",
+    "name": "DRC D900 1200 R24",
+    "desc": "DRC D900 в типоразмере 1200 R24. Конструкция в 20 слоёв для тяжёлых грузов и разбитых покрытий, тяга на рыхлом грунте.",
+    "price": "2480.00",
+    "currency": "BRL",
+    "image": [
+      "images/products/CNT-CRG-1200-R24.svg"
+    ],
+    "category": "Шины > Грузовые > Внедорожные",
+    "brand": "DRC",
+    "availability": true,
+    "colors": [
+      "Рисунок «ёлочка»",
+      "1200 R24"
+    ],
+    "stock": 9
+  },
+  {
+    "id": "CNT-PAS-20555-ENE",
+    "name": "SpeedMax Energrip EV 205/55 R16",
+    "desc": "SpeedMax Energrip EV в типоразмере 205/55 R16. Создана для электромобилей: выдерживает повышенную массу и мгновенный крутящий момент при низком шуме.",
+    "price": "398.00",
+    "currency": "BRL",
+    "image": [
+      "images/products/CNT-PAS-20555-ENE.svg"
+    ],
+    "category": "Шины > Легковые > Электромобили",
+    "brand": "SpeedMax",
+    "availability": true,
+    "colors": [
+      "Радиальная",
+      "205/55 R16"
+    ],
+    "oldPrice": "449.00",
+    "stock": 13
+  },
+  {
+    "id": "CNT-PAS-17570-SOL",
+    "name": "Kumho Solus TA31 175/70 R13",
+    "desc": "Kumho Solus TA31 в типоразмере 175/70 R13. Смесь с диоксидом кремния для сцепления на мокрой дороге, для ежедневной езды по городу.",
+    "price": "289.00",
+    "currency": "BRL",
+    "image": [
+      "images/products/CNT-PAS-17570-SOL.svg"
+    ],
+    "category": "Шины > Легковые > Городские",
+    "brand": "Kumho",
+    "availability": true,
+    "colors": [
+      "Радиальная",
+      "175/70 R13"
+    ],
+    "oldPrice": "339.00",
+    "stock": 88
+  },
+  {
+    "id": "CNT-PAS-19565-ECS",
+    "name": "Marshal Ecsta HS52 195/65 R15",
+    "desc": "Marshal Ecsta HS52 в типоразмере 195/65 R15. Чёткая реакция на руль и короткий тормозной путь, рекомендована для седанов среднего класса.",
+    "price": "352.00",
+    "currency": "BRL",
+    "image": [
+      "images/products/CNT-PAS-19565-ECS.svg"
+    ],
+    "category": "Шины > Легковые > Спортивные",
+    "brand": "Marshal",
+    "availability": true,
+    "colors": [
+      "Радиальная",
+      "195/65 R15"
+    ],
+    "stock": 25
+  },
+  {
+    "id": "CNT-AGR-1224-D2000",
+    "name": "DRC D2000 Agro 12.4-24",
+    "desc": "DRC D2000 Agro в типоразмере 12.4-24. Глубокие грунтозацепы для тяги на влажной почве, для тракторов среднего класса.",
+    "price": "1650.00",
+    "currency": "BRL",
+    "image": [
+      "images/products/CNT-AGR-1224-D2000.svg"
+    ],
+    "category": "Шины > Сельскохозяйственные > Тракторные",
+    "brand": "DRC",
+    "availability": true,
+    "colors": [
+      "Грунтозацепы R1",
+      "12.4-24"
+    ],
+    "oldPrice": "1790.00",
+    "stock": 11
+  },
+  {
+    "id": "CNT-AGR-1834-R1W",
+    "name": "CEAT Farmax R1W 18.4-34",
+    "desc": "CEAT Farmax R1W в типоразмере 18.4-34. Высокая грузоподъёмность для мощных тракторов, меньшее уплотнение почвы.",
+    "price": "3980.00",
+    "currency": "BRL",
+    "image": [
+      "images/products/CNT-AGR-1834-R1W.svg"
+    ],
+    "category": "Шины > Сельскохозяйственные > Тракторные",
+    "brand": "CEAT",
+    "availability": true,
+    "colors": [
+      "Грунтозацепы R1W",
+      "18.4-34"
+    ],
+    "stock": 7
+  },
+  {
+    "id": "CNT-IND-1725-AL37",
+    "name": "Aeolus AL37 OTR 17.5-25",
+    "desc": "Aeolus AL37 OTR в типоразмере 17.5-25. Усиленный резиновый слой для карьеров и горных работ, стойкость к порезам и нагреву.",
+    "price": "4290.00",
+    "currency": "BRL",
+    "image": [
+      "images/products/CNT-IND-1725-AL37.svg"
+    ],
+    "category": "Шины > Индустриальные и OTR > Фронтальные погрузчики",
+    "brand": "Aeolus",
+    "availability": true,
+    "colors": [
+      "L3",
+      "17.5-25"
+    ],
+    "oldPrice": "4690.00",
+    "stock": 4
+  },
+  {
+    "id": "CNT-IND-825-EMP",
+    "name": "Marshal Lift 825 8.25-15",
+    "desc": "Marshal Lift 825 в типоразмере 8.25-15. Цельнолитая шина для вилочных погрузчиков в помещении, без риска прокола.",
+    "price": "1240.00",
+    "currency": "BRL",
+    "image": [
+      "images/products/CNT-IND-825-EMP.svg"
+    ],
+    "category": "Шины > Индустриальные и OTR > Погрузчики",
+    "brand": "Marshal",
+    "availability": true,
+    "colors": [
+      "Цельнолитая",
+      "8.25-15"
+    ],
+    "stock": 42
+  },
+  {
+    "id": "CNT-ACS-RODA-2250",
+    "name": "Стальной диск 22.5 x 8.25",
+    "desc": "Стальной диск в типоразмере 22.5 x 8.25. Стальной грузовой диск с окрашенным покрытием, совместим с посадочным диаметром 22.5.",
+    "price": "620.00",
+    "currency": "BRL",
+    "image": [
+      "images/products/CNT-ACS-RODA-2250.svg"
+    ],
+    "category": "Аксессуары > Диски",
+    "brand": "CantuPneus",
+    "availability": true,
+    "colors": [
+      "Сталь",
+      "22.5 x 8.25"
+    ],
+    "oldPrice": "690.00",
+    "stock": 31
+  },
+  {
+    "id": "CNT-ACS-CAM-1100",
+    "name": "Камера 1100-22",
+    "desc": "Камера в типоразмере 1100-22. Бутиловая камера с металлическим вентилем, хорошо держит давление.",
+    "price": "148.00",
+    "currency": "BRL",
+    "image": [
+      "images/products/CNT-ACS-CAM-1100.svg"
+    ],
+    "category": "Аксессуары > Камеры",
+    "brand": "CantuPneus",
+    "availability": true,
+    "colors": [
+      "Бутил",
+      "1100-22"
+    ],
+    "stock": 240
+  },
+  {
+    "id": "CNT-ACS-PROT-1100",
+    "name": "Ободная лента 1100-22",
+    "desc": "Ободная лента в типоразмере 1100-22. Лента, предотвращающая трение между камерой и диском, продлевает срок службы сборки.",
+    "price": "96.00",
+    "currency": "BRL",
+    "image": [
+      "images/products/CNT-ACS-PROT-1100.svg"
+    ],
+    "category": "Аксессуары > Ободные ленты",
+    "brand": "CantuPneus",
+    "availability": true,
+    "colors": [
+      "Резина",
+      "1100-22"
+    ],
+    "oldPrice": "118.00",
+    "stock": 156
+  },
+  {
+    "id": "CNT-CRG-29580-RCP",
+    "name": "Aeolus Neo Recap 295/80 R22.5",
+    "desc": "Aeolus Neo Recap в типоразмере 295/80 R22.5. Отобранный каркас и холодное восстановление, ниже стоимость километра для автопарков.",
+    "price": "1180.00",
+    "currency": "BRL",
+    "image": [
+      "images/products/CNT-CRG-29580-RCP.svg"
+    ],
+    "category": "Шины > Грузовые > Восстановленные",
+    "brand": "Aeolus",
+    "availability": true,
+    "colors": [
+      "Рисунок «ёлочка»",
+      "295/80 R22.5"
+    ],
+    "oldPrice": "1340.00",
+    "stock": 72
+  }
+]

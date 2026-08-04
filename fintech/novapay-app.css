@@ -1,0 +1,804 @@
+/* ============================================================================
+   NovaPay app surface
+   ----------------------------------------------------------------------------
+   Loaded after novapay-style.css, which keeps the header, footer and brand
+   tokens. This file styles only the logged-in app.
+
+   Every selector is prefixed .npy- or #novapay-. That is not tidiness: inline
+   On-Site content is NOT sandboxed, its <style> lands in document.head and
+   applies page-wide, so a bare .card here would be restyled by any inline
+   campaign that happens to use the same name. Namespacing both sides is what
+   keeps them apart.
+   ========================================================================== */
+
+:root {
+  --npy-bg: #f5f7fb;
+  --npy-surface: #ffffff;
+  --npy-ink: #0f1c33;
+  --npy-muted: #64748b;
+  --npy-line: #e3e8f0;
+  --npy-accent: #125cfa;
+  --npy-accent-dark: #0a3a9e;
+  --npy-up: #0f9d58;
+  --npy-down: #d93025;
+  --npy-radius: 16px;
+}
+
+body[data-page-type="app"] {
+  background: var(--npy-bg);
+}
+
+.npy-app {
+  max-width: 1080px;
+  margin: 0 auto;
+  padding: 112px 24px 64px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.npy-view {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.npy-view[hidden] { display: none; }
+
+/* ------------------------------------------------------------- app nav tabs
+   Reuses .nav-main from the site stylesheet, so the header keeps its spacing
+   rules. Only the active state is new. There is no horizontal slack in that
+   header, so adding a sixth tab needs the gap tightened first. */
+.npy-tab {
+  position: relative;
+  text-decoration: none;
+}
+
+.npy-tab.is-active {
+  color: var(--npy-accent);
+  font-weight: 600;
+}
+
+.npy-tab.is-active::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -6px;
+  height: 2px;
+  background: var(--npy-accent);
+  border-radius: 2px;
+}
+
+/* --------------------------------------------------------------- balance */
+
+.npy-balance-card {
+  background: linear-gradient(135deg, var(--npy-accent) 0%, var(--npy-accent-dark) 100%);
+  color: #fff;
+  border-radius: var(--npy-radius);
+  padding: 32px;
+  box-shadow: 0 14px 40px rgba(18, 92, 250, .22);
+}
+
+.npy-balance-label {
+  margin: 0;
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: .08em;
+  opacity: .8;
+}
+
+.npy-balance {
+  margin: 6px 0 2px;
+  font-family: Sora, Inter, sans-serif;
+  font-size: clamp(34px, 6vw, 46px);
+  font-weight: 700;
+  letter-spacing: -1px;
+}
+
+.npy-balance-sub {
+  margin: 0;
+  font-size: 13px;
+  opacity: .85;
+}
+
+.npy-quick {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 24px;
+}
+
+.npy-quick-btn {
+  flex: 1 1 130px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 12px 14px;
+  border: 1px solid rgba(255, 255, 255, .28);
+  background: rgba(255, 255, 255, .14);
+  color: #fff;
+  border-radius: 12px;
+  font: inherit;
+  font-weight: 600;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background .2s ease, transform .2s ease;
+}
+
+.npy-quick-btn:hover {
+  background: rgba(255, 255, 255, .24);
+  transform: translateY(-2px);
+}
+
+/* ----------------------------------------------------------------- cards */
+
+.npy-card {
+  background: var(--npy-surface);
+  border: 1px solid var(--npy-line);
+  border-radius: var(--npy-radius);
+  padding: 24px;
+}
+
+.npy-card h3 {
+  margin: 0 0 16px;
+  font-family: Sora, Inter, sans-serif;
+  font-size: 17px;
+  font-weight: 600;
+  color: var(--npy-ink);
+}
+
+.npy-card-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+  margin-bottom: 16px;
+}
+
+.npy-card-head h3 { margin: 0; }
+
+.npy-actions { display: flex; gap: 8px; flex-wrap: wrap; }
+
+.npy-grid-2 {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
+}
+
+.npy-setup {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  flex-wrap: wrap;
+  border-left: 4px solid var(--npy-accent);
+}
+
+.npy-setup h3 { margin: 0 0 4px; }
+.npy-setup p { margin: 0; color: var(--npy-muted); font-size: 14px; }
+
+.npy-empty {
+  margin: 0;
+  color: var(--npy-muted);
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+/* ---------------------------------------------------------- transactions */
+
+.npy-txn-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.npy-txn {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 0;
+  border-bottom: 1px solid var(--npy-line);
+}
+
+.npy-txn:last-child { border-bottom: 0; }
+
+.npy-txn-icon {
+  width: 38px;
+  height: 38px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--npy-bg);
+  border-radius: 50%;
+  font-size: 17px;
+}
+
+.npy-txn-main { flex: 1; min-width: 0; }
+
+.npy-txn-name {
+  display: block;
+  font-weight: 600;
+  font-size: 14px;
+  color: var(--npy-ink);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.npy-txn-meta {
+  display: block;
+  font-size: 12px;
+  color: var(--npy-muted);
+}
+
+.npy-txn-amt {
+  font-weight: 600;
+  font-size: 14px;
+  font-variant-numeric: tabular-nums;
+  color: var(--npy-ink);
+}
+
+.npy-up { color: var(--npy-up); }
+.npy-down { color: var(--npy-down); }
+
+.npy-txn-flag {
+  width: 26px;
+  height: 26px;
+  flex-shrink: 0;
+  border: 1px solid var(--npy-line);
+  background: transparent;
+  color: var(--npy-muted);
+  border-radius: 50%;
+  cursor: pointer;
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 1;
+}
+
+.npy-txn-flag:hover {
+  border-color: var(--npy-down);
+  color: var(--npy-down);
+}
+
+.npy-acct-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.npy-acct-list li {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 11px 0;
+  border-bottom: 1px solid var(--npy-line);
+  font-size: 14px;
+}
+
+.npy-acct-list li:last-child { border-bottom: 0; }
+.npy-acct-list strong { font-variant-numeric: tabular-nums; }
+
+/* ------------------------------------------------------------------ pots */
+
+.npy-pot, .npy-pot-mini {
+  padding: 14px 0;
+  border-bottom: 1px solid var(--npy-line);
+}
+
+.npy-pot:last-child, .npy-pot-mini:last-child { border-bottom: 0; }
+
+.npy-pot-top, .npy-pot-mini-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 12px;
+  margin-bottom: 8px;
+}
+
+.npy-pot-top h4, .npy-pot-mini-top span {
+  margin: 0;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--npy-ink);
+}
+
+.npy-pot-top small { color: var(--npy-muted); font-size: 12px; }
+.npy-pot-top strong, .npy-pot-mini-top strong { font-variant-numeric: tabular-nums; }
+
+.npy-bar {
+  height: 7px;
+  background: var(--npy-bg);
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.npy-bar span {
+  display: block;
+  height: 100%;
+  background: linear-gradient(90deg, var(--npy-accent), var(--npy-accent-dark));
+  border-radius: 4px;
+  transition: width .4s ease;
+}
+
+.npy-pot-foot {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  margin-top: 8px;
+}
+
+.npy-pot-foot small, .npy-pot-mini small {
+  color: var(--npy-muted);
+  font-size: 12px;
+}
+
+/* ------------------------------------------------------------- card faces */
+
+.npy-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 16px;
+}
+
+.npy-cardface {
+  position: relative;
+  padding: 22px;
+  border-radius: 14px;
+  color: #fff;
+  background: linear-gradient(135deg, #334155 0%, #0f172a 100%);
+  min-height: 168px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.npy-tier-plus { background: linear-gradient(135deg, #125cfa 0%, #0a3a9e 100%); }
+.npy-tier-travel { background: linear-gradient(135deg, #0891b2 0%, #075985 100%); }
+.npy-tier-metal { background: linear-gradient(135deg, #4b5563 0%, #111827 100%); }
+.npy-tier-business { background: linear-gradient(135deg, #7c3aed 0%, #4c1d95 100%); }
+
+.npy-cardface.is-frozen { opacity: .6; }
+
+.npy-cardface-tier {
+  text-transform: uppercase;
+  letter-spacing: .1em;
+  font-size: 11px;
+  opacity: .85;
+}
+
+.npy-cardface-num {
+  font-family: ui-monospace, Menlo, monospace;
+  font-size: 17px;
+  letter-spacing: .06em;
+}
+
+.npy-cardface-type {
+  font-size: 12px;
+  opacity: .85;
+  text-transform: capitalize;
+}
+
+.npy-cardface-actions {
+  margin-top: auto;
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.npy-cardface-actions .npy-btn {
+  background: rgba(255, 255, 255, .18);
+  border-color: rgba(255, 255, 255, .3);
+  color: #fff;
+}
+
+.npy-cardface-actions .npy-btn-primary {
+  background: #fff;
+  color: var(--npy-ink);
+}
+
+/* -------------------------------------------------------------- products */
+
+.npy-prod-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 16px;
+  margin-top: 16px;
+}
+
+.npy-prod {
+  border: 1px solid var(--npy-line);
+  border-radius: 14px;
+  padding: 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  background: var(--npy-surface);
+  transition: box-shadow .2s ease, transform .2s ease;
+}
+
+.npy-prod:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 28px rgba(15, 28, 51, .08);
+}
+
+.npy-prod-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.npy-prod-family {
+  text-transform: uppercase;
+  letter-spacing: .08em;
+  font-size: 10.5px;
+  font-weight: 600;
+  color: var(--npy-accent);
+}
+
+.npy-prod-save {
+  border: 0;
+  background: transparent;
+  color: var(--npy-line);
+  font-size: 18px;
+  line-height: 1;
+  cursor: pointer;
+  padding: 2px 4px;
+}
+
+.npy-prod-save.is-saved, .npy-prod-save:hover { color: #f5a623; }
+
+.npy-prod h4 {
+  margin: 0;
+  font-family: Sora, Inter, sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--npy-ink);
+}
+
+.npy-prod-blurb {
+  margin: 0;
+  font-size: 13px;
+  line-height: 1.6;
+  color: var(--npy-muted);
+  flex: 1;
+}
+
+.npy-prod-figures {
+  display: flex;
+  gap: 18px;
+  padding: 10px 0;
+  border-top: 1px solid var(--npy-line);
+  border-bottom: 1px solid var(--npy-line);
+}
+
+.npy-prod-figures span { display: flex; flex-direction: column; }
+.npy-prod-figures strong { font-size: 14px; color: var(--npy-ink); }
+.npy-prod-figures small { font-size: 11px; color: var(--npy-muted); }
+
+.npy-prod-actions { display: flex; gap: 8px; }
+.npy-prod-actions .npy-btn { flex: 1; }
+
+/* ---------------------------------------------------------------- score */
+
+.npy-score {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.npy-score h3 { margin: 0 0 4px; }
+
+.npy-score-value {
+  margin: 0;
+  font-family: Sora, Inter, sans-serif;
+  font-size: 32px;
+  font-weight: 700;
+  color: var(--npy-ink);
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+}
+
+.npy-score-value span { font-size: 13px; font-weight: 600; }
+
+.npy-score-big {
+  margin: 0 0 10px;
+  font-family: Sora, Inter, sans-serif;
+  font-size: 48px;
+  font-weight: 700;
+  color: var(--npy-accent);
+  text-align: center;
+}
+
+/* --------------------------------------------------------------- buttons */
+
+.npy-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 16px;
+  border: 1px solid var(--npy-line);
+  background: var(--npy-surface);
+  color: var(--npy-ink);
+  border-radius: 10px;
+  font: inherit;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background .2s ease, border-color .2s ease, transform .15s ease;
+}
+
+.npy-btn:hover { border-color: var(--npy-accent); transform: translateY(-1px); }
+
+.npy-btn-primary {
+  background: var(--npy-accent);
+  border-color: var(--npy-accent);
+  color: #fff;
+}
+
+.npy-btn-primary:hover { background: var(--npy-accent-dark); border-color: var(--npy-accent-dark); }
+
+.npy-btn-sm { padding: 7px 12px; font-size: 12px; }
+
+.npy-link {
+  margin-top: 14px;
+  border: 0;
+  background: transparent;
+  color: var(--npy-accent);
+  font: inherit;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  padding: 0;
+}
+
+.npy-link:hover { text-decoration: underline; }
+
+/* ---------------------------------------------------------------- modal */
+
+.npy-modal-host { position: fixed; inset: 0; z-index: 1300; }
+.npy-modal-host[hidden] { display: none; }
+body.npy-modal-open { overflow: hidden; }
+
+.npy-modal-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(15, 28, 51, .55);
+  backdrop-filter: blur(6px);
+}
+
+.npy-modal {
+  position: relative;
+  max-width: 460px;
+  margin: 8vh auto 0;
+  background: var(--npy-surface);
+  border-radius: var(--npy-radius);
+  box-shadow: 0 24px 70px rgba(15, 28, 51, .3);
+  max-height: 84vh;
+  overflow-y: auto;
+}
+
+.npy-modal-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 20px 24px 14px;
+  border-bottom: 1px solid var(--npy-line);
+  position: sticky;
+  top: 0;
+  background: var(--npy-surface);
+}
+
+.npy-modal-head h2 {
+  margin: 0;
+  font-family: Sora, Inter, sans-serif;
+  font-size: 17px;
+  font-weight: 600;
+  color: var(--npy-ink);
+}
+
+.npy-modal-x {
+  width: 32px;
+  height: 32px;
+  border: 0;
+  background: var(--npy-bg);
+  border-radius: 8px;
+  font-size: 20px;
+  line-height: 1;
+  color: var(--npy-muted);
+  cursor: pointer;
+}
+
+.npy-modal-body { padding: 20px 24px 24px; }
+
+.npy-modal-intro {
+  margin: 0 0 16px;
+  font-size: 13.5px;
+  line-height: 1.65;
+  color: var(--npy-muted);
+}
+
+.npy-modal-note {
+  margin: 14px 0 0;
+  font-size: 12px;
+  line-height: 1.6;
+  color: var(--npy-muted);
+}
+
+.npy-field {
+  display: block;
+  margin-bottom: 14px;
+}
+
+.npy-field span {
+  display: block;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--npy-muted);
+  margin-bottom: 6px;
+}
+
+.npy-field input, .npy-field select {
+  width: 100%;
+  padding: 11px 12px;
+  border: 1px solid var(--npy-line);
+  border-radius: 10px;
+  font: inherit;
+  font-size: 14px;
+  color: var(--npy-ink);
+  background: var(--npy-surface);
+  box-sizing: border-box;
+}
+
+.npy-field input:focus, .npy-field select:focus {
+  outline: 2px solid var(--npy-accent);
+  outline-offset: 1px;
+  border-color: var(--npy-accent);
+}
+
+.npy-presets { display: flex; gap: 8px; margin-bottom: 16px; flex-wrap: wrap; }
+
+.npy-preset {
+  flex: 1 1 auto;
+  padding: 8px 10px;
+  border: 1px solid var(--npy-line);
+  background: var(--npy-bg);
+  border-radius: 9px;
+  font: inherit;
+  font-size: 12.5px;
+  font-weight: 600;
+  color: var(--npy-ink);
+  cursor: pointer;
+}
+
+.npy-preset:hover { border-color: var(--npy-accent); color: var(--npy-accent); }
+
+.npy-modal-body > .npy-btn-primary { width: 100%; padding: 12px; }
+
+.npy-choice-row { display: flex; flex-direction: column; gap: 8px; }
+
+.npy-choice {
+  padding: 13px 16px;
+  border: 1px solid var(--npy-line);
+  background: var(--npy-surface);
+  border-radius: 11px;
+  font: inherit;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--npy-ink);
+  cursor: pointer;
+  text-align: left;
+}
+
+.npy-choice:hover { border-color: var(--npy-accent); background: rgba(18, 92, 250, .04); }
+
+.npy-pin {
+  margin: 0 0 12px;
+  text-align: center;
+  font-family: ui-monospace, Menlo, monospace;
+  font-size: 34px;
+  letter-spacing: .28em;
+  color: var(--npy-ink);
+}
+
+.npy-compare {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 16px;
+  font-size: 13px;
+}
+
+.npy-compare th, .npy-compare td {
+  text-align: left;
+  padding: 9px 8px;
+  border-bottom: 1px solid var(--npy-line);
+}
+
+.npy-compare th { color: var(--npy-muted); font-size: 11.5px; text-transform: uppercase; letter-spacing: .06em; }
+
+/* --------------------------------------------------------------- result */
+
+.npy-result { text-align: center; }
+
+.npy-result-tick {
+  width: 52px;
+  height: 52px;
+  margin: 4px auto 14px;
+  border-radius: 50%;
+  background: rgba(15, 157, 88, .12);
+  color: var(--npy-up);
+  font-size: 26px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.npy-result h3 {
+  margin: 0 0 12px;
+  font-family: Sora, Inter, sans-serif;
+  font-size: 17px;
+  color: var(--npy-ink);
+}
+
+.npy-result ul {
+  list-style: none;
+  margin: 0 0 20px;
+  padding: 0;
+  text-align: left;
+}
+
+.npy-result li {
+  padding: 8px 0;
+  border-bottom: 1px solid var(--npy-line);
+  font-size: 13px;
+  line-height: 1.6;
+  color: var(--npy-muted);
+}
+
+.npy-result li:last-child { border-bottom: 0; }
+
+.npy-result code {
+  font-family: ui-monospace, Menlo, monospace;
+  font-size: 12px;
+  background: var(--npy-bg);
+  padding: 1px 5px;
+  border-radius: 4px;
+  color: var(--npy-ink);
+}
+
+.npy-result .npy-btn { width: 100%; padding: 12px; }
+
+/* --------------------------------------------------------------- footer */
+
+.npy-app-footer {
+  border-top: 1px solid var(--npy-line);
+  background: var(--npy-surface);
+  padding: 28px 0;
+}
+
+.npy-disclaimer {
+  margin: 0;
+  max-width: 1080px;
+  padding: 0 24px;
+  font-size: 12px;
+  line-height: 1.7;
+  color: var(--npy-muted);
+}
+
+/* --------------------------------------------------------------- mobile */
+
+@media (max-width: 720px) {
+  .npy-app { padding: 96px 16px 48px; }
+  .npy-balance-card { padding: 24px; }
+  .npy-quick-btn { flex: 1 1 calc(50% - 5px); }
+  .npy-modal { margin: 0; max-width: none; min-height: 100vh; border-radius: 0; }
+  .npy-setup, .npy-score { flex-direction: column; align-items: flex-start; }
+}

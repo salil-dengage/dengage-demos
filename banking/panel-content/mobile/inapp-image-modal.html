@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Meridian Bank | In-App Image Modal (Dengage mobile content)</title>
+<!-- =====================================================================
+     MERIDIAN BANK ANDROID, In-App content for the panel
+
+     Trigger:  screen name  test_inapp_image_modal
+     Format:   In-App, Image Modal (the panel template, image only)
+     Spec:     banking/panel-content/mobile/README.md
+
+     THE BRIDGE ON MOBILE IS NOT THE BRIDGE ON THE WEB. The SDK injects a
+     window.Dn object into the In-App WebView, and it is a different object
+     from the one the website's panel content uses. Navigation is
+     Dn.androidUrl('meridian://<screen>'), NOT an href with target="_top": the
+     Navigation goes through Dn.androidUrl, and capture is Dn.setTags. These
+     are the mobile bridge methods; the web contract's Dn.postQuestion and
+     Dn.postSubscription do not apply here. Keep exactly this shape.
+
+     IMAGE ONLY. No body copy: the artwork carries the message and the whole
+     card is the target. Worth showing because it is the layout a designer
+     asks for and the one that most often ships with no click recorded, since
+     there is no button to hang sendClick on. The anchor wraps the image, so
+     the click is counted.
+
+     Draws NO close control: the panel supplies it via Layout > Close Button.
+
+     display:block on the image, or the inline baseline leaves a strip of
+     background under it that looks like a rendering fault.
+     ================================================================== -->
+<style>
+#mrd-ia-imgmodal{font-family:Inter,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;
+  box-sizing:border-box;width:100%;background:#0a2540;border-radius:14px;overflow:hidden;}
+#mrd-ia-imgmodal *{box-sizing:border-box;}
+#mrd-ia-imgmodal .i-link{display:block;text-decoration:none;}
+#mrd-ia-imgmodal .i-art{display:block;width:100%;height:auto;}
+#mrd-ia-imgmodal .i-small{font-size:10px;line-height:1.5;color:#7d8ea1;margin:0;
+  padding:10px 14px 12px;text-align:center;}
+</style>
+</head>
+<body>
+<div id="mrd-ia-imgmodal">
+  <a class="i-link" href="#" role="button"
+     onclick="Dn.sendClick('test_inapp_image_modal__open');Dn.androidUrl('meridian://products');return false">
+    <img class="i-art" alt="Rate Week at Meridian Bank, fixed rates held until Friday"
+         src="https://salil-dengage.github.io/dengage-demos/banking/images/push/rate-week.png">
+  </a>
+  <p class="i-small">Meridian Bank is a fictional brand used for demonstration.
+    Rates are illustrative and are not a financial promotion.</p>
+</div>
+</body>
+</html>
